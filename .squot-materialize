@@ -1,0 +1,10 @@
+[
+	SquotTonelMapper {
+		#package : MCPackage {
+			#name : 'InteractivePongTutorial'
+		},
+		#path : FSAbsolutePath [
+			'src'
+		]
+	}
+]
