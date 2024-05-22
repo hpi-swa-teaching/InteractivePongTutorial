@@ -19,63 +19,20 @@ IPTGame class >> open [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'mp 11/5/2013 12:13:59.564'
+	#'squeak_changestamp' : 'JZ 5/22/2024 16:59'
 }
 IPTGame >> ball [
 
-	^ ball
+	^ ball.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'mp 11/5/2013 12:13:59.573'
+	#'squeak_changestamp' : 'JZ 5/22/2024 17:00'
 }
-IPTGame >> ball: anObject [
+IPTGame >> ball: aBall [
 
-	ball := anObject
-]
-
-{
-	#category : #'collision detection',
-	#'squeak_changestamp' : 'mp 11/5/2013 14:06:26.109'
-}
-IPTGame >> checkCollisionWithLeftAndRighBorder [
-
-	(self ball position x between: self left and: (self right - self ball width))
-		ifFalse: [self ball startOver].
-]
-
-{
-	#category : #'collision detection',
-	#'squeak_changestamp' : 'JZ 5/22/2024 14:02'
-}
-IPTGame >> checkCollisionWithPlayer [
-
-	((self playerLeft bounds intersects: self ball bounds) or: 
-		[self playerRight bounds intersects: self ball bounds])
-			ifTrue: [self ball turnHorizontal].
-]
-
-{
-	#category : #'collision detection',
-	#'squeak_changestamp' : 'JZ 5/22/2024 14:02'
-}
-IPTGame >> checkCollisionWithTopAndBottomBorder [
-
-	(self ball position y between: self top and: self bottom - self ball height)
-		ifFalse: [self ball turnVertical].
-]
-
-{
-	#category : #'collision detection',
-	#'squeak_changestamp' : 'mp 11/5/2013 14:06:02.828'
-}
-IPTGame >> checkCollisions [
-
-	self 
-		checkCollisionWithTopAndBottomBorder;
-		checkCollisionWithLeftAndRighBorder;
-		checkCollisionWithPlayer.
+	ball := aBall.
 ]
 
 {
@@ -89,7 +46,7 @@ IPTGame >> handlesKeyboard: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'JZ 5/22/2024 14:15'
+	#'squeak_changestamp' : 'JZ 5/22/2024 16:27'
 }
 IPTGame >> initialize [
 
@@ -97,6 +54,7 @@ IPTGame >> initialize [
 	self 
 		extent: 800 @ 500;
 		color: Color black;
+		beSticky;
 		initializePlayers;
 		initializeBall.
 ]
@@ -128,24 +86,50 @@ IPTGame >> initializePlayers [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'JZ 5/22/2024 15:03'
+	#'squeak_changestamp' : 'JZ 5/22/2024 16:30'
 }
-IPTGame >> keyStroke: anEvent [
-	(anEvent = $w) ifTrue: [self playerLeft up].
-	(anEvent = Character arrowUp) ifTrue: [self playerRight up].
-	(self playerKeys at: anEvent keyCharacter ifAbsent: []) value.
+IPTGame >> keyDown: anEvent [
+	(anEvent keyCharacter = $w) ifTrue: [self playerLeft up].
+	(anEvent keyCharacter = $s) ifTrue: [self playerLeft down].
+	(anEvent keyCharacter = Character arrowUp) ifTrue: [self playerRight up].
+	(anEvent keyCharacter = Character arrowDown) ifTrue: [self playerRight down].
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'JZ 5/22/2024 14:57'
+	#'squeak_changestamp' : 'JZ 5/22/2024 16:54'
 }
-IPTGame >> playerKeys [
-	^ IdentityDictionary newFrom: {
-			$w -> [self playerLeft up].
-			$s -> [self playerLeft down].
-			
-			}
+IPTGame >> keyUp: anEvent [
+	(anEvent keyCharacter = $w) ifTrue: [self playerLeft stop].
+	(anEvent keyCharacter = $s) ifTrue: [self playerLeft stop].
+	(anEvent keyCharacter = Character arrowUp) ifTrue: [self playerRight stop].
+	(anEvent keyCharacter = Character arrowDown) ifTrue: [self playerRight stop].
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'JZ 5/22/2024 17:05'
+}
+IPTGame >> mouseEnter: anEvent [
+
+	anEvent hand newKeyboardFocus: self.
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'JZ 5/22/2024 17:06'
+}
+IPTGame >> mouseLeave: anEvent [
+
+	anEvent hand releaseKeyboardFocus: self.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'JZ 5/22/2024 16:25'
+}
+IPTGame >> playerBounds [
+	^ {self playerLeft bounds . self playerRight bounds}.
 ]
 
 {
@@ -159,11 +143,11 @@ IPTGame >> playerLeft [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'mp 10/29/2013 12:28:15.184'
+	#'squeak_changestamp' : 'JZ 5/22/2024 17:00'
 }
-IPTGame >> playerLeft: anObject [
+IPTGame >> playerLeft: aPlayer [
 
-	playerLeft := anObject
+	playerLeft := aPlayer
 ]
 
 {
@@ -182,12 +166,4 @@ IPTGame >> playerRight [
 IPTGame >> playerRight: anObject [
 
 	playerRight := anObject
-]
-
-{
-	#category : #'event handling',
-	#'squeak_changestamp' : 'JZ 5/22/2024 15:04'
-}
-IPTGame >> wantsKeyboardFocus [
-	^true
 ]

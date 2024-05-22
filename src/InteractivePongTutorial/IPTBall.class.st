@@ -19,29 +19,61 @@ IPTBall class >> on: aGame [
 ]
 
 {
-	#category : #accessing,
-	#'squeak_changestamp' : 'JZ 5/22/2024 14:13'
+	#category : #collision,
+	#'squeak_changestamp' : 'JZ 5/22/2024 16:26'
 }
-IPTBall >> defaultSpeed [
-	^ 5
+IPTBall >> checkCollisionWithPlayer [
+
+	(self game playerBounds anySatisfy: [:bounds | bounds intersects: self bounds])
+			ifTrue: [self turnHorizontal].
+]
+
+{
+	#category : #collision,
+	#'squeak_changestamp' : 'JZ 5/22/2024 16:23'
+}
+IPTBall >> checkCollisionWithWalls [
+
+	(self position x between: self game left and: self game right - self width)
+		ifFalse: [self startOver].
+	(self position y between: self game top and: self game bottom - self height)
+		ifFalse: [self turnVertical].
+]
+
+{
+	#category : #collision,
+	#'squeak_changestamp' : 'JZ 5/22/2024 16:24'
+}
+IPTBall >> checkCollisions [
+	self checkCollisionWithWalls.
+	self checkCollisionWithPlayer.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'mp 11/5/2013 12:11:17.412'
+	#'squeak_changestamp' : 'JZ 5/22/2024 17:07'
+}
+IPTBall >> defaultSpeed [
+
+	^ 5.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'JZ 5/22/2024 16:57'
 }
 IPTBall >> game [
 
-	^ game
+	^ game.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'mp 11/5/2013 12:11:17.426'
+	#'squeak_changestamp' : 'JZ 5/22/2024 17:07'
 }
-IPTBall >> game: anObject [
+IPTBall >> game: aGame [
 
-	game := anObject
+	game := aGame.
 ]
 
 {
@@ -58,20 +90,20 @@ IPTBall >> initialize [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'mp 11/5/2013 12:11:17.434'
+	#'squeak_changestamp' : 'JZ 5/22/2024 17:07'
 }
 IPTBall >> speed [
 
-	^ speed
+	^ speed.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'mp 11/5/2013 12:11:17.442'
+	#'squeak_changestamp' : 'JZ 5/22/2024 17:07'
 }
-IPTBall >> speed: anObject [
+IPTBall >> speed: aNumber [
 
-	speed := anObject
+	speed := aNumber.
 ]
 
 {
@@ -87,22 +119,22 @@ IPTBall >> startOver [
 ]
 
 {
-	#category : #'stepping and presenter',
-	#'squeak_changestamp' : 'JZ 5/22/2024 14:04'
+	#category : #stepping,
+	#'squeak_changestamp' : 'JZ 5/22/2024 16:24'
 }
 IPTBall >> step [
 
 	self position: self position + self speed.
-	self game checkCollisions. 
+	self checkCollisions. 
 ]
 
 {
-	#category : #'stepping and presenter',
-	#'squeak_changestamp' : 'JZ 5/22/2024 14:03'
+	#category : #stepping,
+	#'squeak_changestamp' : 'JZ 5/22/2024 17:08'
 }
 IPTBall >> stepTime [
 
-	^ 10
+	^ 10.
 ]
 
 {

@@ -3,7 +3,7 @@ Class {
 	#superclass : #Morph,
 	#instVars : [
 		'game',
-		'playerType'
+		'speed'
 	],
 	#category : #InteractivePongTutorial
 }
@@ -20,48 +20,58 @@ IPTPlayer class >> position: aPoint game: aSwaPong [
 ]
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'JZ 5/22/2024 17:02'
+}
+IPTPlayer >> defaultSpeed [
+
+	^ 10.
+]
+
+{
 	#category : #movement,
-	#'squeak_changestamp' : 'JZ 5/22/2024 14:11'
+	#'squeak_changestamp' : 'JZ 5/22/2024 16:44'
 }
 IPTPlayer >> down [
 
-	self move: self speed.
+	self speed: self defaultSpeed.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'mp 10/29/2013 12:21:43.482'
+	#'squeak_changestamp' : 'JZ 5/22/2024 17:02'
 }
 IPTPlayer >> game [
 
-	^ game
+	^ game.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'mp 10/29/2013 12:21:43.491'
+	#'squeak_changestamp' : 'JZ 5/22/2024 17:02'
 }
-IPTPlayer >> game: anObject [
+IPTPlayer >> game: aGame [
 
-	game := anObject
+	game := aGame.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'JZ 5/22/2024 14:18'
+	#'squeak_changestamp' : 'JZ 5/22/2024 16:50'
 }
 IPTPlayer >> initialize [
 
 	super initialize.
 	self 
 		color: Color white;
-		extent: 15 @100.
+		extent: 15 @100;
+		stop.
 	
 ]
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'mp 11/5/2013 14:04:42.763'
+	#'squeak_changestamp' : 'JZ 5/22/2024 17:04'
 }
 IPTPlayer >> move: aNumber [
 	| newPosition |
@@ -74,47 +84,50 @@ IPTPlayer >> move: aNumber [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JZ 5/22/2024 14:38'
-}
-IPTPlayer >> playerKeys [
-	^ (self playerType = #left)
-	 	ifTrue: [IdentityDictionary newFrom: {
-			$w -> [self up].
-			$s -> [self down].}] 
-		ifFalse: [ IdentityDictionary newFrom: {
-			Character arrowUp -> [self up].
-			Character arrowDown -> [self down].}]
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'JZ 5/22/2024 14:34'
-}
-IPTPlayer >> playerType [
-	^ playerType
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'JZ 5/22/2024 14:34'
-}
-IPTPlayer >> playerType: anObject [
-	playerType := anObject
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'JZ 5/22/2024 14:10'
+	#'squeak_changestamp' : 'JZ 5/22/2024 17:02'
 }
 IPTPlayer >> speed [
-	^ 10
+
+	^ speed.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'JZ 5/22/2024 17:02'
+}
+IPTPlayer >> speed: aNumber [
+	speed := aNumber.
+]
+
+{
+	#category : #stepping,
+	#'squeak_changestamp' : 'JZ 5/22/2024 16:47'
+}
+IPTPlayer >> step [
+	self move: self speed
+]
+
+{
+	#category : #stepping,
+	#'squeak_changestamp' : 'JZ 5/22/2024 16:51'
+}
+IPTPlayer >> stepTime [
+	^ 10.
 ]
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'JZ 5/22/2024 14:11'
+	#'squeak_changestamp' : 'JZ 5/22/2024 16:44'
+}
+IPTPlayer >> stop [
+	self speed: 0.
+]
+
+{
+	#category : #movement,
+	#'squeak_changestamp' : 'JZ 5/22/2024 16:44'
 }
 IPTPlayer >> up [
 
-	self move: self speed negated.
+	self speed: self defaultSpeed negated.
 ]
