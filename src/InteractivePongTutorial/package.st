@@ -1,4 +1,4 @@
 Package {
-	#'squeak_changestamp' : true,
-	#name : #InteractivePongTutorial
+	#name : #InteractivePongTutorial,
+	#'squeak_changestamp' : true
 }
