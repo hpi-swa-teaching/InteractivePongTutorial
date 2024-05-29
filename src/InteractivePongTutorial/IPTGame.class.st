@@ -86,22 +86,23 @@ IPTGame >> initializePlayers [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'JZ 5/22/2024 16:30'
+	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 09:47'
 }
 IPTGame >> keyDown: anEvent [
-	(anEvent keyCharacter = $w) ifTrue: [self playerLeft up].
-	(anEvent keyCharacter = $s) ifTrue: [self playerLeft down].
+	Transcript show: anEvent keyCharacter.
+	(anEvent keyCharacter asUppercase = $W ) ifTrue: [self playerLeft up].
+	(anEvent keyCharacter asUppercase = $S ) ifTrue: [self playerLeft down].
 	(anEvent keyCharacter = Character arrowUp) ifTrue: [self playerRight up].
 	(anEvent keyCharacter = Character arrowDown) ifTrue: [self playerRight down].
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'JZ 5/22/2024 16:54'
+	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 09:48'
 }
 IPTGame >> keyUp: anEvent [
-	(anEvent keyCharacter = $w) ifTrue: [self playerLeft stop].
-	(anEvent keyCharacter = $s) ifTrue: [self playerLeft stop].
+	(anEvent keyCharacter asUppercase = $W ) ifTrue: [self playerLeft stop].
+	(anEvent keyCharacter asUppercase = $S) ifTrue: [self playerLeft stop].
 	(anEvent keyCharacter = Character arrowUp) ifTrue: [self playerRight stop].
 	(anEvent keyCharacter = Character arrowDown) ifTrue: [self playerRight stop].
 ]

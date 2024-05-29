@@ -51,11 +51,11 @@ IPTBall >> checkCollisions [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JZ 5/22/2024 17:07'
+	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 09:50'
 }
 IPTBall >> defaultSpeed [
 
-	^ 5.
+	^ 10.
 ]
 
 {
