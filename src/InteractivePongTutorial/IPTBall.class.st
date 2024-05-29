@@ -9,16 +9,6 @@ Class {
 }
 
 {
-	#category : #'instance creation',
-	#'squeak_changestamp' : 'JZ 5/22/2024 13:57'
-}
-IPTBall class >> on: aGame [
- 
-	^ self new 
-		game: aGame
-]
-
-{
 	#category : #collision,
 	#'squeak_changestamp' : 'JZ 5/22/2024 16:26'
 }
