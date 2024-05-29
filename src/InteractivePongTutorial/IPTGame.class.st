@@ -61,25 +61,29 @@ IPTGame >> initialize [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'JZ 5/22/2024 13:52'
+	#'squeak_changestamp' : 'JZ 5/29/2024 12:02'
 }
 IPTGame >> initializeBall [
 		
 	self
-		ball: (IPTBall on: self);
+		ball: (IPTBall new game: self);
 		addMorph: self ball.
 	self ball startOver.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'JZ 5/22/2024 14:46'
+	#'squeak_changestamp' : 'JZ 5/29/2024 12:05'
 }
 IPTGame >> initializePlayers [
 	
 	self
-		playerLeft: (IPTPlayer position: 30@175 game: self);
-		playerRight: (IPTPlayer position: 765@175 game: self);
+		playerLeft: (IPTPlayer new
+			position: 30@175;
+			game: self);
+		playerRight: (IPTPlayer new 
+			position: 765@175;
+			game: self);
 		addMorph: self playerLeft;
 		addMorph: self playerRight.
 ]

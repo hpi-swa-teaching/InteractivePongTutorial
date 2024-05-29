@@ -9,17 +9,6 @@ Class {
 }
 
 {
-	#category : #'instance creation',
-	#'squeak_changestamp' : 'JZ 5/22/2024 14:45'
-}
-IPTPlayer class >> position: aPoint game: aSwaPong [ 
-
-	^ self new
-		position: aPoint;
-		game: aSwaPong.
-]
-
-{
 	#category : #accessing,
 	#'squeak_changestamp' : 'JZ 5/22/2024 17:02'
 }
