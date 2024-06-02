@@ -50,6 +50,23 @@ IPTScratchBrowser >> buildDescriptionBoxWith: aBuilder [
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:55'
+}
+IPTScratchBrowser >> buildHomeButtonWith: aBuilder [
+
+	^ aBuilder pluggableButtonSpec new
+		model: self;
+		label: #homeButtonContent;
+		enabled: false;
+		frame: (LayoutFrame new
+			leftFraction: 0.95;
+			topFraction: 0;
+			rightFraction: 1;
+			bottomFraction: self titleBarHeight)
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:45'
 }
 IPTScratchBrowser >> buildMethodListWith: aBuilder [
@@ -87,7 +104,7 @@ IPTScratchBrowser >> buildResetButtonWith: aBuilder [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:52'
+	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:56'
 }
 IPTScratchBrowser >> buildTitleBarWith: aBuilder [
 
@@ -99,7 +116,7 @@ IPTScratchBrowser >> buildTitleBarWith: aBuilder [
 		frame: (LayoutFrame new
 			leftFraction: 0;
 			topFraction: 0;
-			rightFraction: 1;
+			rightFraction: 0.95;
 			bottomFraction: self titleBarHeight)
 ]
 
@@ -122,7 +139,7 @@ IPTScratchBrowser >> buildVerifyButtonWith: aBuilder [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:44'
+	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:56'
 }
 IPTScratchBrowser >> buildWith: aBuilder [
 	^ aBuilder build: (aBuilder pluggableWindowSpec new
@@ -136,6 +153,7 @@ IPTScratchBrowser >> buildWith: aBuilder [
 			self buildMethodListWith: aBuilder.
 			self buildVerifyButtonWith: aBuilder.
 			self buildResetButtonWith: aBuilder.
+			self buildHomeButtonWith: aBuilder.
 			"self buildCodeEditorWith: aBuilder.
 			self buildEvaluateButtonWith: aBuilder.
 			self buildResetLectureButtonWith: aBuilder.
@@ -179,6 +197,14 @@ IPTScratchBrowser >> codeEditor: anObject [
 }
 IPTScratchBrowser >> descriptionBoxContent [
 	^ 'Hello World!'
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:55'
+}
+IPTScratchBrowser >> homeButtonContent [
+	^ 'Home'
 ]
 
 {
