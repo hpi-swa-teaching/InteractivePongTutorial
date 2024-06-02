@@ -87,14 +87,15 @@ IPTScratchBrowser >> buildResetButtonWith: aBuilder [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 12:25'
+	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:52'
 }
 IPTScratchBrowser >> buildTitleBarWith: aBuilder [
 
-	^ aBuilder pluggableButtonSpec new
+	^ aBuilder pluggableTextSpec new
 		model: self;
-		label: #titleBarContent;
-		enabled: false;
+		getText: #titleBarContent;
+		readOnly: true;
+		indicateUnacceptedChanges: false;
 		frame: (LayoutFrame new
 			leftFraction: 0;
 			topFraction: 0;
@@ -226,10 +227,10 @@ IPTScratchBrowser >> selectedMethod: anObject [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 11:58'
+	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:52'
 }
 IPTScratchBrowser >> titleBarContent [
-	^ 'This is a Title'
+	^ 'Kapitel 2 - Level 3: Welcome to SqueakLand!'
 ]
 
 {
