@@ -50,7 +50,7 @@ IPTScratchBrowser >> buildDescriptionBoxWith: aBuilder [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:15'
+	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:45'
 }
 IPTScratchBrowser >> buildMethodListWith: aBuilder [
 
@@ -64,6 +64,23 @@ IPTScratchBrowser >> buildMethodListWith: aBuilder [
 		frame: (LayoutFrame new
 			leftFraction: 0;
 			topFraction: self titleBarHeight;
+			rightFraction: 0.25;
+			bottomFraction: (1 - self buttonHeight))
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:48'
+}
+IPTScratchBrowser >> buildResetButtonWith: aBuilder [
+
+	^ aBuilder pluggableButtonSpec new
+		model: self;
+		label: #resetButtonContent;
+		enabled: false;
+		frame: (LayoutFrame new
+			leftFraction: 0.25 / 2;
+			topFraction: (1 - self buttonHeight);
 			rightFraction: 0.25;
 			bottomFraction: 1)
 ]
@@ -87,7 +104,24 @@ IPTScratchBrowser >> buildTitleBarWith: aBuilder [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:14'
+	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:49'
+}
+IPTScratchBrowser >> buildVerifyButtonWith: aBuilder [
+
+	^ aBuilder pluggableButtonSpec new
+		model: self;
+		label: #verifyButtonContent;
+		enabled: false;
+		frame: (LayoutFrame new
+			leftFraction: 0;
+			topFraction: (1 - self buttonHeight);
+			rightFraction: 0.25 / 2;
+			bottomFraction: 1)
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:44'
 }
 IPTScratchBrowser >> buildWith: aBuilder [
 	^ aBuilder build: (aBuilder pluggableWindowSpec new
@@ -99,6 +133,8 @@ IPTScratchBrowser >> buildWith: aBuilder [
 			self buildTitleBarWith: aBuilder.
 			self buildCodeEditorWith: aBuilder.
 			self buildMethodListWith: aBuilder.
+			self buildVerifyButtonWith: aBuilder.
+			self buildResetButtonWith: aBuilder.
 			"self buildCodeEditorWith: aBuilder.
 			self buildEvaluateButtonWith: aBuilder.
 			self buildResetLectureButtonWith: aBuilder.
@@ -108,6 +144,14 @@ IPTScratchBrowser >> buildWith: aBuilder [
 			self buildContextBarWith: aBuilder."
 			};
 		yourself)
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:43'
+}
+IPTScratchBrowser >> buttonHeight [
+	^ 0.1
 ]
 
 {
@@ -153,6 +197,14 @@ IPTScratchBrowser >> open [
 ]
 
 {
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:48'
+}
+IPTScratchBrowser >> resetButtonContent [
+	^ 'Reset'
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:14'
 }
@@ -186,6 +238,14 @@ IPTScratchBrowser >> titleBarContent [
 }
 IPTScratchBrowser >> titleBarHeight [
 	^ 0.05
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:48'
+}
+IPTScratchBrowser >> verifyButtonContent [
+	^ 'Verify'
 ]
 
 {
