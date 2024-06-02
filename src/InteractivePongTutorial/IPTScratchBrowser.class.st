@@ -217,7 +217,7 @@ IPTScratchBrowser >> initialize [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 11:18'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 17:21'
 }
 IPTScratchBrowser >> open [
 	^ ToolBuilder open: self.

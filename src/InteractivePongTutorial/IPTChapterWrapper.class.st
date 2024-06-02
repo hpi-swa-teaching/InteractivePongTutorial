@@ -6,19 +6,19 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 14:07'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 16:50'
 }
 IPTChapterWrapper >> asString [
-	^self item
+	^self item ChapterName
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 13:58'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 17:11'
 }
 IPTChapterWrapper >> contents [
 	^ self item ChapterLevel collect: [ :each | 
-		IPTMethodListItemWrapper with: each model: self model parent: self]
+		IPTLevelWrapper with: each model: self model parent: self]
 ]
 
 {

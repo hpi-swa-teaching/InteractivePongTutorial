@@ -2,8 +2,9 @@ Class {
 	#name : #IPTChapterBrowser,
 	#superclass : #Model,
 	#instVars : [
-		'selectedChapter',
-		'selectedLevel'
+		'selectedLevel',
+		'ChapterList',
+		'IPTBrowser'
 	],
 	#category : #InteractivePongTutorial
 }
@@ -18,10 +19,27 @@ IPTChapterBrowser class >> open [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 14:07'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 16:41'
 }
 IPTChapterBrowser >> ChapterList [
-	^ {'Introduction'}
+	ChapterList ifNil: [ChapterList := IPTLevel Chapter].
+	^ChapterList
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 17:31'
+}
+IPTChapterBrowser >> IPTBrowser [
+	^ IPTBrowser
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 17:31'
+}
+IPTChapterBrowser >> IPTBrowser: anObject [
+	IPTBrowser := anObject
 ]
 
 {
@@ -72,32 +90,20 @@ IPTChapterBrowser >> open [
 	#category : #accessing,
 	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 13:25'
 }
-IPTChapterBrowser >> selectedChapter [
-	^ selectedChapter
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 13:25'
-}
-IPTChapterBrowser >> selectedChapter: anObject [
-	selectedChapter := anObject
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 13:25'
-}
 IPTChapterBrowser >> selectedLevel [
 	^ selectedLevel
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 13:25'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 17:31'
 }
 IPTChapterBrowser >> selectedLevel: anObject [
-	selectedLevel := anObject
+	selectedLevel := anObject.
+	
+	Transcript show: anObject.
+	
+	self changed: #selectedLevel.
 ]
 
 {

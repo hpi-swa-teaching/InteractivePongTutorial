@@ -6,6 +6,14 @@ Class {
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 17:05'
+}
+Level01 class >> LevelName [
+	^'Level01'
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 14:03'
 }
 Level01 >> LevelDescription [
