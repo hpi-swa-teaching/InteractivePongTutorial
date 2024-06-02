@@ -1,8 +1,9 @@
 Class {
 	#name : #IPTScratchBrowser,
-	#superclass : #Object,
+	#superclass : #Model,
 	#instVars : [
-		'codeEditor'
+		'codeEditor',
+		'selectedMethod'
 	],
 	#category : #InteractivePongTutorial
 }
@@ -49,6 +50,26 @@ IPTScratchBrowser >> buildDescriptionBoxWith: aBuilder [
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:15'
+}
+IPTScratchBrowser >> buildMethodListWith: aBuilder [
+
+	^ aBuilder pluggableTreeSpec new
+		model: self;
+		roots: #visibleClassSet;
+		nodeClass: IPTClassListItemWrapper;
+		getSelected: #selectedMethod;
+		setSelected: #selectedMethod:;
+		autoDeselect: true;
+		frame: (LayoutFrame new
+			leftFraction: 0;
+			topFraction: self titleBarHeight;
+			rightFraction: 0.25;
+			bottomFraction: 1)
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 12:25'
 }
 IPTScratchBrowser >> buildTitleBarWith: aBuilder [
@@ -66,19 +87,19 @@ IPTScratchBrowser >> buildTitleBarWith: aBuilder [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 12:36'
+	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:14'
 }
 IPTScratchBrowser >> buildWith: aBuilder [
 	^ aBuilder build: (aBuilder pluggableWindowSpec new
 		model: self;
 		label: 'Interactive Pong Tutorial';"#labelString;"
-		extent: (800@800);"self class defaultExtent;"
+		extent: (1200@800);"self class defaultExtent;"
 		children: {
 			self buildDescriptionBoxWith: aBuilder.
 			self buildTitleBarWith: aBuilder.
 			self buildCodeEditorWith: aBuilder.
-			"self buildLectureListWith: aBuilder.
-			self buildCodeEditorWith: aBuilder.
+			self buildMethodListWith: aBuilder.
+			"self buildCodeEditorWith: aBuilder.
 			self buildEvaluateButtonWith: aBuilder.
 			self buildResetLectureButtonWith: aBuilder.
 			self buildSolutionToggleButtonWith: aBuilder.
@@ -132,6 +153,26 @@ IPTScratchBrowser >> open [
 ]
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:14'
+}
+IPTScratchBrowser >> selectedMethod [
+	^ selectedMethod
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:35'
+}
+IPTScratchBrowser >> selectedMethod: anObject [
+	selectedMethod := anObject.
+	
+	Transcript show: anObject.
+	
+	self changed: #selectedMethod.
+]
+
+{
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 11:58'
 }
@@ -149,8 +190,16 @@ IPTScratchBrowser >> titleBarHeight [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 11:53'
+	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 10:50'
+}
+IPTScratchBrowser >> visibleClassSet [
+	^ {'foo'.'bar'.'xyz'}
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 10:20'
 }
 IPTScratchBrowser >> windowColorToUse [ 
-	^ Color plum.
+	^ Color white darker.
 ]
