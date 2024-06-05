@@ -6,18 +6,18 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:04'
+	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 11:55'
 }
 IPTClassListItemWrapper >> asString [
-	^ self item
+	^ self item name.
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:19'
+	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 11:55'
 }
 IPTClassListItemWrapper >> contents [
-	^ {'a'.'b'.'c'} collect: [ :each | 
+	^ item methodCodePieces collect: [ :each | 
 		IPTMethodListItemWrapper with: each model: self model parent: self]
 
 ]

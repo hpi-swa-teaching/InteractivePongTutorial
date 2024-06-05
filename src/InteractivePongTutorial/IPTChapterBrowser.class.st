@@ -3,8 +3,7 @@ Class {
 	#superclass : #Model,
 	#instVars : [
 		'selectedLevel',
-		'ChapterList',
-		'IPTBrowser'
+		'ChapterList'
 	],
 	#category : #InteractivePongTutorial
 }
@@ -24,22 +23,6 @@ IPTChapterBrowser class >> open [
 IPTChapterBrowser >> ChapterList [
 	ChapterList ifNil: [ChapterList := IPTLevel Chapter].
 	^ChapterList
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 17:31'
-}
-IPTChapterBrowser >> IPTBrowser [
-	^ IPTBrowser
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 17:31'
-}
-IPTChapterBrowser >> IPTBrowser: anObject [
-	IPTBrowser := anObject
 ]
 
 {
@@ -96,13 +79,13 @@ IPTChapterBrowser >> selectedLevel [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 18:47'
+	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 10:07'
 }
 IPTChapterBrowser >> selectedLevel: anObject [
 	selectedLevel := anObject.
 	
 	Transcript show: anObject.
-	IPTScratchBrowser open. 
+	IPTBrowser open. 
 	
 	self changed: #selectedLevel.
 ]

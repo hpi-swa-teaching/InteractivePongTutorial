@@ -1,5 +1,5 @@
 Class {
-	#name : #IPTScratchBrowser,
+	#name : #IPTBrowser,
 	#superclass : #Model,
 	#instVars : [
 		'codeEditor',
@@ -12,7 +12,7 @@ Class {
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 11:19'
 }
-IPTScratchBrowser class >> open [
+IPTBrowser class >> open [
 	^ self new open.
 ]
 
@@ -20,7 +20,7 @@ IPTScratchBrowser class >> open [
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 12:38'
 }
-IPTScratchBrowser >> buildCodeEditorWith: aBuilder [
+IPTBrowser >> buildCodeEditorWith: aBuilder [
 
 	^ (self codeEditor buildCodePaneWith: aBuilder)
 		frame: (LayoutFrame new
@@ -34,7 +34,7 @@ IPTScratchBrowser >> buildCodeEditorWith: aBuilder [
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 12:25'
 }
-IPTScratchBrowser >> buildDescriptionBoxWith: aBuilder [
+IPTBrowser >> buildDescriptionBoxWith: aBuilder [
 
 	^ aBuilder pluggableTextSpec new
 		model: self;
@@ -52,7 +52,7 @@ IPTScratchBrowser >> buildDescriptionBoxWith: aBuilder [
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:55'
 }
-IPTScratchBrowser >> buildHomeButtonWith: aBuilder [
+IPTBrowser >> buildHomeButtonWith: aBuilder [
 
 	^ aBuilder pluggableButtonSpec new
 		model: self;
@@ -69,7 +69,7 @@ IPTScratchBrowser >> buildHomeButtonWith: aBuilder [
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:45'
 }
-IPTScratchBrowser >> buildMethodListWith: aBuilder [
+IPTBrowser >> buildMethodListWith: aBuilder [
 
 	^ aBuilder pluggableTreeSpec new
 		model: self;
@@ -89,7 +89,7 @@ IPTScratchBrowser >> buildMethodListWith: aBuilder [
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:48'
 }
-IPTScratchBrowser >> buildResetButtonWith: aBuilder [
+IPTBrowser >> buildResetButtonWith: aBuilder [
 
 	^ aBuilder pluggableButtonSpec new
 		model: self;
@@ -106,7 +106,7 @@ IPTScratchBrowser >> buildResetButtonWith: aBuilder [
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:56'
 }
-IPTScratchBrowser >> buildTitleBarWith: aBuilder [
+IPTBrowser >> buildTitleBarWith: aBuilder [
 
 	^ aBuilder pluggableTextSpec new
 		model: self;
@@ -124,7 +124,7 @@ IPTScratchBrowser >> buildTitleBarWith: aBuilder [
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:49'
 }
-IPTScratchBrowser >> buildVerifyButtonWith: aBuilder [
+IPTBrowser >> buildVerifyButtonWith: aBuilder [
 
 	^ aBuilder pluggableButtonSpec new
 		model: self;
@@ -141,7 +141,7 @@ IPTScratchBrowser >> buildVerifyButtonWith: aBuilder [
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:56'
 }
-IPTScratchBrowser >> buildWith: aBuilder [
+IPTBrowser >> buildWith: aBuilder [
 	^ aBuilder build: (aBuilder pluggableWindowSpec new
 		model: self;
 		label: 'Interactive Pong Tutorial';"#labelString;"
@@ -169,17 +169,17 @@ IPTScratchBrowser >> buildWith: aBuilder [
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:43'
 }
-IPTScratchBrowser >> buttonHeight [
+IPTBrowser >> buttonHeight [
 	^ 0.1
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 12:35'
+	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 12:26'
 }
-IPTScratchBrowser >> codeEditor [
+IPTBrowser >> codeEditor [
 
-	codeEditor ifNil: [self codeEditor: (MotuEditor new actionOnSave: [])].
+	codeEditor ifNil: [self codeEditor: (IPTEditor new actionOnSave: [])].
 	^ codeEditor
 ]
 
@@ -187,7 +187,7 @@ IPTScratchBrowser >> codeEditor [
 	#category : #accessing,
 	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 12:35'
 }
-IPTScratchBrowser >> codeEditor: anObject [
+IPTBrowser >> codeEditor: anObject [
 	codeEditor := anObject
 ]
 
@@ -195,7 +195,7 @@ IPTScratchBrowser >> codeEditor: anObject [
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 11:39'
 }
-IPTScratchBrowser >> descriptionBoxContent [
+IPTBrowser >> descriptionBoxContent [
 	^ 'Hello World!'
 ]
 
@@ -203,7 +203,7 @@ IPTScratchBrowser >> descriptionBoxContent [
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:55'
 }
-IPTScratchBrowser >> homeButtonContent [
+IPTBrowser >> homeButtonContent [
 	^ 'Home'
 ]
 
@@ -211,7 +211,7 @@ IPTScratchBrowser >> homeButtonContent [
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 12:32'
 }
-IPTScratchBrowser >> initialize [
+IPTBrowser >> initialize [
 	self codeEditor: MotuEditor new.
 ]
 
@@ -219,7 +219,7 @@ IPTScratchBrowser >> initialize [
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 17:21'
 }
-IPTScratchBrowser >> open [
+IPTBrowser >> open [
 	^ ToolBuilder open: self.
 ]
 
@@ -227,7 +227,7 @@ IPTScratchBrowser >> open [
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:48'
 }
-IPTScratchBrowser >> resetButtonContent [
+IPTBrowser >> resetButtonContent [
 	^ 'Reset'
 ]
 
@@ -235,7 +235,7 @@ IPTScratchBrowser >> resetButtonContent [
 	#category : #accessing,
 	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:14'
 }
-IPTScratchBrowser >> selectedMethod [
+IPTBrowser >> selectedMethod [
 	^ selectedMethod
 ]
 
@@ -243,7 +243,7 @@ IPTScratchBrowser >> selectedMethod [
 	#category : #accessing,
 	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:35'
 }
-IPTScratchBrowser >> selectedMethod: anObject [
+IPTBrowser >> selectedMethod: anObject [
 	selectedMethod := anObject.
 	
 	Transcript show: anObject.
@@ -255,7 +255,7 @@ IPTScratchBrowser >> selectedMethod: anObject [
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:52'
 }
-IPTScratchBrowser >> titleBarContent [
+IPTBrowser >> titleBarContent [
 	^ 'Kapitel 2 - Level 3: Welcome to SqueakLand!'
 ]
 
@@ -263,7 +263,7 @@ IPTScratchBrowser >> titleBarContent [
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 12:12'
 }
-IPTScratchBrowser >> titleBarHeight [
+IPTBrowser >> titleBarHeight [
 	^ 0.05
 ]
 
@@ -271,22 +271,22 @@ IPTScratchBrowser >> titleBarHeight [
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:48'
 }
-IPTScratchBrowser >> verifyButtonContent [
+IPTBrowser >> verifyButtonContent [
 	^ 'Verify'
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 10:50'
+	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 11:52'
 }
-IPTScratchBrowser >> visibleClassSet [
-	^ {'foo'.'bar'.'xyz'}
+IPTBrowser >> visibleClassSet [
+	^ IPTClass testClassList.
 ]
 
 {
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 10:20'
 }
-IPTScratchBrowser >> windowColorToUse [ 
+IPTBrowser >> windowColorToUse [ 
 	^ Color white darker.
 ]

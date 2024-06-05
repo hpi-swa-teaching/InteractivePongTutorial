@@ -20,10 +20,10 @@ IPTMethodListItemWrapper class >> with: anIPTMethod model: aModel parent: aParen
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 16:55'
+	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 11:56'
 }
 IPTMethodListItemWrapper >> asString [
-	^ self item.
+	^ self item name.
 ]
 
 {
