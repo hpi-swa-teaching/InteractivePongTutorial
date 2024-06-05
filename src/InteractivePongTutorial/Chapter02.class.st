@@ -6,10 +6,10 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 16:54'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/5/2024 09:40'
 }
 Chapter02 class >> ChapterLevel [
-	^ {Level01}
+	^ {Level02. Level01}
 ]
 
 {

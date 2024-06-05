@@ -44,7 +44,7 @@ IPTChapterBrowser >> IPTBrowser: anObject [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 13:56'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 18:18'
 }
 IPTChapterBrowser >> buildLevelListWith: aBuilder [
 
@@ -52,8 +52,8 @@ IPTChapterBrowser >> buildLevelListWith: aBuilder [
 		model: self;
 		roots: #ChapterList;
 		nodeClass: IPTChapterWrapper;
-		"getSelected: #selectedLevel;
-		setSelected: #selectedLevel:;"
+		getSelected: #selectedLevel;
+		setSelected: #selectedLevel:;
 		autoDeselect: true;
 		frame: (LayoutFrame new
 			leftFraction: 0;
@@ -96,12 +96,13 @@ IPTChapterBrowser >> selectedLevel [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 17:31'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 18:47'
 }
 IPTChapterBrowser >> selectedLevel: anObject [
 	selectedLevel := anObject.
 	
 	Transcript show: anObject.
+	IPTScratchBrowser open. 
 	
 	self changed: #selectedLevel.
 ]

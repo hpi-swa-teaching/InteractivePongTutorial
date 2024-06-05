@@ -1,22 +1,22 @@
 Class {
-	#name : #Level01,
-	#superclass : #Introduction,
+	#name : #Level02,
+	#superclass : #Chapter02,
 	#category : #InteractivePongTutorial
 }
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 17:43'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 17:44'
 }
-Level01 class >> LevelName [
-	^'Level01: Introduction'
+Level02 class >> LevelName [
+	^'Level02: some stuff'
 ]
 
 {
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 14:03'
 }
-Level01 >> LevelDescription [
+Level02 >> LevelDescription [
 	^'This is a Test explanation'
 ]
 
@@ -24,6 +24,6 @@ Level01 >> LevelDescription [
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 14:01'
 }
-Level01 >> LevelName [
+Level02 >> LevelName [
 	^'Introduction'
 ]
