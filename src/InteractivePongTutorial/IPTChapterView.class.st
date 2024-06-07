@@ -195,10 +195,10 @@ IPTChapterView >> selectedLevel: anObject [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JZ 6/5/2024 12:15'
+	#'squeak_changestamp' : 'FH 6/7/2024 13:16'
 }
 IPTChapterView >> startSelectedLevel [
-	IPTScratchBrowser open. 
+	IPTBrowser open. 
 ]
 
 {
