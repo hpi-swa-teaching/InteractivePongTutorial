@@ -2,6 +2,7 @@ Class {
 	#name : #IPTBrowser,
 	#superclass : #Model,
 	#instVars : [
+		'ipt',
 		'codeEditor',
 		'selectedMethod'
 	],
@@ -10,10 +11,10 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 11:19'
+	#'squeak_changestamp' : 'JZ 6/7/2024 13:29'
 }
-IPTBrowser class >> open [
-	^ self new open.
+IPTBrowser class >> openFrom: anIPT [
+	^ ToolBuilder open: (self new ipt: anIPT)
 ]
 
 {
@@ -216,11 +217,19 @@ IPTBrowser >> initialize [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 17:21'
+	#category : #accessing,
+	#'squeak_changestamp' : 'JZ 6/7/2024 13:30'
 }
-IPTBrowser >> open [
-	^ ToolBuilder open: self.
+IPTBrowser >> ipt [
+	^ ipt
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'JZ 6/7/2024 13:30'
+}
+IPTBrowser >> ipt: anObject [
+	ipt := anObject
 ]
 
 {

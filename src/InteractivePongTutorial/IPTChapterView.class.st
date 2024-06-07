@@ -2,50 +2,70 @@ Class {
 	#name : #IPTChapterView,
 	#superclass : #Model,
 	#instVars : [
+		'ipt',
 		'selectedLevel',
 		'chapters',
-		'selectedChapter',
-		'descriptionText'
+		'selectedChapter'
 	],
 	#category : #InteractivePongTutorial
 }
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JZ 6/5/2024 12:18'
+	#'squeak_changestamp' : 'JZ 6/7/2024 13:29'
 }
-IPTChapterView class >> open [
-	^ ToolBuilder open: self new
+IPTChapterView class >> openFrom: anIPT [
+	^ ToolBuilder open: (self new ipt: anIPT)
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/7/2024 10:51'
+	#category : #building,
+	#'squeak_changestamp' : 'JZ 6/7/2024 14:33'
+}
+IPTChapterView >> buildChapterDescriptionBoxWith: aBuilder [
+
+	^ aBuilder pluggableTextSpec new
+		model: self;
+		getText: #chapterDescription;
+		readOnly: true;
+		indicateUnacceptedChanges: false;
+		padding: self padding;
+		frame: (LayoutFrame new
+			leftFraction: 0;
+			topFraction: 0.45;
+			rightFraction: 0.3;
+			bottomFraction: 1)
+]
+
+{
+	#category : #building,
+	#'squeak_changestamp' : 'JZ 6/7/2024 14:32'
 }
 IPTChapterView >> buildChapterListWith: aBuilder [
 	^ aBuilder pluggableListSpec new
 		model: self;
 		list: #chapters;
 		getSelected: #selectedChapter;
-		setSelected: #selectedChapter:;
-		autoDeselect: true;
+		setSelected: #selectChapter:;
+		padding: self padding;
 		frame: (LayoutFrame new
 			leftFraction: 0;
 			topFraction: 0;
 			rightFraction: 0.3;
-			bottomFraction: 1)
+			bottomFraction: 0.45)
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JZ 6/5/2024 12:26'
+	#category : #building,
+	#'squeak_changestamp' : 'JZ 6/7/2024 14:33'
 }
-IPTChapterView >> buildDescriptionBoxWith: aBuilder [
+IPTChapterView >> buildLevelDescriptionBoxWith: aBuilder [
 
 	^ aBuilder pluggableTextSpec new
 		model: self;
-		getText: #descriptionText;
+		getText: #levelDescription;
 		readOnly: true;
+		padding: self padding;
 		indicateUnacceptedChanges: false;
 		frame: (LayoutFrame new
 			leftFraction: 0.3;
@@ -55,16 +75,16 @@ IPTChapterView >> buildDescriptionBoxWith: aBuilder [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/7/2024 11:03'
+	#category : #building,
+	#'squeak_changestamp' : 'JZ 6/7/2024 14:32'
 }
 IPTChapterView >> buildLevelListWith: aBuilder [
 	^ aBuilder pluggableListSpec new
 		model: self;
 		list: #levels;
 		getSelected: #selectedLevel;
-		setSelected: #selectedLevel:;
-		autoDeselect: true;
+		setSelected: #selectLevel:;
+		padding: self padding;
 		frame: (LayoutFrame new
 			leftFraction: 0.3;
 			topFraction: 0;
@@ -73,14 +93,15 @@ IPTChapterView >> buildLevelListWith: aBuilder [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JZ 6/5/2024 12:16'
+	#category : #building,
+	#'squeak_changestamp' : 'JZ 6/7/2024 14:29'
 }
 IPTChapterView >> buildStartButtonWith: aBuilder [
 	^ aBuilder pluggableButtonSpec new
 		model: self;
 		label: 'Start';
 		action: #startSelectedLevel;
+		padding: self padding;
 		frame: (LayoutFrame new
 			leftFraction: 0.3;
 			topFraction: 0.4;
@@ -89,29 +110,42 @@ IPTChapterView >> buildStartButtonWith: aBuilder [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JZ 6/5/2024 12:27'
+	#category : #building,
+	#'squeak_changestamp' : 'JZ 6/7/2024 14:20'
 }
 IPTChapterView >> buildWith: aBuilder [
 	^ aBuilder build: (aBuilder pluggableWindowSpec new
 		model: self;
-		label: 'Interactive Pong Tutorial';"#labelString;"
-		extent: (1200@800);"self class defaultExtent;"
+		label: 'Interactive Pong Tutorial: Chapter View';
+		extent: (1200@800);
 		children: {
 			self buildChapterListWith: aBuilder.
 			self buildLevelListWith: aBuilder.
 			self buildStartButtonWith: aBuilder.
-			self buildDescriptionBoxWith: aBuilder.
+			self buildChapterDescriptionBoxWith: aBuilder.
+			self buildLevelDescriptionBoxWith: aBuilder.
 			};
 		yourself)
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/7/2024 10:49'
+	#'squeak_changestamp' : 'JZ 6/7/2024 13:49'
+}
+IPTChapterView >> chapterDescription [
+	^ selectedChapter description.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'JZ 6/7/2024 14:07'
 }
 IPTChapterView >> chapters [
-	^ {IPTChapter withName: 'Introduction' number: 1 description: 'This is Chapter 1' levels: {IPTLevel0101 		new}}
+	^ {IPTChapter withName: 'Introduction' number: 1 description: 'This is Chapter 1' levels: {
+		IPTLevel0101 new.
+		IPTLevel0102 new.}.
+		IPTChapter withName: 'Player movement' number: 2 description: 'This is Chapter 2' levels: {
+		IPTLevel0201 new.}.}.
 ]
 
 {
@@ -123,24 +157,8 @@ IPTChapterView >> chapters: anObject [
 ]
 
 {
-	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/7/2024 10:58'
-}
-IPTChapterView >> descriptionText [
-	^ selectedChapter description.
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/7/2024 11:06'
-}
-IPTChapterView >> descriptionText: aString [
-	descriptionText := aString
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/7/2024 11:13'
+	#category : #initialization,
+	#'squeak_changestamp' : 'JZ 6/7/2024 13:51'
 }
 IPTChapterView >> initialize [
 	self chapters: self chapters.
@@ -149,11 +167,68 @@ IPTChapterView >> initialize [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #accessing,
+	#'squeak_changestamp' : 'JZ 6/7/2024 13:25'
+}
+IPTChapterView >> ipt [
+	^ ipt
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'JZ 6/7/2024 13:25'
+}
+IPTChapterView >> ipt: anObject [
+	ipt := anObject
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'JZ 6/7/2024 13:49'
+}
+IPTChapterView >> levelDescription [
+	^ selectedLevel description.
+]
+
+{
+	#category : #accessing,
 	#'squeak_changestamp' : 'Leo Sonnenberg 6/7/2024 11:03'
 }
 IPTChapterView >> levels [
 	^ self selectedChapter levels.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'JZ 6/7/2024 14:29'
+}
+IPTChapterView >> padding [
+	^ 5.
+]
+
+{
+	#category : #actions,
+	#'squeak_changestamp' : 'JZ 6/7/2024 14:10'
+}
+IPTChapterView >> selectChapter: aChapter [	
+	aChapter ifNotNil: [
+		self selectedChapter: aChapter.
+		Transcript show: aChapter.
+		self changed: #selectedChapter.
+		self changed: #levels.
+		self changed: #chapterDescription.]
+]
+
+{
+	#category : #actions,
+	#'squeak_changestamp' : 'JZ 6/7/2024 14:10'
+}
+IPTChapterView >> selectLevel: aLevel [
+	aLevel ifNotNil: [
+		self selectedLevel: aLevel.
+		Transcript show: aLevel.
+		self changed: #selectedLevel.
+		self changed: #levelDescription.]
 ]
 
 {
@@ -166,12 +241,10 @@ IPTChapterView >> selectedChapter [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/7/2024 10:55'
+	#'squeak_changestamp' : 'JZ 6/7/2024 14:10'
 }
-IPTChapterView >> selectedChapter: anObject [
-	selectedChapter := anObject.
-	Transcript show: anObject.
-	self changed: #selectedChapter.
+IPTChapterView >> selectedChapter: aChapter [
+	selectedChapter := aChapter.
 ]
 
 {
@@ -184,25 +257,23 @@ IPTChapterView >> selectedLevel [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/7/2024 11:07'
+	#'squeak_changestamp' : 'JZ 6/7/2024 14:10'
 }
-IPTChapterView >> selectedLevel: anObject [
-	selectedLevel := anObject.	
-	Transcript show: anObject.
-	self descriptionText: selectedLevel description.
-	self changed: #selectedLevel.
+IPTChapterView >> selectedLevel: aLevel [
+	selectedLevel := aLevel.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JZ 6/5/2024 12:15'
+	#category : #actions,
+	#'squeak_changestamp' : 'JZ 6/7/2024 14:42'
 }
 IPTChapterView >> startSelectedLevel [
-	IPTScratchBrowser open. 
+	ipt openBrowser. 
+	self changed: #close.
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #building,
 	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 13:25'
 }
 IPTChapterView >> windowColorToUse [ 
