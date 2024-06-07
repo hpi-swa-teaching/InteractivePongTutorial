@@ -13,8 +13,8 @@ IPT class >> open [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JZ 6/7/2024 13:23'
+	#category : #initialization,
+	#'squeak_changestamp' : 'JZ 6/7/2024 16:08'
 }
 IPT >> initialize [
 	TheWorldMenu registerOpenCommand: {'Interactive Pong Tutorial'. {self class. #open}}.
@@ -22,17 +22,17 @@ IPT >> initialize [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JZ 6/7/2024 13:28'
-}
-IPT >> openBrowser [
-	IPTBrowser openFrom: self.
-]
-
-{
-	#category : #'as yet unclassified',
+	#category : #actions,
 	#'squeak_changestamp' : 'JZ 6/7/2024 13:28'
 }
 IPT >> openChapterView [
 	IPTChapterView openFrom: self.
+]
+
+{
+	#category : #actions,
+	#'squeak_changestamp' : 'JZ 6/7/2024 15:51'
+}
+IPT >> openLevel: aNumber inChapter: aChapter [
+	IPTBrowser openFrom: self chapter: aChapter levelNumber: aNumber
 ]

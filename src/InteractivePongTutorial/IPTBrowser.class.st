@@ -4,7 +4,9 @@ Class {
 	#instVars : [
 		'ipt',
 		'codeEditor',
-		'selectedMethod'
+		'selectedMethod',
+		'chapter',
+		'activeLevelNumber'
 	],
 	#category : #InteractivePongTutorial
 }
@@ -19,6 +21,33 @@ IPTBrowser class >> openFrom: anIPT [
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'JZ 6/7/2024 15:54'
+}
+IPTBrowser class >> openFrom: anIPT chapter: aChapter levelNumber: aNumber [
+	^ ToolBuilder open: (self new 
+		ipt: anIPT;
+		chapter: aChapter;
+		activeLevelNumber: aNumber).
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'JZ 6/7/2024 15:50'
+}
+IPTBrowser >> activeLevelNumber [
+	^ activeLevelNumber.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'JZ 6/7/2024 15:49'
+}
+IPTBrowser >> activeLevelNumber: aNumber [
+	activeLevelNumber := aNumber.
+]
+
+{
+	#category : #building,
 	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 12:38'
 }
 IPTBrowser >> buildCodeEditorWith: aBuilder [
@@ -32,7 +61,7 @@ IPTBrowser >> buildCodeEditorWith: aBuilder [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #building,
 	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 12:25'
 }
 IPTBrowser >> buildDescriptionBoxWith: aBuilder [
@@ -50,15 +79,15 @@ IPTBrowser >> buildDescriptionBoxWith: aBuilder [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:55'
+	#category : #building,
+	#'squeak_changestamp' : 'JZ 6/7/2024 16:06'
 }
 IPTBrowser >> buildHomeButtonWith: aBuilder [
 
 	^ aBuilder pluggableButtonSpec new
 		model: self;
-		label: #homeButtonContent;
-		enabled: false;
+		label: 'Home';
+		action: #homeButtonAction;
 		frame: (LayoutFrame new
 			leftFraction: 0.95;
 			topFraction: 0;
@@ -67,7 +96,7 @@ IPTBrowser >> buildHomeButtonWith: aBuilder [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #building,
 	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:45'
 }
 IPTBrowser >> buildMethodListWith: aBuilder [
@@ -87,14 +116,14 @@ IPTBrowser >> buildMethodListWith: aBuilder [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:48'
+	#category : #building,
+	#'squeak_changestamp' : 'JZ 6/7/2024 15:37'
 }
 IPTBrowser >> buildResetButtonWith: aBuilder [
 
 	^ aBuilder pluggableButtonSpec new
 		model: self;
-		label: #resetButtonContent;
+		label: 'Reset';
 		enabled: false;
 		frame: (LayoutFrame new
 			leftFraction: 0.25 / 2;
@@ -104,8 +133,8 @@ IPTBrowser >> buildResetButtonWith: aBuilder [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:56'
+	#category : #building,
+	#'squeak_changestamp' : 'JZ 6/7/2024 15:41'
 }
 IPTBrowser >> buildTitleBarWith: aBuilder [
 
@@ -122,7 +151,7 @@ IPTBrowser >> buildTitleBarWith: aBuilder [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #building,
 	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:49'
 }
 IPTBrowser >> buildVerifyButtonWith: aBuilder [
@@ -139,14 +168,14 @@ IPTBrowser >> buildVerifyButtonWith: aBuilder [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:56'
+	#category : #building,
+	#'squeak_changestamp' : 'JZ 6/7/2024 15:59'
 }
 IPTBrowser >> buildWith: aBuilder [
 	^ aBuilder build: (aBuilder pluggableWindowSpec new
 		model: self;
-		label: 'Interactive Pong Tutorial';"#labelString;"
-		extent: (1200@800);"self class defaultExtent;"
+		label: 'Interactive Pong Tutorial: ', self chapter name;
+		extent: (1400@800);
 		children: {
 			self buildDescriptionBoxWith: aBuilder.
 			self buildTitleBarWith: aBuilder.
@@ -167,11 +196,27 @@ IPTBrowser >> buildWith: aBuilder [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #ui,
 	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:43'
 }
 IPTBrowser >> buttonHeight [
 	^ 0.1
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'JZ 6/7/2024 15:46'
+}
+IPTBrowser >> chapter [
+	^ chapter
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'JZ 6/7/2024 15:46'
+}
+IPTBrowser >> chapter: anObject [
+	chapter := anObject
 ]
 
 {
@@ -193,7 +238,7 @@ IPTBrowser >> codeEditor: anObject [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #ui,
 	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 11:39'
 }
 IPTBrowser >> descriptionBoxContent [
@@ -201,15 +246,16 @@ IPTBrowser >> descriptionBoxContent [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:55'
+	#category : #actions,
+	#'squeak_changestamp' : 'JZ 6/7/2024 16:06'
 }
-IPTBrowser >> homeButtonContent [
-	^ 'Home'
+IPTBrowser >> homeButtonAction [
+	self ipt openChapterView.
+	self changed: #close.
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #initialization,
 	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 12:32'
 }
 IPTBrowser >> initialize [
@@ -233,11 +279,15 @@ IPTBrowser >> ipt: anObject [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:48'
+	#category : #actions,
+	#'squeak_changestamp' : 'JZ 6/7/2024 15:40'
 }
-IPTBrowser >> resetButtonContent [
-	^ 'Reset'
+IPTBrowser >> selectMethod: aMethod [
+	self selectedMethod: aMethod.
+	
+	Transcript show: aMethod.
+	
+	self changed: #selectedMethod.
 ]
 
 {
@@ -250,18 +300,14 @@ IPTBrowser >> selectedMethod [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:35'
+	#'squeak_changestamp' : 'JZ 6/7/2024 15:40'
 }
 IPTBrowser >> selectedMethod: anObject [
 	selectedMethod := anObject.
-	
-	Transcript show: anObject.
-	
-	self changed: #selectedMethod.
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #ui,
 	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:52'
 }
 IPTBrowser >> titleBarContent [
@@ -269,7 +315,7 @@ IPTBrowser >> titleBarContent [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #ui,
 	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 12:12'
 }
 IPTBrowser >> titleBarHeight [
@@ -277,7 +323,7 @@ IPTBrowser >> titleBarHeight [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #ui,
 	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:48'
 }
 IPTBrowser >> verifyButtonContent [
@@ -285,17 +331,9 @@ IPTBrowser >> verifyButtonContent [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #ui,
 	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 11:52'
 }
 IPTBrowser >> visibleClassSet [
 	^ IPTClass testClassList.
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 10:20'
-}
-IPTBrowser >> windowColorToUse [ 
-	^ Color white darker.
 ]

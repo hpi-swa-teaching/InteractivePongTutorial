@@ -94,7 +94,7 @@ IPTChapterView >> buildLevelListWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'JZ 6/7/2024 14:29'
+	#'squeak_changestamp' : 'JZ 6/7/2024 15:34'
 }
 IPTChapterView >> buildStartButtonWith: aBuilder [
 	^ aBuilder pluggableButtonSpec new
@@ -105,19 +105,19 @@ IPTChapterView >> buildStartButtonWith: aBuilder [
 		frame: (LayoutFrame new
 			leftFraction: 0.3;
 			topFraction: 0.4;
-			rightFraction: 0.65;
+			rightFraction: 1;
 			bottomFraction: 0.45)
 ]
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'JZ 6/7/2024 14:20'
+	#'squeak_changestamp' : 'JZ 6/7/2024 15:33'
 }
 IPTChapterView >> buildWith: aBuilder [
 	^ aBuilder build: (aBuilder pluggableWindowSpec new
 		model: self;
 		label: 'Interactive Pong Tutorial: Chapter View';
-		extent: (1200@800);
+		extent: (800@500);
 		children: {
 			self buildChapterListWith: aBuilder.
 			self buildLevelListWith: aBuilder.
@@ -265,17 +265,9 @@ IPTChapterView >> selectedLevel: aLevel [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'JZ 6/7/2024 14:42'
+	#'squeak_changestamp' : 'JZ 6/7/2024 15:53'
 }
 IPTChapterView >> startSelectedLevel [
-	ipt openBrowser. 
+	ipt openLevel: self selectedLevel levelNumber inChapter: self selectedChapter. 
 	self changed: #close.
-]
-
-{
-	#category : #building,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 13:25'
-}
-IPTChapterView >> windowColorToUse [ 
-	^ Color white darker.
 ]
