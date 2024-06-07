@@ -10,10 +10,10 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 13:22'
+	#'squeak_changestamp' : 'JZ 6/5/2024 12:18'
 }
 IPTChapterBrowser class >> open [
-	^self new open
+	^ ToolBuilder open: self new
 ]
 
 {
@@ -27,27 +27,77 @@ IPTChapterBrowser >> ChapterList [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 18:18'
+	#'squeak_changestamp' : 'JZ 6/5/2024 12:24'
 }
-IPTChapterBrowser >> buildLevelListWith: aBuilder [
-
-	^ aBuilder pluggableTreeSpec new
+IPTChapterBrowser >> buildChapterListWith: aBuilder [
+	^ aBuilder pluggableListSpec new
 		model: self;
-		roots: #ChapterList;
-		nodeClass: IPTChapterWrapper;
+		list: #ChapterList;
 		getSelected: #selectedLevel;
 		setSelected: #selectedLevel:;
 		autoDeselect: true;
 		frame: (LayoutFrame new
 			leftFraction: 0;
 			topFraction: 0;
+			rightFraction: 0.3;
+			bottomFraction: 1)
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'JZ 6/5/2024 12:26'
+}
+IPTChapterBrowser >> buildDescriptionBoxWith: aBuilder [
+
+	^ aBuilder pluggableTextSpec new
+		model: self;
+		getText: #descriptionText;
+		readOnly: true;
+		indicateUnacceptedChanges: false;
+		frame: (LayoutFrame new
+			leftFraction: 0.3;
+			topFraction: 0.45;
 			rightFraction: 1;
 			bottomFraction: 1)
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 13:31'
+	#'squeak_changestamp' : 'JZ 6/5/2024 12:08'
+}
+IPTChapterBrowser >> buildLevelListWith: aBuilder [
+	^ aBuilder pluggableListSpec new
+		model: self;
+		list: #ChapterList;
+		getSelected: #selectedLevel;
+		setSelected: #selectedLevel:;
+		autoDeselect: true;
+		frame: (LayoutFrame new
+			leftFraction: 0.3;
+			topFraction: 0;
+			rightFraction: 1;
+			bottomFraction: 0.4)
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'JZ 6/5/2024 12:16'
+}
+IPTChapterBrowser >> buildStartButtonWith: aBuilder [
+	^ aBuilder pluggableButtonSpec new
+		model: self;
+		label: 'Start';
+		action: #startSelectedLevel;
+		frame: (LayoutFrame new
+			leftFraction: 0.3;
+			topFraction: 0.4;
+			rightFraction: 0.65;
+			bottomFraction: 0.45)
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'JZ 6/5/2024 12:27'
 }
 IPTChapterBrowser >> buildWith: aBuilder [
 	^ aBuilder build: (aBuilder pluggableWindowSpec new
@@ -55,18 +105,20 @@ IPTChapterBrowser >> buildWith: aBuilder [
 		label: 'Interactive Pong Tutorial';"#labelString;"
 		extent: (1200@800);"self class defaultExtent;"
 		children: {
-			self buildLevelListWith: aBuilder
-			"self buildLevelListWith: aBuilder"
+			self buildChapterListWith: aBuilder.
+			self buildLevelListWith: aBuilder.
+			self buildStartButtonWith: aBuilder.
+			self buildDescriptionBoxWith: aBuilder.
 			};
 		yourself)
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 13:23'
+	#'squeak_changestamp' : 'JZ 6/5/2024 12:22'
 }
-IPTChapterBrowser >> open [
-	^ToolBuilder open: self
+IPTChapterBrowser >> descriptionText [
+	^ 'Blabla hallo welt was geht'.
 ]
 
 {
@@ -88,6 +140,14 @@ IPTChapterBrowser >> selectedLevel: anObject [
 	IPTBrowser open. 
 	
 	self changed: #selectedLevel.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'JZ 6/5/2024 12:15'
+}
+IPTChapterBrowser >> startSelectedLevel [
+	IPTScratchBrowser open. 
 ]
 
 {
