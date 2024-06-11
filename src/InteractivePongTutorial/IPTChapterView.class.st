@@ -138,14 +138,10 @@ IPTChapterView >> chapterDescription [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JZ 6/7/2024 14:07'
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 17:49'
 }
 IPTChapterView >> chapters [
-	^ {IPTChapter withName: 'Introduction' number: 1 description: 'This is Chapter 1' levels: {
-		IPTLevel0101 new.
-		IPTLevel0102 new.}.
-		IPTChapter withName: 'Player movement' number: 2 description: 'This is Chapter 2' levels: {
-		IPTLevel0201 new.}.}.
+	^ chapters
 ]
 
 {
@@ -158,10 +154,10 @@ IPTChapterView >> chapters: anObject [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'JZ 6/7/2024 13:51'
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 17:49'
 }
 IPTChapterView >> initialize [
-	self chapters: self chapters.
+	self chapters: IPTChapter chapterSet.
 	self selectedChapter: (self chapters at: 1).
 	self selectedLevel: (self levels at: 1).
 ]
@@ -265,9 +261,10 @@ IPTChapterView >> selectedLevel: aLevel [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'JZ 6/7/2024 15:53'
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:16'
 }
 IPTChapterView >> startSelectedLevel [
-	ipt openLevel: self selectedLevel levelNumber inChapter: self selectedChapter. 
+	ipt openLevel: self selectedLevel levelIndex 
+		inChapter: self selectedChapter. 
 	self changed: #close.
 ]

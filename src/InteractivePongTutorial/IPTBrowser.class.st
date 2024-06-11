@@ -6,44 +6,28 @@ Class {
 		'codeEditor',
 		'selectedMethod',
 		'chapter',
-		'activeLevelNumber'
+		'levelIndex'
 	],
 	#category : #InteractivePongTutorial
 }
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JZ 6/7/2024 13:29'
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:03'
 }
-IPTBrowser class >> openFrom: anIPT [
-	^ ToolBuilder open: (self new ipt: anIPT)
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JZ 6/7/2024 15:54'
-}
-IPTBrowser class >> openFrom: anIPT chapter: aChapter levelNumber: aNumber [
+IPTBrowser class >> openFrom: anIPT chapter: aChapter levelIndex: aNumber [
 	^ ToolBuilder open: (self new 
 		ipt: anIPT;
 		chapter: aChapter;
-		activeLevelNumber: aNumber).
+		levelIndex: aNumber).
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JZ 6/7/2024 15:50'
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:05'
 }
-IPTBrowser >> activeLevelNumber [
-	^ activeLevelNumber.
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'JZ 6/7/2024 15:49'
-}
-IPTBrowser >> activeLevelNumber: aNumber [
-	activeLevelNumber := aNumber.
+IPTBrowser >> activeLevel [
+	^ self chapter levels at: self levelIndex
 ]
 
 {
@@ -62,7 +46,7 @@ IPTBrowser >> buildCodeEditorWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 12:25'
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:20'
 }
 IPTBrowser >> buildDescriptionBoxWith: aBuilder [
 
@@ -73,14 +57,14 @@ IPTBrowser >> buildDescriptionBoxWith: aBuilder [
 		indicateUnacceptedChanges: false;
 		frame: (LayoutFrame new
 			leftFraction: 0.75;
-			topFraction: self titleBarHeight;
+			topFraction: 0;
 			rightFraction: 1;
 			bottomFraction: 1)
 ]
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'JZ 6/7/2024 16:06'
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:25'
 }
 IPTBrowser >> buildHomeButtonWith: aBuilder [
 
@@ -89,15 +73,15 @@ IPTBrowser >> buildHomeButtonWith: aBuilder [
 		label: 'Home';
 		action: #homeButtonAction;
 		frame: (LayoutFrame new
-			leftFraction: 0.95;
-			topFraction: 0;
-			rightFraction: 1;
-			bottomFraction: self titleBarHeight)
+			leftFraction: 0;
+			topFraction: (1 - (2 * self buttonHeight));
+			rightFraction: self buttonWidth;
+			bottomFraction: (1 - self buttonHeight))
 ]
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:45'
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 19:12'
 }
 IPTBrowser >> buildMethodListWith: aBuilder [
 
@@ -106,13 +90,49 @@ IPTBrowser >> buildMethodListWith: aBuilder [
 		roots: #visibleClassSet;
 		nodeClass: IPTClassListItemWrapper;
 		getSelected: #selectedMethod;
-		setSelected: #selectedMethod:;
+		setSelected: #selectMethod:;
 		autoDeselect: true;
 		frame: (LayoutFrame new
 			leftFraction: 0;
+			topFraction: (2 * self titleBarHeight);
+			rightFraction: 0.25;
+			bottomFraction: (1 - (2 * self buttonHeight)))
+]
+
+{
+	#category : #building,
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:43'
+}
+IPTBrowser >> buildNextLevelButtonWith: aBuilder [
+
+	^ aBuilder pluggableButtonSpec new
+		model: self;
+		label: '-->';
+		enabled: #nextLevelButtonEnabled;
+		action: #nextLevelButtonAction;
+		frame: (LayoutFrame new
+			leftFraction: 0.125;
 			topFraction: self titleBarHeight;
 			rightFraction: 0.25;
-			bottomFraction: (1 - self buttonHeight))
+			bottomFraction: (2 * self titleBarHeight))
+]
+
+{
+	#category : #building,
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:43'
+}
+IPTBrowser >> buildPreviousLevelButtonWith: aBuilder [
+
+	^ aBuilder pluggableButtonSpec new
+		model: self;
+		label: '<--';
+		enabled: #previousLevelButtonEnabled;
+		action: #previousLevelButtonAction;
+		frame: (LayoutFrame new
+			leftFraction: 0;
+			topFraction: self titleBarHeight;
+			rightFraction: 0.125;
+			bottomFraction: (2 * self titleBarHeight))
 ]
 
 {
@@ -134,7 +154,7 @@ IPTBrowser >> buildResetButtonWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'JZ 6/7/2024 15:41'
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:26'
 }
 IPTBrowser >> buildTitleBarWith: aBuilder [
 
@@ -146,7 +166,7 @@ IPTBrowser >> buildTitleBarWith: aBuilder [
 		frame: (LayoutFrame new
 			leftFraction: 0;
 			topFraction: 0;
-			rightFraction: 0.95;
+			rightFraction: 0.25;
 			bottomFraction: self titleBarHeight)
 ]
 
@@ -169,7 +189,7 @@ IPTBrowser >> buildVerifyButtonWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'JZ 6/7/2024 15:59'
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:29'
 }
 IPTBrowser >> buildWith: aBuilder [
 	^ aBuilder build: (aBuilder pluggableWindowSpec new
@@ -184,23 +204,26 @@ IPTBrowser >> buildWith: aBuilder [
 			self buildVerifyButtonWith: aBuilder.
 			self buildResetButtonWith: aBuilder.
 			self buildHomeButtonWith: aBuilder.
-			"self buildCodeEditorWith: aBuilder.
-			self buildEvaluateButtonWith: aBuilder.
-			self buildResetLectureButtonWith: aBuilder.
-			self buildSolutionToggleButtonWith: aBuilder.
-			self buildPlaygroundPanelWith: aBuilder.
-			self buildCodeStatusBarWith: aBuilder.
-			self buildContextBarWith: aBuilder."
+			self buildNextLevelButtonWith: aBuilder.
+			self buildPreviousLevelButtonWith: aBuilder.
 			};
 		yourself)
 ]
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:43'
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:22'
 }
 IPTBrowser >> buttonHeight [
-	^ 0.1
+	^ 0.08
+]
+
+{
+	#category : #ui,
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:22'
+}
+IPTBrowser >> buttonWidth [
+	^ 0.125
 ]
 
 {
@@ -221,11 +244,11 @@ IPTBrowser >> chapter: anObject [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 12:26'
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 19:10'
 }
 IPTBrowser >> codeEditor [
 
-	codeEditor ifNil: [self codeEditor: (IPTEditor new actionOnSave: [])].
+	codeEditor ifNil: [self codeEditor: ((IPTEditor openOnBrowser: self) actionOnSave: [])].
 	^ codeEditor
 ]
 
@@ -255,14 +278,6 @@ IPTBrowser >> homeButtonAction [
 ]
 
 {
-	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 12:32'
-}
-IPTBrowser >> initialize [
-	self codeEditor: MotuEditor new.
-]
-
-{
 	#category : #accessing,
 	#'squeak_changestamp' : 'JZ 6/7/2024 13:30'
 }
@@ -279,14 +294,77 @@ IPTBrowser >> ipt: anObject [
 ]
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:02'
+}
+IPTBrowser >> levelIndex [
+	^ levelIndex
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:02'
+}
+IPTBrowser >> levelIndex: anObject [
+	levelIndex := anObject
+]
+
+{
 	#category : #actions,
-	#'squeak_changestamp' : 'JZ 6/7/2024 15:40'
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:52'
+}
+IPTBrowser >> loadLevel: aLevelIndex [
+	self levelIndex: aLevelIndex.
+	
+	self update.
+	
+		
+	
+]
+
+{
+	#category : #actions,
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:47'
+}
+IPTBrowser >> nextLevelButtonAction [
+	self loadLevel: (self levelIndex + 1).
+	
+]
+
+{
+	#category : #ui,
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:42'
+}
+IPTBrowser >> nextLevelButtonEnabled [
+	^ self chapter levels size > self levelIndex.
+]
+
+{
+	#category : #actions,
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:44'
+}
+IPTBrowser >> previousLevelButtonAction [
+	self loadLevel: (self levelIndex - 1).
+]
+
+{
+	#category : #ui,
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:42'
+}
+IPTBrowser >> previousLevelButtonEnabled [
+	^ self levelIndex > 1.
+]
+
+{
+	#category : #actions,
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 19:16'
 }
 IPTBrowser >> selectMethod: aMethod [
 	self selectedMethod: aMethod.
 	
 	Transcript show: aMethod.
 	
+	self codeEditor activeCodePiece: aMethod.
 	self changed: #selectedMethod.
 ]
 
@@ -308,10 +386,10 @@ IPTBrowser >> selectedMethod: anObject [
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:52'
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:06'
 }
 IPTBrowser >> titleBarContent [
-	^ 'Kapitel 2 - Level 3: Welcome to SqueakLand!'
+	^ self activeLevel name.
 ]
 
 {
@@ -323,6 +401,19 @@ IPTBrowser >> titleBarHeight [
 ]
 
 {
+	#category : #building,
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:53'
+}
+IPTBrowser >> update [
+	self 
+		changed: #levelIndex;
+		changed: #titleBarContent;
+		changed: #descriptionBoxContent;
+		changed: #nextLevelButtonEnabled;
+		changed: #previousLevelButtonEnabled.
+]
+
+{
 	#category : #ui,
 	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:48'
 }
@@ -331,7 +422,7 @@ IPTBrowser >> verifyButtonContent [
 ]
 
 {
-	#category : #ui,
+	#category : #accessing,
 	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 11:52'
 }
 IPTBrowser >> visibleClassSet [

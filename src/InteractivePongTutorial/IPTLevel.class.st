@@ -2,7 +2,7 @@ Class {
 	#name : #IPTLevel,
 	#superclass : #Object,
 	#instVars : [
-		'levelNumber',
+		'levelIndex',
 		'chapterNumber',
 		'name',
 		'description',
@@ -55,18 +55,18 @@ IPTLevel >> description: anObject [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/7/2024 10:33'
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:10'
 }
-IPTLevel >> levelNumber [
-	^ levelNumber
+IPTLevel >> levelIndex [
+	^ levelIndex
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/7/2024 10:33'
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:10'
 }
-IPTLevel >> levelNumber: anObject [
-	levelNumber := anObject
+IPTLevel >> levelIndex: anObject [
+	levelIndex := anObject
 ]
 
 {

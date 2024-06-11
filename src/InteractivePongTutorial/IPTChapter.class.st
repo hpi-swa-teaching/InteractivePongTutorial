@@ -13,6 +13,26 @@ Class {
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:15'
+}
+IPTChapter class >> chapterSet [
+	^ {IPTChapter 
+			withName: 'Introduction'
+			number: 1
+			description: 'This is Chapter 1'
+			levels: {
+				IPTLevel0101 new.
+				IPTLevel0102 new}. 
+		IPTChapter 
+			withName: 'Player movement'
+			number: 2
+			description: 'This is Chapter 2'
+			levels: {
+				IPTLevel0201 new}}
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Leo Sonnenberg 6/7/2024 10:47'
 }
 IPTChapter class >> withName: aName number:  aNumber description: aString levels: aLevelList [

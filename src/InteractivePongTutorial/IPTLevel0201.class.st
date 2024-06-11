@@ -6,32 +6,19 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JZ 6/7/2024 14:14'
-}
-IPTLevel0201 >> chapterNumber [
-	^ 2.
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JZ 6/7/2024 14:14'
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:15'
 }
 IPTLevel0201 >> description [
-	^'This is level 01 chapter 2'.
+	^ 'This is level 01 of chapter 2 :)'.
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JZ 6/7/2024 14:15'
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:14'
 }
-IPTLevel0201 >> levelNumber [
-	^ 201.
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JZ 6/7/2024 14:15'
-}
-IPTLevel0201 >> name [
-	^ 'Chapter 2 Level01'.
+IPTLevel0201 >> initialize [
+	self 
+		levelIndex: 1;
+		name: 'C2Level01'.
+	
 ]

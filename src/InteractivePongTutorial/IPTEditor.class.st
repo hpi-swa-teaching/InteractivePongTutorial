@@ -3,18 +3,29 @@ Class {
 	#superclass : #CodeHolder,
 	#instVars : [
 		'activeCodePiece',
-		'actionOnSave'
+		'actionOnSave',
+		'browser'
 	],
 	#category : #InteractivePongTutorial
 }
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 12:25'
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 19:09'
+}
+IPTEditor class >> openOnBrowser: aBrowser [
+	^ self new 
+		browser: aBrowser;
+		yourself.
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 19:20'
 }
 IPTEditor >> aboutToStyle: aStyler [
 
-	self activeLecture ifNotNil: [
+	self activeCodePiece ifNotNil: [
 		aStyler classOrMetaClass: self activeCodePiece class].
 	^ true
 ]
@@ -53,10 +64,28 @@ IPTEditor >> activeCodePiece [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 12:21'
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 19:23'
 }
-IPTEditor >> activeCodePiece: anObject [
-	activeCodePiece := anObject
+IPTEditor >> activeCodePiece: aCodePiece [
+	activeCodePiece := aCodePiece.
+	
+	self code: (aCodePiece codeToEditForLevel: self browser levelIndex ).
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 19:07'
+}
+IPTEditor >> browser [
+	^ browser
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 19:07'
+}
+IPTEditor >> browser: anObject [
+	browser := anObject
 ]
 
 {
@@ -109,6 +138,14 @@ IPTEditor >> evaluateExpression: aString [
 
 	UIManager default inform: 'Please use the "Evaluate code" button to test your code'.
 	^ nil
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 19:22'
+}
+IPTEditor >> parameters [
+	 ^ {}.
 ]
 
 {

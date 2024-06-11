@@ -26,6 +26,14 @@ IPTCodePiece class >> defaultCodePiece [
 
 {
 	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 19:05'
+}
+IPTCodePiece >> codeToEditForLevel: aLevelIndex [
+	^ self methodToBeChanged getSource asString
+]
+
+{
+	#category : #accessing,
 	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 10:29'
 }
 IPTCodePiece >> methodToBeChanged [

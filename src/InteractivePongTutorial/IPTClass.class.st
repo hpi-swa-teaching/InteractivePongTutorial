@@ -29,6 +29,14 @@ IPTClass class >> testClassList [
 
 {
 	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 19:24'
+}
+IPTClass >> codeToEditForLevel: aLevelIndex [
+	^ nil.
+]
+
+{
+	#category : #accessing,
 	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 11:47'
 }
 IPTClass >> methodCodePieces [

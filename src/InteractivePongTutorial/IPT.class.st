@@ -6,6 +6,14 @@ Class {
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 17:36'
+}
+IPT class >> defaultWindowColor [
+	^ Color green lighter.
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'JZ 6/7/2024 13:15'
 }
 IPT class >> open [
@@ -31,8 +39,8 @@ IPT >> openChapterView [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'JZ 6/7/2024 15:51'
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 17:59'
 }
 IPT >> openLevel: aNumber inChapter: aChapter [
-	IPTBrowser openFrom: self chapter: aChapter levelNumber: aNumber
+	IPTBrowser openFrom: self chapter: aChapter levelIndex: aNumber.
 ]
