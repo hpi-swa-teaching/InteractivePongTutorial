@@ -94,13 +94,14 @@ IPTChapterView >> buildLevelListWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'JZ 6/7/2024 15:34'
+	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 11:57'
 }
 IPTChapterView >> buildStartButtonWith: aBuilder [
 	^ aBuilder pluggableButtonSpec new
 		model: self;
 		label: 'Start';
 		action: #startSelectedLevel;
+		enabled: #startButtonEnabled;
 		padding: self padding;
 		frame: (LayoutFrame new
 			leftFraction: 0.3;
@@ -111,7 +112,7 @@ IPTChapterView >> buildStartButtonWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'JZ 6/7/2024 15:33'
+	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 11:48'
 }
 IPTChapterView >> buildWith: aBuilder [
 	^ aBuilder build: (aBuilder pluggableWindowSpec new
@@ -154,12 +155,13 @@ IPTChapterView >> chapters: anObject [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 17:49'
+	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 12:02'
 }
 IPTChapterView >> initialize [
 	self chapters: IPTChapter chapterSet.
 	self selectedChapter: (self chapters at: 1).
-	self selectedLevel: (self levels at: 1).
+	self levels ifNotEmpty: [self selectedLevel: (self levels at: 1)].
+	
 ]
 
 {
@@ -180,18 +182,18 @@ IPTChapterView >> ipt: anObject [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JZ 6/7/2024 13:49'
+	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 11:55'
 }
 IPTChapterView >> levelDescription [
-	^ selectedLevel description.
+	^ self selectedLevel ifNotNil: [self selectedLevel description].
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/7/2024 11:03'
+	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 11:52'
 }
 IPTChapterView >> levels [
-	^ self selectedChapter levels.
+	^ self selectedChapter levels ifNotNil: [self selectedChapter levels] ifNil: [{}].
 ]
 
 {
@@ -204,27 +206,24 @@ IPTChapterView >> padding [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'JZ 6/7/2024 14:10'
+	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 12:03'
 }
 IPTChapterView >> selectChapter: aChapter [	
 	aChapter ifNotNil: [
 		self selectedChapter: aChapter.
 		Transcript show: aChapter.
-		self changed: #selectedChapter.
-		self changed: #levels.
-		self changed: #chapterDescription.]
+		self update.]
 ]
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'JZ 6/7/2024 14:10'
+	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 11:58'
 }
 IPTChapterView >> selectLevel: aLevel [
 	aLevel ifNotNil: [
 		self selectedLevel: aLevel.
 		Transcript show: aLevel.
-		self changed: #selectedLevel.
-		self changed: #levelDescription.]
+		self update.]
 ]
 
 {
@@ -260,6 +259,14 @@ IPTChapterView >> selectedLevel: aLevel [
 ]
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 11:56'
+}
+IPTChapterView >> startButtonEnabled [
+	^ selectedLevel isNil not.
+]
+
+{
 	#category : #actions,
 	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:16'
 }
@@ -267,4 +274,17 @@ IPTChapterView >> startSelectedLevel [
 	ipt openLevel: self selectedLevel levelIndex 
 		inChapter: self selectedChapter. 
 	self changed: #close.
+]
+
+{
+	#category : #actions,
+	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 11:59'
+}
+IPTChapterView >> update [
+	self changed: #selectedChapter.
+	self changed: #levels.
+	self changed: #selectedLevel.
+	self changed: #levelDescription.
+	self changed: #chapterDescription.
+	self changed: #startButtonEnabled.
 ]
