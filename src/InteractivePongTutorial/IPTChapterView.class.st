@@ -20,7 +20,7 @@ IPTChapterView class >> openFrom: anIPT [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'JZ 6/7/2024 14:33'
+	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 12:45'
 }
 IPTChapterView >> buildChapterDescriptionBoxWith: aBuilder [
 
@@ -34,12 +34,12 @@ IPTChapterView >> buildChapterDescriptionBoxWith: aBuilder [
 			leftFraction: 0;
 			topFraction: 0.45;
 			rightFraction: 0.3;
-			bottomFraction: 1)
+			bottomFraction: 1).
 ]
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'JZ 6/7/2024 14:32'
+	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 12:45'
 }
 IPTChapterView >> buildChapterListWith: aBuilder [
 	^ aBuilder pluggableListSpec new
@@ -52,12 +52,12 @@ IPTChapterView >> buildChapterListWith: aBuilder [
 			leftFraction: 0;
 			topFraction: 0;
 			rightFraction: 0.3;
-			bottomFraction: 0.45)
+			bottomFraction: 0.45).
 ]
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'JZ 6/7/2024 14:33'
+	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 12:44'
 }
 IPTChapterView >> buildLevelDescriptionBoxWith: aBuilder [
 
@@ -71,12 +71,12 @@ IPTChapterView >> buildLevelDescriptionBoxWith: aBuilder [
 			leftFraction: 0.3;
 			topFraction: 0.45;
 			rightFraction: 1;
-			bottomFraction: 1)
+			bottomFraction: 1).
 ]
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'JZ 6/7/2024 14:32'
+	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 12:44'
 }
 IPTChapterView >> buildLevelListWith: aBuilder [
 	^ aBuilder pluggableListSpec new
@@ -89,12 +89,12 @@ IPTChapterView >> buildLevelListWith: aBuilder [
 			leftFraction: 0.3;
 			topFraction: 0;
 			rightFraction: 1;
-			bottomFraction: 0.4)
+			bottomFraction: 0.4).
 ]
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 11:57'
+	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 12:44'
 }
 IPTChapterView >> buildStartButtonWith: aBuilder [
 	^ aBuilder pluggableButtonSpec new
@@ -107,12 +107,12 @@ IPTChapterView >> buildStartButtonWith: aBuilder [
 			leftFraction: 0.3;
 			topFraction: 0.4;
 			rightFraction: 1;
-			bottomFraction: 0.45)
+			bottomFraction: 0.45).
 ]
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 11:48'
+	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 12:45'
 }
 IPTChapterView >> buildWith: aBuilder [
 	^ aBuilder build: (aBuilder pluggableWindowSpec new
@@ -125,8 +125,7 @@ IPTChapterView >> buildWith: aBuilder [
 			self buildStartButtonWith: aBuilder.
 			self buildChapterDescriptionBoxWith: aBuilder.
 			self buildLevelDescriptionBoxWith: aBuilder.
-			};
-		yourself)
+			}).
 ]
 
 {
@@ -147,10 +146,10 @@ IPTChapterView >> chapters [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/7/2024 10:41'
+	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 12:47'
 }
-IPTChapterView >> chapters: anObject [
-	chapters := anObject
+IPTChapterView >> chapters: aChapter [
+	chapters := aChapter.
 ]
 
 {
@@ -166,26 +165,26 @@ IPTChapterView >> initialize [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JZ 6/7/2024 13:25'
+	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 12:47'
 }
 IPTChapterView >> ipt [
-	^ ipt
+	^ ipt.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JZ 6/7/2024 13:25'
+	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 12:47'
 }
-IPTChapterView >> ipt: anObject [
-	ipt := anObject
+IPTChapterView >> ipt: anIPT [
+	ipt := anIPT.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 11:55'
+	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 12:48'
 }
 IPTChapterView >> levelDescription [
-	^ self selectedLevel ifNotNil: [self selectedLevel description].
+	^ self selectedLevel ifNotNil: [self selectedLevel description] ifNil: ['Please select a level.'].
 ]
 
 {
@@ -206,32 +205,30 @@ IPTChapterView >> padding [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 12:03'
+	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 12:46'
 }
 IPTChapterView >> selectChapter: aChapter [	
 	aChapter ifNotNil: [
 		self selectedChapter: aChapter.
-		Transcript show: aChapter.
-		self update.]
+		self update].
 ]
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 11:58'
+	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 12:46'
 }
 IPTChapterView >> selectLevel: aLevel [
 	aLevel ifNotNil: [
 		self selectedLevel: aLevel.
-		Transcript show: aLevel.
-		self update.]
+		self update].
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/7/2024 10:51'
+	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 12:48'
 }
 IPTChapterView >> selectedChapter [
-	^ selectedChapter
+	^ selectedChapter.
 ]
 
 {
@@ -244,10 +241,10 @@ IPTChapterView >> selectedChapter: aChapter [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/2/2024 13:25'
+	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 12:48'
 }
 IPTChapterView >> selectedLevel [
-	^ selectedLevel
+	^ selectedLevel.
 ]
 
 {
@@ -277,7 +274,7 @@ IPTChapterView >> startSelectedLevel [
 ]
 
 {
-	#category : #actions,
+	#category : #ui,
 	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 11:59'
 }
 IPTChapterView >> update [
