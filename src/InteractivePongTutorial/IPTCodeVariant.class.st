@@ -6,7 +6,7 @@ Class {
 		'initialCode',
 		'solutionCode'
 	],
-	#category : #InteractivePongTutorial
+	#category : #'InteractivePongTutorial-Core'
 }
 
 {

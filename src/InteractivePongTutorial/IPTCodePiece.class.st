@@ -5,7 +5,7 @@ Class {
 		'methodToBeChanged',
 		'variants'
 	],
-	#category : #InteractivePongTutorial
+	#category : #'InteractivePongTutorial-Core'
 }
 
 {

@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'parent'
 	],
-	#category : #InteractivePongTutorial
+	#category : #'InteractivePongTutorial-Core'
 }
 
 {

@@ -5,7 +5,7 @@ Class {
 		'name',
 		'methodCodePieces'
 	],
-	#category : #InteractivePongTutorial
+	#category : #'InteractivePongTutorial-Core'
 }
 
 {

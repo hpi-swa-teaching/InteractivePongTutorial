@@ -1,7 +1,7 @@
 Class {
 	#name : #IPTClassListItemWrapper,
 	#superclass : #PluggableListItemWrapper,
-	#category : #InteractivePongTutorial
+	#category : #'InteractivePongTutorial-Core'
 }
 
 {

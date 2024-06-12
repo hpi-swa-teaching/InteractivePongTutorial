@@ -8,7 +8,7 @@ Class {
 		'chapter',
 		'levelIndex'
 	],
-	#category : #InteractivePongTutorial
+	#category : #'InteractivePongTutorial-Core'
 }
 
 {

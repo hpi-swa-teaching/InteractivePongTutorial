@@ -7,7 +7,7 @@ Class {
 		'chapters',
 		'selectedChapter'
 	],
-	#category : #InteractivePongTutorial
+	#category : #'InteractivePongTutorial-Core'
 }
 
 {

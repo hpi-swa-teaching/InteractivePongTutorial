@@ -6,7 +6,7 @@ Class {
 		'playerRight',
 		'ball'
 	],
-	#category : #InteractivePongTutorial
+	#category : #'InteractivePongTutorial-Core'
 }
 
 {

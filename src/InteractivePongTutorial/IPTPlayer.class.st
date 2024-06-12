@@ -5,7 +5,7 @@ Class {
 		'game',
 		'speed'
 	],
-	#category : #InteractivePongTutorial
+	#category : #'InteractivePongTutorial-Core'
 }
 
 {

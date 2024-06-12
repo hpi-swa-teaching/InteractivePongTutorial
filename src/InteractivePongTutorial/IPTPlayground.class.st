@@ -1,5 +1,5 @@
 Class {
 	#name : #IPTPlayground,
 	#superclass : #PasteUpMorph,
-	#category : #InteractivePongTutorial
+	#category : #'InteractivePongTutorial-Core'
 }

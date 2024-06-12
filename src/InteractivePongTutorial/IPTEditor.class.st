@@ -6,7 +6,7 @@ Class {
 		'actionOnSave',
 		'browser'
 	],
-	#category : #InteractivePongTutorial
+	#category : #'InteractivePongTutorial-Core'
 }
 
 {

@@ -1,7 +1,7 @@
 Class {
 	#name : #IPT,
 	#superclass : #Object,
-	#category : #InteractivePongTutorial
+	#category : #'InteractivePongTutorial-Core'
 }
 
 {
