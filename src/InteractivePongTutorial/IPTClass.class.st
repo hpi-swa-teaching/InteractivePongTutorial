@@ -1,6 +1,6 @@
 Class {
 	#name : #IPTClass,
-	#superclass : #Object,
+	#superclass : #IPTCodePiece,
 	#instVars : [
 		'name',
 		'methodCodePieces'

@@ -27,7 +27,7 @@ IPTCodePiece class >> defaultCodePiece [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 11:24'
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 14:37'
 }
 IPTCodePiece class >> defaultCodePieces [
 	^ { IPTCodePiece new
@@ -42,16 +42,16 @@ IPTCodePiece class >> defaultCodePieces [
 			methodToBeChanged: (IPTTestObject >> #aMethodWithParam:);
 			variants: { IPTCodeVariant new
 				levelNumber: 1;
-				initialCode: 'aNormalMethod', Character cr, Character tab, '^ ', $', 'Hello World', $';
-				solutionCode:  'aNormalMethod', Character cr, Character tab, '^ ', $', 'This is the right solution', $';
+				initialCode: 'aMethodWithParam: aParam', Character cr, Character tab, '^ ', $', 'Hello World', $';
+				solutionCode:  'aMethodWithParam: aParam', Character cr, Character tab, '^ ', $', 'This is the right solution', $';
 				yourself. };
 			yourself.
 		IPTCodePiece new
 			methodToBeChanged: (IPTTestObject >> #aMethodWithParam:andAlso:);
 			variants: { IPTCodeVariant new
 				levelNumber: 1;
-				initialCode: 'aNormalMethod', Character cr, Character tab, '^ ', $', 'Hello World', $';
-				solutionCode:  'aNormalMethod', Character cr, Character tab, '^ ', $', 'This is the right solution', $';
+				initialCode: 'aMethodWithParam: aParam andAlso: anotherParam', Character cr, Character tab, '^ ', $', 'Hello World', $';
+				solutionCode:  'aMethodWithParam: aParam andAlso: anotherParam', Character cr, Character tab, '^ ', $', 'This is the right solution', $';
 				yourself. };
 			yourself.}
 	
@@ -71,11 +71,10 @@ IPTCodePiece >> checkSyntaxAndSaveCode: aString [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 13:54'
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 14:03'
 }
 IPTCodePiece >> code [
 	code ifNil: [ self code: self methodToBeChanged getSource asString ].
-	Transcript show: code.
 	^ code.
 ]
 
@@ -89,10 +88,26 @@ IPTCodePiece >> code: anObject [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 13:55'
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 14:02'
 }
-IPTCodePiece >> codeToEditForLevel: aLevelIndex [
-	^ self code
+IPTCodePiece >> loadInitialCodeForLevel: aLevelIndex [
+	self code: (self variantForLevel: aLevelIndex) initialCode.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 14:02'
+}
+IPTCodePiece >> loadSolutionCodeForLevel: aLevelIndex [
+	self code: (self variantForLevel: aLevelIndex) solutionCode.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 14:02'
+}
+IPTCodePiece >> loadSolutionForLevel: aLevelIndex [
+	self code: (self variantForLevel: aLevelIndex) solutionCode.
 ]
 
 {
@@ -113,13 +128,15 @@ IPTCodePiece >> methodToBeChanged: anObject [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 11:41'
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 15:06'
 }
 IPTCodePiece >> name [
-| n |
-	n := 1 max: self methodToBeChanged tempNames size.
-	
-	^ (self methodToBeChanged literalStrings take: n) join.
+"Extract method name"
+
+	| paramCount strings|
+	strings := self methodToBeChanged literalStrings.
+	paramCount := 1 max: self methodToBeChanged tempNames size.
+	^ (strings copyFrom: (strings size - paramCount) to: (strings size - 1 )) join.
 ]
 
 {
@@ -135,6 +152,14 @@ IPTCodePiece >> safelyCompile: aString [
 	newMethods do: [:each|
 		self class removeSelector: each].
 	^ newMethods isEmpty
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 14:14'
+}
+IPTCodePiece >> variantForLevel: aLevelIndex [
+	^ self variants at: 1.
 ]
 
 {

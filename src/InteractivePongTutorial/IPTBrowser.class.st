@@ -6,20 +6,21 @@ Class {
 		'codeEditor',
 		'selectedMethod',
 		'chapter',
-		'levelIndex'
+		'levelIndex',
+		'classSet'
 	],
 	#category : #'InteractivePongTutorial-Core'
 }
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:03'
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 14:26'
 }
 IPTBrowser class >> openFrom: anIPT chapter: aChapter levelIndex: aNumber [
 	^ ToolBuilder open: (self new 
 		ipt: anIPT;
 		chapter: aChapter;
-		levelIndex: aNumber).
+		loadLevel: aNumber).
 ]
 
 {
@@ -42,6 +43,26 @@ IPTBrowser >> buildCodeEditorWith: aBuilder [
 			topFraction: 0.5;
 			rightFraction: 0.75;
 			bottomFraction: 1)
+]
+
+{
+	#category : #building,
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 14:37'
+}
+IPTBrowser >> buildCodePieceListWith: aBuilder [
+
+	^ aBuilder pluggableTreeSpec new
+		model: self;
+		roots: #classSet;
+		nodeClass: IPTClassListItemWrapper;
+		getSelected: #selectedMethod;
+		setSelected: #selectMethod:;
+		autoDeselect: true;
+		frame: (LayoutFrame new
+			leftFraction: 0;
+			topFraction: (2 * self titleBarHeight);
+			rightFraction: 0.25;
+			bottomFraction: (1 - (2 * self buttonHeight)))
 ]
 
 {
@@ -77,26 +98,6 @@ IPTBrowser >> buildHomeButtonWith: aBuilder [
 			topFraction: (1 - (2 * self buttonHeight));
 			rightFraction: self buttonWidth;
 			bottomFraction: (1 - self buttonHeight))
-]
-
-{
-	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 19:12'
-}
-IPTBrowser >> buildMethodListWith: aBuilder [
-
-	^ aBuilder pluggableTreeSpec new
-		model: self;
-		roots: #visibleClassSet;
-		nodeClass: IPTClassListItemWrapper;
-		getSelected: #selectedMethod;
-		setSelected: #selectMethod:;
-		autoDeselect: true;
-		frame: (LayoutFrame new
-			leftFraction: 0;
-			topFraction: (2 * self titleBarHeight);
-			rightFraction: 0.25;
-			bottomFraction: (1 - (2 * self buttonHeight)))
 ]
 
 {
@@ -190,7 +191,7 @@ IPTBrowser >> buildVerifyButtonWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:29'
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 14:37'
 }
 IPTBrowser >> buildWith: aBuilder [
 	^ aBuilder build: (aBuilder pluggableWindowSpec new
@@ -201,7 +202,7 @@ IPTBrowser >> buildWith: aBuilder [
 			self buildDescriptionBoxWith: aBuilder.
 			self buildTitleBarWith: aBuilder.
 			self buildCodeEditorWith: aBuilder.
-			self buildMethodListWith: aBuilder.
+			self buildCodePieceListWith: aBuilder.
 			self buildVerifyButtonWith: aBuilder.
 			self buildResetButtonWith: aBuilder.
 			self buildHomeButtonWith: aBuilder.
@@ -245,7 +246,7 @@ IPTBrowser >> chapter: anObject [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 12:22'
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 14:30'
 }
 IPTBrowser >> checkAndSaveCode [
 	| code |
@@ -254,7 +255,7 @@ IPTBrowser >> checkAndSaveCode [
 	self closeAllAutoCompletionMorphs.
 	
 	code := self codeEditor
-		accept;
+		"accept;"
 		code.
 	self selectedMethod checkSyntaxAndSaveCode: code.
 		
@@ -263,6 +264,23 @@ IPTBrowser >> checkAndSaveCode [
 	
 	"self changed: #categoryList"
 
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 14:09'
+}
+IPTBrowser >> classSet [
+	classSet ifNil: [self classSet: IPTClass testClassList].
+	^ classSet
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 14:08'
+}
+IPTBrowser >> classSet: anObject [
+	classSet := anObject
 ]
 
 {
@@ -345,11 +363,15 @@ IPTBrowser >> levelIndex: anObject [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:52'
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 14:30'
 }
 IPTBrowser >> loadLevel: aLevelIndex [
 	self levelIndex: aLevelIndex.
 	
+	self classSet do: [ :c | 
+		c methodCodePieces do: [ :codePiece | 
+			codePiece loadInitialCodeForLevel: aLevelIndex ]].
+	"self codeEditor accept."
 	self update.
 	
 		
@@ -466,12 +488,4 @@ IPTBrowser >> verifyCode [
 	
 	"self changed: #categoryList"
 
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 11:52'
-}
-IPTBrowser >> visibleClassSet [
-	^ IPTClass testClassList.
 ]

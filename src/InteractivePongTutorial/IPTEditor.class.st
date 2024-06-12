@@ -20,7 +20,7 @@ IPTEditor class >> openOnBrowser: aBrowser [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #style,
 	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 19:20'
 }
 IPTEditor >> aboutToStyle: aStyler [
@@ -31,7 +31,7 @@ IPTEditor >> aboutToStyle: aStyler [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #building,
 	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 12:25'
 }
 IPTEditor >> accept [
@@ -64,14 +64,16 @@ IPTEditor >> activeCodePiece [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 13:36'
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 14:55'
 }
 IPTEditor >> activeCodePiece: aCodePiece [
 	activeCodePiece := aCodePiece.
 	
-	Transcript show: 'Changing codePiece with text: ', (aCodePiece codeToEditForLevel: self browser levelIndex ), Character cr.
-	self accept;
-		code: (aCodePiece codeToEditForLevel: self browser levelIndex ).
+	Transcript show: 'Changing codePiece with text: ', aCodePiece code, Character cr.
+	aCodePiece 
+		ifNil: [self code: '']
+		ifNotNil: [self code: aCodePiece code].
+		
 ]
 
 {
@@ -91,7 +93,7 @@ IPTEditor >> browser: anObject [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #building,
 	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 11:47'
 }
 IPTEditor >> buildCodePaneWith: builder [
@@ -102,7 +104,7 @@ IPTEditor >> buildCodePaneWith: builder [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #accessing,
 	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 12:25'
 }
 IPTEditor >> code [
@@ -110,13 +112,13 @@ IPTEditor >> code [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 12:25'
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 14:54'
 }
 IPTEditor >> code: aString [
 
-	self contents: aString.
-	self changed: #contents
+	self contents: aString;
+		update.
 ]
 
 {
@@ -143,16 +145,15 @@ IPTEditor >> evaluateExpression: aString [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 12:23'
+	#category : #building,
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 14:52'
 }
-IPTEditor >> showSolutionCode [
-	
-	self code: self activeCodePiece solutionCode.
+IPTEditor >> update [
+	self changed: #contents.
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #style,
 	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 11:48'
 }
 IPTEditor >> wantsAnnotationPane [
@@ -160,7 +161,7 @@ IPTEditor >> wantsAnnotationPane [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #style,
 	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 12:23'
 }
 IPTEditor >> wantsOptionalButtons [
