@@ -10,12 +10,12 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 11:51'
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 11:22'
 }
 IPTClass class >> testClass [
 	^ IPTClass new 
 		name: 'TestClass';
-		methodCodePieces: {IPTCodePiece defaultCodePiece};
+		methodCodePieces: IPTCodePiece defaultCodePieces"{IPTCodePiece defaultCodePiece}";
 		yourself.
 ]
 
