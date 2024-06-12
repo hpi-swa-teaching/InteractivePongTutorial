@@ -25,6 +25,38 @@ IPTCodePiece class >> defaultCodePiece [
 ]
 
 {
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 11:24'
+}
+IPTCodePiece class >> defaultCodePieces [
+	^ { IPTCodePiece new
+			methodToBeChanged: (IPTTestObject >> #aNormalMethod);
+			variants: { IPTCodeVariant new
+				levelNumber: 1;
+				initialCode: 'aNormalMethod', Character cr, Character tab, '^ ', $', 'Hello World', $';
+				solutionCode:  'aNormalMethod', Character cr, Character tab, '^ ', $', 'This is the right solution', $';
+				yourself. };
+			yourself.
+		IPTCodePiece new
+			methodToBeChanged: (IPTTestObject >> #aMethodWithParam:);
+			variants: { IPTCodeVariant new
+				levelNumber: 1;
+				initialCode: 'aNormalMethod', Character cr, Character tab, '^ ', $', 'Hello World', $';
+				solutionCode:  'aNormalMethod', Character cr, Character tab, '^ ', $', 'This is the right solution', $';
+				yourself. };
+			yourself.
+		IPTCodePiece new
+			methodToBeChanged: (IPTTestObject >> #aMethodWithParam:andAlso:);
+			variants: { IPTCodeVariant new
+				levelNumber: 1;
+				initialCode: 'aNormalMethod', Character cr, Character tab, '^ ', $', 'Hello World', $';
+				solutionCode:  'aNormalMethod', Character cr, Character tab, '^ ', $', 'This is the right solution', $';
+				yourself. };
+			yourself.}
+	
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 19:05'
 }
@@ -50,10 +82,13 @@ IPTCodePiece >> methodToBeChanged: anObject [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 12:05'
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 11:41'
 }
 IPTCodePiece >> name [
-	^ self methodToBeChanged literalStrings at: 1.
+| n |
+	n := 1 max: self methodToBeChanged tempNames size.
+	
+	^ (self methodToBeChanged literalStrings take: n) join.
 ]
 
 {
