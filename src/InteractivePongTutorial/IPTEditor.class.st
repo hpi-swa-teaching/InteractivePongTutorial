@@ -64,11 +64,12 @@ IPTEditor >> activeCodePiece [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 19:23'
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 12:43'
 }
 IPTEditor >> activeCodePiece: aCodePiece [
 	activeCodePiece := aCodePiece.
 	
+	Transcript show: 'Changing codePiece with text: ', (aCodePiece codeToEditForLevel: self browser levelIndex ).
 	self code: (aCodePiece codeToEditForLevel: self browser levelIndex ).
 ]
 
@@ -90,12 +91,11 @@ IPTEditor >> browser: anObject [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 12:22'
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 11:47'
 }
 IPTEditor >> buildCodePaneWith: builder [
 
 	^ (super buildCodePaneWith: builder)
-		stylerClass: MotuTextStyler;
 		setText: #evaluateAndSaveText:notifying:;
 		yourself
 ]
@@ -120,32 +120,25 @@ IPTEditor >> code: aString [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 12:22'
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 12:15'
 }
 IPTEditor >> evaluateAndSaveText: aText notifying: aController [
 	
+	Transcript show: 'The text is evaluated'.
 	self code: aText.
-	self actionOnSave value
+	self actionOnSave value.
 	
 	
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 12:22'
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 11:49'
 }
 IPTEditor >> evaluateExpression: aString [
 
-	UIManager default inform: 'Please use the "Evaluate code" button to test your code'.
+	UIManager default inform: 'Please use the "Verify" button to test your code'.
 	^ nil
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 19:22'
-}
-IPTEditor >> parameters [
-	 ^ {}.
 ]
 
 {
@@ -159,7 +152,7 @@ IPTEditor >> showSolutionCode [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 12:23'
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 11:48'
 }
 IPTEditor >> wantsAnnotationPane [
 	^ false

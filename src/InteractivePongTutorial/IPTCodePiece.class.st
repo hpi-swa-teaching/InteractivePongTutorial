@@ -57,6 +57,17 @@ IPTCodePiece class >> defaultCodePieces [
 ]
 
 {
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 12:35'
+}
+IPTCodePiece >> checkSyntaxAndSaveCode: aString [
+
+	"self safelyCompile: aString."
+	self methodToBeChanged methodClass compile: aString.
+
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 19:05'
 }
@@ -93,10 +104,17 @@ IPTCodePiece >> name [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 13:39'
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 12:26'
 }
-IPTCodePiece >> test [
-	^ 42
+IPTCodePiece >> safelyCompile: aString [
+	"We want to make sure the user is not playing any games, like trying to compile new methods into our class"
+	| previousMethods newMethods |
+	previousMethods := self class methodDict keys copy.
+	self methodToBeChanged methodClass compile: aString.
+	newMethods := self class methodDict keys difference: previousMethods.
+	newMethods do: [:each|
+		self class removeSelector: each].
+	^ newMethods isEmpty
 ]
 
 {

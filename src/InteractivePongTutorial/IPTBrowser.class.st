@@ -172,14 +172,15 @@ IPTBrowser >> buildTitleBarWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:49'
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 12:20'
 }
 IPTBrowser >> buildVerifyButtonWith: aBuilder [
 
 	^ aBuilder pluggableButtonSpec new
 		model: self;
 		label: #verifyButtonContent;
-		enabled: false;
+		action: #verifyCode;
+		enabled: true;
 		frame: (LayoutFrame new
 			leftFraction: 0;
 			topFraction: (1 - self buttonHeight);
@@ -243,12 +244,45 @@ IPTBrowser >> chapter: anObject [
 ]
 
 {
+	#category : #actions,
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 12:22'
+}
+IPTBrowser >> checkAndSaveCode [
+	| code |
+	
+	Transcript show: 'trying to save', Character cr.
+	self closeAllAutoCompletionMorphs.
+	
+	code := self codeEditor
+		accept;
+		code.
+	self selectedMethod checkSyntaxAndSaveCode: code.
+		
+	"self playground clear."
+	"self selectedLecture checkCode: code on: self playground."
+	
+	"self changed: #categoryList"
+
+]
+
+{
+	#category : #actions,
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 11:56'
+}
+IPTBrowser >> closeAllAutoCompletionMorphs [
+
+	(Project currentWorld submorphs
+		select: [:morph | morph isKindOf: OMenuMorph])
+		do: [:morph | morph abandon]
+]
+
+{
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 19:10'
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 12:17'
 }
 IPTBrowser >> codeEditor [
 
-	codeEditor ifNil: [self codeEditor: ((IPTEditor openOnBrowser: self) actionOnSave: [])].
+	codeEditor ifNil: [self codeEditor: ((IPTEditor openOnBrowser: self) actionOnSave: [self checkAndSaveCode])].
 	^ codeEditor
 ]
 
@@ -357,12 +391,10 @@ IPTBrowser >> previousLevelButtonEnabled [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 19:16'
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 12:41'
 }
 IPTBrowser >> selectMethod: aMethod [
 	self selectedMethod: aMethod.
-	
-	Transcript show: aMethod.
 	
 	self codeEditor activeCodePiece: aMethod.
 	self changed: #selectedMethod.
@@ -419,6 +451,21 @@ IPTBrowser >> update [
 }
 IPTBrowser >> verifyButtonContent [
 	^ 'Verify'
+]
+
+{
+	#category : #actions,
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 12:19'
+}
+IPTBrowser >> verifyCode [
+	
+	Transcript show: 'trying to verify level', Character cr.
+		
+	"self playground clear."
+	"self selectedLecture checkCode: code on: self playground."
+	
+	"self changed: #categoryList"
+
 ]
 
 {
