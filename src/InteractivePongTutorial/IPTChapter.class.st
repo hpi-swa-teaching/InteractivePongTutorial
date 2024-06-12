@@ -13,10 +13,15 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:15'
+	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 11:41'
 }
 IPTChapter class >> chapterSet [
 	^ {IPTChapter 
+			withName: 'Welcome!'
+			number: 0
+			description: 'Welcome to the interactive Pong tutorial for Squeak! Here you can learn how to use Morphs, Classes and keyboard input by creating a simple game.'
+			levels: nil.
+		IPTChapter 
 			withName: 'Introduction'
 			number: 1
 			description: 'This is Chapter 1'
