@@ -21,6 +21,14 @@ IPT class >> open [
 ]
 
 {
+	#category : #actions,
+	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 14:10'
+}
+IPT >> close [
+	self changed: #close.
+]
+
+{
 	#category : #initialization,
 	#'squeak_changestamp' : 'JZ 6/7/2024 16:08'
 }

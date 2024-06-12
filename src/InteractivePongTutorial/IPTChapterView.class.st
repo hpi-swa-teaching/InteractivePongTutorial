@@ -265,7 +265,7 @@ IPTChapterView >> startButtonEnabled [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:16'
+	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 14:26'
 }
 IPTChapterView >> startSelectedLevel [
 	ipt openLevel: self selectedLevel levelIndex 
