@@ -64,13 +64,14 @@ IPTEditor >> activeCodePiece [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 12:43'
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 13:36'
 }
 IPTEditor >> activeCodePiece: aCodePiece [
 	activeCodePiece := aCodePiece.
 	
-	Transcript show: 'Changing codePiece with text: ', (aCodePiece codeToEditForLevel: self browser levelIndex ).
-	self code: (aCodePiece codeToEditForLevel: self browser levelIndex ).
+	Transcript show: 'Changing codePiece with text: ', (aCodePiece codeToEditForLevel: self browser levelIndex ), Character cr.
+	self accept;
+		code: (aCodePiece codeToEditForLevel: self browser levelIndex ).
 ]
 
 {

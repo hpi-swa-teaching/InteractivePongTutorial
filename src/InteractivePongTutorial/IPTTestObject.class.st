@@ -10,24 +10,31 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 12:43'
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 13:30'
+}
+IPTTestObject >> a [
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 13:31'
 }
 IPTTestObject >> aMethodWithParam: aParam [
-
+"ichbinglucklich"
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 12:37'
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 13:55'
 }
 IPTTestObject >> aMethodWithParam: aParam andAlso: aSecondParam [
-
+"Ilalaadkakadjs"
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 12:27'
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 13:32'
 }
 IPTTestObject >> aNormalMethod [
-sadnadnmas
+"ichbinnichttraurig"
 ]
