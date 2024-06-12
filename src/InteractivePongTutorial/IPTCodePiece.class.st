@@ -3,7 +3,8 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'methodToBeChanged',
-		'variants'
+		'variants',
+		'code'
 	],
 	#category : #'InteractivePongTutorial-Core'
 }
@@ -58,21 +59,40 @@ IPTCodePiece class >> defaultCodePieces [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 12:35'
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 13:49'
 }
 IPTCodePiece >> checkSyntaxAndSaveCode: aString [
 
 	"self safelyCompile: aString."
 	self methodToBeChanged methodClass compile: aString.
+	self code: aString.
 
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 19:05'
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 13:54'
+}
+IPTCodePiece >> code [
+	code ifNil: [ self code: self methodToBeChanged getSource asString ].
+	Transcript show: code.
+	^ code.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 13:48'
+}
+IPTCodePiece >> code: anObject [
+	code := anObject
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 13:55'
 }
 IPTCodePiece >> codeToEditForLevel: aLevelIndex [
-	^ self methodToBeChanged getSource asString
+	^ self code
 ]
 
 {
