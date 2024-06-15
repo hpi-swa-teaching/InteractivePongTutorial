@@ -189,10 +189,10 @@ IPTChapterView >> ipt: anIPT [
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 12:48'
+	#'squeak_changestamp' : 'sv 6/15/2024 10:31'
 }
 IPTChapterView >> levelDescription [
-	^ self selectedLevel ifNotNil: [self selectedLevel description] ifNil: ['Please select a level.'].
+	^ self selectedLevel ifNotNil: [self selectedLevel description] ifNil: [self noLevelSelectedMessage].
 ]
 
 {
@@ -201,6 +201,14 @@ IPTChapterView >> levelDescription [
 }
 IPTChapterView >> levels [
 	^ self selectedChapter levels ifNotNil: [self selectedChapter levels] ifNil: [{}].
+]
+
+{
+	#category : #ui,
+	#'squeak_changestamp' : 'sv 6/15/2024 10:30'
+}
+IPTChapterView >> noLevelSelectedMessage [
+	^ 'Please select a level.'.
 ]
 
 {
