@@ -13,14 +13,14 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 11:41'
+	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 13:03'
 }
 IPTChapter class >> chapterSet [
 	^ {IPTChapter 
 			withName: 'Welcome!'
 			number: 0
 			description: 'Welcome to the interactive Pong tutorial for Squeak! Here you can learn how to use Morphs, Classes and keyboard input by creating a simple game.'
-			levels: nil.
+			levels: {}.
 		IPTChapter 
 			withName: 'Introduction'
 			number: 1
@@ -115,10 +115,11 @@ IPTChapter >> levels [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/7/2024 10:31'
+	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 13:02'
 }
 IPTChapter >> levels: anObject [
-	levels := anObject
+	levels := anObject.
+	self levels do: [ :each | each chapterNumber: self chapterNumber].
 ]
 
 {

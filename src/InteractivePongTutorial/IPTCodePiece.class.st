@@ -27,32 +27,40 @@ IPTCodePiece class >> defaultCodePiece [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 12:33'
+	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 13:03'
 }
 IPTCodePiece class >> defaultCodePieces [
 	^ { IPTCodePiece new
 			methodToBeChanged: (IPTTestObject >> #aNormalMethod);
-			variants: { IPTCodeVariant new
-				levelNumber: 1;
-				initialCode: 'aNormalMethod', Character cr, Character tab, '^ ', $', 'Hello World', $';
-				solutionCode:  'aNormalMethod', Character cr, Character tab, '^ ', $', 'This is the right solution', $';
-				yourself. };
+			variants: { 
+				IPTCodeVariant new
+					levelNumber: 101;
+					initialCode: 'aNormalMethod', Character cr, Character tab, '^ ', $', 'Hello World', $';
+					solutionCode:  'aNormalMethod', Character cr, Character tab, '^ ', $', 'This is the right solution', $';
+					yourself.
+				IPTCodeVariant new
+					levelNumber: 102;
+					initialCode: 'aNormalMethod', Character cr, Character tab, '^ ', $', 'Hello Level 2', $';
+					solutionCode:  'aNormalMethod', Character cr, Character tab, '^ ', $', 'This is the right solution for Level 2', $';
+					yourself. };
 			yourself.
 		IPTCodePiece new
 			methodToBeChanged: (IPTTestObject >> #aMethodWithParam:);
-			variants: { IPTCodeVariant new
-				levelNumber: 1;
-				initialCode: 'aMethodWithParam: aParam', Character cr, Character tab, '^ ', $', 'Hello World', $';
-				solutionCode:  'aMethodWithParam: aParam', Character cr, Character tab, '^ ', $', 'This is the right solution', $';
-				yourself. };
+			variants: { 
+				IPTCodeVariant new
+					levelNumber: 1;
+					initialCode: 'aMethodWithParam: aParam', Character cr, Character tab, '^ ', $', 'Hello World', $';
+					solutionCode:  'aMethodWithParam: aParam', Character cr, Character tab, '^ ', $', 'This is the right solution', $';
+					yourself. };
 			yourself.
 		IPTCodePiece new
 			methodToBeChanged: (IPTTestObject >> #aMethodWithParam:andAlso:);
-			variants: { IPTCodeVariant new
-				levelNumber: 1;
-				initialCode: 'aMethodWithParam: aParam andAlso: anotherParam', Character cr, Character tab, '^ ', $', 'Hello World', $';
-				solutionCode:  'aMethodWithParam: aParam andAlso: anotherParam', Character cr, Character tab, '^ ', $', 'This is the right solution', $';
-				yourself. };
+			variants: {
+				IPTCodeVariant new
+					levelNumber: 1;
+					initialCode: 'aMethodWithParam: aParam andAlso: anotherParam', Character cr, Character tab, '^ ', $', 'Hello World', $';
+					solutionCode:  'aMethodWithParam: aParam andAlso: anotherParam', Character cr, Character tab, '^ ', $', 'This is the right solution', $';
+					yourself. };
 			yourself.} asOrderedCollection.
 	
 ]
@@ -104,14 +112,6 @@ IPTCodePiece >> loadSolutionCodeForLevel: aLevelIndex [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 14:02'
-}
-IPTCodePiece >> loadSolutionForLevel: aLevelIndex [
-	self code: (self variantForLevel: aLevelIndex) solutionCode.
-]
-
-{
-	#category : #accessing,
 	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 10:29'
 }
 IPTCodePiece >> methodToBeChanged [
@@ -156,10 +156,13 @@ IPTCodePiece >> safelyCompile: aString [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 14:14'
+	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 12:52'
 }
 IPTCodePiece >> variantForLevel: aLevelIndex [
-	^ self variants at: 1.
+	^ self variants inject: (self variants at: 1) into: [ :best :current | 
+		((current levelNumber <= aLevelIndex) and: (current levelNumber > best levelNumber))
+			ifTrue: [current] 
+			ifFalse: [best]].
 ]
 
 {
