@@ -155,6 +155,24 @@ IPTBrowser >> buildResetButtonWith: aBuilder [
 
 {
 	#category : #building,
+	#'squeak_changestamp' : 'FH 6/15/2024 11:24'
+}
+IPTBrowser >> buildShowSolutionButtonWith: aBuilder [
+
+	^ aBuilder pluggableButtonSpec new
+		model: self;
+		label: 'Show Solution';
+		action: #showSolutionButtonAction;
+		enabled: #showSolutionButtonEnabled;
+		frame: (LayoutFrame new
+			leftFraction: self buttonWidth;
+			topFraction: (1 - (2 * self buttonHeight));
+			rightFraction: self buttonWidth * 2;
+			bottomFraction: (1 - self buttonHeight))
+]
+
+{
+	#category : #building,
 	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:26'
 }
 IPTBrowser >> buildTitleBarWith: aBuilder [
@@ -191,7 +209,7 @@ IPTBrowser >> buildVerifyButtonWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 14:37'
+	#'squeak_changestamp' : 'FH 6/15/2024 11:13'
 }
 IPTBrowser >> buildWith: aBuilder [
 	^ aBuilder build: (aBuilder pluggableWindowSpec new
@@ -208,6 +226,7 @@ IPTBrowser >> buildWith: aBuilder [
 			self buildHomeButtonWith: aBuilder.
 			self buildNextLevelButtonWith: aBuilder.
 			self buildPreviousLevelButtonWith: aBuilder.
+			self buildShowSolutionButtonWith: aBuilder.
 			};
 		yourself)
 ]
@@ -413,13 +432,15 @@ IPTBrowser >> previousLevelButtonEnabled [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 12:41'
+	#'squeak_changestamp' : 'FH 6/15/2024 11:30'
 }
 IPTBrowser >> selectMethod: aMethod [
 	self selectedMethod: aMethod.
 	
 	self codeEditor activeCodePiece: aMethod.
+	
 	self changed: #selectedMethod.
+	self changed: #showSolutionButtonEnabled.
 ]
 
 {
@@ -436,6 +457,29 @@ IPTBrowser >> selectedMethod [
 }
 IPTBrowser >> selectedMethod: anObject [
 	selectedMethod := anObject.
+]
+
+{
+	#category : #actions,
+	#'squeak_changestamp' : 'FH 6/15/2024 11:33'
+}
+IPTBrowser >> showSolutionButtonAction [
+	self levelIndex ifNotNil: [
+		self selectedMethod loadSolutionForLevel: self levelIndex.
+		self codeEditor activeCodePiece: self selectedMethod.
+	].
+	
+	
+]
+
+{
+	#category : #ui,
+	#'squeak_changestamp' : 'FH 6/15/2024 11:27'
+}
+IPTBrowser >> showSolutionButtonEnabled [
+	Transcript show: (self selectedMethod isNil).
+
+	self selectedMethod ifNotNil: [^true] ifNil: [^false].
 ]
 
 {

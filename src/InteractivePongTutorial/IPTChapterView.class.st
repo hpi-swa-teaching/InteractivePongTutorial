@@ -226,11 +226,11 @@ IPTChapterView >> selectChapter: aChapter [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 14:38'
+	#'squeak_changestamp' : 'FH 6/15/2024 11:30'
 }
 IPTChapterView >> selectLevel: aLevel [
 	self selectedLevel: aLevel.
-	self update
+	self update.
 ]
 
 {
