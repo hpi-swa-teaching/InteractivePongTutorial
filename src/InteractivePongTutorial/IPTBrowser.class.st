@@ -8,7 +8,8 @@ Class {
 		'chapter',
 		'levelIndex',
 		'classSet',
-		'descriptionBoxContent'
+		'descriptionBoxContent',
+		'visibleClassSet'
 	],
 	#category : #'InteractivePongTutorial-Core'
 }
