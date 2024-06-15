@@ -27,7 +27,7 @@ IPTCodePiece class >> defaultCodePiece [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 14:37'
+	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 12:33'
 }
 IPTCodePiece class >> defaultCodePieces [
 	^ { IPTCodePiece new
@@ -53,7 +53,7 @@ IPTCodePiece class >> defaultCodePieces [
 				initialCode: 'aMethodWithParam: aParam andAlso: anotherParam', Character cr, Character tab, '^ ', $', 'Hello World', $';
 				solutionCode:  'aMethodWithParam: aParam andAlso: anotherParam', Character cr, Character tab, '^ ', $', 'This is the right solution', $';
 				yourself. };
-			yourself.}
+			yourself.} asOrderedCollection.
 	
 ]
 

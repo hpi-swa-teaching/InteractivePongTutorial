@@ -8,7 +8,7 @@ Class {
 		'description',
 		'tests',
 		'tips',
-		'visibleCodePieces'
+		'visibleMethods'
 	],
 	#category : #'InteractivePongTutorial-Levels'
 }
@@ -119,16 +119,16 @@ IPTLevel >> tips: anObject [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/7/2024 10:34'
+	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 11:52'
 }
-IPTLevel >> visibleCodePieces [
-	^ visibleCodePieces
+IPTLevel >> visibleMethods [
+	^ visibleMethods
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/7/2024 10:34'
+	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 11:52'
 }
-IPTLevel >> visibleCodePieces: anObject [
-	visibleCodePieces := anObject
+IPTLevel >> visibleMethods: anObject [
+	visibleMethods := anObject
 ]

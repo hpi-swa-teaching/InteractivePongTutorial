@@ -7,7 +7,8 @@ Class {
 		'selectedMethod',
 		'chapter',
 		'levelIndex',
-		'classSet'
+		'classSet',
+		'visibleClassSet'
 	],
 	#category : #'InteractivePongTutorial-Core'
 }
@@ -47,13 +48,13 @@ IPTBrowser >> buildCodeEditorWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 14:37'
+	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 12:26'
 }
 IPTBrowser >> buildCodePieceListWith: aBuilder [
 
 	^ aBuilder pluggableTreeSpec new
 		model: self;
-		roots: #classSet;
+		roots: #visibleClassSet;
 		nodeClass: IPTClassListItemWrapper;
 		getSelected: #selectedMethod;
 		setSelected: #selectMethod:;
@@ -382,7 +383,7 @@ IPTBrowser >> levelIndex: anObject [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 14:30'
+	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 12:37'
 }
 IPTBrowser >> loadLevel: aLevelIndex [
 	self levelIndex: aLevelIndex.
@@ -390,6 +391,9 @@ IPTBrowser >> loadLevel: aLevelIndex [
 	self classSet do: [ :c | 
 		c methodCodePieces do: [ :codePiece | 
 			codePiece loadInitialCodeForLevel: aLevelIndex ]].
+	
+	self updateVisibleClassSetToMethods: self activeLevel visibleMethods.
+	
 	"self codeEditor accept."
 	self update.
 	
@@ -500,7 +504,7 @@ IPTBrowser >> titleBarHeight [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:53'
+	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 12:38'
 }
 IPTBrowser >> update [
 	self 
@@ -508,7 +512,28 @@ IPTBrowser >> update [
 		changed: #titleBarContent;
 		changed: #descriptionBoxContent;
 		changed: #nextLevelButtonEnabled;
-		changed: #previousLevelButtonEnabled.
+		changed: #previousLevelButtonEnabled;
+		changed: #visibleClassSet.
+]
+
+{
+	#category : #actions,
+	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 12:44'
+}
+IPTBrowser >> updateVisibleClassSetToMethods: aMethodsCollection [
+	self visibleClassSet: ((self classSet collect: [ :klass | klass copy. ]) asOrderedCollection).
+
+	aMethodsCollection ifNil: [ ^nil.].
+	
+	"Show all classes with methods that are in 'activeLevel visibleMethods'. If there are no methods in a class, dont show it"
+	self visibleClassSet removeAllSuchThat: [ :klass | 
+		klass methodCodePieces removeAllSuchThat: [ :codePiece | 
+			(aMethodsCollection anySatisfy: [ :method | 
+				method = codePiece methodToBeChanged ]) not].
+		klass methodCodePieces isEmpty. ].
+	
+		
+	
 ]
 
 {
@@ -532,4 +557,20 @@ IPTBrowser >> verifyCode [
 	
 	"self changed: #categoryList"
 
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 11:57'
+}
+IPTBrowser >> visibleClassSet [
+	^ visibleClassSet
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 11:57'
+}
+IPTBrowser >> visibleClassSet: anObject [
+	visibleClassSet := anObject
 ]
