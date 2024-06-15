@@ -47,6 +47,14 @@ IPTClass >> copy [
 
 {
 	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 13:37'
+}
+IPTClass >> hasBody [
+	^ false
+]
+
+{
+	#category : #accessing,
 	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 11:47'
 }
 IPTClass >> methodCodePieces [

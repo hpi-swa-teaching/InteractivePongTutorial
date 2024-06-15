@@ -438,7 +438,7 @@ IPTBrowser >> previousLevelButtonEnabled [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'FH 6/15/2024 11:30'
+	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 13:32'
 }
 IPTBrowser >> selectMethod: aMethod [
 	self selectedMethod: aMethod.
@@ -480,12 +480,11 @@ IPTBrowser >> showSolutionButtonAction [
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'FH 6/15/2024 11:27'
+	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 13:40'
 }
 IPTBrowser >> showSolutionButtonEnabled [
-	Transcript show: (self selectedMethod isNil).
 
-	self selectedMethod ifNotNil: [^true] ifNil: [^false].
+	^ self selectedMethod isNil not and: [self selectedMethod hasBody].
 ]
 
 {

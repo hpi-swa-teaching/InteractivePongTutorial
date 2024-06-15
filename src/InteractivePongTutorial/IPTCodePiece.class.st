@@ -79,9 +79,10 @@ IPTCodePiece >> checkSyntaxAndSaveCode: aString [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 14:03'
+	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 13:34'
 }
 IPTCodePiece >> code [
+	self methodToBeChanged ifNil: [ ^ nil ].
 	code ifNil: [ self code: self methodToBeChanged getSource asString ].
 	^ code.
 ]
@@ -92,6 +93,14 @@ IPTCodePiece >> code [
 }
 IPTCodePiece >> code: anObject [
 	code := anObject
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 13:37'
+}
+IPTCodePiece >> hasBody [
+	^ true.
 ]
 
 {
