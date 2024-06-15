@@ -87,6 +87,14 @@ IPTLevel >> name: anObject [
 
 {
 	#category : #accessing,
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/15/2024 13:34'
+}
+IPTLevel >> runTest: aMethodName [
+	^(self perform: (self tests at: aMethodName)).
+]
+
+{
+	#category : #accessing,
 	#'squeak_changestamp' : 'Leo Sonnenberg 6/7/2024 10:34'
 }
 IPTLevel >> tests [

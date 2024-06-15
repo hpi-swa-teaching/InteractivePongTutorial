@@ -8,6 +8,7 @@ Class {
 		'chapter',
 		'levelIndex',
 		'classSet',
+		'descriptionBoxContent',
 		'visibleClassSet'
 	],
 	#category : #'InteractivePongTutorial-Core'
@@ -333,11 +334,27 @@ IPTBrowser >> codeEditor: anObject [
 ]
 
 {
-	#category : #ui,
-	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 11:39'
+	#category : #accessing,
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/15/2024 13:29'
 }
 IPTBrowser >> descriptionBoxContent [
-	^ 'Hello World!'
+	^ descriptionBoxContent
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/15/2024 13:29'
+}
+IPTBrowser >> descriptionBoxContent1 [
+	^ descriptionBoxContent
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/15/2024 13:29'
+}
+IPTBrowser >> descriptionBoxContent: anObject [
+	descriptionBoxContent := anObject
 ]
 
 {
@@ -547,16 +564,12 @@ IPTBrowser >> verifyButtonContent [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 12:19'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/15/2024 13:33'
 }
 IPTBrowser >> verifyCode [
 	
-	Transcript show: 'trying to verify level', Character cr.
-		
-	"self playground clear."
-	"self selectedLecture checkCode: code on: self playground."
-	
-	"self changed: #categoryList"
+	self descriptionBoxContent: (self activeLevel runTest: (self selectedMethod name)).
+	self update.
 
 ]
 
