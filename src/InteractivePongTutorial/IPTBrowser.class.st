@@ -7,7 +7,8 @@ Class {
 		'selectedMethod',
 		'chapter',
 		'levelIndex',
-		'classSet'
+		'classSet',
+		'descriptionBoxContent'
 	],
 	#category : #'InteractivePongTutorial-Core'
 }
@@ -332,11 +333,27 @@ IPTBrowser >> codeEditor: anObject [
 ]
 
 {
-	#category : #ui,
-	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 11:39'
+	#category : #accessing,
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/15/2024 13:29'
 }
 IPTBrowser >> descriptionBoxContent [
-	^ 'Hello World!'
+	^ descriptionBoxContent
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/15/2024 13:29'
+}
+IPTBrowser >> descriptionBoxContent1 [
+	^ descriptionBoxContent
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/15/2024 13:29'
+}
+IPTBrowser >> descriptionBoxContent: anObject [
+	descriptionBoxContent := anObject
 ]
 
 {
@@ -382,14 +399,14 @@ IPTBrowser >> levelIndex: anObject [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 14:30'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/15/2024 12:32'
 }
 IPTBrowser >> loadLevel: aLevelIndex [
 	self levelIndex: aLevelIndex.
 	
 	self classSet do: [ :c | 
 		c methodCodePieces do: [ :codePiece | 
-			codePiece loadInitialCodeForLevel: aLevelIndex ]].
+			codePiece loadInitialCodeForLevel: aLevelIndex.]].
 	"self codeEditor accept."
 	self update.
 	
@@ -521,15 +538,11 @@ IPTBrowser >> verifyButtonContent [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 12:19'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/15/2024 13:33'
 }
 IPTBrowser >> verifyCode [
 	
-	Transcript show: 'trying to verify level', Character cr.
-		
-	"self playground clear."
-	"self selectedLecture checkCode: code on: self playground."
-	
-	"self changed: #categoryList"
+	self descriptionBoxContent: (self activeLevel runTest: (self selectedMethod name)).
+	self update.
 
 ]

@@ -26,8 +26,8 @@ IPTTestObject >> aMethodWithParam: aParam andAlso: anotherParam [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'FH 6/15/2024 10:51'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/15/2024 13:35'
 }
 IPTTestObject >> aNormalMethod [
-	^ 'Hello World!'
+	^ 'Hello World'
 ]

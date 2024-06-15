@@ -22,3 +22,27 @@ IPTLevel0101 >> initialize [
 		name: 'Level01'.
 	
 ]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/15/2024 13:34'
+}
+IPTLevel0101 >> testForANormalMethod [
+	|obj|
+	obj := IPTTestObject new.
+	((obj aNormalMethod) = 'Hello World!') ifTrue: [^'your code was correct'.] 
+	ifFalse: [^'your code was false'.] .
+	
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/15/2024 12:45'
+}
+IPTLevel0101 >> tests [
+	|dict|
+	dict:= Dictionary new
+		at: #aNormalMethod put: #testForANormalMethod;
+		yourself.
+	^dict
+]
