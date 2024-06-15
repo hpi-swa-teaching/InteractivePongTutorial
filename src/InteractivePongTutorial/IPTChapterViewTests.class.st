@@ -49,15 +49,25 @@ IPTChapterViewTests >> testSelectChapter [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 14:21'
+	#'squeak_changestamp' : 'sv 6/15/2024 10:31'
 }
 IPTChapterViewTests >> testSelectLevel [
 	|previousLevel newLevel|
 	chapterview selectedLevel ifNotNil: [
-	previousLevel := chapterview selectedLevel.
-	newLevel := chapterview selectedChapter levels at: chapterview selectedChapter levels size.
-	chapterview selectLevel: newLevel.
-	self assert: chapterview selectedLevel == newLevel.
-	chapterview selectLevel: previousLevel.
-	self assert: chapterview selectedChapter == previousLevel.]
+		previousLevel := chapterview selectedLevel.
+		newLevel := chapterview selectedChapter levels at: chapterview selectedChapter levels size.
+		
+		chapterview selectLevel: newLevel.
+		
+		self assert: chapterview selectedLevel == newLevel.
+		self assert: chapterview levelDescription == newLevel description.
+		
+		chapterview selectLevel: previousLevel.
+		
+		self assert: chapterview selectedChapter == previousLevel.
+		self assert: chapterview levelDescription == previousLevel description.
+		
+		chapterview selectLevel: nil.
+		chapterview levelDescription == chapterview noLevelSelectedMessage.
+	]
 ]
