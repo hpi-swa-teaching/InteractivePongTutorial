@@ -37,6 +37,16 @@ IPTClass >> codeToEditForLevel: aLevelIndex [
 
 {
 	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 12:29'
+}
+IPTClass >> copy [
+	^ super copy 
+		methodCodePieces: self methodCodePieces copy;
+		yourself.
+]
+
+{
+	#category : #accessing,
 	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 11:47'
 }
 IPTClass >> methodCodePieces [

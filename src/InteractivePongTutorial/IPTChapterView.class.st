@@ -162,12 +162,12 @@ IPTChapterView >> chapters: aChapter [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 12:02'
+	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 13:24'
 }
 IPTChapterView >> initialize [
 	self chapters: IPTChapter chapterSet.
 	self selectedChapter: (self chapters at: 1).
-	self levels ifNotEmpty: [self selectedLevel: (self levels at: 1)].
+	self levels ifNotEmpty: [self selectedLevel: (self levels at: 1)] ifEmpty: [self selectedLevel: nil].
 	
 ]
 
@@ -189,7 +189,7 @@ IPTChapterView >> ipt: anIPT [
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'sv 6/15/2024 10:31'
+	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 13:22'
 }
 IPTChapterView >> levelDescription [
 	^ self selectedLevel ifNotNil: [self selectedLevel description] ifNil: [self noLevelSelectedMessage].
@@ -221,12 +221,12 @@ IPTChapterView >> padding [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 14:41'
+	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 13:28'
 }
 IPTChapterView >> selectChapter: aChapter [	
 	aChapter ifNotNil: [
 		self selectedChapter: aChapter.
-		self selectLevel: (aChapter levels ifNotNil: [aChapter levels at: 1]).
+		self selectLevel: (aChapter levels ifNotEmpty: [aChapter levels at: 1] ifEmpty: [ nil ]).
 		self update.
 		].
 	

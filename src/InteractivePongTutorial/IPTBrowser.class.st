@@ -48,13 +48,13 @@ IPTBrowser >> buildCodeEditorWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 14:37'
+	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 12:26'
 }
 IPTBrowser >> buildCodePieceListWith: aBuilder [
 
 	^ aBuilder pluggableTreeSpec new
 		model: self;
-		roots: #classSet;
+		roots: #visibleClassSet;
 		nodeClass: IPTClassListItemWrapper;
 		getSelected: #selectedMethod;
 		setSelected: #selectMethod:;
@@ -399,14 +399,19 @@ IPTBrowser >> levelIndex: anObject [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/15/2024 12:32'
+	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 12:59'
 }
 IPTBrowser >> loadLevel: aLevelIndex [
+	| compressedlevelIndex |
 	self levelIndex: aLevelIndex.
+	compressedlevelIndex := self levelIndex + (self activeLevel chapterNumber * 100).
 	
 	self classSet do: [ :c | 
 		c methodCodePieces do: [ :codePiece | 
-			codePiece loadInitialCodeForLevel: aLevelIndex.]].
+			codePiece loadInitialCodeForLevel: compressedlevelIndex ]].
+	
+	self updateVisibleClassSetToMethods: self activeLevel visibleMethods.
+	
 	"self codeEditor accept."
 	self update.
 	
@@ -478,11 +483,11 @@ IPTBrowser >> selectedMethod: anObject [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'FH 6/15/2024 11:33'
+	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 12:57'
 }
 IPTBrowser >> showSolutionButtonAction [
 	self levelIndex ifNotNil: [
-		self selectedMethod loadSolutionForLevel: self levelIndex.
+		self selectedMethod loadSolutionCodeForLevel: self levelIndex.
 		self codeEditor activeCodePiece: self selectedMethod.
 	].
 	
@@ -517,7 +522,7 @@ IPTBrowser >> titleBarHeight [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:53'
+	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 12:38'
 }
 IPTBrowser >> update [
 	self 
@@ -525,7 +530,28 @@ IPTBrowser >> update [
 		changed: #titleBarContent;
 		changed: #descriptionBoxContent;
 		changed: #nextLevelButtonEnabled;
-		changed: #previousLevelButtonEnabled.
+		changed: #previousLevelButtonEnabled;
+		changed: #visibleClassSet.
+]
+
+{
+	#category : #actions,
+	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 12:44'
+}
+IPTBrowser >> updateVisibleClassSetToMethods: aMethodsCollection [
+	self visibleClassSet: ((self classSet collect: [ :klass | klass copy. ]) asOrderedCollection).
+
+	aMethodsCollection ifNil: [ ^nil.].
+	
+	"Show all classes with methods that are in 'activeLevel visibleMethods'. If there are no methods in a class, dont show it"
+	self visibleClassSet removeAllSuchThat: [ :klass | 
+		klass methodCodePieces removeAllSuchThat: [ :codePiece | 
+			(aMethodsCollection anySatisfy: [ :method | 
+				method = codePiece methodToBeChanged ]) not].
+		klass methodCodePieces isEmpty. ].
+	
+		
+	
 ]
 
 {
@@ -545,4 +571,20 @@ IPTBrowser >> verifyCode [
 	self descriptionBoxContent: (self activeLevel runTest: (self selectedMethod name)).
 	self update.
 
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 11:57'
+}
+IPTBrowser >> visibleClassSet [
+	^ visibleClassSet
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 11:57'
+}
+IPTBrowser >> visibleClassSet: anObject [
+	visibleClassSet := anObject
 ]
