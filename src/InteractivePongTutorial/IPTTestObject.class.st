@@ -10,10 +10,10 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 14:49'
+	#'squeak_changestamp' : 'Felix Knöfel 6/17/2024 11:55'
 }
 IPTTestObject >> aMethodWithParam: aParam [
-	^ 'Hello Wojbjbjbrld'
+	^ 'Hello AAAAAAAAHHHHHHH'
 ]
 
 {
@@ -26,8 +26,8 @@ IPTTestObject >> aMethodWithParam: aParam andAlso: anotherParam [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/15/2024 13:35'
+	#'squeak_changestamp' : 'Felix Knöfel 6/17/2024 13:08'
 }
 IPTTestObject >> aNormalMethod [
-	^ 'Hello World'
+	^ 'Hello Whuhhuorld'
 ]

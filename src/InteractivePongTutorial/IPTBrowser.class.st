@@ -267,10 +267,10 @@ IPTBrowser >> chapter: anObject [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 14:30'
+	#'squeak_changestamp' : 'Felix Knöfel 6/17/2024 12:29'
 }
 IPTBrowser >> checkAndSaveCode [
-	| code |
+	| code errMsg |
 	
 	Transcript show: 'trying to save', Character cr.
 	self closeAllAutoCompletionMorphs.
@@ -278,8 +278,10 @@ IPTBrowser >> checkAndSaveCode [
 	code := self codeEditor
 		"accept;"
 		code.
-	self selectedMethod checkSyntaxAndSaveCode: code.
-		
+	errMsg := self selectedMethod checkSyntaxAndSaveCode: code.
+	
+	(errMsg = '')
+		ifFalse: [ UIManager default inform: errMsg ].	
 	"self playground clear."
 	"self selectedLecture checkCode: code on: self playground."
 	
@@ -400,19 +402,20 @@ IPTBrowser >> levelIndex: anObject [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 6/17/2024 11:50'
+	#'squeak_changestamp' : 'Felix Knöfel 6/17/2024 11:53'
 }
 IPTBrowser >> loadLevel: aLevelIndex [
-	self levelIndex: aLevelIndex.
-	
+	self 
+		levelIndex: aLevelIndex;
+		selectMethod: nil.
+		
 	self classSet do: [ :c | 
 		c methodCodePieces do: [ :codePiece | 
 			codePiece loadInitialCodeForLevel: self levelIndex andChapter: self activeLevel chapterNumber]].
 	
-	self updateVisibleClassSetToMethods: self activeLevel visibleMethods.
-	
-	"self codeEditor accept."
-	self update.
+	self 
+		updateVisibleClassSetToMethods: self activeLevel visibleMethods;
+		update.
 	
 		
 	

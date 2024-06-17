@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'methodToBeChanged',
 		'variants',
-		'code'
+		'code',
+		'head'
 	],
 	#category : #'InteractivePongTutorial-Core'
 }
@@ -27,53 +28,68 @@ IPTCodePiece class >> defaultCodePiece [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 13:03'
+	#'squeak_changestamp' : 'Felix Knöfel 6/17/2024 12:20'
 }
 IPTCodePiece class >> defaultCodePieces [
 	^ { IPTCodePiece new
 			methodToBeChanged: (IPTTestObject >> #aNormalMethod);
+			head: 'aNormalMethod';
 			variants: { 
 				IPTCodeVariant new
 					levelNumber: 101;
-					initialCode: 'aNormalMethod', Character cr, Character tab, '^ ', $', 'Hello World', $';
-					solutionCode:  'aNormalMethod', Character cr, Character tab, '^ ', $', 'This is the right solution', $';
+					initialCode:  '^ ', $', 'Hello World', $';
+					solutionCode:   '^ ', $', 'This is the right solution', $';
 					yourself.
 				IPTCodeVariant new
 					levelNumber: 102;
-					initialCode: 'aNormalMethod', Character cr, Character tab, '^ ', $', 'Hello Level 2', $';
-					solutionCode:  'aNormalMethod', Character cr, Character tab, '^ ', $', 'This is the right solution for Level 2', $';
+					initialCode: '^ ', $', 'Hello Level 2', $';
+					solutionCode: '^ ', $', 'This is the right solution for Level 2', $';
 					yourself. };
 			yourself.
 		IPTCodePiece new
 			methodToBeChanged: (IPTTestObject >> #aMethodWithParam:);
+			head:  'aMethodWithParam: aParam';
 			variants: { 
 				IPTCodeVariant new
 					levelNumber: 1;
-					initialCode: 'aMethodWithParam: aParam', Character cr, Character tab, '^ ', $', 'Hello World', $';
-					solutionCode:  'aMethodWithParam: aParam', Character cr, Character tab, '^ ', $', 'This is the right solution', $';
+					initialCode: '^ ', $', 'Hello World', $';
+					solutionCode: '^ ', $', 'This is the right solution', $';
 					yourself. };
 			yourself.
 		IPTCodePiece new
 			methodToBeChanged: (IPTTestObject >> #aMethodWithParam:andAlso:);
+			head: 'aMethodWithParam: aParam andAlso: anotherParam';
 			variants: {
 				IPTCodeVariant new
 					levelNumber: 1;
-					initialCode: 'aMethodWithParam: aParam andAlso: anotherParam', Character cr, Character tab, '^ ', $', 'Hello World', $';
-					solutionCode:  'aMethodWithParam: aParam andAlso: anotherParam', Character cr, Character tab, '^ ', $', 'This is the right solution', $';
+					initialCode: '^ ', $', 'Hello World', $';
+					solutionCode: '^ ', $', 'This is the right solution', $';
 					yourself. };
-			yourself.} asOrderedCollection.
-	
+			yourself. } 
+			asOrderedCollection.
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 13:49'
+	#'squeak_changestamp' : 'Felix Knöfel 6/17/2024 12:19'
+}
+IPTCodePiece >> addHeadToCode: aCodeString [
+	^ self head, Character cr, Character tab, aCodeString.
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Felix Knöfel 6/17/2024 13:08'
 }
 IPTCodePiece >> checkSyntaxAndSaveCode: aString [
 
 	"self safelyCompile: aString."
+	(((aString splitBy: {Character cr}) at: 1) withBlanksTrimmed = self head)
+		ifFalse: [^ 'You must leave the head line unchanged!'].
+	
 	self methodToBeChanged methodClass compile: aString.
 	self code: aString.
+	^ ''.
 
 ]
 
@@ -113,18 +129,36 @@ IPTCodePiece >> hasBody [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/17/2024 11:48'
+	#'squeak_changestamp' : 'Felix Knöfel 6/17/2024 12:10'
 }
-IPTCodePiece >> loadInitialCodeForLevel: aLevelIndex andChapter: aChapterIndex [
-	self code: (self variantForLevel: (self compressedLevelIndexFor: aLevelIndex fromChapter: aChapterIndex)) initialCode.
+IPTCodePiece >> head [
+	^ head
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/17/2024 11:48'
+	#'squeak_changestamp' : 'Felix Knöfel 6/17/2024 12:10'
+}
+IPTCodePiece >> head: anObject [
+	head := anObject
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 6/17/2024 12:17'
+}
+IPTCodePiece >> loadInitialCodeForLevel: aLevelIndex andChapter: aChapterIndex [
+	self code: (self addHeadToCode: (self variantForLevel: 
+		(self compressedLevelIndexFor: aLevelIndex fromChapter: aChapterIndex)) initialCode).
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 6/17/2024 12:18'
 }
 IPTCodePiece >> loadSolutionCodeForLevel: aLevelIndex andChapter: aChapterIndex [
-	self code: (self variantForLevel: (self compressedLevelIndexFor: aLevelIndex fromChapter: aChapterIndex)) solutionCode.
+	self code: (self addHeadToCode: (self variantForLevel: 
+		(self compressedLevelIndexFor: aLevelIndex fromChapter: aChapterIndex)) solutionCode).
 ]
 
 {
