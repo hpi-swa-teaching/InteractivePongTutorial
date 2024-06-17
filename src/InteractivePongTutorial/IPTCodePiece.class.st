@@ -97,6 +97,14 @@ IPTCodePiece >> code: anObject [
 
 {
 	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 6/17/2024 11:47'
+}
+IPTCodePiece >> compressedLevelIndexFor: aLevelIndex fromChapter: aChapterIndex [
+	^ 100 * aChapterIndex + aLevelIndex.
+]
+
+{
+	#category : #accessing,
 	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 13:37'
 }
 IPTCodePiece >> hasBody [
@@ -105,18 +113,18 @@ IPTCodePiece >> hasBody [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 14:02'
+	#'squeak_changestamp' : 'Felix Knöfel 6/17/2024 11:48'
 }
-IPTCodePiece >> loadInitialCodeForLevel: aLevelIndex [
-	self code: (self variantForLevel: aLevelIndex) initialCode.
+IPTCodePiece >> loadInitialCodeForLevel: aLevelIndex andChapter: aChapterIndex [
+	self code: (self variantForLevel: (self compressedLevelIndexFor: aLevelIndex fromChapter: aChapterIndex)) initialCode.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 14:02'
+	#'squeak_changestamp' : 'Felix Knöfel 6/17/2024 11:48'
 }
-IPTCodePiece >> loadSolutionCodeForLevel: aLevelIndex [
-	self code: (self variantForLevel: aLevelIndex) solutionCode.
+IPTCodePiece >> loadSolutionCodeForLevel: aLevelIndex andChapter: aChapterIndex [
+	self code: (self variantForLevel: (self compressedLevelIndexFor: aLevelIndex fromChapter: aChapterIndex)) solutionCode.
 ]
 
 {

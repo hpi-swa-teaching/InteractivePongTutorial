@@ -400,16 +400,14 @@ IPTBrowser >> levelIndex: anObject [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 12:59'
+	#'squeak_changestamp' : 'Felix Knöfel 6/17/2024 11:50'
 }
 IPTBrowser >> loadLevel: aLevelIndex [
-	| compressedlevelIndex |
 	self levelIndex: aLevelIndex.
-	compressedlevelIndex := self levelIndex + (self activeLevel chapterNumber * 100).
 	
 	self classSet do: [ :c | 
 		c methodCodePieces do: [ :codePiece | 
-			codePiece loadInitialCodeForLevel: compressedlevelIndex ]].
+			codePiece loadInitialCodeForLevel: self levelIndex andChapter: self activeLevel chapterNumber]].
 	
 	self updateVisibleClassSetToMethods: self activeLevel visibleMethods.
 	
@@ -484,11 +482,11 @@ IPTBrowser >> selectedMethod: anObject [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 12:57'
+	#'squeak_changestamp' : 'Felix Knöfel 6/17/2024 11:50'
 }
 IPTBrowser >> showSolutionButtonAction [
 	self levelIndex ifNotNil: [
-		self selectedMethod loadSolutionCodeForLevel: self levelIndex.
+		self selectedMethod loadSolutionCodeForLevel: self levelIndex andChapter: self activeLevel chapterNumber.
 		self codeEditor activeCodePiece: self selectedMethod.
 	].
 	
