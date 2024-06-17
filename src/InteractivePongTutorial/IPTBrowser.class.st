@@ -16,13 +16,17 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 14:26'
+	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 19:58'
 }
 IPTBrowser class >> openFrom: anIPT chapter: aChapter levelIndex: aNumber [
-	^ ToolBuilder open: (self new 
+
+	|browser|
+	browser := self new 
 		ipt: anIPT;
 		chapter: aChapter;
-		loadLevel: aNumber).
+		loadLevel: aNumber.
+	ToolBuilder open: browser.
+	^ browser
 ]
 
 {
@@ -308,6 +312,14 @@ IPTBrowser >> classSet: anObject [
 
 {
 	#category : #actions,
+	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 19:52'
+}
+IPTBrowser >> close [
+	self changed: #close.
+]
+
+{
+	#category : #actions,
 	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 11:56'
 }
 IPTBrowser >> closeAllAutoCompletionMorphs [
@@ -361,11 +373,11 @@ IPTBrowser >> descriptionBoxContent: anObject [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'JZ 6/7/2024 16:06'
+	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 20:14'
 }
 IPTBrowser >> homeButtonAction [
 	self ipt openChapterView.
-	self changed: #close.
+	self close.
 ]
 
 {
@@ -456,15 +468,14 @@ IPTBrowser >> previousLevelButtonEnabled [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 13:32'
+	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 20:10'
 }
 IPTBrowser >> selectMethod: aMethod [
 	self selectedMethod: aMethod.
 	
 	self codeEditor activeCodePiece: aMethod.
 	
-	self changed: #selectedMethod.
-	self changed: #showSolutionButtonEnabled.
+	self update.
 ]
 
 {
@@ -522,7 +533,7 @@ IPTBrowser >> titleBarHeight [
 ]
 
 {
-	#category : #building,
+	#category : #ui,
 	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 12:38'
 }
 IPTBrowser >> update [

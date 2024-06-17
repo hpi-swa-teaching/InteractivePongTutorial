@@ -12,10 +12,14 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JZ 6/7/2024 13:29'
+	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 19:59'
 }
 IPTChapterView class >> openFrom: anIPT [
-	^ ToolBuilder open: (self new ipt: anIPT)
+	
+	|chapterView|
+	chapterView := self new ipt: anIPT.
+	ToolBuilder open: chapterView.
+	^ chapterView.
 ]
 
 {
@@ -158,6 +162,14 @@ IPTChapterView >> chapters [
 }
 IPTChapterView >> chapters: aChapter [
 	chapters := aChapter.
+]
+
+{
+	#category : #actions,
+	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 19:53'
+}
+IPTChapterView >> close [
+	self changed: #close.
 ]
 
 {

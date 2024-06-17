@@ -17,7 +17,7 @@ IPTTests >> setUp [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 11:26'
+	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 20:03'
 }
 IPTTests >> tearDown [
 	ipt := nil.

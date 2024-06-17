@@ -14,27 +14,18 @@ IPT class >> defaultWindowColor [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JZ 6/7/2024 13:15'
+	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 19:41'
 }
 IPT class >> open [
-	^ self new.
-]
-
-{
-	#category : #actions,
-	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 14:10'
-}
-IPT >> close [
-	self changed: #close.
+	^ self new openChapterView.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'JZ 6/7/2024 16:08'
+	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 19:42'
 }
 IPT >> initialize [
 	TheWorldMenu registerOpenCommand: {'Interactive Pong Tutorial'. {self class. #open}}.
-	self openChapterView.
 ]
 
 {
