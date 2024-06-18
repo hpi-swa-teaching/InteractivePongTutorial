@@ -35,6 +35,136 @@ IPTBrowserTests >> tearDown [
 ]
 
 {
+	#category : #building,
+	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:47'
+}
+IPTBrowserTests >> testBuildCodeEditorWith [
+
+	| spec |
+	spec := browser buildCodeEditorWith: ToolBuilder new.
+	
+	self assert: true equals: (spec isKindOf: PluggableCodePaneSpec).
+	self assert: browser equals: spec model.
+]
+
+{
+	#category : #building,
+	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:47'
+}
+IPTBrowserTests >> testBuildCodePieceListWith [
+
+	| spec |
+	spec := browser buildCodePieceListWith: ToolBuilder new.
+	
+	self assert: true equals: (spec isKindOf: PluggableTreeSpec).
+	self assert: browser equals: spec model.
+]
+
+{
+	#category : #building,
+	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:46'
+}
+IPTBrowserTests >> testBuildDescriptionBoxWith [
+
+	| spec |
+	spec := browser buildChapterDescriptionBoxWith: ToolBuilder new.
+	
+	self assert: true equals: (spec isKindOf: PluggableTextSpec).
+	self assert: browser equals: spec model.
+]
+
+{
+	#category : #building,
+	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:48'
+}
+IPTBrowserTests >> testBuildHomeButtonWith [
+
+	| spec |
+	spec := browser buildHomeButtonWith: ToolBuilder new.
+	
+	self assert: true equals: (spec isKindOf: PluggableButtonSpec).
+	self assert: browser equals: spec model.
+]
+
+{
+	#category : #building,
+	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:49'
+}
+IPTBrowserTests >> testBuildNextLevelButtonWith [
+
+	| spec |
+	spec := browser buildNextLevelButtonWith: ToolBuilder new.
+	
+	self assert: true equals: (spec isKindOf: PluggableButtonSpec).
+	self assert: browser equals: spec model.
+]
+
+{
+	#category : #building,
+	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:49'
+}
+IPTBrowserTests >> testBuildPreviousLevelButtonWith [
+
+	| spec |
+	spec := browser buildPreviousLevelButtonWith: ToolBuilder new.
+	
+	self assert: true equals: (spec isKindOf: PluggableButtonSpec).
+	self assert: browser equals: spec model.
+]
+
+{
+	#category : #building,
+	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:50'
+}
+IPTBrowserTests >> testBuildResetButtonWith [
+
+	| spec |
+	spec := browser buildResetButtonWith: ToolBuilder new.
+	
+	self assert: true equals: (spec isKindOf: PluggableButtonSpec).
+	self assert: browser equals: spec model.
+]
+
+{
+	#category : #building,
+	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:51'
+}
+IPTBrowserTests >> testBuildShowSolutionButtonWith [
+
+	| spec |
+	spec := browser buildShowSolutionButtonWith: ToolBuilder new.
+	
+	self assert: true equals: (spec isKindOf: PluggableButtonSpec).
+	self assert: browser equals: spec model.
+]
+
+{
+	#category : #building,
+	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:51'
+}
+IPTBrowserTests >> testBuildTitleBarWith [
+
+	| spec |
+	spec := browser buildTitleBarWith: ToolBuilder new.
+	
+	self assert: true equals: (spec isKindOf: PluggableTextSpec).
+	self assert: browser equals: spec model.
+]
+
+{
+	#category : #building,
+	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:52'
+}
+IPTBrowserTests >> testBuildVerifyButtonWith [
+
+	| spec |
+	spec := browser buildTitleBarWith: ToolBuilder new.
+	
+	self assert: true equals: (spec isKindOf: PluggableButtonSpec).
+	self assert: browser equals: spec model.
+]
+
+{
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 20:22'
 }

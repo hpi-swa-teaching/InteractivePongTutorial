@@ -39,6 +39,85 @@ IPTChapterViewTests >> tearDown [
 ]
 
 {
+	#category : #building,
+	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:13'
+}
+IPTChapterViewTests >> testBuildChapterDescriptionBoxWith [
+
+	| spec |
+	spec := chapterview buildChapterDescriptionBoxWith: ToolBuilder new.
+	
+	self assert: true equals: (spec isKindOf: PluggableTextSpec).
+	self assert: chapterview equals: spec model.
+]
+
+{
+	#category : #building,
+	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:25'
+}
+IPTChapterViewTests >> testBuildChapterListWith [
+
+	| spec |
+	spec := chapterview buildChapterListWith: ToolBuilder new.
+	
+	self assert: true equals: (spec isKindOf: PluggableListSpec).
+	self assert: chapterview equals: spec model.
+]
+
+{
+	#category : #building,
+	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 16:52'
+}
+IPTChapterViewTests >> testBuildColumnAreaSpecWith [
+
+	| spec |
+	
+	spec := chapterview.
+	"
+	self assert: true equals: (spec isKindOf: ).
+	self assert: board equals: spec model."
+]
+
+{
+	#category : #building,
+	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:13'
+}
+IPTChapterViewTests >> testBuildLevelDescriptionBoxWith [
+
+	| spec |
+	spec := chapterview buildLevelDescriptionBoxWith: ToolBuilder new.
+	
+	self assert: true equals: (spec isKindOf: PluggableTextSpec).
+	self assert: chapterview equals: spec model.
+]
+
+{
+	#category : #building,
+	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:24'
+}
+IPTChapterViewTests >> testBuildLevelListWith [
+
+	| spec |
+	spec := chapterview buildLevelListWith: ToolBuilder new.
+	
+	self assert: true equals: (spec isKindOf: PluggableListSpec).
+	self assert: chapterview equals: spec model.
+]
+
+{
+	#category : #building,
+	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:32'
+}
+IPTChapterViewTests >> testBuildStartButtonWith [
+
+	| spec |
+	spec := chapterview buildStartButtonWith: ToolBuilder new.
+	
+	self assert: true equals: (spec isKindOf: PluggableButtonSpec).
+	self assert: chapterview equals: spec model.
+]
+
+{
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:21'
 }
