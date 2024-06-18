@@ -287,12 +287,11 @@ IPTChapterView >> selectedLevel: aLevel [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 14:26'
+	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:06'
 }
 IPTChapterView >> startSelectedLevel [
 	ipt openLevel: self selectedLevel levelIndex 
 		inChapter: self selectedChapter. 
-	self changed: #close.
 ]
 
 {

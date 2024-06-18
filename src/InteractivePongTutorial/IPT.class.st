@@ -1,6 +1,10 @@
 Class {
 	#name : #IPT,
 	#superclass : #Object,
+	#instVars : [
+		'browser',
+		'chapterview'
+	],
 	#category : #'InteractivePongTutorial-Core'
 }
 
@@ -21,6 +25,52 @@ IPT class >> open [
 ]
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:03'
+}
+IPT >> browser [
+	^ browser
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:03'
+}
+IPT >> browser: anObject [
+	browser := anObject
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:04'
+}
+IPT >> chapterview [
+	^ chapterview
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:04'
+}
+IPT >> chapterview: anObject [
+	chapterview := anObject
+]
+
+{
+	#category : #actions,
+	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:14'
+}
+IPT >> closeAllWindows [
+	self browser ifNotNil: [
+		self browser close.
+		self browser: nil].
+	self chapterview ifNotNil: [
+		self chapterview close.
+		self chapterview: nil].
+	
+]
+
+{
 	#category : #initialization,
 	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 19:42'
 }
@@ -30,16 +80,18 @@ IPT >> initialize [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'JZ 6/7/2024 13:28'
+	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:05'
 }
 IPT >> openChapterView [
-	IPTChapterView openFrom: self.
+	self closeAllWindows.
+	self chapterview: (IPTChapterView openFrom: self).
 ]
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 17:59'
+	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:05'
 }
 IPT >> openLevel: aNumber inChapter: aChapter [
-	IPTBrowser openFrom: self chapter: aChapter levelIndex: aNumber.
+	self closeAllWindows.
+	self browser: (IPTBrowser openFrom: self chapter: aChapter levelIndex: aNumber).
 ]

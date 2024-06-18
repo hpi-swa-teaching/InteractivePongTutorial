@@ -373,11 +373,10 @@ IPTBrowser >> descriptionBoxContent: anObject [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 20:14'
+	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:06'
 }
 IPTBrowser >> homeButtonAction [
 	self ipt openChapterView.
-	self close.
 ]
 
 {
