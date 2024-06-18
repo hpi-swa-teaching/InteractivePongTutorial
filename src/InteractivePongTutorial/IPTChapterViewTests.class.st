@@ -19,13 +19,13 @@ IPTChapterViewTests >> selectChapterTwoLevelOne [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:26'
+	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 11:45'
 }
 IPTChapterViewTests >> setUp [
 
 	super setUp.
-	ipt := IPT new.
-	chapterview := ipt openChapterView.
+	ipt := IPT new openChapterView.
+	chapterview := ipt chapterview.
 ]
 
 {
