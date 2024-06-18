@@ -36,15 +36,15 @@ IPTBrowserTests >> tearDown [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:47'
+	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:56'
 }
 IPTBrowserTests >> testBuildCodeEditorWith [
 
 	| spec |
 	spec := browser buildCodeEditorWith: ToolBuilder new.
 	
-	self assert: true equals: (spec isKindOf: PluggableCodePaneSpec).
-	self assert: browser equals: spec model.
+	self assert: (spec isKindOf: PluggableCodePaneSpec).
+	self assert: browser codeEditor equals: spec model.
 ]
 
 {
@@ -62,12 +62,12 @@ IPTBrowserTests >> testBuildCodePieceListWith [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:46'
+	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:59'
 }
 IPTBrowserTests >> testBuildDescriptionBoxWith [
 
 	| spec |
-	spec := browser buildChapterDescriptionBoxWith: ToolBuilder new.
+	spec := browser buildDescriptionBoxWith: ToolBuilder new.
 	
 	self assert: true equals: (spec isKindOf: PluggableTextSpec).
 	self assert: browser equals: spec model.
@@ -153,14 +153,14 @@ IPTBrowserTests >> testBuildTitleBarWith [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:52'
+	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:58'
 }
 IPTBrowserTests >> testBuildVerifyButtonWith [
 
 	| spec |
-	spec := browser buildTitleBarWith: ToolBuilder new.
+	spec := browser buildVerifyButtonWith: ToolBuilder new.
 	
-	self assert: true equals: (spec isKindOf: PluggableButtonSpec).
+	self assert: (spec isKindOf: PluggableButtonSpec).
 	self assert: browser equals: spec model.
 ]
 
