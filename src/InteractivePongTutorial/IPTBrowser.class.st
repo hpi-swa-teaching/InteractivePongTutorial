@@ -9,22 +9,25 @@ Class {
 		'levelIndex',
 		'classSet',
 		'descriptionBoxContent',
-		'visibleClassSet'
+		'visibleClassSet',
+		'playground'
 	],
 	#category : #'InteractivePongTutorial-Core'
 }
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 19:58'
+	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 16:49'
 }
 IPTBrowser class >> openFrom: anIPT chapter: aChapter levelIndex: aNumber [
 
-	|browser|
+	| browser |
 	browser := self new 
 		ipt: anIPT;
 		chapter: aChapter;
-		loadLevel: aNumber.
+		loadLevel: aNumber;
+		playground: IPTPlayground new;
+		yourself.
 	ToolBuilder open: browser.
 	^ browser
 ]
@@ -126,6 +129,22 @@ IPTBrowser >> buildNextLevelButtonWith: aBuilder [
 
 {
 	#category : #building,
+	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 17:07'
+}
+IPTBrowser >> buildPlaygroundWith: aBuilder [
+
+	^ aBuilder pluggablePanelSpec new
+		model: self;
+		children: #playgroundInCollection;
+		frame: (LayoutFrame new
+			leftFraction: 0.5 offset: 400 negated;
+			topFraction: 0;
+			rightFraction: 0.5 offset: 400;
+			bottomFraction: 0 offset: (500))
+]
+
+{
+	#category : #building,
 	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:43'
 }
 IPTBrowser >> buildPreviousLevelButtonWith: aBuilder [
@@ -215,7 +234,7 @@ IPTBrowser >> buildVerifyButtonWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'FH 6/15/2024 11:13'
+	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 16:45'
 }
 IPTBrowser >> buildWith: aBuilder [
 	^ aBuilder build: (aBuilder pluggableWindowSpec new
@@ -233,6 +252,7 @@ IPTBrowser >> buildWith: aBuilder [
 			self buildNextLevelButtonWith: aBuilder.
 			self buildPreviousLevelButtonWith: aBuilder.
 			self buildShowSolutionButtonWith: aBuilder.
+			self buildPlaygroundWith: aBuilder.
 			};
 		yourself)
 ]
@@ -447,6 +467,30 @@ IPTBrowser >> nextLevelButtonAction [
 }
 IPTBrowser >> nextLevelButtonEnabled [
 	^ self chapter levels size > self levelIndex.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 16:47'
+}
+IPTBrowser >> playground [
+	^ playground
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 16:47'
+}
+IPTBrowser >> playground: anObject [
+	playground := anObject
+]
+
+{
+	#category : #building,
+	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 16:48'
+}
+IPTBrowser >> playgroundInCollection [
+	^ { self playground }.
 ]
 
 {

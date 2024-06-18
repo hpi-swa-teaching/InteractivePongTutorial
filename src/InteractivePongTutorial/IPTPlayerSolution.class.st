@@ -1,18 +1,18 @@
 Class {
-	#name : #IPTPlayer,
-	#superclass : #Morph,
+	#name : #IPTPlayerSolution,
+	#superclass : #'IPT__TEST',
 	#instVars : [
 		'game',
 		'speed'
 	],
-	#category : #'InteractivePongTutorial-Game'
+	#category : #'InteractivePongTutorial-Core'
 }
 
 {
 	#category : #accessing,
 	#'squeak_changestamp' : 'JZ 5/22/2024 17:02'
 }
-IPTPlayer >> defaultSpeed [
+IPTPlayerSolution >> defaultSpeed [
 
 	^ 10.
 ]
@@ -21,7 +21,7 @@ IPTPlayer >> defaultSpeed [
 	#category : #movement,
 	#'squeak_changestamp' : 'JZ 5/22/2024 16:44'
 }
-IPTPlayer >> down [
+IPTPlayerSolution >> down [
 
 	self speed: self defaultSpeed.
 ]
@@ -30,7 +30,7 @@ IPTPlayer >> down [
 	#category : #accessing,
 	#'squeak_changestamp' : 'JZ 5/22/2024 17:02'
 }
-IPTPlayer >> game [
+IPTPlayerSolution >> game [
 
 	^ game.
 ]
@@ -39,7 +39,7 @@ IPTPlayer >> game [
 	#category : #accessing,
 	#'squeak_changestamp' : 'JZ 5/22/2024 17:02'
 }
-IPTPlayer >> game: aGame [
+IPTPlayerSolution >> game: aGame [
 
 	game := aGame.
 ]
@@ -48,7 +48,7 @@ IPTPlayer >> game: aGame [
 	#category : #initialization,
 	#'squeak_changestamp' : 'JZ 5/22/2024 16:50'
 }
-IPTPlayer >> initialize [
+IPTPlayerSolution >> initialize [
 
 	super initialize.
 	self 
@@ -62,7 +62,7 @@ IPTPlayer >> initialize [
 	#category : #movement,
 	#'squeak_changestamp' : 'JZ 5/22/2024 17:04'
 }
-IPTPlayer >> move: aNumber [
+IPTPlayerSolution >> move: aNumber [
 	| newPosition |
 	newPosition := self position y + aNumber.
 	((newPosition - self game position y)
@@ -75,7 +75,7 @@ IPTPlayer >> move: aNumber [
 	#category : #accessing,
 	#'squeak_changestamp' : 'JZ 5/22/2024 17:02'
 }
-IPTPlayer >> speed [
+IPTPlayerSolution >> speed [
 
 	^ speed.
 ]
@@ -84,7 +84,7 @@ IPTPlayer >> speed [
 	#category : #accessing,
 	#'squeak_changestamp' : 'JZ 5/22/2024 17:02'
 }
-IPTPlayer >> speed: aNumber [
+IPTPlayerSolution >> speed: aNumber [
 	speed := aNumber.
 ]
 
@@ -92,7 +92,7 @@ IPTPlayer >> speed: aNumber [
 	#category : #stepping,
 	#'squeak_changestamp' : 'JZ 5/22/2024 16:47'
 }
-IPTPlayer >> step [
+IPTPlayerSolution >> step [
 	self move: self speed
 ]
 
@@ -100,7 +100,7 @@ IPTPlayer >> step [
 	#category : #stepping,
 	#'squeak_changestamp' : 'JZ 5/22/2024 16:51'
 }
-IPTPlayer >> stepTime [
+IPTPlayerSolution >> stepTime [
 	^ 10.
 ]
 
@@ -108,7 +108,7 @@ IPTPlayer >> stepTime [
 	#category : #movement,
 	#'squeak_changestamp' : 'JZ 5/22/2024 16:44'
 }
-IPTPlayer >> stop [
+IPTPlayerSolution >> stop [
 	self speed: 0.
 ]
 
@@ -116,7 +116,7 @@ IPTPlayer >> stop [
 	#category : #movement,
 	#'squeak_changestamp' : 'JZ 5/22/2024 16:44'
 }
-IPTPlayer >> up [
+IPTPlayerSolution >> up [
 
 	self speed: self defaultSpeed negated.
 ]

@@ -1,18 +1,18 @@
 Class {
-	#name : #IPTBall,
-	#superclass : #Morph,
+	#name : #IPTBallSolution,
+	#superclass : #'IPT__TEST',
 	#instVars : [
 		'game',
 		'speed'
 	],
-	#category : #'InteractivePongTutorial-Game'
+	#category : #'InteractivePongTutorial-Core'
 }
 
 {
 	#category : #collision,
 	#'squeak_changestamp' : 'JZ 5/22/2024 16:26'
 }
-IPTBall >> checkCollisionWithPlayer [
+IPTBallSolution >> checkCollisionWithPlayer [
 
 	(self game playerBounds anySatisfy: [:bounds | bounds intersects: self bounds])
 			ifTrue: [self turnHorizontal].
@@ -22,7 +22,7 @@ IPTBall >> checkCollisionWithPlayer [
 	#category : #collision,
 	#'squeak_changestamp' : 'JZ 5/22/2024 16:23'
 }
-IPTBall >> checkCollisionWithWalls [
+IPTBallSolution >> checkCollisionWithWalls [
 
 	(self position x between: self game left and: self game right - self width)
 		ifFalse: [self startOver].
@@ -34,7 +34,7 @@ IPTBall >> checkCollisionWithWalls [
 	#category : #collision,
 	#'squeak_changestamp' : 'JZ 5/22/2024 16:24'
 }
-IPTBall >> checkCollisions [
+IPTBallSolution >> checkCollisions [
 	self checkCollisionWithWalls.
 	self checkCollisionWithPlayer.
 ]
@@ -43,7 +43,7 @@ IPTBall >> checkCollisions [
 	#category : #accessing,
 	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 09:50'
 }
-IPTBall >> defaultSpeed [
+IPTBallSolution >> defaultSpeed [
 
 	^ 10.
 ]
@@ -52,7 +52,7 @@ IPTBall >> defaultSpeed [
 	#category : #accessing,
 	#'squeak_changestamp' : 'JZ 5/22/2024 16:57'
 }
-IPTBall >> game [
+IPTBallSolution >> game [
 
 	^ game.
 ]
@@ -61,7 +61,7 @@ IPTBall >> game [
 	#category : #accessing,
 	#'squeak_changestamp' : 'JZ 5/22/2024 17:07'
 }
-IPTBall >> game: aGame [
+IPTBallSolution >> game: aGame [
 
 	game := aGame.
 ]
@@ -70,7 +70,7 @@ IPTBall >> game: aGame [
 	#category : #initialization,
 	#'squeak_changestamp' : 'JZ 5/22/2024 14:19'
 }
-IPTBall >> initialize [ 
+IPTBallSolution >> initialize [ 
 
 	super initialize.
 	self
@@ -82,7 +82,7 @@ IPTBall >> initialize [
 	#category : #accessing,
 	#'squeak_changestamp' : 'JZ 5/22/2024 17:07'
 }
-IPTBall >> speed [
+IPTBallSolution >> speed [
 
 	^ speed.
 ]
@@ -91,7 +91,7 @@ IPTBall >> speed [
 	#category : #accessing,
 	#'squeak_changestamp' : 'JZ 5/22/2024 17:07'
 }
-IPTBall >> speed: aNumber [
+IPTBallSolution >> speed: aNumber [
 
 	speed := aNumber.
 ]
@@ -100,7 +100,7 @@ IPTBall >> speed: aNumber [
 	#category : #initialization,
 	#'squeak_changestamp' : 'JZ 5/22/2024 14:01'
 }
-IPTBall >> startOver [
+IPTBallSolution >> startOver [
 
 	self 
 		position: (self game center x - (self width / 2)) @ 
@@ -112,7 +112,7 @@ IPTBall >> startOver [
 	#category : #stepping,
 	#'squeak_changestamp' : 'JZ 5/22/2024 16:24'
 }
-IPTBall >> step [
+IPTBallSolution >> step [
 
 	self position: self position + self speed.
 	self checkCollisions. 
@@ -122,7 +122,7 @@ IPTBall >> step [
 	#category : #stepping,
 	#'squeak_changestamp' : 'JZ 5/22/2024 17:08'
 }
-IPTBall >> stepTime [
+IPTBallSolution >> stepTime [
 
 	^ 10.
 ]
@@ -131,7 +131,7 @@ IPTBall >> stepTime [
 	#category : #movement,
 	#'squeak_changestamp' : 'JZ 5/22/2024 14:02'
 }
-IPTBall >> turnHorizontal [
+IPTBallSolution >> turnHorizontal [
 
 	self speed: self speed x negated @ self speed y.
 ]
@@ -140,7 +140,7 @@ IPTBall >> turnHorizontal [
 	#category : #movement,
 	#'squeak_changestamp' : 'JZ 5/22/2024 14:02'
 }
-IPTBall >> turnVertical [
+IPTBallSolution >> turnVertical [
 
 	self speed: self speed x @ self speed y negated.
 ]

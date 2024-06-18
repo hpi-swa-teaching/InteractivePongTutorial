@@ -1,19 +1,19 @@
 Class {
-	#name : #IPTGame,
-	#superclass : #Morph,
+	#name : #IPTGameSolution,
+	#superclass : #'IPT__TEST',
 	#instVars : [
 		'playerLeft',
 		'playerRight',
 		'ball'
 	],
-	#category : #'InteractivePongTutorial-Game'
+	#category : #'InteractivePongTutorial-Core'
 }
 
 {
 	#category : #constants,
 	#'squeak_changestamp' : 'JZ 5/22/2024 13:53'
 }
-IPTGame class >> open [
+IPTGameSolution class >> open [
 	self new openInWorld
 ]
 
@@ -21,7 +21,7 @@ IPTGame class >> open [
 	#category : #accessing,
 	#'squeak_changestamp' : 'JZ 5/22/2024 16:59'
 }
-IPTGame >> ball [
+IPTGameSolution >> ball [
 
 	^ ball.
 ]
@@ -30,7 +30,7 @@ IPTGame >> ball [
 	#category : #accessing,
 	#'squeak_changestamp' : 'JZ 5/22/2024 17:00'
 }
-IPTGame >> ball: aBall [
+IPTGameSolution >> ball: aBall [
 
 	ball := aBall.
 ]
@@ -39,7 +39,7 @@ IPTGame >> ball: aBall [
 	#category : #'event handling',
 	#'squeak_changestamp' : 'JZ 5/22/2024 14:46'
 }
-IPTGame >> handlesKeyboard: anEvent [
+IPTGameSolution >> handlesKeyboard: anEvent [
 
 	^ true.
 ]
@@ -48,7 +48,7 @@ IPTGame >> handlesKeyboard: anEvent [
 	#category : #initialization,
 	#'squeak_changestamp' : 'JZ 5/22/2024 16:27'
 }
-IPTGame >> initialize [
+IPTGameSolution >> initialize [
 
 	super initialize.
 	self 
@@ -63,7 +63,7 @@ IPTGame >> initialize [
 	#category : #initialization,
 	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 17:22'
 }
-IPTGame >> initializeBall [
+IPTGameSolution >> initializeBall [
 		
 	self
 		ball: (IPTBallSolution new game: self);
@@ -75,7 +75,7 @@ IPTGame >> initializeBall [
 	#category : #initialization,
 	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 17:22'
 }
-IPTGame >> initializePlayers [
+IPTGameSolution >> initializePlayers [
 	
 	self
 		playerLeft: (IPTPlayerSolution new
@@ -92,7 +92,7 @@ IPTGame >> initializePlayers [
 	#category : #'event handling',
 	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 09:47'
 }
-IPTGame >> keyDown: anEvent [
+IPTGameSolution >> keyDown: anEvent [
 	Transcript show: anEvent keyCharacter.
 	(anEvent keyCharacter asUppercase = $W ) ifTrue: [self playerLeft up].
 	(anEvent keyCharacter asUppercase = $S ) ifTrue: [self playerLeft down].
@@ -104,7 +104,7 @@ IPTGame >> keyDown: anEvent [
 	#category : #'event handling',
 	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 09:48'
 }
-IPTGame >> keyUp: anEvent [
+IPTGameSolution >> keyUp: anEvent [
 	(anEvent keyCharacter asUppercase = $W ) ifTrue: [self playerLeft stop].
 	(anEvent keyCharacter asUppercase = $S) ifTrue: [self playerLeft stop].
 	(anEvent keyCharacter = Character arrowUp) ifTrue: [self playerRight stop].
@@ -115,7 +115,7 @@ IPTGame >> keyUp: anEvent [
 	#category : #'event handling',
 	#'squeak_changestamp' : 'JZ 5/22/2024 17:05'
 }
-IPTGame >> mouseEnter: anEvent [
+IPTGameSolution >> mouseEnter: anEvent [
 
 	anEvent hand newKeyboardFocus: self.
 ]
@@ -124,7 +124,7 @@ IPTGame >> mouseEnter: anEvent [
 	#category : #'event handling',
 	#'squeak_changestamp' : 'JZ 5/22/2024 17:06'
 }
-IPTGame >> mouseLeave: anEvent [
+IPTGameSolution >> mouseLeave: anEvent [
 
 	anEvent hand releaseKeyboardFocus: self.
 ]
@@ -133,7 +133,7 @@ IPTGame >> mouseLeave: anEvent [
 	#category : #accessing,
 	#'squeak_changestamp' : 'JZ 5/22/2024 16:25'
 }
-IPTGame >> playerBounds [
+IPTGameSolution >> playerBounds [
 	^ {self playerLeft bounds . self playerRight bounds}.
 ]
 
@@ -141,7 +141,7 @@ IPTGame >> playerBounds [
 	#category : #accessing,
 	#'squeak_changestamp' : 'mp 10/29/2013 12:28:15.175'
 }
-IPTGame >> playerLeft [
+IPTGameSolution >> playerLeft [
 
 	^ playerLeft
 ]
@@ -150,7 +150,7 @@ IPTGame >> playerLeft [
 	#category : #accessing,
 	#'squeak_changestamp' : 'JZ 5/22/2024 17:00'
 }
-IPTGame >> playerLeft: aPlayer [
+IPTGameSolution >> playerLeft: aPlayer [
 
 	playerLeft := aPlayer
 ]
@@ -159,7 +159,7 @@ IPTGame >> playerLeft: aPlayer [
 	#category : #accessing,
 	#'squeak_changestamp' : 'mp 10/29/2013 12:28:15.193'
 }
-IPTGame >> playerRight [
+IPTGameSolution >> playerRight [
 
 	^ playerRight
 ]
@@ -168,7 +168,7 @@ IPTGame >> playerRight [
 	#category : #accessing,
 	#'squeak_changestamp' : 'mp 10/29/2013 12:28:15.201'
 }
-IPTGame >> playerRight: anObject [
+IPTGameSolution >> playerRight: anObject [
 
 	playerRight := anObject
 ]
