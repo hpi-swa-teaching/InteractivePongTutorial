@@ -14,15 +14,14 @@ IPTLevel0101 >> description [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 11:53'
+	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 17:53'
 }
 IPTLevel0101 >> initialize [
 	self 
 		levelIndex: 1;
 		name: 'Level01';
 		visibleMethods: {
-			IPTTestObject >> #aNormalMethod.
-			IPTTestObject >> #aMethodWithParam:}.
+			IPTGame >> #initialize }.
 	
 ]
 

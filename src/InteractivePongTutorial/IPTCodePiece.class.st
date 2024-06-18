@@ -12,6 +12,15 @@ Class {
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 17:41'
+}
+IPTCodePiece class >> codePieceCollection [
+	^ { self game_initialize.} 
+		asOrderedCollection.
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 11:54'
 }
 IPTCodePiece class >> defaultCodePiece [
@@ -28,7 +37,7 @@ IPTCodePiece class >> defaultCodePiece [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/17/2024 12:20'
+	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 17:42'
 }
 IPTCodePiece class >> defaultCodePieces [
 	^ { IPTCodePiece new
@@ -67,6 +76,28 @@ IPTCodePiece class >> defaultCodePieces [
 					yourself. };
 			yourself. } 
 			asOrderedCollection.
+]
+
+{
+	#category : #'game methods',
+	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 17:40'
+}
+IPTCodePiece class >> game_initialize [
+	^ IPTCodePiece new
+			methodToBeChanged: (IPTGame >> #initialize);
+			head: 'initialize';
+			variants: { 
+				IPTCodeVariant new
+					levelNumber: 101;
+					initialCode:  '^ ', $', 'Hello World', $';
+					solutionCode:   '^ ', $', 'This is the right solution', $';
+					yourself.
+				IPTCodeVariant new
+					levelNumber: 102;
+					initialCode: '^ ', $', 'Hello Level 2', $';
+					solutionCode: '^ ', $', 'This is the right solution for Level 2', $';
+					yourself. };
+			yourself.
 ]
 
 {

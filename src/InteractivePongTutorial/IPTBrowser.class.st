@@ -315,10 +315,10 @@ IPTBrowser >> checkAndSaveCode [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 14:09'
+	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 17:50'
 }
 IPTBrowser >> classSet [
-	classSet ifNil: [self classSet: IPTClass testClassList].
+	classSet ifNil: [self classSet: IPTClass classList].
 	^ classSet
 ]
 
