@@ -46,17 +46,15 @@ IPTGameSolution >> handlesKeyboard: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'JZ 5/22/2024 16:27'
+	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 10:34'
 }
 IPTGameSolution >> initialize [
 
 	super initialize.
 	self 
-		extent: 800 @ 500;
+		extent: (100@100);
 		color: Color black;
-		beSticky;
-		initializePlayers;
-		initializeBall.
+		beSticky.
 ]
 
 {
@@ -73,16 +71,16 @@ IPTGameSolution >> initializeBall [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 17:22'
+	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 11:04'
 }
 IPTGameSolution >> initializePlayers [
 	
 	self
 		playerLeft: (IPTPlayerSolution new
-			position: 30@175;
+			position: self position + (15 @ (self extent y / 2-50));
 			game: self);
-		playerRight: (IPTPlayerSolution new 
-			position: 765@175;
+		playerRight: (IPTPlayerSolution new
+			position:  self position + (self extent x - 30 @ (self extent y / 2-50));
 			game: self);
 		addMorph: self playerLeft;
 		addMorph: self playerRight.
@@ -171,4 +169,17 @@ IPTGameSolution >> playerRight [
 IPTGameSolution >> playerRight: anObject [
 
 	playerRight := anObject
+]
+
+{
+	#category : #initialization,
+	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 10:40'
+}
+IPTGameSolution >> setupWithExtent: aExtent position: aPoint [
+
+	self 
+		position: aPoint;
+		extent: aExtent;
+		initializePlayers;
+		initializeBall.
 ]

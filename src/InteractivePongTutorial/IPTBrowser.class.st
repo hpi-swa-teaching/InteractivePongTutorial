@@ -129,7 +129,25 @@ IPTBrowser >> buildNextLevelButtonWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 17:07'
+	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 11:07'
+}
+IPTBrowser >> buildPlayButtonWith: aBuilder [
+
+	^ aBuilder pluggableButtonSpec new
+		model: self;
+		label: 'Play';
+		action: #runCode;
+		enabled: true;
+		frame: (LayoutFrame new
+			leftFraction: 0;
+			topFraction: (1 - self buttonHeight);
+			rightFraction: 0.25 / 2;
+			bottomFraction: 1)
+]
+
+{
+	#category : #building,
+	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 10:00'
 }
 IPTBrowser >> buildPlaygroundWith: aBuilder [
 
@@ -137,10 +155,10 @@ IPTBrowser >> buildPlaygroundWith: aBuilder [
 		model: self;
 		children: #playgroundInCollection;
 		frame: (LayoutFrame new
-			leftFraction: 0.5 offset: 400 negated;
+			leftFraction: 0.25;
 			topFraction: 0;
-			rightFraction: 0.5 offset: 400;
-			bottomFraction: 0 offset: (500))
+			rightFraction: 0.75;
+			bottomFraction: 0.5)
 ]
 
 {
@@ -216,25 +234,7 @@ IPTBrowser >> buildTitleBarWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 12:20'
-}
-IPTBrowser >> buildVerifyButtonWith: aBuilder [
-
-	^ aBuilder pluggableButtonSpec new
-		model: self;
-		label: #verifyButtonContent;
-		action: #verifyCode;
-		enabled: true;
-		frame: (LayoutFrame new
-			leftFraction: 0;
-			topFraction: (1 - self buttonHeight);
-			rightFraction: 0.25 / 2;
-			bottomFraction: 1)
-]
-
-{
-	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 16:45'
+	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 11:07'
 }
 IPTBrowser >> buildWith: aBuilder [
 	^ aBuilder build: (aBuilder pluggableWindowSpec new
@@ -246,7 +246,7 @@ IPTBrowser >> buildWith: aBuilder [
 			self buildTitleBarWith: aBuilder.
 			self buildCodeEditorWith: aBuilder.
 			self buildCodePieceListWith: aBuilder.
-			self buildVerifyButtonWith: aBuilder.
+			self buildPlayButtonWith: aBuilder.
 			self buildResetButtonWith: aBuilder.
 			self buildHomeButtonWith: aBuilder.
 			self buildNextLevelButtonWith: aBuilder.
@@ -433,7 +433,7 @@ IPTBrowser >> levelIndex: anObject [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 6/17/2024 11:53'
+	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 12:38'
 }
 IPTBrowser >> loadLevel: aLevelIndex [
 	self 
@@ -442,10 +442,10 @@ IPTBrowser >> loadLevel: aLevelIndex [
 		
 	self classSet do: [ :c | 
 		c methodCodePieces do: [ :codePiece | 
-			codePiece loadInitialCodeForLevel: self levelIndex andChapter: self activeLevel chapterNumber]].
+			codePiece loadInitialCodeForLevel: self levelIndex andChapter: self chapter chapterNumber]].
 	
 	self 
-		updateVisibleClassSetToMethods: self activeLevel visibleMethods;
+		updateVisibleClassSetToMethods: self activeLevel visibleCodePieces;
 		update.
 	
 		
@@ -507,6 +507,18 @@ IPTBrowser >> previousLevelButtonAction [
 }
 IPTBrowser >> previousLevelButtonEnabled [
 	^ self levelIndex > 1.
+]
+
+{
+	#category : #actions,
+	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 12:40'
+}
+IPTBrowser >> runCode [
+	
+	self descriptionBoxContent: ''.
+	
+	self update.
+
 ]
 
 {
@@ -607,25 +619,6 @@ IPTBrowser >> updateVisibleClassSetToMethods: aMethodsCollection [
 	
 		
 	
-]
-
-{
-	#category : #ui,
-	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:48'
-}
-IPTBrowser >> verifyButtonContent [
-	^ 'Verify'
-]
-
-{
-	#category : #actions,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/15/2024 13:33'
-}
-IPTBrowser >> verifyCode [
-	
-	self descriptionBoxContent: (self activeLevel runTest: (self selectedMethod name)).
-	self update.
-
 ]
 
 {

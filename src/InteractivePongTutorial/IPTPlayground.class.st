@@ -23,3 +23,15 @@ IPTPlayground >> initialize [
 		ifNil: [self color: Preferences defaultWorldColor  ] 
 		ifNotNil: [ self setAsBackground: theme linenblue ].
 ]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 11:09'
+}
+IPTPlayground >> runCode [
+	| game |
+	self removeAllMorphs.
+	game := IPTGameSolution new.
+	self addMorph: game. 
+	game setupWithExtent: self extent position: self position.
+]

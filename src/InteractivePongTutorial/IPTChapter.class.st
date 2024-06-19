@@ -13,7 +13,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 13:03'
+	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 12:36'
 }
 IPTChapter class >> chapterSet [
 	^ {IPTChapter 
@@ -26,14 +26,13 @@ IPTChapter class >> chapterSet [
 			number: 1
 			description: 'This is Chapter 1'
 			levels: {
-				IPTLevel0101 new.
-				IPTLevel0102 new}. 
+				IPTLevel0101.
+				IPTLevel0102}. 
 		IPTChapter 
 			withName: 'Player movement'
 			number: 2
 			description: 'This is Chapter 2'
-			levels: {
-				IPTLevel0201 new}}
+			levels: {}}
 ]
 
 {
@@ -115,11 +114,10 @@ IPTChapter >> levels [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 13:02'
+	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 12:32'
 }
 IPTChapter >> levels: anObject [
 	levels := anObject.
-	self levels do: [ :each | each chapterNumber: self chapterNumber].
 ]
 
 {

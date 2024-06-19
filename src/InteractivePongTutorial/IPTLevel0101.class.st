@@ -6,45 +6,45 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JZ 6/7/2024 14:15'
+	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 12:15'
 }
-IPTLevel0101 >> description [
+IPTLevel0101 class >> asString [
+
+	^ 'Level 01'
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 12:26'
+}
+IPTLevel0101 class >> description [
+	
 	^ 'This is level 01'.
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 17:53'
+	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 12:15'
 }
-IPTLevel0101 >> initialize [
-	self 
-		levelIndex: 1;
-		name: 'Level01';
-		visibleMethods: {
-			IPTGame >> #initialize }.
-	
+IPTLevel0101 class >> levelIndex [
+
+	^ 1
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/15/2024 13:34'
+	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 12:15'
 }
-IPTLevel0101 >> testForANormalMethod [
-	|obj|
-	obj := IPTTestObject new.
-	((obj aNormalMethod) = 'Hello World!') ifTrue: [^'your code was correct'.] 
-	ifFalse: [^'your code was false'.] .
-	
+IPTLevel0101 class >> visibleCodePieces [
+
+	^ {IPTGame >> #initialize }.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/15/2024 12:45'
+	#category : #levelTests,
+	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 12:31'
 }
-IPTLevel0101 >> tests [
-	|dict|
-	dict:= Dictionary new
-		at: #aNormalMethod put: #testForANormalMethod;
-		yourself.
-	^dict
+IPTLevel0101 >> testGameInitialize [
+
+	self assert: game color equals: Color green description: 'You did not choose the right color!'.
 ]

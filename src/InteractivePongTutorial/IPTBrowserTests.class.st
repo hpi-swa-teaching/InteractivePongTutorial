@@ -153,12 +153,12 @@ IPTBrowserTests >> testBuildTitleBarWith [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:58'
+	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 11:07'
 }
 IPTBrowserTests >> testBuildVerifyButtonWith [
 
 	| spec |
-	spec := browser buildVerifyButtonWith: ToolBuilder new.
+	spec := browser buildPlayButtonWith: ToolBuilder new.
 	
 	self assert: (spec isKindOf: PluggableButtonSpec).
 	self assert: browser equals: spec model.
