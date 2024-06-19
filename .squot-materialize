@@ -1,4 +1,11 @@
 [
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'squeaky-happy.png'
+		],
+		#encoding : Class [ #PNGReadWriter ]
+	},
 	SquotTonelMapper {
 		#package : MCPackage {
 			#name : 'InteractivePongTutorial'
@@ -6,5 +13,19 @@
 		#path : FSAbsolutePath [
 			'src'
 		]
+	},
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'squeaky-sad.png'
+		],
+		#encoding : @4
+	},
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'squeaky-neutr.png'
+		],
+		#encoding : @4
 	}
 ]
