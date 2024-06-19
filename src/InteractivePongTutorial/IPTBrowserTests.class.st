@@ -224,14 +224,14 @@ IPTBrowserTests >> testNextLevelButtonEnabled [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 20:22'
+	#'squeak_changestamp' : 'sv 6/19/2024 11:02'
 }
 IPTBrowserTests >> testPreviousLevelButton [
 
-	(chapter levels size > 1) ifTrue: [
+	"We know that we are in Chapter 2, Level 2 so the Previous Level Functionality may be executed."
 	browser loadLevel: chapter levels size.
 	browser previousLevelButtonAction.
-	self assert: browser levelIndex == (chapter levels size - 1).]
+	self assert: browser levelIndex == (chapter levels size - 1).
 ]
 
 {
