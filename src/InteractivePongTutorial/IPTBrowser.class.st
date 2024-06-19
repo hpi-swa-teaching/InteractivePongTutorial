@@ -76,7 +76,7 @@ IPTBrowser >> buildCodePieceListWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:20'
+	#'squeak_changestamp' : 'sv 6/19/2024 17:11'
 }
 IPTBrowser >> buildDescriptionBoxWith: aBuilder [
 
@@ -89,7 +89,7 @@ IPTBrowser >> buildDescriptionBoxWith: aBuilder [
 			leftFraction: 0.75;
 			topFraction: 0;
 			rightFraction: 1;
-			bottomFraction: 1)
+			bottomFraction: 1 offset: 300 negated)
 ]
 
 {
@@ -198,6 +198,22 @@ IPTBrowser >> buildShowSolutionButtonWith: aBuilder [
 
 {
 	#category : #building,
+	#'squeak_changestamp' : 'sv 6/19/2024 17:12'
+}
+IPTBrowser >> buildSqueakyWith: aBuilder [
+
+	^ aBuilder pluggablePanelSpec new
+		model: self;
+		children: #squeakyMorph;
+		frame: (LayoutFrame new
+			leftFraction: 0.75;
+			topFraction: 1 offset: 300 negated;
+			rightFraction: 1;
+			bottomFraction: 1)
+]
+
+{
+	#category : #building,
 	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:26'
 }
 IPTBrowser >> buildTitleBarWith: aBuilder [
@@ -234,7 +250,7 @@ IPTBrowser >> buildVerifyButtonWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 16:45'
+	#'squeak_changestamp' : 'sv 6/19/2024 17:11'
 }
 IPTBrowser >> buildWith: aBuilder [
 	^ aBuilder build: (aBuilder pluggableWindowSpec new
@@ -253,6 +269,7 @@ IPTBrowser >> buildWith: aBuilder [
 			self buildPreviousLevelButtonWith: aBuilder.
 			self buildShowSolutionButtonWith: aBuilder.
 			self buildPlaygroundWith: aBuilder.
+			self buildSqueakyWith: aBuilder.
 			};
 		yourself)
 ]
@@ -557,6 +574,18 @@ IPTBrowser >> showSolutionButtonAction [
 IPTBrowser >> showSolutionButtonEnabled [
 
 	^ self selectedMethod isNil not and: [self selectedMethod hasBody].
+]
+
+{
+	#category : #building,
+	#'squeak_changestamp' : 'sv 6/19/2024 17:11'
+}
+IPTBrowser >> squeakyMorph [
+
+	^ {ImageMorph new
+		image: (((GitAssetLoader for: 'InteractivePongTutorial')
+			loadForm: 'assets/' , 'squeaky-neutr.png')
+				scaledToHeight: 300)}
 ]
 
 {
