@@ -253,9 +253,18 @@ IPTBrowserTests >> testSelectClass [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 19:38'
+	#'squeak_changestamp' : 'sv 6/19/2024 11:10'
 }
 IPTBrowserTests >> testSelectMethod [
+
+	| klass meth |
+	klass := ipt browser visibleClassSet at: 1.
+	meth := klass methodCodePieces at: 1.
+
+	ipt browser selectMethod: meth.
+	
+	self assert: (ipt browser selectedMethod == meth).
+	self assert: (ipt browser codeEditor activeCodePiece == meth).
 ]
 
 {
