@@ -26,34 +26,34 @@ IPT class >> open [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:03'
+	#'squeak_changestamp' : 'FH 6/19/2024 14:29'
 }
 IPT >> browser [
-	^ browser
+	^ browser.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:03'
+	#'squeak_changestamp' : 'FH 6/19/2024 14:29'
 }
-IPT >> browser: anObject [
-	browser := anObject
+IPT >> browser: aBrowser [
+	browser := aBrowser.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:04'
+	#'squeak_changestamp' : 'FH 6/19/2024 14:30'
 }
 IPT >> chapterview [
-	^ chapterview
+	^ chapterview.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:04'
+	#'squeak_changestamp' : 'FH 6/19/2024 14:30'
 }
-IPT >> chapterview: anObject [
-	chapterview := anObject
+IPT >> chapterview: aChapterview [
+	chapterview := aChapterview.
 ]
 
 {

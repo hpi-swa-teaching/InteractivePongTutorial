@@ -21,45 +21,44 @@ IPTEditor class >> openOnBrowser: aBrowser [
 
 {
 	#category : #style,
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 19:20'
+	#'squeak_changestamp' : 'FH 6/19/2024 14:35'
 }
 IPTEditor >> aboutToStyle: aStyler [
-
 	self activeCodePiece ifNotNil: [
 		aStyler classOrMetaClass: self activeCodePiece class].
-	^ true
+	^ true.
 ]
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 12:25'
+	#'squeak_changestamp' : 'FH 6/19/2024 14:35'
 }
 IPTEditor >> accept [
-	self changed: #acceptChanges
+	self changed: #acceptChanges.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 12:21'
+	#'squeak_changestamp' : 'FH 6/19/2024 14:36'
 }
 IPTEditor >> actionOnSave [
-	^ actionOnSave
+	^ actionOnSave.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 12:21'
+	#'squeak_changestamp' : 'FH 6/19/2024 14:37'
 }
-IPTEditor >> actionOnSave: anObject [
-	actionOnSave := anObject
+IPTEditor >> actionOnSave: anAction [
+	actionOnSave := anAction.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 12:21'
+	#'squeak_changestamp' : 'FH 6/19/2024 14:37'
 }
 IPTEditor >> activeCodePiece [
-	^ activeCodePiece
+	^ activeCodePiece.
 ]
 
 {
@@ -77,56 +76,52 @@ IPTEditor >> activeCodePiece: aCodePiece [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 19:07'
+	#'squeak_changestamp' : 'FH 6/19/2024 14:37'
 }
 IPTEditor >> browser [
-	^ browser
+	^ browser.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 19:07'
+	#'squeak_changestamp' : 'FH 6/19/2024 14:38'
 }
 IPTEditor >> browser: anObject [
-	browser := anObject
+	browser := anObject.
 ]
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 11:47'
+	#'squeak_changestamp' : 'FH 6/19/2024 14:38'
 }
-IPTEditor >> buildCodePaneWith: builder [
-
-	^ (super buildCodePaneWith: builder)
+IPTEditor >> buildCodePaneWith: abuilder [
+	^ (super buildCodePaneWith: abuilder)
 		setText: #evaluateAndSaveText:notifying:;
 		yourself
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 12:25'
+	#'squeak_changestamp' : 'FH 6/19/2024 14:38'
 }
 IPTEditor >> code [
-	^ self contents
+	^ self contents.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 14:54'
+	#'squeak_changestamp' : 'FH 6/19/2024 14:38'
 }
 IPTEditor >> code: aString [
-
 	self contents: aString;
 		update.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 12:15'
+	#category : #evaluating,
+	#'squeak_changestamp' : 'FH 6/19/2024 14:39'
 }
 IPTEditor >> evaluateAndSaveText: aText notifying: aController [
-	
-	Transcript show: 'The text is evaluated'.
 	self code: aText.
 	self actionOnSave value.
 	
@@ -134,13 +129,12 @@ IPTEditor >> evaluateAndSaveText: aText notifying: aController [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 11:49'
+	#category : #evaluating,
+	#'squeak_changestamp' : 'FH 6/19/2024 14:39'
 }
 IPTEditor >> evaluateExpression: aString [
-
 	UIManager default inform: 'Please use the "Verify" button to test your code'.
-	^ nil
+	^ nil.
 ]
 
 {
@@ -153,16 +147,16 @@ IPTEditor >> update [
 
 {
 	#category : #style,
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 11:48'
+	#'squeak_changestamp' : 'FH 6/19/2024 14:39'
 }
 IPTEditor >> wantsAnnotationPane [
-	^ false
+	^ false.
 ]
 
 {
 	#category : #style,
-	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 12:23'
+	#'squeak_changestamp' : 'FH 6/19/2024 14:39'
 }
 IPTEditor >> wantsOptionalButtons [
-	^ false
+	^ false.
 ]
