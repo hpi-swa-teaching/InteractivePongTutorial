@@ -36,20 +36,27 @@ IPTLevel class >> levelIndex [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 14:29'
+	#'squeak_changestamp' : 'sv 6/20/2024 11:28'
 }
 IPTLevel class >> runTests [
-	| suite |
-	suite := TestSuite new.
+	"Runs all tests and returns occuring errors and failures"
+
+	| errors failures |
 	
-	(self allMethodsInCategory: #levelTests) do: [ :method | suite addTest: (self selector: method) ].
-	^ suite run.
-		"inject: {OrderedCollection new . OrderedCollection new} 
-		into: [ :list :selector | |result|
-			result := self run: selector.
-			list first addAll: result errors.
-			list second addAll: result failures.
-			list]."
+	errors := {} asOrderedCollection.
+	failures := {} asOrderedCollection.
+
+	(self allMethodsInCategory: #levelTests) do: [:method |
+		[(self selector: method) runCase]
+			on: Error do: [:ex | errors add: ex printString ]
+			on: TestFailure do: [:ex | failures add: ex printString ]
+	].
+
+	^ Dictionary new
+		at: #errors put: errors;
+		at: #failures put: failures;
+		at: #success put: ((errors isEmpty) and: [failures isEmpty]);
+		yourself.
 ]
 
 {
