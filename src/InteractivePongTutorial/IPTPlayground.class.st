@@ -6,30 +6,28 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 17:27'
+	#'squeak_changestamp' : 'FH 6/19/2024 14:34'
 }
 IPTPlayground >> initialize [
 	| theme |
 
 	super initialize.
-
-
-	self layoutFrame: (LayoutFrame fractions: (0@0 rect: 1@1)).
-	
+	self layoutFrame: (LayoutFrame fractions: (0@0 rect: 1@1)).	
 	self beSticky.
 	
 	theme := Smalltalk at: #SqueakTheme ifAbsent: nil.
 	theme
-		ifNil: [self color: Preferences defaultWorldColor  ] 
-		ifNotNil: [ self setAsBackground: theme linenblue ].
+		ifNil: [self color: Preferences defaultWorldColor] 
+		ifNotNil: [self setAsBackground: theme linenblue].
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 14:10'
+	#'squeak_changestamp' : 'Felix Knöfel 6/20/2024 09:34'
 }
 IPTPlayground >> runCode [
 	| game |
+	
 	self removeAllMorphs.
 	game := IPTGameSolution new.
 	self addMorph: game. 
