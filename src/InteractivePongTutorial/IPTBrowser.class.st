@@ -379,14 +379,6 @@ IPTBrowser >> descriptionBoxContent [
 	#category : #accessing,
 	#'squeak_changestamp' : 'Leo Sonnenberg 6/15/2024 13:29'
 }
-IPTBrowser >> descriptionBoxContent1 [
-	^ descriptionBoxContent
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/15/2024 13:29'
-}
 IPTBrowser >> descriptionBoxContent: anObject [
 	descriptionBoxContent := anObject
 ]
@@ -511,19 +503,26 @@ IPTBrowser >> previousLevelButtonEnabled [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 14:36'
+	#'squeak_changestamp' : 'sv 6/20/2024 10:35'
 }
 IPTBrowser >> runCode [
 	
-	| errors fails testResults |
+	| errors fails testResults output |
 	
 	 testResults := self activeLevel runTests.
-	 fails := testResults failures.
-	 errors := testResults errors.
+	 fails := testResults at: #failures.
+	 errors := testResults at: #errors.
+	
+	output := ''.
 	
 	errors 
 		ifEmpty: [self playground runCode.]
-		ifNotEmpty: [ self descriptionBoxContent: errors first ].
+		ifNotEmpty: [ output := output, errors asString ].
+		
+	fails
+		ifNotEmpty: [ output := output, Character cr, fails asString ].
+		
+	self descriptionBoxContent: output.
 		
 	self update.
 

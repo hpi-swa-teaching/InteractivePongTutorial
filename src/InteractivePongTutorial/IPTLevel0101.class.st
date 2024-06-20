@@ -42,9 +42,9 @@ IPTLevel0101 class >> visibleCodePieces [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 12:31'
+	#'squeak_changestamp' : 'sv 6/20/2024 10:20'
 }
 IPTLevel0101 >> testGameInitialize [
 
-	self assert: game color equals: Color green description: 'You did not choose the right color!'.
+	self assert: Color green equals: game color description: 'You did not choose the right color!'.
 ]
