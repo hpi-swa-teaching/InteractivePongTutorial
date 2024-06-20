@@ -11,6 +11,30 @@ Class {
 }
 
 {
+	#category : #'game methods',
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:52'
+}
+IPTCodePiece class >> ball_game [
+	^ IPTCodePiece fromFile: '/assets/IPTBall/game.txt'.
+]
+
+{
+	#category : #'game methods',
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:52'
+}
+IPTCodePiece class >> ball_game_setter [
+	^ IPTCodePiece fromFile: '/assets/IPTBall/game:.txt'.
+]
+
+{
+	#category : #'game methods',
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:52'
+}
+IPTCodePiece class >> ball_initialize [
+	^ IPTCodePiece fromFile: '/assets/IPTBall/initialize.txt'.
+]
+
+{
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 17:42'
 }

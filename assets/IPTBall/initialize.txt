@@ -1,0 +1,11 @@
+initialize
+°°°°°
+1
+2
+°°
+	extent: defaultExtent.
+°°
+	super initialize.
+	self 
+		color: Color white;
+		extent: defaultExtent.

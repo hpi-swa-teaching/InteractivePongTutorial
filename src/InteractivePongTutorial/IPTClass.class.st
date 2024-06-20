@@ -10,10 +10,25 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 17:50'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:58'
+}
+IPTClass class >> ballClass [
+	^ IPTClass new 
+		name: 'IPTBall';
+		methodCodePieces: {
+			IPTCodePiece ball_initialize.
+			IPTCodePiece ball_game.
+			IPTCodePiece ball_game_setter.}
+			asOrderedCollection;
+		yourself.
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:51'
 }
 IPTClass class >> classList [
-	^ {self gameClass}.
+	^ {self gameClass. self ballClass.}.
 ]
 
 {

@@ -33,6 +33,28 @@ IPTBrowser class >> openFrom: anIPT chapter: aChapter levelIndex: aNumber [
 ]
 
 {
+	#category : #actions,
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:48'
+}
+IPTBrowser >> ResetButtonAction [
+	self levelIndex ifNotNil: [
+		self selectedMethod loadInitialCodeForLevel: self levelIndex andChapter: self chapter chapterNumber.
+		self codeEditor activeCodePiece: self selectedMethod.
+	].
+	
+	
+]
+
+{
+	#category : #ui,
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:47'
+}
+IPTBrowser >> ResetButtonEnabled [
+
+	^ self selectedMethod isNil not and: [self selectedMethod hasBody].
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:05'
 }
@@ -181,14 +203,15 @@ IPTBrowser >> buildPreviousLevelButtonWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'JZ 6/7/2024 15:37'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:47'
 }
 IPTBrowser >> buildResetButtonWith: aBuilder [
 
 	^ aBuilder pluggableButtonSpec new
 		model: self;
 		label: 'Reset';
-		enabled: false;
+		action: #ResetButtonAction;
+		enabled: #ResetButtonEnabled;
 		frame: (LayoutFrame new
 			leftFraction: 0.25 / 2;
 			topFraction: (1 - self buttonHeight);
@@ -291,12 +314,10 @@ IPTBrowser >> chapter: anObject [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 6/17/2024 12:29'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:48'
 }
 IPTBrowser >> checkAndSaveCode [
 	| code errMsg |
-	
-	Transcript show: 'trying to save', Character cr.
 	self closeAllAutoCompletionMorphs.
 	
 	code := self codeEditor
@@ -600,7 +621,7 @@ IPTBrowser >> titleBarHeight [
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:41'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:49'
 }
 IPTBrowser >> update [
 	self 
@@ -610,6 +631,7 @@ IPTBrowser >> update [
 		changed: #nextLevelButtonEnabled;
 		changed: #previousLevelButtonEnabled;
 		changed: #showSolutionButtonEnabled;
+		changed: #ResetButtonEnabled;
 		changed: #visibleClassSet.
 ]
 

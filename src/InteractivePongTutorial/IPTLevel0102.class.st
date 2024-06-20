@@ -33,11 +33,12 @@ IPTLevel0102 class >> levelIndex [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:40'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:58'
 }
 IPTLevel0102 class >> visibleCodePieces [
 
-	^ {IPTGame >> #initialize. IPTGame >> #initializeBall. IPTGame >> #ball. IPTGame >> #ball:.}.
+	^ {IPTGame >> #initialize. IPTGame >> #initializeBall. IPTGame >> #ball. IPTGame >> #ball:.
+		IPTBall >> #initialize. IPTBall >> #game. IPTBall >> #game:.}.
 ]
 
 {

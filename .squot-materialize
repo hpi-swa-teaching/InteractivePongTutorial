@@ -15,6 +15,22 @@
 		],
 		#encoding : 'TXT'
 	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTBall',
+			'initialize.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTBall',
+			'game.txt'
+		],
+		#encoding : 'TXT'
+	},
 	SquotTonelMapper {
 		#package : MCPackage {
 			#name : 'InteractivePongTutorial'
@@ -28,6 +44,14 @@
 			'assets',
 			'IPTGame',
 			'initializeBall.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTBall',
+			'game:.txt'
 		],
 		#encoding : 'TXT'
 	},
