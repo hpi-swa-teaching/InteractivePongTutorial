@@ -503,15 +503,15 @@ IPTBrowser >> previousLevelButtonEnabled [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'sv 6/20/2024 11:19'
+	#'squeak_changestamp' : 'sv 6/20/2024 11:29'
 }
 IPTBrowser >> runCode [
 	
-	| errors failures testResults output |
+	| errors failures testResult output |
 	
-	 testResults := self activeLevel runTests.
-	 failures := testResults at: #failures.
-	 errors := testResults at: #errors.
+	 testResult := self activeLevel runTests.
+	 failures := testResult at: #failures.
+	 errors := testResult at: #errors.
 	
 	output := ''.
 	
@@ -521,7 +521,11 @@ IPTBrowser >> runCode [
 		
 	failures
 		ifNotEmpty: [ output := (failures inject: (output, 'Failures:') into: [:run :elem | run, Character cr, elem ]) ].
-		
+	
+	(testResult at: #success) ifTrue: [
+			output := 'Well done! :)'.
+	].
+	
 	self descriptionBoxContent: output.
 		
 	self update.

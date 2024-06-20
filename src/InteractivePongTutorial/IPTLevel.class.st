@@ -36,7 +36,7 @@ IPTLevel class >> levelIndex [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'sv 6/20/2024 11:11'
+	#'squeak_changestamp' : 'sv 6/20/2024 11:28'
 }
 IPTLevel class >> runTests [
 	"Runs all tests and returns occuring errors and failures"
@@ -55,6 +55,7 @@ IPTLevel class >> runTests [
 	^ Dictionary new
 		at: #errors put: errors;
 		at: #failures put: failures;
+		at: #success put: ((errors isEmpty) and: [failures isEmpty]);
 		yourself.
 ]
 
