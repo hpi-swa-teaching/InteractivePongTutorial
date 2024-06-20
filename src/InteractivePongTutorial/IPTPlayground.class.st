@@ -26,7 +26,7 @@ IPTPlayground >> initialize [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 11:09'
+	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 14:10'
 }
 IPTPlayground >> runCode [
 	| game |

@@ -511,12 +511,20 @@ IPTBrowser >> previousLevelButtonEnabled [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 12:40'
+	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 14:36'
 }
 IPTBrowser >> runCode [
 	
-	self descriptionBoxContent: ''.
+	| errors fails testResults |
 	
+	 testResults := self activeLevel runTests.
+	 fails := testResults failures.
+	 errors := testResults errors.
+	
+	errors 
+		ifEmpty: [self playground runCode.]
+		ifNotEmpty: [ self descriptionBoxContent: errors first ].
+		
 	self update.
 
 ]

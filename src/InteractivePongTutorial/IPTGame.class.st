@@ -46,10 +46,11 @@ IPTGame >> handlesKeyboard: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 12:44'
+	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 14:11'
 }
 IPTGame >> initialize [
-	^ 'Hello World'
+	self addAll: {1}.
+	self error.
 ]
 
 {
