@@ -36,7 +36,7 @@ IPTLevel class >> levelIndex [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'sv 6/20/2024 10:13'
+	#'squeak_changestamp' : 'sv 6/20/2024 11:11'
 }
 IPTLevel class >> runTests [
 	"Runs all tests and returns occuring errors and failures"
@@ -56,18 +56,6 @@ IPTLevel class >> runTests [
 		at: #errors put: errors;
 		at: #failures put: failures;
 		yourself.
-
-	"| suite |
-	suite := TestSuite new.
-	
-	(self allMethodsInCategory: #levelTests) do: [ :method | suite addTest: (self selector: method) ].
-	^ suite run."
-		"inject: {OrderedCollection new . OrderedCollection new} 
-		into: [ :list :selector | |result|
-			result := self run: selector.
-			list first addAll: result errors.
-			list second addAll: result failures.
-			list]."
 ]
 
 {

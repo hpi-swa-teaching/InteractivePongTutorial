@@ -46,10 +46,10 @@ IPTGame >> handlesKeyboard: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'sv 6/20/2024 10:36'
+	#'squeak_changestamp' : 'sv 6/20/2024 11:22'
 }
 IPTGame >> initialize [
-	super initialize.
+	^ 123.
 ]
 
 {

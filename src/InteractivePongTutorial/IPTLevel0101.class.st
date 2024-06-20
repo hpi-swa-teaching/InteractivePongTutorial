@@ -42,9 +42,10 @@ IPTLevel0101 class >> visibleCodePieces [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'sv 6/20/2024 10:20'
+	#'squeak_changestamp' : 'sv 6/20/2024 11:22'
 }
 IPTLevel0101 >> testGameInitialize [
-
+	self assert: (game isKindOf: IPTGame) description: 'You may not return a value!'.
+	self assert: game color isNil not description: 'Have you initialized the morph?'.
 	self assert: Color green equals: game color description: 'You did not choose the right color!'.
 ]
