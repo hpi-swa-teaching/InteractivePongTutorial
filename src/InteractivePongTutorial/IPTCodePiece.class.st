@@ -69,10 +69,34 @@ IPTCodePiece class >> fromFile: aFilePath [
 
 {
 	#category : #'game methods',
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:39'
+}
+IPTCodePiece class >> game_ball [
+	^ IPTCodePiece fromFile: '/assets/IPTGame/ball.txt'.
+]
+
+{
+	#category : #'game methods',
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:39'
+}
+IPTCodePiece class >> game_ball_setter [
+	^ IPTCodePiece fromFile: '/assets/IPTGame/ball:.txt'.
+]
+
+{
+	#category : #'game methods',
 	#'squeak_changestamp' : 'Josua Zehner 6/20/2024 12:02'
 }
 IPTCodePiece class >> game_initialize [
 	^ IPTCodePiece fromFile: '/assets/IPTGame/initialize.txt'.
+]
+
+{
+	#category : #'game methods',
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:33'
+}
+IPTCodePiece class >> game_initializeBall [
+	^ IPTCodePiece fromFile: '/assets/IPTGame/initializeBall.txt'.
 ]
 
 {

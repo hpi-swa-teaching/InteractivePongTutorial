@@ -3,17 +3,29 @@ initialize
 1
 1
 °°
-	self color: Color black.
-°°
+	super initialize.
 	self 
+		extent: (100@100);
+		color: Color gray;
+		beSticky.
+°°
+	super initialize.
+	self 
+		extent: (100@100);
 		color: Color black;
-		extent: 500 @ 500.
+		beSticky.
 °°°°°
 1
 2
 °°
-	self color: Color black.
-°°
+	super initialize.
 	self 
+		extent: (100@100);
 		color: Color black;
-		extent: 500 @ 500.
+		beSticky.
+°°
+	super initialize.
+	self 
+		extent: (100@100);
+		color: Color black;
+		beSticky.

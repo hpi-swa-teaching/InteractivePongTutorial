@@ -1,0 +1,11 @@
+initializeBall
+°°°°°
+1
+2
+°°
+	'To be implemented'
+°°
+	self 
+		ball: (IPTBall new game: self);
+		addMorph: self ball.
+	self ball startOver.

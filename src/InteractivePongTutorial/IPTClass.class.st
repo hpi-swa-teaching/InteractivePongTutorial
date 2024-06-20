@@ -18,13 +18,16 @@ IPTClass class >> classList [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 17:52'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:40'
 }
 IPTClass class >> gameClass [
 	^ IPTClass new 
 		name: 'IPTGame';
 		methodCodePieces: {
-			IPTCodePiece game_initialize}
+			IPTCodePiece game_initialize.
+			IPTCodePiece game_initializeBall.
+			IPTCodePiece game_ball.
+			IPTCodePiece game_ball_setter.}
 			asOrderedCollection;
 		yourself.
 ]

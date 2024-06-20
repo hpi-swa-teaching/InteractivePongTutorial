@@ -1,0 +1,8 @@
+ball: aBall
+°°°°°
+1
+2
+°°
+	'To be implemented'
+°°
+	ball := aBall

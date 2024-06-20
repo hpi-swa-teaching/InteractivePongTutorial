@@ -425,20 +425,20 @@ IPTBrowser >> levelIndex: anObject [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 12:38'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:36'
 }
 IPTBrowser >> loadLevel: aLevelIndex [
 	self 
 		levelIndex: aLevelIndex;
 		selectMethod: nil.
-		
-	self classSet do: [ :c | 
-		c methodCodePieces do: [ :codePiece | 
-			codePiece loadInitialCodeForLevel: self levelIndex andChapter: self chapter chapterNumber]].
 	
 	self 
 		updateVisibleClassSetToMethods: self activeLevel visibleCodePieces;
 		update.
+		
+	self visibleClassSet do: [ :c | 
+		c methodCodePieces do: [ :codePiece | 
+			codePiece loadInitialCodeForLevel: self levelIndex andChapter: self chapter chapterNumber]].
 	
 		
 	
@@ -562,11 +562,11 @@ IPTBrowser >> selectedMethod: anObject [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 6/17/2024 11:50'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:41'
 }
 IPTBrowser >> showSolutionButtonAction [
 	self levelIndex ifNotNil: [
-		self selectedMethod loadSolutionCodeForLevel: self levelIndex andChapter: self activeLevel chapterNumber.
+		self selectedMethod loadSolutionCodeForLevel: self levelIndex andChapter: self chapter chapterNumber.
 		self codeEditor activeCodePiece: self selectedMethod.
 	].
 	
@@ -600,7 +600,7 @@ IPTBrowser >> titleBarHeight [
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 12:38'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:41'
 }
 IPTBrowser >> update [
 	self 
@@ -609,6 +609,7 @@ IPTBrowser >> update [
 		changed: #descriptionBoxContent;
 		changed: #nextLevelButtonEnabled;
 		changed: #previousLevelButtonEnabled;
+		changed: #showSolutionButtonEnabled;
 		changed: #visibleClassSet.
 ]
 
