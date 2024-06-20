@@ -1,0 +1,19 @@
+initialize
+°°°°°
+1
+1
+°°
+	self color: Color black.
+°°
+	self 
+		color: Color black;
+		extent: 500 @ 500.
+°°°°°
+1
+2
+°°
+	self color: Color black.
+°°
+	self 
+		color: Color black;
+		extent: 500 @ 500.

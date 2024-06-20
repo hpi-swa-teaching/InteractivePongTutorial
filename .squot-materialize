@@ -1,4 +1,12 @@
 [
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTGame',
+			'initialize.txt'
+		],
+		#encoding : 'TXT'
+	},
 	SquotTonelMapper {
 		#package : MCPackage {
 			#name : 'InteractivePongTutorial'

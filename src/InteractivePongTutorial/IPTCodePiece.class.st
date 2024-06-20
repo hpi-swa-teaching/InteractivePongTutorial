@@ -12,31 +12,6 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 17:41'
-}
-IPTCodePiece class >> codePieceCollection [
-	^ { self game_initialize.} 
-		asOrderedCollection.
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 11:54'
-}
-IPTCodePiece class >> defaultCodePiece [
-	^ IPTCodePiece new
-		methodToBeChanged: (IPTTestObject >> #aNormalMethod);
-		variants: { IPTCodeVariant new
-			levelNumber: 1;
-			initialCode: 'aNormalMethod', Character cr, Character tab, '^ ', $', 'Hello World', $';
-			solutionCode:  'aNormalMethod', Character cr, Character tab, '^ ', $', 'This is the right solution', $';
-			yourself. };
-		yourself.
-	
-]
-
-{
-	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 17:42'
 }
 IPTCodePiece class >> defaultCodePieces [
@@ -80,24 +55,24 @@ IPTCodePiece class >> defaultCodePieces [
 
 {
 	#category : #'game methods',
-	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 17:40'
+	#'squeak_changestamp' : 'Josua Zehner 6/20/2024 11:58'
+}
+IPTCodePiece class >> fromFile: aFilePath [
+	| methodInfos fileContents |
+	methodInfos := (aFilePath splitBy: '/' ) allButFirst allButFirst.
+	fileContents := ((GitAssetLoader for: 'InteractivePongTutorial') loadString: aFilePath) splitBy: '°°°°°'.
+	^ self new
+		methodToBeChanged: ((Smalltalk at: methodInfos first asSymbol) >> (methodInfos second splitBy: '.') first  asSymbol);
+		head: fileContents first withBlanksTrimmed;
+	 	variants: (fileContents allButFirst collect: [:variantString | IPTCodeVariant fromString: variantString]).
+]
+
+{
+	#category : #'game methods',
+	#'squeak_changestamp' : 'Josua Zehner 6/20/2024 12:02'
 }
 IPTCodePiece class >> game_initialize [
-	^ IPTCodePiece new
-			methodToBeChanged: (IPTGame >> #initialize);
-			head: 'initialize';
-			variants: { 
-				IPTCodeVariant new
-					levelNumber: 101;
-					initialCode:  '^ ', $', 'Hello World', $';
-					solutionCode:   '^ ', $', 'This is the right solution', $';
-					yourself.
-				IPTCodeVariant new
-					levelNumber: 102;
-					initialCode: '^ ', $', 'Hello Level 2', $';
-					solutionCode: '^ ', $', 'This is the right solution for Level 2', $';
-					yourself. };
-			yourself.
+	^ IPTCodePiece fromFile: '/assets/IPTGame/initialize.txt'.
 ]
 
 {
@@ -144,14 +119,6 @@ IPTCodePiece >> code: anObject [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/17/2024 11:47'
-}
-IPTCodePiece >> compressedLevelIndexFor: aLevelIndex fromChapter: aChapterIndex [
-	^ 100 * aChapterIndex + aLevelIndex.
-]
-
-{
-	#category : #accessing,
 	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 13:37'
 }
 IPTCodePiece >> hasBody [
@@ -175,21 +142,19 @@ IPTCodePiece >> head: anObject [
 ]
 
 {
-	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/17/2024 12:17'
+	#category : #loading,
+	#'squeak_changestamp' : 'Josua Zehner 6/20/2024 11:53'
 }
-IPTCodePiece >> loadInitialCodeForLevel: aLevelIndex andChapter: aChapterIndex [
-	self code: (self addHeadToCode: (self variantForLevel: 
-		(self compressedLevelIndexFor: aLevelIndex fromChapter: aChapterIndex)) initialCode).
+IPTCodePiece >> loadInitialCodeForLevel: aLevelIndex andChapter: aChapterNumber [
+	self code: (self addHeadToCode: (self variantForLevel: aLevelIndex fromChapter: aChapterNumber) initialCode).
 ]
 
 {
-	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/17/2024 12:18'
+	#category : #loading,
+	#'squeak_changestamp' : 'Josua Zehner 6/20/2024 11:53'
 }
-IPTCodePiece >> loadSolutionCodeForLevel: aLevelIndex andChapter: aChapterIndex [
-	self code: (self addHeadToCode: (self variantForLevel: 
-		(self compressedLevelIndexFor: aLevelIndex fromChapter: aChapterIndex)) solutionCode).
+IPTCodePiece >> loadSolutionCodeForLevel: aLevelIndex andChapter: aChapterNumber [
+	self code: (self addHeadToCode: (self variantForLevel: aLevelIndex fromChapter: aChapterNumber) solutionCode).
 ]
 
 {
@@ -238,13 +203,10 @@ IPTCodePiece >> safelyCompile: aString [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 12:52'
+	#'squeak_changestamp' : 'Josua Zehner 6/20/2024 11:51'
 }
-IPTCodePiece >> variantForLevel: aLevelIndex [
-	^ self variants inject: (self variants at: 1) into: [ :best :current | 
-		((current levelNumber <= aLevelIndex) and: (current levelNumber > best levelNumber))
-			ifTrue: [current] 
-			ifFalse: [best]].
+IPTCodePiece >> variantForLevel: aLevelIndex fromChapter: aChapterNumber [
+	^ self variants reversed detect: [:variant | variant levelIndex <= aLevelIndex and: variant chapterNumber <= aChapterNumber].
 ]
 
 {
