@@ -8,4 +8,26 @@ initializeBall
 	self 
 		ball: (IPTBall new game: self);
 		addMorph: self ball.
+°°°°°
+1
+3
+°°
+	self 
+		ball: (IPTBall new game: self);
+		addMorph: self ball.
+°°
+	self 
+		ball: (IPTBall new game: self);
+		addMorph: self ball.
+°°°°°
+1
+4
+°°
+	self 
+		ball: (IPTBall new game: self);
+		addMorph: self ball.
+°°
+	self 
+		ball: (IPTBall new game: self);
+		addMorph: self ball.
 	self ball startOver.

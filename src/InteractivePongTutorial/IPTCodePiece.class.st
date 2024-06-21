@@ -11,7 +11,15 @@ Class {
 }
 
 {
-	#category : #'game methods',
+	#category : #'ball methods',
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/21/2024 17:33'
+}
+IPTCodePiece class >> ball_checkCollisionWithWalls [
+	^ IPTCodePiece fromFile: '/assets/IPTBall/checkCollisionWithWalls.txt'.
+]
+
+{
+	#category : #'ball methods',
 	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:52'
 }
 IPTCodePiece class >> ball_game [
@@ -19,7 +27,7 @@ IPTCodePiece class >> ball_game [
 ]
 
 {
-	#category : #'game methods',
+	#category : #'ball methods',
 	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:52'
 }
 IPTCodePiece class >> ball_game_setter [
@@ -27,7 +35,7 @@ IPTCodePiece class >> ball_game_setter [
 ]
 
 {
-	#category : #'game methods',
+	#category : #'ball methods',
 	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:52'
 }
 IPTCodePiece class >> ball_initialize [
@@ -35,7 +43,63 @@ IPTCodePiece class >> ball_initialize [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #'ball methods',
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/21/2024 17:14'
+}
+IPTCodePiece class >> ball_speed [
+	^ IPTCodePiece fromFile: '/assets/IPTBall/speed.txt'.
+]
+
+{
+	#category : #'ball methods',
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/21/2024 17:14'
+}
+IPTCodePiece class >> ball_speed_setter [
+	^ IPTCodePiece fromFile: '/assets/IPTBall/speed:.txt'.
+]
+
+{
+	#category : #'ball methods',
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/21/2024 17:33'
+}
+IPTCodePiece class >> ball_startOver [
+	^ IPTCodePiece fromFile: '/assets/IPTBall/startOver.txt'.
+]
+
+{
+	#category : #'ball methods',
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/21/2024 17:14'
+}
+IPTCodePiece class >> ball_step [
+	^ IPTCodePiece fromFile: '/assets/IPTBall/step.txt'.
+]
+
+{
+	#category : #'ball methods',
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/21/2024 17:15'
+}
+IPTCodePiece class >> ball_stepTime [
+	^ IPTCodePiece fromFile: '/assets/IPTBall/stepTime.txt'.
+]
+
+{
+	#category : #'ball methods',
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/21/2024 17:15'
+}
+IPTCodePiece class >> ball_turnHorizontal [
+	^ IPTCodePiece fromFile: '/assets/IPTBall/turnHorizontal.txt'.
+]
+
+{
+	#category : #'ball methods',
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/21/2024 17:15'
+}
+IPTCodePiece class >> ball_turnVertical [
+	^ IPTCodePiece fromFile: '/assets/IPTBall/turnVertical.txt'.
+]
+
+{
+	#category : #creating,
 	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 17:42'
 }
 IPTCodePiece class >> defaultCodePieces [
@@ -78,7 +142,7 @@ IPTCodePiece class >> defaultCodePieces [
 ]
 
 {
-	#category : #'game methods',
+	#category : #creating,
 	#'squeak_changestamp' : 'Josua Zehner 6/20/2024 11:58'
 }
 IPTCodePiece class >> fromFile: aFilePath [

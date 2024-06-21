@@ -41,6 +41,15 @@ IPTBall >> checkCollisions [
 
 {
 	#category : #accessing,
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/21/2024 17:40'
+}
+IPTBall >> defaultExtent [
+
+	^ (17 @ 17).
+]
+
+{
+	#category : #accessing,
 	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 09:50'
 }
 IPTBall >> defaultSpeed [

@@ -1,0 +1,11 @@
+checkCollisionWithWalls
+°°°°°
+1
+4
+°°
+	'To be implemented'
+°°
+	(self position x between: self game left and: self game right - self width)
+		ifFalse: [self startOver].
+	(self position y between: self game top and: self game bottom - self height)
+		ifFalse: [self turnVertical].

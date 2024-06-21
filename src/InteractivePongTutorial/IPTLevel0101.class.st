@@ -6,20 +6,20 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 12:15'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/21/2024 16:47'
 }
 IPTLevel0101 class >> asString [
 
-	^ 'Level 01'
+	^ 'Level 01: Intro'
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 12:26'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/21/2024 17:48'
 }
 IPTLevel0101 class >> description [
 	
-	^ 'This is level 01'.
+	^ 'In this level, you will get Introduced to the Tutorial and learn about basic Morph methods.'.
 ]
 
 {

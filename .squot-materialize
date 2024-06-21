@@ -2,8 +2,32 @@
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
 			'assets',
-			'IPTGame',
-			'initialize.txt'
+			'IPTBall',
+			'stepTime.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTBall',
+			'game:.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotTonelMapper {
+		#package : MCPackage {
+			#name : 'InteractivePongTutorial'
+		},
+		#path : FSAbsolutePath [
+			'src'
+		]
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTBall',
+			'turnHorizontal.txt'
 		],
 		#encoding : 'TXT'
 	},
@@ -19,7 +43,7 @@
 		#path : FSAbsolutePath [
 			'assets',
 			'IPTBall',
-			'initialize.txt'
+			'checkCollisionWithWalls.txt'
 		],
 		#encoding : 'TXT'
 	},
@@ -27,17 +51,17 @@
 		#path : FSAbsolutePath [
 			'assets',
 			'IPTBall',
-			'game.txt'
+			'speed.txt'
 		],
 		#encoding : 'TXT'
 	},
-	SquotTonelMapper {
-		#package : MCPackage {
-			#name : 'InteractivePongTutorial'
-		},
+	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
-			'src'
-		]
+			'assets',
+			'IPTBall',
+			'startOver.txt'
+		],
+		#encoding : 'TXT'
 	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
@@ -51,7 +75,23 @@
 		#path : FSAbsolutePath [
 			'assets',
 			'IPTBall',
-			'game:.txt'
+			'initialize.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTBall',
+			'turnVertical.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTGame',
+			'initialize.txt'
 		],
 		#encoding : 'TXT'
 	},
@@ -60,6 +100,30 @@
 			'assets',
 			'IPTGame',
 			'ball.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTBall',
+			'game.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTBall',
+			'speed:.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTBall',
+			'step.txt'
 		],
 		#encoding : 'TXT'
 	}

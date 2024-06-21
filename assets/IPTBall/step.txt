@@ -1,0 +1,8 @@
+step
+°°°°°
+1
+3
+°°
+	'To be implemented'
+°°
+	self position: self position + self speed.

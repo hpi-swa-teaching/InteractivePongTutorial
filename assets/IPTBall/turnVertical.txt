@@ -1,0 +1,15 @@
+turnVertical
+°°°°°
+1
+3
+°°
+	'To be implemented'
+°°
+	self speed: self speed x @ self speed y negated.
+°°°°°
+1
+4
+°°
+	self speed: self speed x @ self speed y negated.
+°°
+	self speed: self speed x @ self speed y negated.

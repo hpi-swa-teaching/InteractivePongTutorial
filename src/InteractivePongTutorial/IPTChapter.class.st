@@ -13,7 +13,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 12:36'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/21/2024 17:00'
 }
 IPTChapter class >> chapterSet [
 	^ {IPTChapter 
@@ -24,10 +24,12 @@ IPTChapter class >> chapterSet [
 		IPTChapter 
 			withName: 'Introduction'
 			number: 1
-			description: 'This is Chapter 1'
+			description: 'In this Chapter you will learn about creating and initializing Morphs, as well as moving them and how simple Collisions work. For that you wil be implementing a Game and a Ball Class.'
 			levels: {
 				IPTLevel0101.
-				IPTLevel0102}. 
+				IPTLevel0102.
+				IPTLevel0103.
+				IPTLevel0104.}. 
 		IPTChapter 
 			withName: 'Player movement'
 			number: 2

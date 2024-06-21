@@ -10,7 +10,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:58'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/21/2024 17:34'
 }
 IPTClass class >> ballClass [
 	^ IPTClass new 
@@ -18,7 +18,15 @@ IPTClass class >> ballClass [
 		methodCodePieces: {
 			IPTCodePiece ball_initialize.
 			IPTCodePiece ball_game.
-			IPTCodePiece ball_game_setter.}
+			IPTCodePiece ball_game_setter.
+			IPTCodePiece ball_speed.
+			IPTCodePiece ball_speed_setter.
+			IPTCodePiece ball_step.
+			IPTCodePiece ball_stepTime.
+			IPTCodePiece ball_turnVertical.
+			IPTCodePiece ball_turnHorizontal.
+			IPTCodePiece ball_checkCollisionWithWalls.
+			IPTCodePiece ball_startOver.}
 			asOrderedCollection;
 		yourself.
 ]
