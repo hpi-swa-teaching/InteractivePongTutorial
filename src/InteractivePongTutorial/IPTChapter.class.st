@@ -13,7 +13,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 13:03'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/21/2024 17:00'
 }
 IPTChapter class >> chapterSet [
 	^ {IPTChapter 
@@ -24,16 +24,17 @@ IPTChapter class >> chapterSet [
 		IPTChapter 
 			withName: 'Introduction'
 			number: 1
-			description: 'This is Chapter 1'
+			description: 'In this Chapter you will learn about creating and initializing Morphs, as well as moving them and how simple Collisions work. For that you wil be implementing a Game and a Ball Class.'
 			levels: {
-				IPTLevel0101 new.
-				IPTLevel0102 new}. 
+				IPTLevel0101.
+				IPTLevel0102.
+				IPTLevel0103.
+				IPTLevel0104.}. 
 		IPTChapter 
 			withName: 'Player movement'
 			number: 2
 			description: 'This is Chapter 2'
-			levels: {
-				IPTLevel0201 new}}
+			levels: {}}
 ]
 
 {
@@ -115,11 +116,10 @@ IPTChapter >> levels [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 13:02'
+	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 12:32'
 }
 IPTChapter >> levels: anObject [
 	levels := anObject.
-	self levels do: [ :each | each chapterNumber: self chapterNumber].
 ]
 
 {

@@ -1,0 +1,8 @@
+game: aGame
+°°°°°
+1
+2
+°°
+	'To be implemented'
+°°
+	game := aGame

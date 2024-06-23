@@ -1,0 +1,38 @@
+initialize
+°°°°°
+1
+2
+°°
+	extent: defaultExtent.
+°°
+	super initialize.
+	self 
+		color: Color white;
+		extent: defaultExtent.
+°°°°°
+1
+3
+°°
+	super initialize.
+	self 
+		color: Color white;
+		extent: defaultExtent.
+°°
+	super initialize.
+	self 
+		color: Color white;
+		extent: defaultExtent;
+		speed: defaultSpeed.
+°°°°°
+1
+4
+°°
+	super initialize.
+	self 
+		color: Color white;
+		extent: defaultExtent.
+°°
+	super initialize.
+	self 
+		color: Color white;
+		extent: defaultExtent.

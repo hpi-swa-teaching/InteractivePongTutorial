@@ -36,6 +36,28 @@ IPTBrowser class >> openFrom: anIPT chapter: aChapter levelIndex: aNumber [
 ]
 
 {
+	#category : #actions,
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:48'
+}
+IPTBrowser >> ResetButtonAction [
+	self levelIndex ifNotNil: [
+		self selectedMethod loadInitialCodeForLevel: self levelIndex andChapter: self chapter chapterNumber.
+		self codeEditor activeCodePiece: self selectedMethod.
+	].
+	
+	
+]
+
+{
+	#category : #ui,
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:47'
+}
+IPTBrowser >> ResetButtonEnabled [
+
+	^ self selectedMethod isNil not and: [self selectedMethod hasBody].
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:05'
 }
@@ -132,7 +154,25 @@ IPTBrowser >> buildNextLevelButtonWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 17:07'
+	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 11:07'
+}
+IPTBrowser >> buildPlayButtonWith: aBuilder [
+
+	^ aBuilder pluggableButtonSpec new
+		model: self;
+		label: 'Play';
+		action: #runCode;
+		enabled: true;
+		frame: (LayoutFrame new
+			leftFraction: 0;
+			topFraction: (1 - self buttonHeight);
+			rightFraction: 0.25 / 2;
+			bottomFraction: 1)
+]
+
+{
+	#category : #building,
+	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 10:00'
 }
 IPTBrowser >> buildPlaygroundWith: aBuilder [
 
@@ -140,10 +180,10 @@ IPTBrowser >> buildPlaygroundWith: aBuilder [
 		model: self;
 		children: #playgroundInCollection;
 		frame: (LayoutFrame new
-			leftFraction: 0.5 offset: 400 negated;
+			leftFraction: 0.25;
 			topFraction: 0;
-			rightFraction: 0.5 offset: 400;
-			bottomFraction: 0 offset: (500))
+			rightFraction: 0.75;
+			bottomFraction: 0.5)
 ]
 
 {
@@ -166,14 +206,15 @@ IPTBrowser >> buildPreviousLevelButtonWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'JZ 6/7/2024 15:37'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:47'
 }
 IPTBrowser >> buildResetButtonWith: aBuilder [
 
 	^ aBuilder pluggableButtonSpec new
 		model: self;
 		label: 'Reset';
-		enabled: false;
+		action: #ResetButtonAction;
+		enabled: #ResetButtonEnabled;
 		frame: (LayoutFrame new
 			leftFraction: 0.25 / 2;
 			topFraction: (1 - self buttonHeight);
@@ -265,7 +306,7 @@ IPTBrowser >> buildWith: aBuilder [
 			self buildTitleBarWith: aBuilder.
 			self buildCodeEditorWith: aBuilder.
 			self buildCodePieceListWith: aBuilder.
-			self buildVerifyButtonWith: aBuilder.
+			self buildPlayButtonWith: aBuilder.
 			self buildResetButtonWith: aBuilder.
 			self buildHomeButtonWith: aBuilder.
 			self buildNextLevelButtonWith: aBuilder.
@@ -311,12 +352,10 @@ IPTBrowser >> chapter: anObject [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 6/17/2024 12:29'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:48'
 }
 IPTBrowser >> checkAndSaveCode [
 	| code errMsg |
-	
-	Transcript show: 'trying to save', Character cr.
 	self closeAllAutoCompletionMorphs.
 	
 	code := self codeEditor
@@ -399,14 +438,6 @@ IPTBrowser >> descriptionBoxContent [
 	#category : #accessing,
 	#'squeak_changestamp' : 'Leo Sonnenberg 6/15/2024 13:29'
 }
-IPTBrowser >> descriptionBoxContent1 [
-	^ descriptionBoxContent
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/15/2024 13:29'
-}
 IPTBrowser >> descriptionBoxContent: anObject [
 	descriptionBoxContent := anObject
 ]
@@ -453,20 +484,20 @@ IPTBrowser >> levelIndex: anObject [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 6/17/2024 11:53'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:36'
 }
 IPTBrowser >> loadLevel: aLevelIndex [
 	self 
 		levelIndex: aLevelIndex;
 		selectMethod: nil.
-		
-	self classSet do: [ :c | 
-		c methodCodePieces do: [ :codePiece | 
-			codePiece loadInitialCodeForLevel: self levelIndex andChapter: self activeLevel chapterNumber]].
 	
 	self 
-		updateVisibleClassSetToMethods: self activeLevel visibleMethods;
+		updateVisibleClassSetToMethods: self activeLevel visibleCodePieces;
 		update.
+		
+	self visibleClassSet do: [ :c | 
+		c methodCodePieces do: [ :codePiece | 
+			codePiece loadInitialCodeForLevel: self levelIndex andChapter: self chapter chapterNumber]].
 	
 		
 	
@@ -531,6 +562,37 @@ IPTBrowser >> previousLevelButtonEnabled [
 
 {
 	#category : #actions,
+	#'squeak_changestamp' : 'sv 6/20/2024 11:29'
+}
+IPTBrowser >> runCode [
+	
+	| errors failures testResult output |
+	
+	 testResult := self activeLevel runTests.
+	 failures := testResult at: #failures.
+	 errors := testResult at: #errors.
+	
+	output := ''.
+	
+	errors 
+		ifEmpty: [self playground runCode.]
+		ifNotEmpty: [ output := (errors inject: 'Errors:' into: [:run :elem | run, Character cr, elem ]), Character cr, Character cr ].
+		
+	failures
+		ifNotEmpty: [ output := (failures inject: (output, 'Failures:') into: [:run :elem | run, Character cr, elem ]) ].
+	
+	(testResult at: #success) ifTrue: [
+			output := 'Well done! :)'.
+	].
+	
+	self descriptionBoxContent: output.
+		
+	self update.
+
+]
+
+{
+	#category : #actions,
 	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 20:10'
 }
 IPTBrowser >> selectMethod: aMethod [
@@ -574,11 +636,11 @@ IPTBrowser >> setSqueaky: anImagePath [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 6/17/2024 11:50'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:41'
 }
 IPTBrowser >> showSolutionButtonAction [
 	self levelIndex ifNotNil: [
-		self selectedMethod loadSolutionCodeForLevel: self levelIndex andChapter: self activeLevel chapterNumber.
+		self selectedMethod loadSolutionCodeForLevel: self levelIndex andChapter: self chapter chapterNumber.
 		self codeEditor activeCodePiece: self selectedMethod.
 	].
 	
@@ -660,7 +722,7 @@ IPTBrowser >> titleBarHeight [
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'sv 6/19/2024 21:57'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:49'
 }
 IPTBrowser >> update [
 	self 
@@ -669,8 +731,10 @@ IPTBrowser >> update [
 		changed: #descriptionBoxContent;
 		changed: #nextLevelButtonEnabled;
 		changed: #previousLevelButtonEnabled;
-		changed: #visibleClassSet;
 		changed: #squeakyCollection.
+		changed: #showSolutionButtonEnabled;
+		changed: #ResetButtonEnabled;
+		changed: #visibleClassSet.
 ]
 
 {

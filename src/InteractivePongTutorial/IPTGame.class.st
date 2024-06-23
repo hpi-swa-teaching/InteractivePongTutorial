@@ -46,17 +46,11 @@ IPTGame >> handlesKeyboard: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'JZ 5/22/2024 16:27'
+	#'squeak_changestamp' : 'sv 6/20/2024 11:29'
 }
 IPTGame >> initialize [
-
 	super initialize.
-	self 
-		extent: 800 @ 500;
-		color: Color black;
-		beSticky;
-		initializePlayers;
-		initializeBall.
+	self color: Color green.
 ]
 
 {
