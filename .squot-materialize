@@ -1,4 +1,10 @@
 [
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'squeaky-happy.png'
+		],
+		#encoding : Class [ #PNGReadWriter ]
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
 			'assets',
@@ -23,6 +29,19 @@
 			'src'
 		]
 	},
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'squeaky-sad.png'
+		],
+		#encoding : @4
+	},
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'squeaky-neutr.png'
+		],
+		#encoding : @4
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
 			'assets',
