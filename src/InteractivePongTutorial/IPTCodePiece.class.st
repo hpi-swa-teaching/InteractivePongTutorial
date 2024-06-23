@@ -143,7 +143,7 @@ IPTCodePiece class >> defaultCodePieces [
 
 {
 	#category : #creating,
-	#'squeak_changestamp' : 'Josua Zehner 6/20/2024 11:58'
+	#'squeak_changestamp' : 'Felix Knöfel 6/24/2024 00:02'
 }
 IPTCodePiece class >> fromFile: aFilePath [
 	| methodInfos fileContents |
@@ -152,7 +152,13 @@ IPTCodePiece class >> fromFile: aFilePath [
 	^ self new
 		methodToBeChanged: ((Smalltalk at: methodInfos first asSymbol) >> (methodInfos second splitBy: '.') first  asSymbol);
 		head: fileContents first withBlanksTrimmed;
-	 	variants: (fileContents allButFirst collect: [:variantString | IPTCodeVariant fromString: variantString]).
+	 	variants: ((fileContents allButFirst collect: [:variantString | IPTCodeVariant fromString: variantString]) asOrderedCollection
+			addFirst: (IPTCodeVariant new
+				chapterNumber: 0;
+				levelIndex: 0;
+				initialCode: '';
+				solutionCode: '');
+			yourself).
 ]
 
 {
@@ -255,18 +261,20 @@ IPTCodePiece >> head: anObject [
 
 {
 	#category : #loading,
-	#'squeak_changestamp' : 'Josua Zehner 6/20/2024 11:53'
+	#'squeak_changestamp' : 'Felix Knöfel 6/23/2024 23:39'
 }
 IPTCodePiece >> loadInitialCodeForLevel: aLevelIndex andChapter: aChapterNumber [
 	self code: (self addHeadToCode: (self variantForLevel: aLevelIndex fromChapter: aChapterNumber) initialCode).
+	self checkSyntaxAndSaveCode: self code.
 ]
 
 {
 	#category : #loading,
-	#'squeak_changestamp' : 'Josua Zehner 6/20/2024 11:53'
+	#'squeak_changestamp' : 'Felix Knöfel 6/24/2024 00:27'
 }
 IPTCodePiece >> loadSolutionCodeForLevel: aLevelIndex andChapter: aChapterNumber [
 	self code: (self addHeadToCode: (self variantForLevel: aLevelIndex fromChapter: aChapterNumber) solutionCode).
+	self checkSyntaxAndSaveCode: self code.
 ]
 
 {
@@ -315,10 +323,13 @@ IPTCodePiece >> safelyCompile: aString [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 6/20/2024 11:51'
+	#'squeak_changestamp' : 'Felix Knöfel 6/24/2024 00:00'
 }
 IPTCodePiece >> variantForLevel: aLevelIndex fromChapter: aChapterNumber [
-	^ self variants reversed detect: [:variant | variant levelIndex <= aLevelIndex and: variant chapterNumber <= aChapterNumber].
+	| variant |
+	variant := self variants reversed detect: [:var | var levelIndex <= aLevelIndex and: var chapterNumber <= aChapterNumber].
+	
+	^ variant.
 ]
 
 {

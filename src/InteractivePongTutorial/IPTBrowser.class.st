@@ -446,7 +446,7 @@ IPTBrowser >> levelIndex: anObject [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:36'
+	#'squeak_changestamp' : 'Felix Knöfel 6/24/2024 00:29'
 }
 IPTBrowser >> loadLevel: aLevelIndex [
 	self 
@@ -457,9 +457,13 @@ IPTBrowser >> loadLevel: aLevelIndex [
 		updateVisibleClassSetToMethods: self activeLevel visibleCodePieces;
 		update.
 		
-	self visibleClassSet do: [ :c | 
+	self classSet do: [ :c | 
 		c methodCodePieces do: [ :codePiece | 
 			codePiece loadInitialCodeForLevel: self levelIndex andChapter: self chapter chapterNumber]].
+	
+	self playground ifNotNil: [
+		self playground removeAllMorphs.].
+	self update.
 	
 		
 	
@@ -524,7 +528,7 @@ IPTBrowser >> previousLevelButtonEnabled [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'sv 6/20/2024 11:29'
+	#'squeak_changestamp' : 'Felix Knöfel 6/23/2024 23:31'
 }
 IPTBrowser >> runCode [
 	
@@ -536,12 +540,11 @@ IPTBrowser >> runCode [
 	
 	output := ''.
 	
-	errors 
-		ifEmpty: [self playground runCode.]
-		ifNotEmpty: [ output := (errors inject: 'Errors:' into: [:run :elem | run, Character cr, elem ]), Character cr, Character cr ].
+	(errors isEmpty and: [failures isEmpty])
+		ifTrue: [self playground runCode.].
 		
-	failures
-		ifNotEmpty: [ output := (failures inject: (output, 'Failures:') into: [:run :elem | run, Character cr, elem ]) ].
+	output := (errors inject: 'Errors:' into: [:run :elem | run, Character cr, elem ]), Character cr, Character cr.
+	output := (failures inject: (output, 'Failures:') into: [:run :elem | run, Character cr, elem ]).
 	
 	(testResult at: #success) ifTrue: [
 			output := 'Well done! :)'.
@@ -637,19 +640,19 @@ IPTBrowser >> update [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 12:44'
+	#'squeak_changestamp' : 'Felix Knöfel 6/24/2024 00:26'
 }
 IPTBrowser >> updateVisibleClassSetToMethods: aMethodsCollection [
-	self visibleClassSet: ((self classSet collect: [ :klass | klass copy. ]) asOrderedCollection).
-
+	self visibleClassSet: ((self classSet collect: [ :iptclass | iptclass copy. ]) asOrderedCollection).
+	
 	aMethodsCollection ifNil: [ ^nil.].
 	
 	"Show all classes with methods that are in 'activeLevel visibleMethods'. If there are no methods in a class, dont show it"
-	self visibleClassSet removeAllSuchThat: [ :klass | 
-		klass methodCodePieces removeAllSuchThat: [ :codePiece | 
+	self visibleClassSet removeAllSuchThat: [ :iptclass | 
+		iptclass methodCodePieces removeAllSuchThat: [ :codePiece | 
 			(aMethodsCollection anySatisfy: [ :method | 
 				method = codePiece methodToBeChanged ]) not].
-		klass methodCodePieces isEmpty. ].
+		iptclass methodCodePieces isEmpty. ].
 	
 		
 	

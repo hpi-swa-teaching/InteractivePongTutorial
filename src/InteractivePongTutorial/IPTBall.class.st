@@ -20,14 +20,10 @@ IPTBall >> checkCollisionWithPlayer [
 
 {
 	#category : #collision,
-	#'squeak_changestamp' : 'JZ 5/22/2024 16:23'
+	#'squeak_changestamp' : 'Felix Knöfel 6/24/2024 00:30'
 }
 IPTBall >> checkCollisionWithWalls [
-
-	(self position x between: self game left and: self game right - self width)
-		ifFalse: [self startOver].
-	(self position y between: self game top and: self game bottom - self height)
-		ifFalse: [self turnVertical].
+	
 ]
 
 {
@@ -58,36 +54,35 @@ IPTBall >> defaultSpeed [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 16:37'
+	#'squeak_changestamp' : 'Felix Knöfel 6/24/2024 00:30'
 }
 IPTBall >> game [
-	^ game.
+	"Return the value of game."
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 16:37'
+	#'squeak_changestamp' : 'Felix Knöfel 6/24/2024 00:30'
 }
 IPTBall >> game: aGame [
-	game := aGame.
+	"To update game you should set game to the given input."
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 17:49'
+	#'squeak_changestamp' : 'Felix Knöfel 6/24/2024 00:30'
 }
 IPTBall >> initialize [
 	"You should set the speed to defaultSpeed."
 	super initialize.
 	self 
 		color: Color white;
-		extent: self defaultExtent;
-		speed: self defaultSpeed @ self defaultSpeed.
+		extent: self defaultExtent.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 17:46'
+	#'squeak_changestamp' : 'Felix Knöfel 6/24/2024 00:30'
 }
 IPTBall >> speed [
 	^ speed.
@@ -95,7 +90,7 @@ IPTBall >> speed [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 17:46'
+	#'squeak_changestamp' : 'Felix Knöfel 6/24/2024 00:30'
 }
 IPTBall >> speed: aNumber [
 	speed := aNumber.
@@ -103,27 +98,23 @@ IPTBall >> speed: aNumber [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'JZ 5/22/2024 14:01'
+	#'squeak_changestamp' : 'Felix Knöfel 6/24/2024 00:30'
 }
 IPTBall >> startOver [
-
-	self 
-		position: (self game center x - (self width / 2)) @ 
-					(self game center y - (self height / 2));
-		speed: (self defaultSpeed * #(1 -1) atRandom) @ (self defaultSpeed * #(1 -1) atRandom)
+	
 ]
 
 {
 	#category : #stepping,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 17:47'
+	#'squeak_changestamp' : 'Felix Knöfel 6/24/2024 00:30'
 }
 IPTBall >> step [
-	self position: self position + self speed.
+	"Please update the position by the speed of the ball."
 ]
 
 {
 	#category : #stepping,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 17:46'
+	#'squeak_changestamp' : 'Felix Knöfel 6/24/2024 00:30'
 }
 IPTBall >> stepTime [
 	^ 10.
@@ -131,16 +122,16 @@ IPTBall >> stepTime [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 17:49'
+	#'squeak_changestamp' : 'Felix Knöfel 6/24/2024 00:30'
 }
 IPTBall >> turnHorizontal [
-	self speed: self speed x negated @ self speed y.
+	'The change of position in x should be negated.'
 ]
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 17:49'
+	#'squeak_changestamp' : 'Felix Knöfel 6/24/2024 00:30'
 }
 IPTBall >> turnVertical [
-	self speed: self speed x @ self speed y negated.
+	'The change of position in y should be negated.'
 ]

@@ -63,14 +63,18 @@ IPTEditor >> activeCodePiece [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 13:35'
+	#'squeak_changestamp' : 'Felix Knöfel 6/23/2024 23:38'
 }
 IPTEditor >> activeCodePiece: aCodePiece [
 	activeCodePiece := aCodePiece.
 	
 	aCodePiece 
-		ifNil: [self code: '']
-		ifNotNil: [self code: aCodePiece code].
+		ifNil: [
+			self code: '']
+		ifNotNil: [
+			self code: aCodePiece code.].
+		
+		
 		
 ]
 
