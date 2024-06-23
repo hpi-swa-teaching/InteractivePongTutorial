@@ -59,32 +59,29 @@ IPTBall >> defaultSpeed [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JZ 5/22/2024 16:57'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 15:41'
 }
 IPTBall >> game [
-
 	^ game.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JZ 5/22/2024 17:07'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 15:43'
 }
 IPTBall >> game: aGame [
-
 	game := aGame.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'JZ 5/22/2024 14:19'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 15:40'
 }
-IPTBall >> initialize [ 
-
+IPTBall >> initialize [
 	super initialize.
-	self
+	self 
 		color: Color white;
-		extent: 17 @ 17.
+		extent: self defaultExtent.
 ]
 
 {
@@ -119,12 +116,10 @@ IPTBall >> startOver [
 
 {
 	#category : #stepping,
-	#'squeak_changestamp' : 'JZ 5/22/2024 16:24'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 15:38'
 }
 IPTBall >> step [
-
-	self position: self position + self speed.
-	self checkCollisions. 
+	'To be implemented'
 ]
 
 {

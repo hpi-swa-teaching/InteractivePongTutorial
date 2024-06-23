@@ -23,13 +23,13 @@ IPTPlayground >> initialize [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/20/2024 09:34'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 15:20'
 }
 IPTPlayground >> runCode [
 	| game |
 	
 	self removeAllMorphs.
-	game := IPTGameSolution new.
+	game := IPTGame new.
 	self addMorph: game. 
 	game setupWithExtent: self extent position: self position.
 ]

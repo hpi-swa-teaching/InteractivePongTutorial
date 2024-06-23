@@ -5,4 +5,4 @@ ball: aBall
 °°
 	'To be implemented'
 °°
-	ball := aBall
+	ball := aBall.

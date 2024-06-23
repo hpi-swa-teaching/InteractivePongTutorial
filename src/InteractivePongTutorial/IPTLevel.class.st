@@ -2,7 +2,9 @@ Class {
 	#name : #IPTLevel,
 	#superclass : #TestCase,
 	#instVars : [
-		'game'
+		'game',
+		'ball',
+		'player'
 	],
 	#category : #'InteractivePongTutorial-Levels'
 }
@@ -70,16 +72,20 @@ IPTLevel class >> visibleCodePieces [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 12:24'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 15:23'
 }
 IPTLevel >> setUp [
 	game := IPTGame new.
+	ball := IPTBall new.
+	player := IPTPlayer new.
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 12:29'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 15:23'
 }
 IPTLevel >> tearDown [
 	game := nil.
+	ball := nil.
+	player := nil.
 ]

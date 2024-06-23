@@ -5,4 +5,4 @@ game: aGame
 °°
 	'To be implemented'
 °°
-	game := aGame
+	game := aGame.

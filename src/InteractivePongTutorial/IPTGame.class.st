@@ -19,19 +19,17 @@ IPTGame class >> open [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JZ 5/22/2024 16:59'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 15:40'
 }
 IPTGame >> ball [
-
 	^ ball.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JZ 5/22/2024 17:00'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 15:40'
 }
 IPTGame >> ball: aBall [
-
 	ball := aBall.
 ]
 
@@ -46,40 +44,30 @@ IPTGame >> handlesKeyboard: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'sv 6/20/2024 11:29'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 15:39'
 }
 IPTGame >> initialize [
 	super initialize.
-	self color: Color green.
+	self 
+		extent: (100@100);
+		color: Color black;
+		beSticky.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 17:22'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 15:50'
 }
 IPTGame >> initializeBall [
-		
-	self
-		ball: (IPTBallSolution new game: self);
-		addMorph: self ball.
-	self ball startOver.
+
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 17:22'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 15:48'
 }
 IPTGame >> initializePlayers [
-	
-	self
-		playerLeft: (IPTPlayerSolution new
-			position: 30@175;
-			game: self);
-		playerRight: (IPTPlayerSolution new 
-			position: 765@175;
-			game: self);
-		addMorph: self playerLeft;
-		addMorph: self playerRight.
+
 ]
 
 {
@@ -165,4 +153,17 @@ IPTGame >> playerRight [
 IPTGame >> playerRight: anObject [
 
 	playerRight := anObject
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 15:46'
+}
+IPTGame >> setupWithExtent: aExtent position: aPoint [
+
+	self 
+		position: aPoint;
+		extent: aExtent;
+		initializeBall;
+		initializePlayers.
 ]

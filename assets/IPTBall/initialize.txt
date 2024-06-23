@@ -3,12 +3,12 @@ initialize
 1
 2
 °°
-	extent: defaultExtent.
+	extent: self defaultExtent.
 °°
 	super initialize.
 	self 
 		color: Color white;
-		extent: defaultExtent.
+		extent: self defaultExtent.
 °°°°°
 1
 3
