@@ -3,6 +3,6 @@ ball: aBall
 1
 2
 °°
-	'To be implemented'
+	"To update ball you should set ball to the given input."
 °°
 	ball := aBall.

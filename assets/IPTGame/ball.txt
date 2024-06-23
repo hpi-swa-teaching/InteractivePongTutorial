@@ -3,6 +3,6 @@ ball
 1
 2
 °°
-	'To be implemented'
+	"Return the value of ball."
 °°
 	^ ball.

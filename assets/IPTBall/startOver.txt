@@ -3,7 +3,7 @@ startOver
 1
 4
 °°
-	'To be implemented'
+	"After starting the ball should be in the center of the game and have an initial speed."
 °°
 	self 
 		position: (self game center x - (self width / 2)) @ (self game center y - (self height / 2));

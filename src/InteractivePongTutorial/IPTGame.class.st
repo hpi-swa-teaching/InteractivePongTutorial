@@ -19,7 +19,7 @@ IPTGame class >> open [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 15:40'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 16:29'
 }
 IPTGame >> ball [
 	^ ball.
@@ -27,7 +27,7 @@ IPTGame >> ball [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 15:40'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 16:29'
 }
 IPTGame >> ball: aBall [
 	ball := aBall.
@@ -44,7 +44,7 @@ IPTGame >> handlesKeyboard: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 15:39'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 17:46'
 }
 IPTGame >> initialize [
 	super initialize.
@@ -56,10 +56,13 @@ IPTGame >> initialize [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 15:50'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 17:46'
 }
 IPTGame >> initializeBall [
-
+	self 
+		ball: (IPTBall new game: self);
+		addMorph: self ball.
+	self ball position: self center.
 ]
 
 {

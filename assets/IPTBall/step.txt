@@ -3,6 +3,14 @@ step
 1
 3
 °°
-	'To be implemented'
+	"Please update the position by the speed of the ball."
 °°
 	self position: self position + self speed.
+°°°°°
+1
+4
+°°
+	"You should now also check for Collisions with walls."
+°°
+	self position: self position + self speed.
+	self checkCollisionWithWalls.

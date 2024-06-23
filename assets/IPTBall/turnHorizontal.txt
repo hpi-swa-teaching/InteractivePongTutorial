@@ -3,7 +3,7 @@ turnHorizontal
 1
 3
 °°
-	'To be implemented'
+	'The change of position in x should be negated.'
 °°
 	self speed: self speed x negated @ self speed y.
 °°°°°

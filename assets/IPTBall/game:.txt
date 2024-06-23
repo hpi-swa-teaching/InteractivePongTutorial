@@ -3,6 +3,6 @@ game: aGame
 1
 2
 °°
-	'To be implemented'
+	"To update game you should set game to the given input."
 °°
 	game := aGame.

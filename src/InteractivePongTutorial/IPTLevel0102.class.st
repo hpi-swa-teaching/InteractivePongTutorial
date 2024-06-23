@@ -72,11 +72,12 @@ IPTLevel0102 >> testGameInitialize [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 15:24'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 16:56'
 }
 IPTLevel0102 >> testGameInitializeBall [
 	game initializeBall.
 	self assert: (game ball isKindOf: IPTBall) description: 'Ball should be of class Ball'.
+	self assert: (game ball position = game center) description: 'You should set the position of the Ball to the center of the game'.
 ]
 
 {
