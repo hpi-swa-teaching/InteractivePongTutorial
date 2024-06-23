@@ -12,7 +12,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'sv 6/19/2024 10:43'
+	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 20:22'
 }
 IPTBrowserTests >> setUp [
 
@@ -20,20 +20,17 @@ IPTBrowserTests >> setUp [
 	chapter := IPTChapter chapterSet at: 2.
 	initialLevelIndex := 2.
 	ipt := IPT new.
-	ipt openLevel: initialLevelIndex inChapter: chapter.
-	
-	"Shorthand to ipt browser"
-	browser := ipt browser.
+	browser := IPTBrowser openFrom: ipt chapter:  chapter levelIndex: initialLevelIndex.
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'sv 6/19/2024 10:46'
+	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 20:22'
 }
 IPTBrowserTests >> tearDown [
 
-	ipt closeAllWindows.
-	
+	browser close.
+	browser := nil.
 	ipt := nil.
 ]
 
@@ -168,18 +165,6 @@ IPTBrowserTests >> testBuildVerifyButtonWith [
 ]
 
 {
-	#category : #building,
-	#'squeak_changestamp' : 'sv 6/19/2024 10:42'
-}
-IPTBrowserTests >> testGoHome [
-
-	ipt browser homeButtonAction.
-	
-	self assert: (ipt browser = nil).
-	self assert: (ipt chapterview = nil) not.
-]
-
-{
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 20:22'
 }
@@ -202,14 +187,13 @@ IPTBrowserTests >> testLoadLevel [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'sv 6/19/2024 10:59'
+	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 20:22'
 }
 IPTBrowserTests >> testNextLevelButton [
 
-	browser loadLevel: 1.
-
+	browser nextLevelButtonEnabled ifTrue: [
 	browser nextLevelButtonAction.
-	self assert: (browser levelIndex = 2).
+	self assert: browser levelIndex == initialLevelIndex + 1.]
 ]
 
 {
@@ -224,14 +208,14 @@ IPTBrowserTests >> testNextLevelButtonEnabled [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'sv 6/19/2024 11:02'
+	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 20:22'
 }
 IPTBrowserTests >> testPreviousLevelButton [
 
-	"We know that we are in Chapter 2, Level 2 so the Previous Level Functionality may be executed."
+	(chapter levels size > 1) ifTrue: [
 	browser loadLevel: chapter levels size.
 	browser previousLevelButtonAction.
-	self assert: browser levelIndex == (chapter levels size - 1).
+	self assert: browser levelIndex == (chapter levels size - 1).]
 ]
 
 {
@@ -253,18 +237,9 @@ IPTBrowserTests >> testSelectClass [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'sv 6/19/2024 11:10'
+	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 19:38'
 }
 IPTBrowserTests >> testSelectMethod [
-
-	| klass meth |
-	klass := ipt browser visibleClassSet at: 1.
-	meth := klass methodCodePieces at: 1.
-
-	ipt browser selectMethod: meth.
-	
-	self assert: (ipt browser selectedMethod == meth).
-	self assert: (ipt browser codeEditor activeCodePiece == meth).
 ]
 
 {

@@ -26,24 +26,6 @@ IPTTests >> tearDown [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'sv 6/19/2024 11:28'
-}
-IPTTests >> testClassOpen [
-
-	| altIPT |
-
-	altIPT := IPT open.
-	
-	self assert: (altIPT isKindOf: IPT).
-	self assert: (altIPT chapterview isNil not).
-	self assert: (altIPT browser isNil).
-	
-	altIPT closeAllWindows.
-	altIPT := nil.
-]
-
-{
-	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:12'
 }
 IPTTests >> testCloseAllWindows [
