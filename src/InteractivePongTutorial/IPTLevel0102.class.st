@@ -43,6 +43,17 @@ IPTLevel0102 class >> visibleCodePieces [
 
 {
 	#category : #levelTests,
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 20:26'
+}
+IPTLevel0102 >> testBallInitialize [
+	self assert: (ball isKindOf: IPTBall) description: 'You may not return a value!'.
+	self assert: ball color isNil not description: 'Have you initialized the morph?'.
+	self assert: (ball color = Color white) description: 'You did not choose the right color!'.
+	self assert: (ball extent = ball defaultExtent) description: 'You should set the extent to defaultExtent'.
+]
+
+{
+	#category : #levelTests,
 	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 15:29'
 }
 IPTLevel0102 >> testBallgame_getter [
@@ -61,13 +72,12 @@ IPTLevel0102 >> testBallgame_setter [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 15:45'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 20:26'
 }
 IPTLevel0102 >> testGameInitialize [
-	self assert: (ball isKindOf: IPTBall) description: 'You may not return a value!'.
-	self assert: ball color isNil not description: 'Have you initialized the morph?'.
-	self assert: (ball color = Color white) description: 'You did not choose the right color!'.
-	self assert: (ball extent = ball defaultExtent) description: 'You should set the extent to defaultExtent'.
+	self assert: (game isKindOf: IPTGame) description: 'You may not return a value!'.
+	self assert: game color isNil not description: 'Have you initialized the morph?'.
+	self assert: (game color = Color black) description: 'You did not choose the right color!'.
 ]
 
 {

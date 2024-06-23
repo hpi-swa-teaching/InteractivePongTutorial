@@ -3,7 +3,7 @@ checkCollisionWithWalls
 1
 4
 °°
-	'To be implemented'
+	"Check if the Ball stays inside the bounds if not take action."
 °°
 	(self position x between: self game left and: self game right - self width)
 		ifFalse: [self startOver].

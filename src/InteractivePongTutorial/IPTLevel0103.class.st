@@ -43,30 +43,42 @@ IPTLevel0103 class >> visibleCodePieces [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 17:39'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 20:28'
 }
-IPTLevel0103 >> testBallgame_getter [
-	ball game: game.
-	self assert: (ball game = game) description: 'Ball game should return the value it was set on in game:'
+IPTLevel0103 >> testBallInitialize [
+	self assert: (ball isKindOf: IPTBall) description: 'You may not return a value!'.
+	self assert: ball color isNil not description: 'Have you initialized the morph?'.
+	self assert: (ball color = Color white) description: 'You did not choose the right color!'.
+	self assert: (ball extent = ball defaultExtent) description: 'You should set the extent to defaultExtent'.
 ]
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 17:39'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 20:29'
 }
-IPTLevel0103 >> testBallgame_setter [
-	ball game: game.
-	self assert: (ball instVarNamed: 'game') = game description: 'Ball game: should set game on the input'.
+IPTLevel0103 >> testBallIstep [
+	|expectedPosition|
+	expectedPosition := ball position + ball speed.
+	ball step.
+	self assert: (ball position = expectedPosition) description: 'You did not update the position correctly'.
 ]
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 17:43'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 20:31'
+}
+IPTLevel0103 >> testBallIstepTime [
+	self assert: (ball stepTime isKindOf: Number) description: 'stepTime has to be a Number.'.
+]
+
+{
+	#category : #levelTests,
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 20:27'
 }
 IPTLevel0103 >> testBallturnHorizontal [
 	| expectedSpeed |
 	expectedSpeed := ball speed x negated @ ball speed y.
-	ball turnVertical.
+	ball turnHorizontal.
 	self assert: (ball speed = expectedSpeed) description: 'You did not set the speed correctly (turnHorizontal)'.
 ]
 
@@ -101,22 +113,4 @@ IPTLevel0103 >> testGameInitializeBall [
 	self assert: (game ball isKindOf: IPTBall) description: 'Ball should be of class Ball'.
 	self assert: (game ball position = game center) description: 'You should set the position of the Ball to the center of the game'.
 	self assert: (ball speed = (ball defaultSpeed @ ball defaultSpeed)) description: 'You did not set the speed correctly (speed is saved as Point x @ y)'.
-]
-
-{
-	#category : #levelTests,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 17:42'
-}
-IPTLevel0103 >> testGameball_getter [
-	game ball: ball.
-	self assert: (game ball = ball) description: 'Game ball should return the value it was set on in ball:'.
-]
-
-{
-	#category : #levelTests,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 17:42'
-}
-IPTLevel0103 >> testGameball_setter [
-	game ball: ball.
-	self assert: (game instVarNamed: 'ball') = ball description: 'Game ball: should set ball on the input'.
 ]
