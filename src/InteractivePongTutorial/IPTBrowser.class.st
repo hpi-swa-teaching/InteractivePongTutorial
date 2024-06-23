@@ -10,18 +10,16 @@ Class {
 		'classSet',
 		'descriptionBoxContent',
 		'visibleClassSet',
-		'playground',
-		'squeakyCollection'
+		'playground'
 	],
 	#category : #'InteractivePongTutorial-Core'
 }
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'sv 6/19/2024 22:13'
+	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 16:49'
 }
 IPTBrowser class >> openFrom: anIPT chapter: aChapter levelIndex: aNumber [
-	"Initialize our IPTBrowser instance"
 
 	| browser |
 	browser := self new 
@@ -29,7 +27,6 @@ IPTBrowser class >> openFrom: anIPT chapter: aChapter levelIndex: aNumber [
 		chapter: aChapter;
 		loadLevel: aNumber;
 		playground: IPTPlayground new;
-		squeakyNeutral;
 		yourself.
 	ToolBuilder open: browser.
 	^ browser
@@ -101,7 +98,7 @@ IPTBrowser >> buildCodePieceListWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'sv 6/19/2024 17:11'
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:20'
 }
 IPTBrowser >> buildDescriptionBoxWith: aBuilder [
 
@@ -114,7 +111,7 @@ IPTBrowser >> buildDescriptionBoxWith: aBuilder [
 			leftFraction: 0.75;
 			topFraction: 0;
 			rightFraction: 1;
-			bottomFraction: 1 offset: 300 negated)
+			bottomFraction: 1)
 ]
 
 {
@@ -242,22 +239,6 @@ IPTBrowser >> buildShowSolutionButtonWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'sv 6/19/2024 21:53'
-}
-IPTBrowser >> buildSqueakyWith: aBuilder [
-
-	^ aBuilder pluggablePanelSpec new
-		model: self;
-		children: #squeakyCollection;
-		frame: (LayoutFrame new
-			leftFraction: 0.75;
-			topFraction: 1 offset: 300 negated;
-			rightFraction: 1;
-			bottomFraction: 1)
-]
-
-{
-	#category : #building,
 	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:26'
 }
 IPTBrowser >> buildTitleBarWith: aBuilder [
@@ -276,25 +257,7 @@ IPTBrowser >> buildTitleBarWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 12:20'
-}
-IPTBrowser >> buildVerifyButtonWith: aBuilder [
-
-	^ aBuilder pluggableButtonSpec new
-		model: self;
-		label: #verifyButtonContent;
-		action: #verifyCode;
-		enabled: true;
-		frame: (LayoutFrame new
-			leftFraction: 0;
-			topFraction: (1 - self buttonHeight);
-			rightFraction: 0.25 / 2;
-			bottomFraction: 1)
-]
-
-{
-	#category : #building,
-	#'squeak_changestamp' : 'sv 6/19/2024 17:11'
+	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 11:07'
 }
 IPTBrowser >> buildWith: aBuilder [
 	^ aBuilder build: (aBuilder pluggableWindowSpec new
@@ -313,7 +276,6 @@ IPTBrowser >> buildWith: aBuilder [
 			self buildPreviousLevelButtonWith: aBuilder.
 			self buildShowSolutionButtonWith: aBuilder.
 			self buildPlaygroundWith: aBuilder.
-			self buildSqueakyWith: aBuilder.
 			};
 		yourself)
 ]
@@ -444,7 +406,7 @@ IPTBrowser >> descriptionBoxContent: anObject [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'sv 6/19/2024 22:14'
+	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:06'
 }
 IPTBrowser >> homeButtonAction [
 	self ipt openChapterView.
@@ -505,7 +467,7 @@ IPTBrowser >> loadLevel: aLevelIndex [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'sv 6/19/2024 22:13'
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:47'
 }
 IPTBrowser >> nextLevelButtonAction [
 	self loadLevel: (self levelIndex + 1).
@@ -546,7 +508,7 @@ IPTBrowser >> playgroundInCollection [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'sv 6/19/2024 22:13'
+	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:44'
 }
 IPTBrowser >> previousLevelButtonAction [
 	self loadLevel: (self levelIndex - 1).
@@ -620,21 +582,6 @@ IPTBrowser >> selectedMethod: anObject [
 ]
 
 {
-	#category : #squeaky,
-	#'squeak_changestamp' : 'sv 6/19/2024 22:04'
-}
-IPTBrowser >> setSqueaky: anImagePath [
-	"Update image of squeakie"
-
-	(self squeakyCollection at: 1)
-			image: (((GitAssetLoader for: 'InteractivePongTutorial')
-				loadForm: anImagePath)
-					scaledToHeight: 300).
-					
-	self update.
-]
-
-{
 	#category : #actions,
 	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:41'
 }
@@ -654,54 +601,6 @@ IPTBrowser >> showSolutionButtonAction [
 IPTBrowser >> showSolutionButtonEnabled [
 
 	^ self selectedMethod isNil not and: [self selectedMethod hasBody].
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'sv 6/19/2024 22:03'
-}
-IPTBrowser >> squeakyCollection [
-
-	squeakyCollection ifNil: [
-		squeakyCollection := {ImageMorph new}	
-	].
-
-	 ^ squeakyCollection
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'sv 6/19/2024 21:47'
-}
-IPTBrowser >> squeakyCollection: anObject [
-	squeakyCollection := anObject
-]
-
-{
-	#category : #squeaky,
-	#'squeak_changestamp' : 'sv 6/19/2024 21:54'
-}
-IPTBrowser >> squeakyHappy [
-
-	self setSqueaky: 'assets/squeaky-happy.png'
-]
-
-{
-	#category : #squeaky,
-	#'squeak_changestamp' : 'sv 6/19/2024 21:54'
-}
-IPTBrowser >> squeakyNeutral [
-
-	self setSqueaky: 'assets/squeaky-neutr.png'
-]
-
-{
-	#category : #squeaky,
-	#'squeak_changestamp' : 'sv 6/19/2024 21:55'
-}
-IPTBrowser >> squeakySad [
-
-	self setSqueaky: 'assets/squeaky-sad.png'
 ]
 
 {
@@ -731,7 +630,6 @@ IPTBrowser >> update [
 		changed: #descriptionBoxContent;
 		changed: #nextLevelButtonEnabled;
 		changed: #previousLevelButtonEnabled;
-		changed: #squeakyCollection.
 		changed: #showSolutionButtonEnabled;
 		changed: #ResetButtonEnabled;
 		changed: #visibleClassSet.
@@ -755,23 +653,6 @@ IPTBrowser >> updateVisibleClassSetToMethods: aMethodsCollection [
 	
 		
 	
-]
-
-{
-	#category : #ui,
-	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:48'
-}
-IPTBrowser >> verifyButtonContent [
-	^ 'Verify'
-]
-
-{
-	#category : #actions,
-	#'squeak_changestamp' : 'sv 6/19/2024 22:15'
-}
-IPTBrowser >> verifyCode [
-	self descriptionBoxContent: (self activeLevel runTest: (self selectedMethod name)).
-	self update.
 ]
 
 {
