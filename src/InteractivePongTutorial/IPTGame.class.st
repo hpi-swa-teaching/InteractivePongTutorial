@@ -19,18 +19,18 @@ IPTGame class >> open [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/24/2024 10:04'
+	#'squeak_changestamp' : 'Felix Knöfel 6/24/2024 11:59'
 }
 IPTGame >> ball [
-	"Return the value of ball."
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/24/2024 10:04'
+	#'squeak_changestamp' : 'Felix Knöfel 6/24/2024 11:59'
 }
 IPTGame >> ball: aBall [
-	"To update ball you should set ball to the given input."
+	
 ]
 
 {
@@ -44,9 +44,10 @@ IPTGame >> handlesKeyboard: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 6/24/2024 10:04'
+	#'squeak_changestamp' : 'Felix Knöfel 6/24/2024 11:59'
 }
 IPTGame >> initialize [
+	"Please change the color to black."
 	super initialize.
 	self 
 		extent: (100@100);
@@ -56,13 +57,10 @@ IPTGame >> initialize [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 6/24/2024 10:04'
+	#'squeak_changestamp' : 'Felix Knöfel 6/24/2024 11:59'
 }
 IPTGame >> initializeBall [
-	self 
-		ball: (IPTBall new game: self);
-		addMorph: self ball.
-	self ball position: self center.
+	
 ]
 
 {
