@@ -84,11 +84,11 @@ IPTClass >> codeToEditForLevel: aLevelIndex [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 12:29'
+	#'squeak_changestamp' : 'Felix Knöfel 6/24/2024 10:03'
 }
 IPTClass >> copy [
 	^ super copy 
-		methodCodePieces: self methodCodePieces copy;
+		methodCodePieces: (self methodCodePieces collect: [ :each | each copy ]);
 		yourself.
 ]
 

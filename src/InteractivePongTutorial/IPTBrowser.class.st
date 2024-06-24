@@ -640,18 +640,20 @@ IPTBrowser >> update [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 6/24/2024 00:26'
+	#'squeak_changestamp' : 'Felix Knöfel 6/24/2024 09:53'
 }
 IPTBrowser >> updateVisibleClassSetToMethods: aMethodsCollection [
 	self visibleClassSet: ((self classSet collect: [ :iptclass | iptclass copy. ]) asOrderedCollection).
 	
 	aMethodsCollection ifNil: [ ^nil.].
 	
-	"Show all classes with methods that are in 'activeLevel visibleMethods'. If there are no methods in a class, dont show it"
-	self visibleClassSet removeAllSuchThat: [ :iptclass | 
+	self visibleClassSet do: [ :iptclass |
 		iptclass methodCodePieces removeAllSuchThat: [ :codePiece | 
 			(aMethodsCollection anySatisfy: [ :method | 
-				method = codePiece methodToBeChanged ]) not].
+				method = codePiece methodToBeChanged ]) not]].
+	
+	"Show all classes with methods that are in 'activeLevel visibleMethods'. If there are no methods in a class, dont show it"
+	self visibleClassSet removeAllSuchThat: [ :iptclass | 
 		iptclass methodCodePieces isEmpty. ].
 	
 		

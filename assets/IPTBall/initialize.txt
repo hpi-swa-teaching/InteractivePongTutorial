@@ -32,7 +32,7 @@ initialize
 	super initialize.
 	self 
 		color: Color white;
-		extent: self defaultExtent.
+		extent: self defaultExtent;
 		speed: self defaultSpeed @ self defaultSpeed.
 °°
 	super initialize.
