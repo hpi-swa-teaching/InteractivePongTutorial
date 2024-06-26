@@ -533,7 +533,7 @@ IPTBrowser >> levelIndex: anObject [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 14:10'
+	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 14:51'
 }
 IPTBrowser >> loadLevel: aLevelIndex [
 	self 
@@ -552,7 +552,7 @@ IPTBrowser >> loadLevel: aLevelIndex [
 	self playground ifNotNil: [
 		self playground removeAllMorphs.].
 	
-	self setsqueakyNeutral.
+	self setSqueaky: (self squeakyPaths at: #neutral).
 	self update.
 	
 		
@@ -720,44 +720,17 @@ IPTBrowser >> selectedMethod: anObject [
 ]
 
 {
-	#category : #actions,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 12:39'
+	#category : #ui,
+	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 14:54'
 }
 IPTBrowser >> setSqueaky: anImagePath [
-
+	
 	(self squeakyCollection at: 1)
 			image: (((GitAssetLoader for: 'InteractivePongTutorial')
 				loadForm: anImagePath)
-					scaledToHeight: 200).
+				scaledToHeight: 200).
 					
 	self update.
-]
-
-{
-	#category : #actions,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 14:05'
-}
-IPTBrowser >> setsqueakyHappy [
-
-	self setSqueaky: 'assets/squeaky-happy.png'.
-]
-
-{
-	#category : #actions,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 14:05'
-}
-IPTBrowser >> setsqueakyNeutral [
-
-	self setSqueaky: 'assets/squeaky-neutr.png'.
-]
-
-{
-	#category : #actions,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 14:05'
-}
-IPTBrowser >> setsqueakySad [
-
-	self setSqueaky: 'assets/squeaky-sad.png'.
 ]
 
 {
@@ -801,6 +774,18 @@ IPTBrowser >> squeakyCollection [
 }
 IPTBrowser >> squeakyCollection: anObject [
 	squeakyCollection := anObject
+]
+
+{
+	#category : #ui,
+	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 14:51'
+}
+IPTBrowser >> squeakyPaths [
+	^ Dictionary new 
+		at: #sad put: 'assets/squeaky-sad.png';
+		at: #happy put: 'assets/squeaky-happy.png';
+		at: #neutral put: 'assets/squeaky-neutr.png';
+		yourself.
 ]
 
 {
@@ -855,8 +840,8 @@ IPTBrowser >> update [
 ]
 
 {
-	#category : #actions,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 14:09'
+	#category : #ui,
+	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 14:48'
 }
 IPTBrowser >> updateSqueaky [
 
@@ -865,8 +850,8 @@ IPTBrowser >> updateSqueaky [
 	failures := self testResult at: #failures.
 	
 	(errors isEmpty and: [failures isEmpty]) 
-	ifTrue: [self setsqueakyHappy]
-	ifFalse: [self setsqueakySad].
+		ifTrue: [self setSqueaky: (self squeakyPaths at: #happy)]
+		ifFalse: [self setSqueaky: (self squeakyPaths at: #sad).].
 	
 	
 ]
