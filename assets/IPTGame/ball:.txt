@@ -6,3 +6,10 @@ ball: aBall
 	"To update ball you should set ball to the given input."
 °°
 	ball := aBall.
+°°°°°
+1
+3
+°°
+	ball := aBall.
+°°
+	ball := aBall.
