@@ -8,7 +8,8 @@ Class {
 		'chapter',
 		'levelIndex',
 		'classSet',
-		'descriptionBoxContent',
+		'testOutput',
+		'explanationIndex',
 		'visibleClassSet',
 		'playground'
 	],
@@ -17,7 +18,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 16:49'
+	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 11:51'
 }
 IPTBrowser class >> openFrom: anIPT chapter: aChapter levelIndex: aNumber [
 
@@ -26,6 +27,7 @@ IPTBrowser class >> openFrom: anIPT chapter: aChapter levelIndex: aNumber [
 		ipt: anIPT;
 		chapter: aChapter;
 		loadLevel: aNumber;
+		explanationIndex: 1;
 		playground: IPTPlayground new;
 		yourself.
 	ToolBuilder open: browser.
@@ -98,20 +100,20 @@ IPTBrowser >> buildCodePieceListWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:20'
+	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 11:56'
 }
-IPTBrowser >> buildDescriptionBoxWith: aBuilder [
+IPTBrowser >> buildExplanationBoxWith: aBuilder [
 
 	^ aBuilder pluggableTextSpec new
 		model: self;
-		getText: #descriptionBoxContent;
+		getText: #explanationBoxContent;
 		readOnly: true;
 		indicateUnacceptedChanges: false;
 		frame: (LayoutFrame new
 			leftFraction: 0.75;
-			topFraction: 0;
+			topFraction: 0.4;
 			rightFraction: 1;
-			bottomFraction: 1)
+			bottomFraction: 0.8 - self titleBarHeight)
 ]
 
 {
@@ -133,6 +135,24 @@ IPTBrowser >> buildHomeButtonWith: aBuilder [
 
 {
 	#category : #building,
+	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 12:07'
+}
+IPTBrowser >> buildNextExplanationButtonWith: aBuilder [
+
+	^ aBuilder pluggableButtonSpec new
+		model: self;
+		label: '-->';
+		enabled: #nextExplanationButtonEnabled;
+		action: #nextExplanationButtonAction;
+		frame: (LayoutFrame new
+			leftFraction: 0.875;
+			topFraction: 0.8 - self titleBarHeight;
+			rightFraction: 1;
+			bottomFraction: 0.8).
+]
+
+{
+	#category : #building,
 	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:43'
 }
 IPTBrowser >> buildNextLevelButtonWith: aBuilder [
@@ -147,6 +167,24 @@ IPTBrowser >> buildNextLevelButtonWith: aBuilder [
 			topFraction: self titleBarHeight;
 			rightFraction: 0.25;
 			bottomFraction: (2 * self titleBarHeight))
+]
+
+{
+	#category : #building,
+	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 12:14'
+}
+IPTBrowser >> buildOutputBoxWith: aBuilder [
+
+	^ aBuilder pluggableTextSpec new
+		model: self;
+		getText: #outputBoxContent;
+		readOnly: true;
+		indicateUnacceptedChanges: false;
+		frame: (LayoutFrame new
+			leftFraction: 0.75;
+			topFraction: 0;
+			rightFraction: 1;
+			bottomFraction: 0.4)
 ]
 
 {
@@ -181,6 +219,24 @@ IPTBrowser >> buildPlaygroundWith: aBuilder [
 			topFraction: 0;
 			rightFraction: 0.75;
 			bottomFraction: 0.5)
+]
+
+{
+	#category : #building,
+	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 11:59'
+}
+IPTBrowser >> buildPreviousExplanationButtonWith: aBuilder [
+
+	^ aBuilder pluggableButtonSpec new
+		model: self;
+		label: '<--';
+		enabled: #previousExplanationButtonEnabled;
+		action: #previousExplanationButtonAction;
+		frame: (LayoutFrame new
+			leftFraction: 0.75;
+			topFraction: 0.8 - self titleBarHeight;
+			rightFraction: 1 - 0.125;
+			bottomFraction: 0.8).
 ]
 
 {
@@ -257,7 +313,7 @@ IPTBrowser >> buildTitleBarWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 11:07'
+	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 12:00'
 }
 IPTBrowser >> buildWith: aBuilder [
 	^ aBuilder build: (aBuilder pluggableWindowSpec new
@@ -265,10 +321,11 @@ IPTBrowser >> buildWith: aBuilder [
 		label: 'Interactive Pong Tutorial: ', self chapter name;
 		extent: (1400@800);
 		children: {
-			self buildDescriptionBoxWith: aBuilder.
+			
 			self buildTitleBarWith: aBuilder.
-			self buildCodeEditorWith: aBuilder.
 			self buildCodePieceListWith: aBuilder.
+			self buildCodeEditorWith: aBuilder.
+			
 			self buildPlayButtonWith: aBuilder.
 			self buildResetButtonWith: aBuilder.
 			self buildHomeButtonWith: aBuilder.
@@ -276,6 +333,10 @@ IPTBrowser >> buildWith: aBuilder [
 			self buildPreviousLevelButtonWith: aBuilder.
 			self buildShowSolutionButtonWith: aBuilder.
 			self buildPlaygroundWith: aBuilder.
+			self buildOutputBoxWith: aBuilder.
+			self buildExplanationBoxWith: aBuilder.
+			self buildPreviousExplanationButtonWith: aBuilder.
+			self buildNextExplanationButtonWith: aBuilder.
 			};
 		yourself)
 ]
@@ -389,19 +450,28 @@ IPTBrowser >> codeEditor: anObject [
 ]
 
 {
-	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/15/2024 13:29'
+	#category : #ui,
+	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 11:50'
 }
-IPTBrowser >> descriptionBoxContent [
-	^ descriptionBoxContent
+IPTBrowser >> explanationBoxContent [
+
+	^ self activeLevel explanations at: self explanationIndex.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/15/2024 13:29'
+	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 11:48'
 }
-IPTBrowser >> descriptionBoxContent: anObject [
-	descriptionBoxContent := anObject
+IPTBrowser >> explanationIndex [
+	^ explanationIndex
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 11:48'
+}
+IPTBrowser >> explanationIndex: anObject [
+	explanationIndex := anObject
 ]
 
 {
@@ -471,6 +541,25 @@ IPTBrowser >> loadLevel: aLevelIndex [
 
 {
 	#category : #actions,
+	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 12:07'
+}
+IPTBrowser >> nextExplanationButtonAction [
+
+	self explanationIndex: self explanationIndex +1.
+	self update.
+	
+]
+
+{
+	#category : #ui,
+	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 12:10'
+}
+IPTBrowser >> nextExplanationButtonEnabled [
+	^ self activeLevel explanations size > self explanationIndex.
+]
+
+{
+	#category : #actions,
 	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:47'
 }
 IPTBrowser >> nextLevelButtonAction [
@@ -484,6 +573,15 @@ IPTBrowser >> nextLevelButtonAction [
 }
 IPTBrowser >> nextLevelButtonEnabled [
 	^ self chapter levels size > self levelIndex.
+]
+
+{
+	#category : #ui,
+	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 12:14'
+}
+IPTBrowser >> outputBoxContent [
+
+	^ self testOutput.
 ]
 
 {
@@ -512,6 +610,24 @@ IPTBrowser >> playgroundInCollection [
 
 {
 	#category : #actions,
+	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 12:07'
+}
+IPTBrowser >> previousExplanationButtonAction [
+
+	self explanationIndex: self explanationIndex - 1.
+	self update.
+]
+
+{
+	#category : #ui,
+	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 12:01'
+}
+IPTBrowser >> previousExplanationButtonEnabled [
+	^ self explanationIndex > 1.
+]
+
+{
+	#category : #actions,
 	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:44'
 }
 IPTBrowser >> previousLevelButtonAction [
@@ -528,7 +644,7 @@ IPTBrowser >> previousLevelButtonEnabled [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 6/23/2024 23:31'
+	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 12:15'
 }
 IPTBrowser >> runCode [
 	
@@ -550,7 +666,7 @@ IPTBrowser >> runCode [
 			output := 'Well done! :)'.
 	].
 	
-	self descriptionBoxContent: output.
+	self testOutput: output.
 		
 	self update.
 
@@ -607,11 +723,27 @@ IPTBrowser >> showSolutionButtonEnabled [
 ]
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 12:14'
+}
+IPTBrowser >> testOutput [
+	^ testOutput
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 12:14'
+}
+IPTBrowser >> testOutput: anObject [
+	testOutput := anObject
+]
+
+{
 	#category : #ui,
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:06'
+	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 11:49'
 }
 IPTBrowser >> titleBarContent [
-	^ self activeLevel name.
+	^ self activeLevel asString.
 ]
 
 {
@@ -624,18 +756,21 @@ IPTBrowser >> titleBarHeight [
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:49'
+	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 12:15'
 }
 IPTBrowser >> update [
 	self 
 		changed: #levelIndex;
 		changed: #titleBarContent;
-		changed: #descriptionBoxContent;
+		changed: #outputBoxContent;
 		changed: #nextLevelButtonEnabled;
 		changed: #previousLevelButtonEnabled;
 		changed: #showSolutionButtonEnabled;
 		changed: #ResetButtonEnabled;
-		changed: #visibleClassSet.
+		changed: #visibleClassSet;
+		changed: #explanationBoxContent;
+		changed: #previousExplanationButtonEnabled;
+		changed: #nextExplanationButtonEnabled.
 ]
 
 {
