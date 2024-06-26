@@ -19,7 +19,7 @@ IPTGame class >> open [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 12:22'
+	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 12:26'
 }
 IPTGame >> ball [
 	^ ball.
@@ -27,7 +27,7 @@ IPTGame >> ball [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 12:22'
+	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 12:26'
 }
 IPTGame >> ball: aBall [
 	ball := aBall.
@@ -44,19 +44,19 @@ IPTGame >> handlesKeyboard: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 12:22'
+	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 12:26'
 }
 IPTGame >> initialize [
 	super initialize.
 	self 
 		extent: (100@100);
-		color: Color black;
+		color: Color gray;
 		beSticky.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 12:22'
+	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 12:26'
 }
 IPTGame >> initializeBall [
 	self 

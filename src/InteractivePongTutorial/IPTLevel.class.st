@@ -29,6 +29,15 @@ IPTLevel class >> description [
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 11:39'
+}
+IPTLevel class >> explanations [
+
+	^ self subclassResponsibility.
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 12:16'
 }
 IPTLevel class >> levelIndex [

@@ -24,6 +24,18 @@ IPTLevel0101 class >> description [
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 11:41'
+}
+IPTLevel0101 class >> explanations [
+
+	^ {
+	'All Objects you will use are Morphs.'.
+	'Morphs have attributes, you can set them via distinctive setters.'.
+	}
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 12:15'
 }
 IPTLevel0101 class >> levelIndex [

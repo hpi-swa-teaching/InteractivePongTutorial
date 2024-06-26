@@ -62,12 +62,12 @@ IPTBrowserTests >> testBuildCodePieceListWith [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:59'
+	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 11:42'
 }
 IPTBrowserTests >> testBuildDescriptionBoxWith [
 
 	| spec |
-	spec := browser buildDescriptionBoxWith: ToolBuilder new.
+	spec := browser buildOutputBoxWith: ToolBuilder new.
 	
 	self assert: true equals: (spec isKindOf: PluggableTextSpec).
 	self assert: browser equals: spec model.

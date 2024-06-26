@@ -20,7 +20,7 @@ IPTBall >> checkCollisionWithPlayer [
 
 {
 	#category : #collision,
-	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 12:23'
+	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 12:26'
 }
 IPTBall >> checkCollisionWithWalls [
 	(self position x between: self game left and: self game right - self width)
@@ -57,7 +57,7 @@ IPTBall >> defaultSpeed [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 12:22'
+	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 12:26'
 }
 IPTBall >> game [
 	^ game.
@@ -65,7 +65,7 @@ IPTBall >> game [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 12:22'
+	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 12:26'
 }
 IPTBall >> game: aGame [
 	game := aGame.
@@ -73,7 +73,7 @@ IPTBall >> game: aGame [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 12:22'
+	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 12:26'
 }
 IPTBall >> initialize [
 	super initialize.
@@ -84,7 +84,7 @@ IPTBall >> initialize [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 12:22'
+	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 12:26'
 }
 IPTBall >> speed [
 	^ speed.
@@ -92,7 +92,7 @@ IPTBall >> speed [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 12:22'
+	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 12:26'
 }
 IPTBall >> speed: aNumber [
 	speed := aNumber.
@@ -100,7 +100,7 @@ IPTBall >> speed: aNumber [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 12:23'
+	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 12:26'
 }
 IPTBall >> startOver [
 	self 
@@ -110,7 +110,7 @@ IPTBall >> startOver [
 
 {
 	#category : #stepping,
-	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 12:22'
+	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 12:26'
 }
 IPTBall >> step [
 	self position: self position + self speed.
@@ -119,7 +119,7 @@ IPTBall >> step [
 
 {
 	#category : #stepping,
-	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 12:22'
+	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 12:26'
 }
 IPTBall >> stepTime [
 	^ 10.
@@ -127,7 +127,7 @@ IPTBall >> stepTime [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 12:22'
+	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 12:26'
 }
 IPTBall >> turnHorizontal [
 	self speed: self speed x negated @ self speed y.
@@ -135,7 +135,7 @@ IPTBall >> turnHorizontal [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 12:23'
+	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 12:26'
 }
 IPTBall >> turnVertical [
 	self speed: self speed x @ self speed y negated.
