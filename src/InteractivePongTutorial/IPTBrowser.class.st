@@ -11,14 +11,15 @@ Class {
 		'testOutput',
 		'explanationIndex',
 		'visibleClassSet',
-		'playground'
+		'playground',
+		'squeakyCollection'
 	],
 	#category : #'InteractivePongTutorial-Core'
 }
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 11:51'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 13:28'
 }
 IPTBrowser class >> openFrom: anIPT chapter: aChapter levelIndex: aNumber [
 
@@ -29,6 +30,7 @@ IPTBrowser class >> openFrom: anIPT chapter: aChapter levelIndex: aNumber [
 		loadLevel: aNumber;
 		explanationIndex: 1;
 		playground: IPTPlayground new;
+		squeakyNeutral;
 		yourself.
 	ToolBuilder open: browser.
 	^ browser
@@ -295,6 +297,22 @@ IPTBrowser >> buildShowSolutionButtonWith: aBuilder [
 
 {
 	#category : #building,
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 12:37'
+}
+IPTBrowser >> buildSqueakyWith: aBuilder [
+
+	^ aBuilder pluggablePanelSpec new
+		model: self;
+		children: #squeakyCollection;
+		frame: (LayoutFrame new
+			leftFraction: 0.75;
+			topFraction: 0.8;
+			rightFraction: 1;
+			bottomFraction: 1)
+]
+
+{
+	#category : #building,
 	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:26'
 }
 IPTBrowser >> buildTitleBarWith: aBuilder [
@@ -313,7 +331,7 @@ IPTBrowser >> buildTitleBarWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 12:00'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 12:38'
 }
 IPTBrowser >> buildWith: aBuilder [
 	^ aBuilder build: (aBuilder pluggableWindowSpec new
@@ -337,6 +355,7 @@ IPTBrowser >> buildWith: aBuilder [
 			self buildExplanationBoxWith: aBuilder.
 			self buildPreviousExplanationButtonWith: aBuilder.
 			self buildNextExplanationButtonWith: aBuilder.
+			self buildSqueakyWith: aBuilder.
 			};
 		yourself)
 ]
@@ -644,7 +663,7 @@ IPTBrowser >> previousLevelButtonEnabled [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 12:15'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 13:36'
 }
 IPTBrowser >> runCode [
 	
@@ -657,7 +676,10 @@ IPTBrowser >> runCode [
 	output := ''.
 	
 	(errors isEmpty and: [failures isEmpty])
-		ifTrue: [self playground runCode.].
+		ifTrue: [
+			self	squeakyHappy.
+			self playground runCode.]
+		ifFalse: [self squeakySad.].
 		
 	output := (errors inject: 'Errors:' into: [:run :elem | run, Character cr, elem ]), Character cr, Character cr.
 	output := (failures inject: (output, 'Failures:') into: [:run :elem | run, Character cr, elem ]).
@@ -702,6 +724,20 @@ IPTBrowser >> selectedMethod: anObject [
 
 {
 	#category : #actions,
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 12:39'
+}
+IPTBrowser >> setSqueaky: anImagePath [
+
+	(self squeakyCollection at: 1)
+			image: (((GitAssetLoader for: 'InteractivePongTutorial')
+				loadForm: anImagePath)
+					scaledToHeight: 200).
+					
+	self update.
+]
+
+{
+	#category : #actions,
 	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:41'
 }
 IPTBrowser >> showSolutionButtonAction [
@@ -720,6 +756,54 @@ IPTBrowser >> showSolutionButtonAction [
 IPTBrowser >> showSolutionButtonEnabled [
 
 	^ self selectedMethod isNil not and: [self selectedMethod hasBody].
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 12:40'
+}
+IPTBrowser >> squeakyCollection [
+
+	squeakyCollection ifNil: [
+		squeakyCollection := {ImageMorph new}	
+	].
+
+	 ^ squeakyCollection.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 12:35'
+}
+IPTBrowser >> squeakyCollection: anObject [
+	squeakyCollection := anObject
+]
+
+{
+	#category : #actions,
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 12:41'
+}
+IPTBrowser >> squeakyHappy [
+
+	self setSqueaky: 'assets/squeaky-happy.png'
+]
+
+{
+	#category : #actions,
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 13:30'
+}
+IPTBrowser >> squeakyNeutral [
+
+	self setSqueaky: 'assets/squeaky-neutr.png'
+]
+
+{
+	#category : #actions,
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 12:41'
+}
+IPTBrowser >> squeakySad [
+
+	self setSqueaky: 'assets/squeaky-sad.png'
 ]
 
 {

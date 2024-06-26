@@ -23,6 +23,13 @@
 			'src'
 		]
 	},
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'squeaky-happy.png'
+		],
+		#encoding : Class [ #PNGReadWriter ]
+	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
 			'assets',
@@ -51,7 +58,7 @@
 		#path : FSAbsolutePath [
 			'assets',
 			'IPTBall',
-			'speed.txt'
+			'startOver.txt'
 		],
 		#encoding : 'TXT'
 	},
@@ -59,9 +66,16 @@
 		#path : FSAbsolutePath [
 			'assets',
 			'IPTBall',
-			'startOver.txt'
+			'speed.txt'
 		],
 		#encoding : 'TXT'
+	},
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'squeaky-sad.png'
+		],
+		#encoding : @11
 	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
@@ -126,5 +140,12 @@
 			'step.txt'
 		],
 		#encoding : 'TXT'
+	},
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'squeaky-neutr.png'
+		],
+		#encoding : @11
 	}
 ]
