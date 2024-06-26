@@ -8,7 +8,7 @@ Class {
 		'chapter',
 		'levelIndex',
 		'classSet',
-		'testOutput',
+		'testResult',
 		'explanationIndex',
 		'visibleClassSet',
 		'playground',
@@ -19,7 +19,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 13:28'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 14:11'
 }
 IPTBrowser class >> openFrom: anIPT chapter: aChapter levelIndex: aNumber [
 
@@ -28,9 +28,7 @@ IPTBrowser class >> openFrom: anIPT chapter: aChapter levelIndex: aNumber [
 		ipt: anIPT;
 		chapter: aChapter;
 		loadLevel: aNumber;
-		explanationIndex: 1;
 		playground: IPTPlayground new;
-		squeakyNeutral;
 		yourself.
 	ToolBuilder open: browser.
 	^ browser
@@ -535,12 +533,13 @@ IPTBrowser >> levelIndex: anObject [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 6/24/2024 00:29'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 14:10'
 }
 IPTBrowser >> loadLevel: aLevelIndex [
 	self 
 		levelIndex: aLevelIndex;
-		selectMethod: nil.
+		selectMethod: nil;
+		explanationIndex: 1.
 	
 	self 
 		updateVisibleClassSetToMethods: self activeLevel visibleCodePieces;
@@ -552,6 +551,8 @@ IPTBrowser >> loadLevel: aLevelIndex [
 	
 	self playground ifNotNil: [
 		self playground removeAllMorphs.].
+	
+	self setsqueakyNeutral.
 	self update.
 	
 		
@@ -596,11 +597,20 @@ IPTBrowser >> nextLevelButtonEnabled [
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 12:14'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 13:59'
 }
 IPTBrowser >> outputBoxContent [
+	| output |
+	output := ''.
+	self testResult ifNotNil: [
+	output := ((self testResult at: #errors) inject: 'Errors:' into: [:run :elem | run, Character cr, elem ]), Character cr, Character cr.
+	output := ((self testResult at: #failures) inject: (output, 'Failures:') into: [:run :elem | run, Character cr, elem ]).
+	
+	(self testResult at: #success) ifTrue: [
+			output := 'Well done! :)'.
+	].].
 
-	^ self testOutput.
+	^ output.
 ]
 
 {
@@ -663,33 +673,20 @@ IPTBrowser >> previousLevelButtonEnabled [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 13:36'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 14:10'
 }
 IPTBrowser >> runCode [
 	
-	| errors failures testResult output |
+	| errors failures |
 	
-	 testResult := self activeLevel runTests.
-	 failures := testResult at: #failures.
-	 errors := testResult at: #errors.
-	
-	output := ''.
+	 self testResult: self activeLevel runTests.
+	 failures := self testResult at: #failures.
+	 errors := self testResult at: #errors.
 	
 	(errors isEmpty and: [failures isEmpty])
-		ifTrue: [
-			self	squeakyHappy.
-			self playground runCode.]
-		ifFalse: [self squeakySad.].
+		ifTrue: [self playground runCode.].
 		
-	output := (errors inject: 'Errors:' into: [:run :elem | run, Character cr, elem ]), Character cr, Character cr.
-	output := (failures inject: (output, 'Failures:') into: [:run :elem | run, Character cr, elem ]).
-	
-	(testResult at: #success) ifTrue: [
-			output := 'Well done! :)'.
-	].
-	
-	self testOutput: output.
-		
+	self updateSqueaky.
 	self update.
 
 ]
@@ -738,6 +735,33 @@ IPTBrowser >> setSqueaky: anImagePath [
 
 {
 	#category : #actions,
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 14:05'
+}
+IPTBrowser >> setsqueakyHappy [
+
+	self setSqueaky: 'assets/squeaky-happy.png'.
+]
+
+{
+	#category : #actions,
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 14:05'
+}
+IPTBrowser >> setsqueakyNeutral [
+
+	self setSqueaky: 'assets/squeaky-neutr.png'.
+]
+
+{
+	#category : #actions,
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 14:05'
+}
+IPTBrowser >> setsqueakySad [
+
+	self setSqueaky: 'assets/squeaky-sad.png'.
+]
+
+{
+	#category : #actions,
 	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:41'
 }
 IPTBrowser >> showSolutionButtonAction [
@@ -780,46 +804,19 @@ IPTBrowser >> squeakyCollection: anObject [
 ]
 
 {
-	#category : #actions,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 12:41'
+	#category : #accessing,
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 13:47'
 }
-IPTBrowser >> squeakyHappy [
-
-	self setSqueaky: 'assets/squeaky-happy.png'
-]
-
-{
-	#category : #actions,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 13:30'
-}
-IPTBrowser >> squeakyNeutral [
-
-	self setSqueaky: 'assets/squeaky-neutr.png'
-]
-
-{
-	#category : #actions,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 12:41'
-}
-IPTBrowser >> squeakySad [
-
-	self setSqueaky: 'assets/squeaky-sad.png'
+IPTBrowser >> testResult [
+	^ testResult
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 12:14'
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 13:47'
 }
-IPTBrowser >> testOutput [
-	^ testOutput
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 12:14'
-}
-IPTBrowser >> testOutput: anObject [
-	testOutput := anObject
+IPTBrowser >> testResult: anObject [
+	testResult := anObject
 ]
 
 {
@@ -855,6 +852,23 @@ IPTBrowser >> update [
 		changed: #explanationBoxContent;
 		changed: #previousExplanationButtonEnabled;
 		changed: #nextExplanationButtonEnabled.
+]
+
+{
+	#category : #actions,
+	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 14:09'
+}
+IPTBrowser >> updateSqueaky [
+
+	| errors failures |
+	errors := self testResult at: #errors.
+	failures := self testResult at: #failures.
+	
+	(errors isEmpty and: [failures isEmpty]) 
+	ifTrue: [self setsqueakyHappy]
+	ifFalse: [self setsqueakySad].
+	
+	
 ]
 
 {
