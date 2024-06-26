@@ -451,10 +451,10 @@ IPTBrowser >> codeEditor: anObject [
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 11:50'
+	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 12:38'
 }
 IPTBrowser >> explanationBoxContent [
-
+	
 	^ self activeLevel explanations at: self explanationIndex.
 ]
 
@@ -620,7 +620,7 @@ IPTBrowser >> previousExplanationButtonAction [
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 12:01'
+	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 12:34'
 }
 IPTBrowser >> previousExplanationButtonEnabled [
 	^ self explanationIndex > 1.

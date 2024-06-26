@@ -24,6 +24,15 @@ IPTLevel0103 class >> description [
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 12:35'
+}
+IPTLevel0103 class >> explanations [
+	
+	^ {''}.
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Leo Sonnenberg 6/21/2024 16:58'
 }
 IPTLevel0103 class >> levelIndex [
