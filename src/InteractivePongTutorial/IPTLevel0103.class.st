@@ -104,7 +104,7 @@ IPTLevel0103 >> testBallturnVertical [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 17:40'
+	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 12:04'
 }
 IPTLevel0103 >> testGameInitialize [
 	self assert: (ball isKindOf: IPTBall) description: 'You may not return a value!'.
@@ -115,11 +115,12 @@ IPTLevel0103 >> testGameInitialize [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 17:42'
+	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 12:23'
 }
 IPTLevel0103 >> testGameInitializeBall [
 	game initializeBall.
 	self assert: (game ball isKindOf: IPTBall) description: 'Ball should be of class Ball'.
 	self assert: (game ball position = game center) description: 'You should set the position of the Ball to the center of the game'.
 	self assert: (ball speed = (ball defaultSpeed @ ball defaultSpeed)) description: 'You did not set the speed correctly (speed is saved as Point x @ y)'.
+
 ]

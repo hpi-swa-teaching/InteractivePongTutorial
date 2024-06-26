@@ -6,3 +6,10 @@ game
 	"Return the value of game."
 °°
 	^ game.
+°°°°°
+1
+3
+°°
+	^ game.
+°°
+	^ game.
