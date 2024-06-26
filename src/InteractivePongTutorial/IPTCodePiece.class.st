@@ -2,7 +2,7 @@ Class {
 	#name : #IPTCodePiece,
 	#superclass : #Object,
 	#instVars : [
-		'methodToBeChanged',
+		'source',
 		'variants',
 		'code',
 		'head'
@@ -100,11 +100,11 @@ IPTCodePiece class >> ball_turnVertical [
 
 {
 	#category : #creating,
-	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 17:42'
+	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 14:46'
 }
 IPTCodePiece class >> defaultCodePieces [
 	^ { IPTCodePiece new
-			methodToBeChanged: (IPTTestObject >> #aNormalMethod);
+			source: (IPTTestObject >> #aNormalMethod);
 			head: 'aNormalMethod';
 			variants: { 
 				IPTCodeVariant new
@@ -119,7 +119,7 @@ IPTCodePiece class >> defaultCodePieces [
 					yourself. };
 			yourself.
 		IPTCodePiece new
-			methodToBeChanged: (IPTTestObject >> #aMethodWithParam:);
+			source: (IPTTestObject >> #aMethodWithParam:);
 			head:  'aMethodWithParam: aParam';
 			variants: { 
 				IPTCodeVariant new
@@ -129,7 +129,7 @@ IPTCodePiece class >> defaultCodePieces [
 					yourself. };
 			yourself.
 		IPTCodePiece new
-			methodToBeChanged: (IPTTestObject >> #aMethodWithParam:andAlso:);
+			source: (IPTTestObject >> #aMethodWithParam:andAlso:);
 			head: 'aMethodWithParam: aParam andAlso: anotherParam';
 			variants: {
 				IPTCodeVariant new
@@ -143,14 +143,14 @@ IPTCodePiece class >> defaultCodePieces [
 
 {
 	#category : #creating,
-	#'squeak_changestamp' : 'Felix Knöfel 6/24/2024 00:02'
+	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 14:47'
 }
 IPTCodePiece class >> fromFile: aFilePath [
 	| methodInfos fileContents |
 	methodInfos := (aFilePath splitBy: '/' ) allButFirst allButFirst.
 	fileContents := ((GitAssetLoader for: 'InteractivePongTutorial') loadString: aFilePath) splitBy: '°°°°°'.
 	^ self new
-		methodToBeChanged: ((Smalltalk at: methodInfos first asSymbol) >> (methodInfos second splitBy: '.') first  asSymbol);
+		source: ((Smalltalk at: methodInfos first asSymbol) >> (methodInfos second splitBy: '.') first  asSymbol);
 		head: fileContents first withBlanksTrimmed;
 	 	variants: ((fileContents allButFirst collect: [:variantString | IPTCodeVariant fromString: variantString]) asOrderedCollection
 			addFirst: (IPTCodeVariant new
@@ -203,7 +203,7 @@ IPTCodePiece >> addHeadToCode: aCodeString [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/17/2024 13:08'
+	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 14:42'
 }
 IPTCodePiece >> checkSyntaxAndSaveCode: aString [
 
@@ -211,7 +211,7 @@ IPTCodePiece >> checkSyntaxAndSaveCode: aString [
 	(((aString splitBy: {Character cr}) at: 1) withBlanksTrimmed = self head)
 		ifFalse: [^ 'You must leave the head line unchanged!'].
 	
-	self methodToBeChanged methodClass compile: aString.
+	self source methodClass compile: aString.
 	self code: aString.
 	^ ''.
 
@@ -219,11 +219,11 @@ IPTCodePiece >> checkSyntaxAndSaveCode: aString [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 13:34'
+	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 14:42'
 }
 IPTCodePiece >> code [
-	self methodToBeChanged ifNil: [ ^ nil ].
-	code ifNil: [ self code: self methodToBeChanged getSource asString ].
+	self source ifNil: [ ^ nil ].
+	code ifNil: [ self code: self source getSource asString ].
 	^ code.
 ]
 
@@ -236,7 +236,7 @@ IPTCodePiece >> code: anObject [
 ]
 
 {
-	#category : #accessing,
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 13:37'
 }
 IPTCodePiece >> hasBody [
@@ -260,6 +260,15 @@ IPTCodePiece >> head: anObject [
 ]
 
 {
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 14:43'
+}
+IPTCodePiece >> isSameSourceAs: aCompiledMethod [
+	^ ((aCompiledMethod asString splitBy: '"') at: 1) 
+		= ((self source asString splitBy: '"') at: 1)
+]
+
+{
 	#category : #loading,
 	#'squeak_changestamp' : 'Felix Knöfel 6/23/2024 23:39'
 }
@@ -278,43 +287,27 @@ IPTCodePiece >> loadSolutionCodeForLevel: aLevelIndex andChapter: aChapterNumber
 ]
 
 {
-	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 10:29'
-}
-IPTCodePiece >> methodToBeChanged [
-	^ methodToBeChanged
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 10:28'
-}
-IPTCodePiece >> methodToBeChanged: anObject [
-	methodToBeChanged := anObject
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 15:06'
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 14:46'
 }
 IPTCodePiece >> name [
 "Extract method name"
 
 	| paramCount strings|
-	strings := self methodToBeChanged literalStrings.
-	paramCount := 1 max: self methodToBeChanged tempNames size.
+	strings := self source literalStrings.
+	paramCount := 1 max: self source tempNames size.
 	^ (strings copyFrom: (strings size - paramCount) to: (strings size - 1 )) join.
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 12:26'
+	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 14:46'
 }
 IPTCodePiece >> safelyCompile: aString [
 	"We want to make sure the user is not playing any games, like trying to compile new methods into our class"
 	| previousMethods newMethods |
 	previousMethods := self class methodDict keys copy.
-	self methodToBeChanged methodClass compile: aString.
+	self source methodClass compile: aString.
 	newMethods := self class methodDict keys difference: previousMethods.
 	newMethods do: [:each|
 		self class removeSelector: each].
@@ -323,6 +316,22 @@ IPTCodePiece >> safelyCompile: aString [
 
 {
 	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 14:42'
+}
+IPTCodePiece >> source [
+	^ source
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 14:42'
+}
+IPTCodePiece >> source: anObject [
+	source := anObject
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Felix Knöfel 6/24/2024 00:00'
 }
 IPTCodePiece >> variantForLevel: aLevelIndex fromChapter: aChapterNumber [
