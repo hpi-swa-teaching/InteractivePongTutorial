@@ -10,11 +10,12 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/21/2024 17:34'
+	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 14:51'
 }
 IPTClass class >> ballClass [
 	^ IPTClass new 
 		name: 'IPTBall';
+		source: IPTBall;
 		methodCodePieces: {
 			IPTCodePiece ball_initialize.
 			IPTCodePiece ball_game.
@@ -41,11 +42,12 @@ IPTClass class >> classList [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:40'
+	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 14:51'
 }
 IPTClass class >> gameClass [
 	^ IPTClass new 
 		name: 'IPTGame';
+		source: IPTGame;
 		methodCodePieces: {
 			IPTCodePiece game_initialize.
 			IPTCodePiece game_initializeBall.
@@ -76,14 +78,14 @@ IPTClass class >> testClassList [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 19:24'
+	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 14:52'
 }
-IPTClass >> codeToEditForLevel: aLevelIndex [
-	^ nil.
+IPTClass >> code [
+	^ self source definition.
 ]
 
 {
-	#category : #accessing,
+	#category : #behaviour,
 	#'squeak_changestamp' : 'Felix Knöfel 6/24/2024 11:58'
 }
 IPTClass >> copy [
@@ -93,11 +95,27 @@ IPTClass >> copy [
 ]
 
 {
-	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 13:37'
+	#category : #behaviour,
+	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 14:28'
 }
 IPTClass >> hasBody [
-	^ false
+	^ true
+]
+
+{
+	#category : #behaviour,
+	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 14:54'
+}
+IPTClass >> loadInitialCodeForLevel: aLevelIndex andChapter: aChapterNumber [
+	^self shouldNotImplement.
+]
+
+{
+	#category : #behaviour,
+	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 14:54'
+}
+IPTClass >> loadSolutionCodeForLevel: aLevelIndex andChapter: aChapterNumber [
+	self shouldNotImplement.
 ]
 
 {
@@ -110,7 +128,7 @@ IPTClass >> methodCodePieces [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 11:47'
+	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 14:50'
 }
 IPTClass >> methodCodePieces: anObject [
 	methodCodePieces := anObject
@@ -130,4 +148,12 @@ IPTClass >> name [
 }
 IPTClass >> name: anObject [
 	name := anObject
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 14:49'
+}
+IPTClass >> source: aClass [
+	^ source := aClass.
 ]

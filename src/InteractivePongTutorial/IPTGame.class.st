@@ -19,7 +19,7 @@ IPTGame class >> open [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 17:25'
+	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 17:33'
 }
 IPTGame >> ball [
 	
@@ -27,7 +27,7 @@ IPTGame >> ball [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 17:25'
+	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 17:33'
 }
 IPTGame >> ball: aBall [
 	
@@ -44,20 +44,19 @@ IPTGame >> handlesKeyboard: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 17:25'
+	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 17:33'
 }
 IPTGame >> initialize [
-	"Please change the color to black."
 	super initialize.
 	self 
 		extent: (100@100);
-		color: Color gray;
+		color: Color black;
 		beSticky.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 17:25'
+	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 17:33'
 }
 IPTGame >> initializeBall [
 	
