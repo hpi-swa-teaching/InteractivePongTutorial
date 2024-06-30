@@ -12,14 +12,14 @@ Class {
 		'explanationIndex',
 		'visibleClassSet',
 		'playground',
-		'squeakyCollection'
+		'squeaky'
 	],
 	#category : #'InteractivePongTutorial-Core'
 }
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 14:11'
+	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 18:16'
 }
 IPTBrowser class >> openFrom: anIPT chapter: aChapter levelIndex: aNumber [
 
@@ -28,7 +28,6 @@ IPTBrowser class >> openFrom: anIPT chapter: aChapter levelIndex: aNumber [
 		ipt: anIPT;
 		chapter: aChapter;
 		loadLevel: aNumber;
-		playground: IPTPlayground new;
 		yourself.
 	ToolBuilder open: browser.
 	^ browser
@@ -295,13 +294,13 @@ IPTBrowser >> buildShowSolutionButtonWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 12:37'
+	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 18:52'
 }
-IPTBrowser >> buildSqueakyWith: aBuilder [
+IPTBrowser >> buildSqueakyPanelWith: aBuilder [
 
 	^ aBuilder pluggablePanelSpec new
 		model: self;
-		children: #squeakyCollection;
+		children: #squeakyInCollection;
 		frame: (LayoutFrame new
 			leftFraction: 0.75;
 			topFraction: 0.8;
@@ -329,7 +328,7 @@ IPTBrowser >> buildTitleBarWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 12:38'
+	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 18:55'
 }
 IPTBrowser >> buildWith: aBuilder [
 	^ aBuilder build: (aBuilder pluggableWindowSpec new
@@ -339,21 +338,22 @@ IPTBrowser >> buildWith: aBuilder [
 		children: {
 			
 			self buildTitleBarWith: aBuilder.
+			self buildNextLevelButtonWith: aBuilder.
+			self buildPreviousLevelButtonWith: aBuilder.
 			self buildCodePieceListWith: aBuilder.
-			self buildCodeEditorWith: aBuilder.
-			
 			self buildPlayButtonWith: aBuilder.
 			self buildResetButtonWith: aBuilder.
 			self buildHomeButtonWith: aBuilder.
-			self buildNextLevelButtonWith: aBuilder.
-			self buildPreviousLevelButtonWith: aBuilder.
 			self buildShowSolutionButtonWith: aBuilder.
+			
 			self buildPlaygroundWith: aBuilder.
+			self buildCodeEditorWith: aBuilder.
+			
 			self buildOutputBoxWith: aBuilder.
 			self buildExplanationBoxWith: aBuilder.
 			self buildPreviousExplanationButtonWith: aBuilder.
 			self buildNextExplanationButtonWith: aBuilder.
-			self buildSqueakyWith: aBuilder.
+			self buildSqueakyPanelWith: aBuilder.
 			};
 		yourself)
 ]
@@ -533,7 +533,7 @@ IPTBrowser >> levelIndex: anObject [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 14:51'
+	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 18:34'
 }
 IPTBrowser >> loadLevel: aLevelIndex [
 	self 
@@ -552,7 +552,7 @@ IPTBrowser >> loadLevel: aLevelIndex [
 	self playground ifNotNil: [
 		self playground removeAllMorphs.].
 	
-	self setSqueaky: (self squeakyPaths at: #neutral).
+	self squeaky mood: #neutral.
 	self update.
 	
 		
@@ -615,9 +615,10 @@ IPTBrowser >> outputBoxContent [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 16:47'
+	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 18:16'
 }
 IPTBrowser >> playground [
+	playground ifNil: [playground := IPTPlayground new].
 	^ playground
 ]
 
@@ -631,10 +632,11 @@ IPTBrowser >> playground: anObject [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 16:48'
+	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 18:54'
 }
 IPTBrowser >> playgroundInCollection [
-	^ { self playground }.
+
+	^ {self playground}.
 ]
 
 {
@@ -720,20 +722,6 @@ IPTBrowser >> selectedMethod: anObject [
 ]
 
 {
-	#category : #ui,
-	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 14:54'
-}
-IPTBrowser >> setSqueaky: anImagePath [
-	
-	(self squeakyCollection at: 1)
-			image: (((GitAssetLoader for: 'InteractivePongTutorial')
-				loadForm: anImagePath)
-				scaledToHeight: 200).
-					
-	self update.
-]
-
-{
 	#category : #actions,
 	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:41'
 }
@@ -757,35 +745,28 @@ IPTBrowser >> showSolutionButtonEnabled [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 12:40'
+	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 18:16'
 }
-IPTBrowser >> squeakyCollection [
-
-	squeakyCollection ifNil: [
-		squeakyCollection := {ImageMorph new}	
-	].
-
-	 ^ squeakyCollection.
+IPTBrowser >> squeaky [
+	squeaky ifNil: [squeaky := IPTSqueaky new].
+	^ squeaky
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 12:35'
+	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 18:11'
 }
-IPTBrowser >> squeakyCollection: anObject [
-	squeakyCollection := anObject
+IPTBrowser >> squeaky: anObject [
+	squeaky := anObject
 ]
 
 {
-	#category : #ui,
-	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 14:51'
+	#category : #building,
+	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 18:53'
 }
-IPTBrowser >> squeakyPaths [
-	^ Dictionary new 
-		at: #sad put: 'assets/squeaky-sad.png';
-		at: #happy put: 'assets/squeaky-happy.png';
-		at: #neutral put: 'assets/squeaky-neutr.png';
-		yourself.
+IPTBrowser >> squeakyInCollection [
+
+	^ {self squeaky}.
 ]
 
 {
@@ -822,7 +803,7 @@ IPTBrowser >> titleBarHeight [
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 12:15'
+	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 18:23'
 }
 IPTBrowser >> update [
 	self 
@@ -836,12 +817,13 @@ IPTBrowser >> update [
 		changed: #visibleClassSet;
 		changed: #explanationBoxContent;
 		changed: #previousExplanationButtonEnabled;
-		changed: #nextExplanationButtonEnabled.
+		changed: #nextExplanationButtonEnabled;
+		changed: #squeakyInCollection.
 ]
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 14:48'
+	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 18:34'
 }
 IPTBrowser >> updateSqueaky [
 
@@ -850,8 +832,8 @@ IPTBrowser >> updateSqueaky [
 	failures := self testResult at: #failures.
 	
 	(errors isEmpty and: [failures isEmpty]) 
-		ifTrue: [self setSqueaky: (self squeakyPaths at: #happy)]
-		ifFalse: [self setSqueaky: (self squeakyPaths at: #sad).].
+		ifTrue: [self squeaky mood: #happy]
+		ifFalse: [self squeaky mood: #sad]
 	
 	
 ]
