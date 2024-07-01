@@ -42,12 +42,18 @@ IPTLevel0103 class >> levelIndex [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 17:48'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 15:53'
 }
-IPTLevel0103 class >> visibleCodePieces [
+IPTLevel0103 class >> visibleMethods [
 
-	^ {IPTGame >> #initialize. IPTGame >> #initializeBall.
-		IPTBall >> #turnHorizontal. IPTBall >> #stepTime. IPTBall >> #step. IPTBall >> #turnVertical. IPTBall >> #initialize.}.
+	^ {IPTMethodSelector make: IPTGame >> #initialize readOnly: true. 
+		IPTMethodSelector make: IPTGame >> #initializeBall readOnly: true.
+		
+		IPTMethodSelector make: IPTBall >> #turnHorizontal readOnly: false.
+		IPTMethodSelector make: IPTBall >> #stepTime readOnly: true. 
+		IPTMethodSelector make: IPTBall >> #step readOnly: false. 
+		IPTMethodSelector make: IPTBall >> #turnVertical readOnly: false.
+		IPTMethodSelector make: IPTBall >> #initialize readOnly: false.}.
 ]
 
 {

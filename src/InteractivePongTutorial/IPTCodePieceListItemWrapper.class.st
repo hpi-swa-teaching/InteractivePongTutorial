@@ -46,6 +46,17 @@ IPTCodePieceListItemWrapper >> hasContents [
 ]
 
 {
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 15:52'
+}
+IPTCodePieceListItemWrapper >> icon [
+	(self item isClass or: [self item readOnly]) ifTrue: [^ nil].
+	^ ToolIcons iconNamed: ("self item passed" self item isGreen
+		ifTrue: [#testGreen]
+		ifFalse: [#testRed])
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:25'
 }

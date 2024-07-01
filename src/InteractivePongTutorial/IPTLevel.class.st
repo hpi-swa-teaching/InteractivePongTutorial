@@ -72,10 +72,10 @@ IPTLevel class >> runTests [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 12:17'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 14:59'
 }
-IPTLevel class >> visibleCodePieces [
-	
+IPTLevel class >> visibleMethods [
+	"Returns a list of IPTMethodSelectors"
 	^ self subclassResponsibility.
 ]
 

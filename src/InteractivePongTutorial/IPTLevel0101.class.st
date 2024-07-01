@@ -45,11 +45,11 @@ IPTLevel0101 class >> levelIndex [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 12:15'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 15:01'
 }
-IPTLevel0101 class >> visibleCodePieces [
+IPTLevel0101 class >> visibleMethods [
 
-	^ {IPTGame >> #initialize }.
+	^ {IPTMethodSelector make: IPTGame >> #initialize readOnly: false}.
 ]
 
 {

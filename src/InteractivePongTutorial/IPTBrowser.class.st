@@ -35,19 +35,6 @@ IPTBrowser class >> openFrom: anIPT chapter: aChapter levelIndex: aNumber [
 ]
 
 {
-	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 14:20'
-}
-IPTBrowser >> ResetButtonAction [
-	self levelIndex ifNotNil: [
-		self selectedCodePiece loadInitialCodeForLevel: self levelIndex andChapter: self chapter chapterNumber.
-		self codeEditor activeCodePiece: self selectedCodePiece.
-	].
-	
-	
-]
-
-{
 	#category : #ui,
 	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 14:20'
 }
@@ -259,14 +246,14 @@ IPTBrowser >> buildPreviousLevelButtonWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:47'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 15:10'
 }
 IPTBrowser >> buildResetButtonWith: aBuilder [
 
 	^ aBuilder pluggableButtonSpec new
 		model: self;
 		label: 'Reset';
-		action: #ResetButtonAction;
+		action: #resetButtonAction;
 		enabled: #ResetButtonEnabled;
 		frame: (LayoutFrame new
 			leftFraction: 0.25 / 2;
@@ -530,25 +517,32 @@ IPTBrowser >> levelIndex: anObject [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 14:22'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 15:50'
 }
 IPTBrowser >> loadLevel: aLevelIndex [
 	self 
 		levelIndex: aLevelIndex;
 		selectCodePiece: nil;
-		explanationIndex: 1;
-		updateVisibleClassSetToMethods: self activeLevel visibleCodePieces.
-		
+		explanationIndex: 1.
+
+	"load the solutionCode for all invisible/readOnly CodePieces;
+		load the initialCode for all visible CodePieces without readonly"
 	self classSet do: [ :c | 
 		c methodCodePieces do: [ :codePiece | 
-			codePiece loadInitialCodeForLevel: self levelIndex andChapter: self chapter chapterNumber]].
+			codePiece 
+				readOnly: false;
+				isGreen: false;
+				loadInitialCodeForLevel: self levelIndex andChapter: self chapter chapterNumber.]].
 	
+	self updateVisibleClassSetToMethods: self activeLevel visibleMethods.
+
 	self playground ifNotNil: [
 		self playground removeAllMorphs.].
 	
 	self squeaky mood: #neutral.
 	self 
 		update;
+		"expand the CodePiece tree view"
 		changed: #expandRootsRequested.
 	
 		
@@ -667,6 +661,19 @@ IPTBrowser >> previousLevelButtonAction [
 }
 IPTBrowser >> previousLevelButtonEnabled [
 	^ self levelIndex > 1.
+]
+
+{
+	#category : #actions,
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 15:10'
+}
+IPTBrowser >> resetButtonAction [
+	self levelIndex ifNotNil: [
+		self selectedCodePiece loadInitialCodeForLevel: self levelIndex andChapter: self chapter chapterNumber.
+		self codeEditor activeCodePiece: self selectedCodePiece.
+	].
+	
+	
 ]
 
 {
@@ -836,21 +843,26 @@ IPTBrowser >> updateSqueaky [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 14:40'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 15:50'
 }
-IPTBrowser >> updateVisibleClassSetToMethods: aMethodsCollection [
-	self visibleClassSet: ((self classSet collect: [ :iptclass | iptclass copy. ]) asOrderedCollection).
-	
+IPTBrowser >> updateVisibleClassSetToMethods: aMethodsCollection [	
 	aMethodsCollection ifNil: [ ^nil.].
+	self visibleClassSet: ((self classSet collect: [:c | c copy. ]) asOrderedCollection).
+	
+	"update readOnly for each visible codePiece"
+	aMethodsCollection do: [:methodSelector |
+		self visibleClassSet do: [:c |
+			c methodCodePieces do: [:codePiece |
+				(codePiece isSameSourceAs: methodSelector method)
+					ifTrue: [ codePiece readOnly: methodSelector readOnly]]]].
 	
 	"Show all classes with methods that are in 'activeLevel visibleMethods'. If there are no methods in a class, dont show it"
 	self visibleClassSet removeAllSuchThat: [ :klass | 
 		klass methodCodePieces removeAllSuchThat: [ :codePiece | 
-			(aMethodsCollection anySatisfy: [ :method | 
-				codePiece isSameSourceAs: method]) not].
+			(aMethodsCollection anySatisfy: [ :methodSelector | 
+				codePiece isSameSourceAs: methodSelector method]) not].
 		klass methodCodePieces isEmpty. ].
 	
-		
 	
 ]
 

@@ -5,7 +5,9 @@ Class {
 		'source',
 		'variants',
 		'code',
-		'head'
+		'head',
+		'isGreen',
+		'readOnly'
 	],
 	#category : #'InteractivePongTutorial-Core'
 }
@@ -143,7 +145,7 @@ IPTCodePiece class >> defaultCodePieces [
 
 {
 	#category : #creating,
-	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 14:47'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 15:50'
 }
 IPTCodePiece class >> fromFile: aFilePath [
 	| methodInfos fileContents |
@@ -158,7 +160,9 @@ IPTCodePiece class >> fromFile: aFilePath [
 				levelIndex: 0;
 				initialCode: '';
 				solutionCode: '');
-			yourself).
+			yourself);
+		readOnly: false;
+		isGreen: false.
 ]
 
 {
@@ -260,6 +264,22 @@ IPTCodePiece >> isClass [
 ]
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 14:47'
+}
+IPTCodePiece >> isGreen [
+	^ isGreen
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 14:47'
+}
+IPTCodePiece >> isGreen: anObject [
+	isGreen := anObject
+]
+
+{
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 14:43'
 }
@@ -297,6 +317,22 @@ IPTCodePiece >> name [
 	strings := self source literalStrings.
 	paramCount := 1 max: self source tempNames size.
 	^ (strings copyFrom: (strings size - paramCount) to: (strings size - 1 )) join.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 15:50'
+}
+IPTCodePiece >> readOnly [
+	^ readOnly
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 15:50'
+}
+IPTCodePiece >> readOnly: anObject [
+	readOnly := anObject
 ]
 
 {
