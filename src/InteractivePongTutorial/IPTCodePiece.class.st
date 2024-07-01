@@ -281,9 +281,13 @@ IPTCodePiece >> isGreen: anObject [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 20:34'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 21:33'
 }
 IPTCodePiece >> isSameSourceAs: aCompiledMethod [
+	self isClass ifTrue: [^ false].
+	Transcript show: (IPT compiledMethodToString: self source), ' - ', 
+	(IPT compiledMethodToString: aCompiledMethod), Character cr.
+	
 	^ (IPT compiledMethodToString: self source)
 		= (IPT compiledMethodToString: aCompiledMethod).
 ]

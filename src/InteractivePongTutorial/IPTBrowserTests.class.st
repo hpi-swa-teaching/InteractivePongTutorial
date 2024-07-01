@@ -187,13 +187,13 @@ IPTBrowserTests >> testLoadLevel [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 20:22'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 21:16'
 }
 IPTBrowserTests >> testNextLevelButton [
 
 	browser nextLevelButtonEnabled ifTrue: [
 	browser nextLevelButtonAction.
-	self assert: browser levelIndex == initialLevelIndex + 1.]
+	self assert: browser levelIndex == (initialLevelIndex + 1).]
 ]
 
 {

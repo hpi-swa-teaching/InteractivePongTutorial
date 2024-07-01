@@ -681,7 +681,7 @@ IPTBrowser >> resetButtonEnabled [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 16:22'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 21:29'
 }
 IPTBrowser >> runCode [
 	
@@ -690,12 +690,14 @@ IPTBrowser >> runCode [
 	 self testResult: self activeLevel runTests.
 	 failures := self testResult at: #failures.
 	 errors := self testResult at: #errors.
-	Transcript show: failures, errors.
+	
 	(errors isEmpty and: [failures isEmpty])
 		ifTrue: [self playground runCode.].
 		
-	self updateSqueaky.
-	self update.
+	self 
+		updateSqueaky;
+		updateCodePieceTestIndicators;
+		update.
 
 ]
 
@@ -831,6 +833,25 @@ IPTBrowser >> update [
 
 {
 	#category : #ui,
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 21:39'
+}
+IPTBrowser >> updateCodePieceTestIndicators [
+
+	| errors failures |
+	errors := self testResult at: #errors.
+	failures := self testResult at: #failures.
+	
+	self visibleClassSet do: [ :c |
+		(c methodCodePieces
+			reject: [ :codePiece | 
+				errors, failures anySatisfy: [ :entry |
+					 codePiece isSameSourceAs: (entry at: #method)]]) 
+			do: [ :codePiece | 
+				codePiece isGreen: true. ]].
+]
+
+{
+	#category : #ui,
 	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 18:34'
 }
 IPTBrowser >> updateSqueaky [
@@ -848,26 +869,28 @@ IPTBrowser >> updateSqueaky [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 15:50'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 22:03'
 }
 IPTBrowser >> updateVisibleClassSetToMethods: aMethodsCollection [	
 	aMethodsCollection ifNil: [ ^nil.].
 	self visibleClassSet: ((self classSet collect: [:c | c copy. ]) asOrderedCollection).
 	
 	"update readOnly for each visible codePiece"
-	aMethodsCollection do: [:methodSelector |
-		self visibleClassSet do: [:c |
-			c methodCodePieces do: [:codePiece |
-				(codePiece isSameSourceAs: methodSelector method)
-					ifTrue: [ codePiece readOnly: methodSelector readOnly]]]].
+	self visibleClassSet removeAllSuchThat: [:c |
+		c methodCodePieces removeAllSuchThat: [:codePiece | |ms|
+			ms := aMethodsCollection detect: [ :methodSelector | 
+				codePiece isSameSourceAs: methodSelector method] ifNone: [].
+			ms 
+				ifNotNil: [codePiece readOnly: ms readOnly. false]
+				ifNil: [true]].
+		c methodCodePieces isEmpty].
 	
 	"Show all classes with methods that are in 'activeLevel visibleMethods'. If there are no methods in a class, dont show it"
-	self visibleClassSet removeAllSuchThat: [ :klass | 
+	"self visibleClassSet removeAllSuchThat: [ :klass | 
 		klass methodCodePieces removeAllSuchThat: [ :codePiece | 
 			(aMethodsCollection anySatisfy: [ :methodSelector | 
 				codePiece isSameSourceAs: methodSelector method]) not].
-		klass methodCodePieces isEmpty. ].
-	
+		klass methodCodePieces isEmpty. ]."
 	
 ]
 
