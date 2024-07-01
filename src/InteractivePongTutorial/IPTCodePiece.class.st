@@ -236,14 +236,6 @@ IPTCodePiece >> code: anObject [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 13:37'
-}
-IPTCodePiece >> hasBody [
-	^ true.
-]
-
-{
 	#category : #accessing,
 	#'squeak_changestamp' : 'Felix Knöfel 6/17/2024 12:10'
 }
@@ -257,6 +249,14 @@ IPTCodePiece >> head [
 }
 IPTCodePiece >> head: anObject [
 	head := anObject
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 14:07'
+}
+IPTCodePiece >> isClass [
+	^ false.
 ]
 
 {

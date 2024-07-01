@@ -244,10 +244,10 @@ IPTBrowserTests >> testSelectMethod [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 20:22'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 14:22'
 }
 IPTBrowserTests >> testshowSolutionButtonEnabled [
 	
-	browser selectMethod: nil.
+	browser selectCodePiece: nil.
 	self assert: browser showSolutionButtonEnabled == false.
 ]

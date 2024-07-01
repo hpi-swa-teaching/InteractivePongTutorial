@@ -96,9 +96,9 @@ IPTClass >> copy [
 
 {
 	#category : #behaviour,
-	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 14:28'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 14:08'
 }
-IPTClass >> hasBody [
+IPTClass >> isClass [
 	^ true
 ]
 

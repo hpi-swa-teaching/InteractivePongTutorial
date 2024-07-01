@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'ipt',
 		'codeEditor',
-		'selectedMethod',
+		'selectedCodePiece',
 		'chapter',
 		'levelIndex',
 		'classSet',
@@ -36,12 +36,12 @@ IPTBrowser class >> openFrom: anIPT chapter: aChapter levelIndex: aNumber [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:48'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 14:20'
 }
 IPTBrowser >> ResetButtonAction [
 	self levelIndex ifNotNil: [
-		self selectedMethod loadInitialCodeForLevel: self levelIndex andChapter: self chapter chapterNumber.
-		self codeEditor activeCodePiece: self selectedMethod.
+		self selectedCodePiece loadInitialCodeForLevel: self levelIndex andChapter: self chapter chapterNumber.
+		self codeEditor activeCodePiece: self selectedCodePiece.
 	].
 	
 	
@@ -49,11 +49,11 @@ IPTBrowser >> ResetButtonAction [
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:47'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 14:20'
 }
 IPTBrowser >> ResetButtonEnabled [
 
-	^ self selectedMethod isNil not and: [self selectedMethod hasBody].
+	^ self selectedCodePiece isNil not and: [self selectedCodePiece isClass not].
 ]
 
 {
@@ -80,16 +80,16 @@ IPTBrowser >> buildCodeEditorWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 13:41'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 14:22'
 }
 IPTBrowser >> buildCodePieceListWith: aBuilder [
 
 	^ aBuilder pluggableTreeSpec new
 		model: self;
 		roots: #visibleClassSet;
-		nodeClass: IPTClassListItemWrapper;
-		getSelected: #selectedMethod;
-		setSelected: #selectMethod:;
+		nodeClass: IPTCodePieceListItemWrapper;
+		getSelected: #selectedCodePiece;
+		setSelected: #selectCodePiece:;
 		autoDeselect: true;
 		frame: (LayoutFrame new
 			leftFraction: 0;
@@ -389,7 +389,7 @@ IPTBrowser >> chapter: anObject [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:48'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 14:19'
 }
 IPTBrowser >> checkAndSaveCode [
 	| code errMsg |
@@ -398,7 +398,7 @@ IPTBrowser >> checkAndSaveCode [
 	code := self codeEditor
 		"accept;"
 		code.
-	errMsg := self selectedMethod checkSyntaxAndSaveCode: code.
+	errMsg := self selectedCodePiece checkSyntaxAndSaveCode: code.
 	
 	(errMsg = '')
 		ifFalse: [ UIManager default inform: errMsg ].	
@@ -530,12 +530,12 @@ IPTBrowser >> levelIndex: anObject [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 13:58'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 14:22'
 }
 IPTBrowser >> loadLevel: aLevelIndex [
 	self 
 		levelIndex: aLevelIndex;
-		selectMethod: nil;
+		selectCodePiece: nil;
 		explanationIndex: 1;
 		updateVisibleClassSetToMethods: self activeLevel visibleCodePieces.
 		
@@ -691,40 +691,40 @@ IPTBrowser >> runCode [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 20:10'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 14:22'
 }
-IPTBrowser >> selectMethod: aMethod [
-	self selectedMethod: aMethod.
+IPTBrowser >> selectCodePiece: aCodePiece [
+	self selectedCodePiece: aCodePiece.
 	
-	self codeEditor activeCodePiece: aMethod.
+	self codeEditor activeCodePiece: aCodePiece.
 	
 	self update.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:14'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 14:18'
 }
-IPTBrowser >> selectedMethod [
-	^ selectedMethod
+IPTBrowser >> selectedCodePiece [
+	^ selectedCodePiece
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JZ 6/7/2024 15:40'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 14:18'
 }
-IPTBrowser >> selectedMethod: anObject [
-	selectedMethod := anObject.
+IPTBrowser >> selectedCodePiece: anObject [
+	selectedCodePiece := anObject
 ]
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/20/2024 16:41'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 14:20'
 }
 IPTBrowser >> showSolutionButtonAction [
 	self levelIndex ifNotNil: [
-		self selectedMethod loadSolutionCodeForLevel: self levelIndex andChapter: self chapter chapterNumber.
-		self codeEditor activeCodePiece: self selectedMethod.
+		self selectedCodePiece loadSolutionCodeForLevel: self levelIndex andChapter: self chapter chapterNumber.
+		self codeEditor activeCodePiece: self selectedCodePiece.
 	].
 	
 	
@@ -732,11 +732,11 @@ IPTBrowser >> showSolutionButtonAction [
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 13:40'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 14:19'
 }
 IPTBrowser >> showSolutionButtonEnabled [
 
-	^ self selectedMethod isNil not and: [self selectedMethod hasBody].
+	^ self selectedCodePiece isNil not and: [self selectedCodePiece isClass not].
 ]
 
 {
