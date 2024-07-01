@@ -57,6 +57,14 @@ IPTLevel class >> levelIndex [
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 20:48'
+}
+IPTLevel class >> resultEntryToString: aTestResultEntry [
+	^ (IPT compiledMethodToString: (aTestResultEntry at: #method)), ' - ', (aTestResultEntry at: #string)
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 16:50'
 }
 IPTLevel class >> runTests [

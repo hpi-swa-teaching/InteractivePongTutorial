@@ -578,18 +578,19 @@ IPTBrowser >> nextLevelButtonEnabled [
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 13:59'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 20:42'
 }
 IPTBrowser >> outputBoxContent [
 	| output |
 	output := ''.
 	self testResult ifNotNil: [
-	output := ((self testResult at: #errors) inject: 'Errors:' into: [:run :elem | run, Character cr, elem ]), Character cr, Character cr.
-	output := ((self testResult at: #failures) inject: (output, 'Failures:') into: [:run :elem | run, Character cr, elem ]).
+	output := ((self testResult at: #errors) inject: 'Errors:' into: [:run :err |
+		 run, Character cr, (IPTLevel resultEntryToString: err) ]), Character cr, Character cr.
+	output := ((self testResult at: #failures) inject: (output, 'Failures:') into: [:run :err |
+		 run, Character cr, (IPTLevel resultEntryToString: err) ]).
 	
 	(self testResult at: #success) ifTrue: [
-			output := 'Well done! :)'.
-	].].
+			output := 'Well done! :)']].
 
 	^ output.
 ]

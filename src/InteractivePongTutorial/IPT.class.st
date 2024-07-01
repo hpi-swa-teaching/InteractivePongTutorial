@@ -10,6 +10,14 @@ Class {
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 20:33'
+}
+IPT class >> compiledMethodToString: aCompiledMethod [
+	^ aCompiledMethod asString copyFrom: 2 to: (aCompiledMethod asString indexOf: Character space) - 1.
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 17:36'
 }
 IPT class >> defaultWindowColor [
