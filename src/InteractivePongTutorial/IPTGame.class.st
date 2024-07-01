@@ -19,18 +19,18 @@ IPTGame class >> open [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 20:53'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 21:14'
 }
 IPTGame >> ball [
-	"Return the value of ball."
+	^ ball.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 20:53'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 21:14'
 }
 IPTGame >> ball: aBall [
-	"To update ball you should set ball to the given input."
+	ball := aBall.
 ]
 
 {
@@ -44,7 +44,7 @@ IPTGame >> handlesKeyboard: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 20:53'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 21:14'
 }
 IPTGame >> initialize [
 	super initialize.
@@ -56,11 +56,14 @@ IPTGame >> initialize [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 20:53'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 21:14'
 }
 IPTGame >> initializeBall [
-	"You should set ball to a new IPTBall and then add the Morph.
-	To see it you should also set the position of the ball to the center of the game."
+	"Instead of setting the Position of the ball you should now call the method starOver."
+	self 
+		ball: (IPTBall new game: self);
+		addMorph: self ball.
+	self ball position: self center.
 ]
 
 {

@@ -39,10 +39,14 @@ IPTLevel class >> explanations [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 16:49'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 21:08'
 }
 IPTLevel class >> extractTestedMethodFromException: anException [
-	^ anException signalerContext sender sender sender receiver testedMethod.
+	|context|
+	context := anException signalerContext.
+	[context methodClass superclass = IPTLevel] 
+		whileFalse: [context := context sender].
+	^ context receiver testedMethod.
 
 ]
 
@@ -57,9 +61,10 @@ IPTLevel class >> levelIndex [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 20:48'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 21:11'
 }
 IPTLevel class >> resultEntryToString: aTestResultEntry [
+	(aTestResultEntry at: #method) ifNil: [^ (aTestResultEntry at: #string)].
 	^ (IPT compiledMethodToString: (aTestResultEntry at: #method)), ' - ', (aTestResultEntry at: #string)
 ]
 

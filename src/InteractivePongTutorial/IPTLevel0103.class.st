@@ -133,10 +133,10 @@ IPTLevel0103 >> test_Game_initialize [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 20:51'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 21:13'
 }
 IPTLevel0103 >> test_Game_initializeBall [
-	self testedMethod: (IPTBall >> #initializeBall).
+	self testedMethod: (IPTGame >> #initializeBall).
 	
 	game initializeBall.
 	self assert: (game ball isKindOf: IPTBall) description: 'Ball should be of class Ball'.
