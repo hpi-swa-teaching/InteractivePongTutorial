@@ -19,7 +19,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 18:16'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 13:57'
 }
 IPTBrowser class >> openFrom: anIPT chapter: aChapter levelIndex: aNumber [
 
@@ -30,6 +30,7 @@ IPTBrowser class >> openFrom: anIPT chapter: aChapter levelIndex: aNumber [
 		loadLevel: aNumber;
 		yourself.
 	ToolBuilder open: browser.
+	browser changed: #expandRootsRequested.
 	^ browser
 ]
 
@@ -79,7 +80,7 @@ IPTBrowser >> buildCodeEditorWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 12:26'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 13:41'
 }
 IPTBrowser >> buildCodePieceListWith: aBuilder [
 
@@ -94,7 +95,7 @@ IPTBrowser >> buildCodePieceListWith: aBuilder [
 			leftFraction: 0;
 			topFraction: (2 * self titleBarHeight);
 			rightFraction: 0.25;
-			bottomFraction: (1 - (2 * self buttonHeight)))
+			bottomFraction: (1 - (2 * self buttonHeight))).
 ]
 
 {
@@ -328,7 +329,7 @@ IPTBrowser >> buildTitleBarWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 18:55'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 13:56'
 }
 IPTBrowser >> buildWith: aBuilder [
 	^ aBuilder build: (aBuilder pluggableWindowSpec new
@@ -336,25 +337,21 @@ IPTBrowser >> buildWith: aBuilder [
 		label: 'Interactive Pong Tutorial: ', self chapter name;
 		extent: (1400@800);
 		children: {
-			
-			self buildTitleBarWith: aBuilder.
-			self buildNextLevelButtonWith: aBuilder.
-			self buildPreviousLevelButtonWith: aBuilder.
-			self buildCodePieceListWith: aBuilder.
-			self buildPlayButtonWith: aBuilder.
-			self buildResetButtonWith: aBuilder.
-			self buildHomeButtonWith: aBuilder.
-			self buildShowSolutionButtonWith: aBuilder.
-			
-			self buildPlaygroundWith: aBuilder.
 			self buildCodeEditorWith: aBuilder.
-			
-			self buildOutputBoxWith: aBuilder.
+			self buildCodePieceListWith: aBuilder.
 			self buildExplanationBoxWith: aBuilder.
-			self buildPreviousExplanationButtonWith: aBuilder.
+			self buildHomeButtonWith: aBuilder.
 			self buildNextExplanationButtonWith: aBuilder.
+			self buildNextLevelButtonWith: aBuilder.
+			self buildOutputBoxWith: aBuilder.
+			self buildPlayButtonWith: aBuilder.
+			self buildPlaygroundWith: aBuilder.
+			self buildPreviousExplanationButtonWith: aBuilder.
+			self buildPreviousLevelButtonWith: aBuilder.
+			self buildResetButtonWith: aBuilder.			
+			self buildShowSolutionButtonWith: aBuilder.
 			self buildSqueakyPanelWith: aBuilder.
-			};
+			self buildTitleBarWith: aBuilder. };
 		yourself)
 ]
 
@@ -533,17 +530,14 @@ IPTBrowser >> levelIndex: anObject [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 18:34'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 13:58'
 }
 IPTBrowser >> loadLevel: aLevelIndex [
 	self 
 		levelIndex: aLevelIndex;
 		selectMethod: nil;
-		explanationIndex: 1.
-	
-	self 
-		updateVisibleClassSetToMethods: self activeLevel visibleCodePieces;
-		update.
+		explanationIndex: 1;
+		updateVisibleClassSetToMethods: self activeLevel visibleCodePieces.
 		
 	self classSet do: [ :c | 
 		c methodCodePieces do: [ :codePiece | 
@@ -553,7 +547,9 @@ IPTBrowser >> loadLevel: aLevelIndex [
 		self playground removeAllMorphs.].
 	
 	self squeaky mood: #neutral.
-	self update.
+	self 
+		update;
+		changed: #expandRootsRequested.
 	
 		
 	
@@ -803,7 +799,7 @@ IPTBrowser >> titleBarHeight [
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 18:23'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 13:31'
 }
 IPTBrowser >> update [
 	self 

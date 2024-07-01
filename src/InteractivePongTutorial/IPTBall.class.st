@@ -20,7 +20,7 @@ IPTBall >> checkCollisionWithPlayer [
 
 {
 	#category : #collision,
-	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 19:06'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 13:59'
 }
 IPTBall >> checkCollisionWithWalls [
 	
@@ -54,47 +54,51 @@ IPTBall >> defaultSpeed [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 19:06'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 13:59'
 }
 IPTBall >> game [
-	
+	^ game.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 19:06'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 13:59'
 }
 IPTBall >> game: aGame [
-	
+	game := aGame.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 19:06'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 13:59'
 }
 IPTBall >> initialize [
-	
+	"You should set the speed to defaultSpeed."
+	super initialize.
+	self 
+		color: Color white;
+		extent: self defaultExtent.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 19:06'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 13:59'
 }
 IPTBall >> speed [
-	
+	^ speed.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 19:06'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 13:59'
 }
 IPTBall >> speed: aNumber [
-	
+	speed := aNumber.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 19:06'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 13:59'
 }
 IPTBall >> startOver [
 	
@@ -102,15 +106,15 @@ IPTBall >> startOver [
 
 {
 	#category : #stepping,
-	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 19:06'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 13:59'
 }
 IPTBall >> step [
-	
+	"Please update the position by the speed of the ball."
 ]
 
 {
 	#category : #stepping,
-	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 19:06'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 13:59'
 }
 IPTBall >> stepTime [
 	^ 10.
@@ -118,16 +122,16 @@ IPTBall >> stepTime [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 19:06'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 13:59'
 }
 IPTBall >> turnHorizontal [
-	
+	'The change of position in x should be negated.'
 ]
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 19:06'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 13:59'
 }
 IPTBall >> turnVertical [
-	
+	'The change of position in y should be negated.'
 ]
