@@ -58,9 +58,9 @@ IPTLevel0103 class >> visibleMethods [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 20:28'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 16:17'
 }
-IPTLevel0103 >> testBallInitialize [
+IPTLevel0103 >> test_Ball_initialize [
 	self assert: (ball isKindOf: IPTBall) description: 'You may not return a value!'.
 	self assert: ball color isNil not description: 'Have you initialized the morph?'.
 	self assert: (ball color = Color white) description: 'You did not choose the right color!'.
@@ -69,9 +69,9 @@ IPTLevel0103 >> testBallInitialize [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 20:29'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 16:18'
 }
-IPTLevel0103 >> testBallIstep [
+IPTLevel0103 >> test_Ball_step [
 	|expectedPosition|
 	expectedPosition := ball position + ball speed.
 	ball step.
@@ -80,17 +80,17 @@ IPTLevel0103 >> testBallIstep [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 20:31'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 16:18'
 }
-IPTLevel0103 >> testBallIstepTime [
+IPTLevel0103 >> test_Ball_stepTime [
 	self assert: (ball stepTime isKindOf: Number) description: 'stepTime has to be a Number.'.
 ]
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 20:27'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 16:18'
 }
-IPTLevel0103 >> testBallturnHorizontal [
+IPTLevel0103 >> test_Ball_turnHorizontal [
 	| expectedSpeed |
 	expectedSpeed := ball speed x negated @ ball speed y.
 	ball turnHorizontal.
@@ -99,9 +99,9 @@ IPTLevel0103 >> testBallturnHorizontal [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 17:43'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 16:18'
 }
-IPTLevel0103 >> testBallturnVertical [
+IPTLevel0103 >> test_Ball_turnVertical [
 	| expectedSpeed |
 	expectedSpeed := ball speed x @ ball speed y negated.
 	ball turnVertical.
@@ -110,9 +110,9 @@ IPTLevel0103 >> testBallturnVertical [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 12:04'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 16:18'
 }
-IPTLevel0103 >> testGameInitialize [
+IPTLevel0103 >> test_Game_initialize [
 	self assert: (ball isKindOf: IPTBall) description: 'You may not return a value!'.
 	self assert: ball color isNil not description: 'Have you initialized the morph?'.
 	self assert: (ball color = Color white) description: 'You did not choose the right color!'.
@@ -121,9 +121,9 @@ IPTLevel0103 >> testGameInitialize [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 12:23'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 16:19'
 }
-IPTLevel0103 >> testGameInitializeBall [
+IPTLevel0103 >> test_Game_initializeBall [
 	game initializeBall.
 	self assert: (game ball isKindOf: IPTBall) description: 'Ball should be of class Ball'.
 	self assert: (game ball position = game center) description: 'You should set the position of the Ball to the center of the game'.

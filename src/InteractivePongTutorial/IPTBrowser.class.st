@@ -35,15 +35,6 @@ IPTBrowser class >> openFrom: anIPT chapter: aChapter levelIndex: aNumber [
 ]
 
 {
-	#category : #ui,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 14:20'
-}
-IPTBrowser >> ResetButtonEnabled [
-
-	^ self selectedCodePiece isNil not and: [self selectedCodePiece isClass not].
-]
-
-{
 	#category : #accessing,
 	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:05'
 }
@@ -246,7 +237,7 @@ IPTBrowser >> buildPreviousLevelButtonWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 15:10'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 16:00'
 }
 IPTBrowser >> buildResetButtonWith: aBuilder [
 
@@ -254,7 +245,7 @@ IPTBrowser >> buildResetButtonWith: aBuilder [
 		model: self;
 		label: 'Reset';
 		action: #resetButtonAction;
-		enabled: #ResetButtonEnabled;
+		enabled: #resetButtonEnabled;
 		frame: (LayoutFrame new
 			leftFraction: 0.25 / 2;
 			topFraction: (1 - self buttonHeight);
@@ -677,8 +668,19 @@ IPTBrowser >> resetButtonAction [
 ]
 
 {
+	#category : #ui,
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 16:00'
+}
+IPTBrowser >> resetButtonEnabled [
+
+	^ self selectedCodePiece isNil not
+		and: [self selectedCodePiece isClass not]
+		and: [self selectedCodePiece readOnly not].
+]
+
+{
 	#category : #actions,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 14:10'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 16:22'
 }
 IPTBrowser >> runCode [
 	
@@ -687,7 +689,7 @@ IPTBrowser >> runCode [
 	 self testResult: self activeLevel runTests.
 	 failures := self testResult at: #failures.
 	 errors := self testResult at: #errors.
-	
+	Transcript show: failures, errors.
 	(errors isEmpty and: [failures isEmpty])
 		ifTrue: [self playground runCode.].
 		
@@ -739,11 +741,13 @@ IPTBrowser >> showSolutionButtonAction [
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 14:19'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 16:00'
 }
 IPTBrowser >> showSolutionButtonEnabled [
 
-	^ self selectedCodePiece isNil not and: [self selectedCodePiece isClass not].
+	^ self selectedCodePiece isNil not
+		and: [self selectedCodePiece isClass not]
+		and: [self selectedCodePiece readOnly not].
 ]
 
 {
@@ -806,7 +810,7 @@ IPTBrowser >> titleBarHeight [
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 13:31'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 16:00'
 }
 IPTBrowser >> update [
 	self 
@@ -816,7 +820,7 @@ IPTBrowser >> update [
 		changed: #nextLevelButtonEnabled;
 		changed: #previousLevelButtonEnabled;
 		changed: #showSolutionButtonEnabled;
-		changed: #ResetButtonEnabled;
+		changed: #resetButtonEnabled;
 		changed: #visibleClassSet;
 		changed: #explanationBoxContent;
 		changed: #previousExplanationButtonEnabled;

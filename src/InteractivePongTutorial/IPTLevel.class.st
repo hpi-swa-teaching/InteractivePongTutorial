@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'game',
 		'ball',
-		'player'
+		'player',
+		'testedMethod'
 	],
 	#category : #'InteractivePongTutorial-Levels'
 }
@@ -38,6 +39,15 @@ IPTLevel class >> explanations [
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 16:49'
+}
+IPTLevel class >> extractTestedMethodFromException: anException [
+	^ anException signalerContext sender sender sender receiver testedMethod.
+
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 12:16'
 }
 IPTLevel class >> levelIndex [
@@ -47,7 +57,7 @@ IPTLevel class >> levelIndex [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'sv 6/20/2024 11:28'
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 16:50'
 }
 IPTLevel class >> runTests [
 	"Runs all tests and returns occuring errors and failures"
@@ -59,9 +69,14 @@ IPTLevel class >> runTests [
 
 	(self allMethodsInCategory: #levelTests) do: [:method |
 		[(self selector: method) runCase]
-			on: Error do: [:ex | errors add: ex printString ]
-			on: TestFailure do: [:ex | failures add: ex printString ]
-	].
+			on: Error do: [:ex | errors add: (Dictionary new
+				at: #string put: ex printString;
+				at: #method put: (self extractTestedMethodFromException: ex);
+				yourself)]
+			on: TestFailure do: [:ex | failures add:  (Dictionary new
+				at: #string put: ex printString;
+				at: #method put: (self extractTestedMethodFromException: ex);
+				yourself)]].
 
 	^ Dictionary new
 		at: #errors put: errors;
@@ -97,4 +112,20 @@ IPTLevel >> tearDown [
 	game := nil.
 	ball := nil.
 	player := nil.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 16:39'
+}
+IPTLevel >> testedMethod [
+	^ testedMethod
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 16:39'
+}
+IPTLevel >> testedMethod: anObject [
+	testedMethod := anObject
 ]
