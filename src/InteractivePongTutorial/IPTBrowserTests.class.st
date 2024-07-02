@@ -258,6 +258,29 @@ IPTBrowserTests >> testPreviousLevelButtonEnabled [
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'sv 7/2/2024 20:16'
+}
+IPTBrowserTests >> testResetButtonAction [
+
+	| cp |
+	
+	cp := ((browser visibleClassSet at: 1) methodCodePieces at: 1).
+	
+	browser selectCodePiece: cp.
+	
+	cp code: 'ÄÄÄÄ'.
+	
+	browser resetButtonAction.
+	
+	self assert:
+		(cp code =
+			(cp addHeadToCode:
+				((cp variantForLevel: initialLevelIndex fromChapter: chapter chapterNumber)
+					initialCode))).
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 19:38'
 }
 IPTBrowserTests >> testSelectClass [
