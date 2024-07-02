@@ -61,12 +61,13 @@ IPTLevel0102 class >> visibleMethods [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 20:45'
+	#'squeak_changestamp' : 'FH 7/2/2024 11:07'
 }
 IPTLevel0102 >> test_Ball_game [
 	self testedMethod: (IPTBall >> #game).
 	
-	ball game: game.
+	"Use instVarNamed:put: instead of the setter in case the player did not implement the setter."
+	ball instVarNamed: 'game' put: game.
 	self assert: (ball game = game) description: 'Ball game should return the value it was set on in game:'.
 ]
 
@@ -96,11 +97,13 @@ IPTLevel0102 >> test_Ball_initialize [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 20:46'
+	#'squeak_changestamp' : 'FH 7/2/2024 11:08'
 }
 IPTLevel0102 >> test_Game_ball [
 	self testedMethod: (IPTGame >> #ball).
-	game ball: ball.
+	
+	"Use instVarNamed:put: instead of the setter in case the player did not implement the setter."
+	game instVarNamed: 'ball' put: ball.
 	self assert: (game ball = ball) description: 'Game ball should return the value it was set on in ball:'.
 ]
 

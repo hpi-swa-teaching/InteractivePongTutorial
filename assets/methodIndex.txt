@@ -1,0 +1,15 @@
+/assets/IPTBall/checkCollisionWithWalls.txt
+/assets/IPTBall/game.txt
+/assets/IPTBall/game:.txt
+/assets/IPTBall/initialize.txt
+/assets/IPTBall/speed.txt
+/assets/IPTBall/speed:.txt
+/assets/IPTBall/startOver.txt
+/assets/IPTBall/step.txt
+/assets/IPTBall/stepTime.txt
+/assets/IPTBall/turnHorizontal.txt
+/assets/IPTBall/turnVertical.txt
+/assets/IPTGame/ball.txt
+/assets/IPTGame/ball:.txt
+/assets/IPTGame/initialize.txt
+/assets/IPTGame/initializeBall.txt
