@@ -38,6 +38,20 @@ IPTTests >> testCloseAllWindows [
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'sv 7/2/2024 16:14'
+}
+IPTTests >> testOpen [
+	| instance |
+	
+	instance := IPT open.
+	
+	self assert: (instance isKindOf: IPT).
+	
+	instance closeAllWindows.
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:14'
 }
 IPTTests >> testOpenBrowser [
