@@ -58,25 +58,6 @@ IPTClass class >> gameClass [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 11:22'
-}
-IPTClass class >> testClass [
-	^ IPTClass new 
-		name: 'TestClass';
-		methodCodePieces: IPTCodePiece defaultCodePieces"{IPTCodePiece defaultCodePiece}";
-		yourself.
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 11:51'
-}
-IPTClass class >> testClassList [
-	^ {self testClass}.
-]
-
-{
 	#category : #accessing,
 	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 14:52'
 }

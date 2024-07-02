@@ -102,49 +102,6 @@ IPTCodePiece class >> ball_turnVertical [
 
 {
 	#category : #creating,
-	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 14:46'
-}
-IPTCodePiece class >> defaultCodePieces [
-	^ { IPTCodePiece new
-			source: (IPTTestObject >> #aNormalMethod);
-			head: 'aNormalMethod';
-			variants: { 
-				IPTCodeVariant new
-					levelNumber: 101;
-					initialCode:  '^ ', $', 'Hello World', $';
-					solutionCode:   '^ ', $', 'This is the right solution', $';
-					yourself.
-				IPTCodeVariant new
-					levelNumber: 102;
-					initialCode: '^ ', $', 'Hello Level 2', $';
-					solutionCode: '^ ', $', 'This is the right solution for Level 2', $';
-					yourself. };
-			yourself.
-		IPTCodePiece new
-			source: (IPTTestObject >> #aMethodWithParam:);
-			head:  'aMethodWithParam: aParam';
-			variants: { 
-				IPTCodeVariant new
-					levelNumber: 1;
-					initialCode: '^ ', $', 'Hello World', $';
-					solutionCode: '^ ', $', 'This is the right solution', $';
-					yourself. };
-			yourself.
-		IPTCodePiece new
-			source: (IPTTestObject >> #aMethodWithParam:andAlso:);
-			head: 'aMethodWithParam: aParam andAlso: anotherParam';
-			variants: {
-				IPTCodeVariant new
-					levelNumber: 1;
-					initialCode: '^ ', $', 'Hello World', $';
-					solutionCode: '^ ', $', 'This is the right solution', $';
-					yourself. };
-			yourself. } 
-			asOrderedCollection.
-]
-
-{
-	#category : #creating,
 	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 15:50'
 }
 IPTCodePiece class >> fromFile: aFilePath [
