@@ -12,7 +12,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 20:22'
+	#'squeak_changestamp' : 'sv 7/2/2024 16:23'
 }
 IPTBrowserTests >> setUp [
 
@@ -20,16 +20,18 @@ IPTBrowserTests >> setUp [
 	chapter := IPTChapter chapterSet at: 2.
 	initialLevelIndex := 2.
 	ipt := IPT new.
-	browser := IPTBrowser openFrom: ipt chapter:  chapter levelIndex: initialLevelIndex.
+	browser := IPTBrowser openFrom: ipt chapter: chapter levelIndex: initialLevelIndex.
+	ipt browser: browser.
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 20:22'
+	#'squeak_changestamp' : 'sv 7/2/2024 16:24'
 }
 IPTBrowserTests >> tearDown [
 
-	browser close.
+	ipt closeAllWindows.
+	
 	browser := nil.
 	ipt := nil.
 ]
@@ -162,6 +164,17 @@ IPTBrowserTests >> testBuildVerifyButtonWith [
 	
 	self assert: (spec isKindOf: PluggableButtonSpec).
 	self assert: browser equals: spec model.
+]
+
+{
+	#category : #building,
+	#'squeak_changestamp' : 'sv 7/2/2024 16:23'
+}
+IPTBrowserTests >> testHomeButtonAction [
+	ipt browser homeButtonAction.
+	
+	self assert: (ipt browser = nil).
+	self assert: (ipt chapterview isKindOf: IPTChapterView).
 ]
 
 {
