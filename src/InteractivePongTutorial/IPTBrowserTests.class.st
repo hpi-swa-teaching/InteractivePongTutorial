@@ -288,9 +288,18 @@ IPTBrowserTests >> testSelectClass [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 19:38'
+	#'squeak_changestamp' : 'sv 7/2/2024 20:24'
 }
 IPTBrowserTests >> testSelectMethod [
+
+	| cp |
+	
+	cp := (browser visibleClassSet at: 1) methodCodePieces at: 1.
+	
+	browser selectCodePiece: cp.
+	
+	self assert: (cp = (browser instVarNamed: 'selectedCodePiece')).
+	self assert: (cp = (browser codeEditor instVarNamed: 'activeCodePiece')).
 ]
 
 {
