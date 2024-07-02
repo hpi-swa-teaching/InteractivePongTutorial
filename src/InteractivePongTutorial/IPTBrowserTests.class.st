@@ -316,6 +316,21 @@ IPTBrowserTests >> testSolutionButtonAction [
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'sv 7/2/2024 20:22'
+}
+IPTBrowserTests >> testSqueaky [
+
+	| squeaky |
+
+	squeaky := IPTSqueaky new.
+
+	browser squeaky: squeaky.
+	
+	self assert: (squeaky = (browser instVarNamed: 'squeaky')).
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 14:22'
 }
 IPTBrowserTests >> testshowSolutionButtonEnabled [
