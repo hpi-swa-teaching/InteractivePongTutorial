@@ -6,13 +6,11 @@ initialize
 	"Please change the color to black."
 	super initialize.
 	self 
-		extent: (100@100);
-		color: Color gray;
+		color: Color blue;
 		beSticky.
 °°
 	super initialize.
 	self 
-		extent: (100@100);
 		color: Color black;
 		beSticky.
 °°°°°
@@ -21,12 +19,10 @@ initialize
 °°
 	super initialize.
 	self 
-		extent: (100@100);
 		color: Color black;
 		beSticky.
 °°
 	super initialize.
 	self 
-		extent: (100@100);
 		color: Color black;
 		beSticky.

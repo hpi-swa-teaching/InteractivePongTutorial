@@ -508,13 +508,13 @@ IPTBrowser >> levelIndex: anObject [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 15:50'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/2/2024 11:19'
 }
 IPTBrowser >> loadLevel: aLevelIndex [
 	self 
 		levelIndex: aLevelIndex;
-		selectCodePiece: nil;
-		explanationIndex: 1.
+		explanationIndex: 1;
+		selectCodePiece: nil.
 
 	"load the solutionCode for all invisible/readOnly CodePieces;
 		load the initialCode for all visible CodePieces without readonly"

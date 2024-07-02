@@ -20,10 +20,10 @@ IPTBall >> checkCollisionWithPlayer [
 
 {
 	#category : #collision,
-	#'squeak_changestamp' : 'sv 7/2/2024 09:13'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/2/2024 11:33'
 }
 IPTBall >> checkCollisionWithWalls [
-	
+	"Check if the Ball stays inside the bounds if not take action."
 ]
 
 {
@@ -54,63 +54,68 @@ IPTBall >> defaultSpeed [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'sv 7/2/2024 09:13'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/2/2024 11:33'
 }
 IPTBall >> game [
-	
+	^ game.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'sv 7/2/2024 09:13'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/2/2024 11:33'
 }
 IPTBall >> game: aGame [
-	
+	game := aGame.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'sv 7/2/2024 09:13'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/2/2024 11:33'
 }
 IPTBall >> initialize [
-	
+	"You dont need to set the speed anymore, it should be done in startOver"
+	super initialize.
+	self 
+		color: Color white;
+		extent: self defaultExtent;
+		speed: self defaultSpeed @ self defaultSpeed.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'sv 7/2/2024 09:13'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/2/2024 11:33'
 }
 IPTBall >> speed [
-	
+	^ speed.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'sv 7/2/2024 09:13'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/2/2024 11:33'
 }
 IPTBall >> speed: aNumber [
-	
+	speed := aNumber.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'sv 7/2/2024 09:13'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/2/2024 11:33'
 }
 IPTBall >> startOver [
-	
+	"After starting the ball should be in the center of the game and have an initial speed."
 ]
 
 {
 	#category : #stepping,
-	#'squeak_changestamp' : 'sv 7/2/2024 09:13'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/2/2024 11:33'
 }
 IPTBall >> step [
-	
+	"You should now also check for Collisions with walls."
 ]
 
 {
 	#category : #stepping,
-	#'squeak_changestamp' : 'sv 7/2/2024 09:13'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/2/2024 11:33'
 }
 IPTBall >> stepTime [
 	^ 10.
@@ -118,16 +123,16 @@ IPTBall >> stepTime [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'sv 7/2/2024 09:13'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/2/2024 11:33'
 }
 IPTBall >> turnHorizontal [
-	
+	self speed: self speed x negated @ self speed y.
 ]
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'sv 7/2/2024 09:13'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/2/2024 11:33'
 }
 IPTBall >> turnVertical [
-	
+	self speed: self speed x @ self speed y negated.
 ]

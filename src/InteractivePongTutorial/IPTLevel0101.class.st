@@ -24,13 +24,16 @@ IPTLevel0101 class >> description [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 11:41'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/2/2024 11:15'
 }
 IPTLevel0101 class >> explanations [
 
 	^ {
-	'All Objects you will use are Morphs.'.
-	'Morphs have attributes, you can set them via distinctive setters.'.
+	'Welcome to the Browser of the Interactive Pong Tutorial. You can edit and test your code here. You can switch between levels of the same chapter using the buttons on the top right.'.
+	'In the treeview on the left you can see all available classses and methods. You can test your code with the play button in the bottom left, if your code is correct, it will be shown in the center'.
+	'In this level the only method you need to change is IPTGame>>#initialize. The method with the name initialize will allways be executed when creating a new object of a class. The Game itself is a subclass of Morph and contains all elements of Pong.'.
+	'But what is a Morph? Morph is a class used to visualize objects in Squeak. Since IPTGame is a subclass of Morph, it can use all its methods'.
+	'Morphs have a lot of properties that can be changed, for example the position, color and its size (extent). Right now our game has the color blue which isnt really an appropriate background color for pong, is it?'.
 	}
 ]
 

@@ -15,20 +15,26 @@ IPTLevel0103 class >> asString [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/21/2024 17:46'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/2/2024 10:30'
 }
 IPTLevel0103 class >> description [
 	
-	^ 'In this level, you will learn how to move a Morph by implementing the movement of the Ball class.'.
+	^ 'In this level, we will introduce the concept of stepping to move the ball.'.
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 12:35'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/2/2024 10:49'
 }
 IPTLevel0103 class >> explanations [
 	
-	^ {''}.
+	^ {
+	'All subclasses of Morph are able to overwrite the step method. It will be executed at regular intervals whose lengths in milliseconds are determined by the return value of stepTime'.
+	'To alter the movement we introduce the variable speed which stores the x and y movement per step as a point. You will also define the turnHorizontal and turnVertical methods which will later be used to change the direction of the ball when colliding with an obstacle.'.
+	'If you are unsure how to proceed or a stuck at a method there are some hints following.'.
+	'Hint 1: You can create point with x @ y.'.
+	'Hint 2: You can turn by negating the value in x and y respectively using negated'.
+	}.
 ]
 
 {

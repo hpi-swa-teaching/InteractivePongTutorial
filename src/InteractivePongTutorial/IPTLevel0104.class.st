@@ -24,11 +24,18 @@ IPTLevel0104 class >> description [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 12:35'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/2/2024 11:31'
 }
 IPTLevel0104 class >> explanations [
 	
-	^ {''}.
+	^ {
+	'In the last level we needed to set the postion of the ball manually to be able to see it. Now we want to be able to reset the ball for example if it hits the wall, therefore you will need to implement the new method startOver.'.
+	'It would be boring if the ball would always start with the same direction, therefore try to set the direction randomly but still use defaultSpeed. Also dont forget to put the ball in the center of the game.'.
+	'Until now the ball just moves in one direction, we want it to bounce off the top and bottom walls. The walls on the left and right side should reset the ball on collision. Test the collision by comparing the position of the ball with the top, bottom, left and right of the game.'.
+	'If you are unsure how to proceed or a stuck at a method there are some hints following.'.
+	'Hint 1: You can use {1 . -1} atRandom for a random positive or negative Value'.
+	'Hint 2: To check if a value is in between to Numbers you can use between: aNumber and: aNumber.'.
+	}.
 ]
 
 {

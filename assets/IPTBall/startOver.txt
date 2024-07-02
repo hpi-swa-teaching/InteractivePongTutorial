@@ -6,5 +6,5 @@ startOver
 	"After starting the ball should be in the center of the game and have an initial speed."
 °°
 	self 
-		position: (self game center x - (self width / 2)) @ (self game center y - (self height / 2));
-		speed: (self defaultSpeed * #(1 -1) atRandom) @ (self defaultSpeed * #(1 -1) atRandom).
+		position: self game center - (self extent/2);
+		speed: (self defaultSpeed * {1 .-1} atRandom) @ (self defaultSpeed * #(1 -1) atRandom).

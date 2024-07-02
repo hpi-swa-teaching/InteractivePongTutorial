@@ -24,11 +24,14 @@ IPTLevel0102 class >> description [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 12:35'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/2/2024 10:28'
 }
 IPTLevel0102 class >> explanations [
 	
-	^ {''}
+	^ {'Now you have another class to work on, IPTBall. You should also initialize it, similar to IPTGame.'.
+	'If you look at the IPTBall and IPTGame class code, you will notice that they have instance variables for referencing each other. For those instance variables you need to create getters and setters to use the reference in their respective classes. It is best to do this first so you can use it in the implementation of the other methods.'.	
+		'Another important aspect of Morhps is submorph behaviour. The ball is supposed to be in the game and have its position set in relation to the game. This can be implemented with calling addMorph: aMorph (here ball) on the parent.'.
+	}
 ]
 
 {

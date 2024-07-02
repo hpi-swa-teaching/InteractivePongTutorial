@@ -4,12 +4,12 @@ initializeBall
 2
 °°
 	"You should set ball to a new IPTBall and then add the Morph.
-	To see it you should also set the position of the ball to the center of the game."
+	To see it you should also set the position of the ball so it is in the center of the game."
 °°
 	self 
 		ball: (IPTBall new game: self);
 		addMorph: self ball.
-	self ball position: self center.
+	self ball position: self center - (self ball extent/2).
 °°°°°
 1
 3
@@ -17,12 +17,12 @@ initializeBall
 	self 
 		ball: (IPTBall new game: self);
 		addMorph: self ball.
-	self ball position: self center.
+	self ball position: self center- (self ball extent/2).
 °°
 	self 
 		ball: (IPTBall new game: self);
 		addMorph: self ball.
-	self ball position: self center.
+	self ball position: self center - (self ball extent/2).
 °°°°°
 1
 4
@@ -31,7 +31,7 @@ initializeBall
 	self 
 		ball: (IPTBall new game: self);
 		addMorph: self ball.
-	self ball position: self center.
+	self ball position: self center - (self ball extent/2).
 °°
 	self 
 		ball: (IPTBall new game: self);
