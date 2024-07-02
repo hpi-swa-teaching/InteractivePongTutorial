@@ -14,12 +14,12 @@ IPTAssetLoader class >> indexFilePath [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 7/2/2024 17:05'
+	#'squeak_changestamp' : 'Josua Zehner 7/2/2024 17:18'
 }
 IPTAssetLoader class >> methodCodePiecesFor: aClassNameString [
 
 	| filePaths |
 	filePaths := ((GitAssetLoader for: 'InteractivePongTutorial') loadString: IPTAssetLoader indexFilePath) lines asOrderedCollection.
-	filePaths reject: [:filePath | filePath includesSubstring: aClassNameString].
-	^ filePaths collect: [:filePath | IPTCodePiece fromFile: filePath].
+	^ (filePaths select: [:filePath | (filePath includesSubstring: aClassNameString)])
+				collect: [:filePath | IPTCodePiece fromFile: filePath].
 ]
