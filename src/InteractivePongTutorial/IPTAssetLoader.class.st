@@ -14,13 +14,12 @@ IPTAssetLoader class >> indexFilePath [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'FH 7/2/2024 10:45'
+	#'squeak_changestamp' : 'Josua Zehner 7/2/2024 17:03'
 }
 IPTAssetLoader class >> methodCodePiecesFor: aClassNameString [
-	|methods filenames|
-	filenames:= (((GitAssetLoader for: 'InteractivePongTutorial') loadString: IPTAssetLoader indexFilePath)splitBy: {Character cr}) asOrderedCollection.
-	filenames removeAllSuchThat: [:el | el includesSubstring: aClassNameString].
-	methods := OrderedCollection new.
-	filenames do:[:el | methods add: (IPTCodePiece fromFile: el)].
-	^methods.
+
+	| filenames |
+	filenames := ((GitAssetLoader for: 'InteractivePongTutorial') loadString: IPTAssetLoader indexFilePath) lines asOrderedCollection.
+	filenames reject: [:filename | filename includesSubstring: aClassNameString].
+	^ filenames collect: [:filename | IPTCodePiece fromFile: filename].
 ]

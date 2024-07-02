@@ -19,18 +19,18 @@ IPTGame class >> open [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/2/2024 11:33'
+	#'squeak_changestamp' : 'Josua Zehner 7/2/2024 17:03'
 }
 IPTGame >> ball [
-	^ ball.
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/2/2024 11:33'
+	#'squeak_changestamp' : 'Josua Zehner 7/2/2024 17:03'
 }
 IPTGame >> ball: aBall [
-	ball := aBall.
+	
 ]
 
 {
@@ -44,25 +44,22 @@ IPTGame >> handlesKeyboard: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/2/2024 11:33'
+	#'squeak_changestamp' : 'Josua Zehner 7/2/2024 17:03'
 }
 IPTGame >> initialize [
+	"Please change the color to black."
 	super initialize.
 	self 
-		color: Color black;
+		color: Color blue;
 		beSticky.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/2/2024 11:33'
+	#'squeak_changestamp' : 'Josua Zehner 7/2/2024 17:03'
 }
 IPTGame >> initializeBall [
-	"Instead of setting the Position of the ball you should now call the method starOver."
-	self 
-		ball: (IPTBall new game: self);
-		addMorph: self ball.
-	self ball position: self center - (self ball extent/2).
+	
 ]
 
 {

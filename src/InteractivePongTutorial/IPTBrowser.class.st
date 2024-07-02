@@ -508,7 +508,7 @@ IPTBrowser >> levelIndex: anObject [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/2/2024 11:19'
+	#'squeak_changestamp' : 'Josua Zehner 7/2/2024 16:57'
 }
 IPTBrowser >> loadLevel: aLevelIndex [
 	self 
@@ -526,7 +526,6 @@ IPTBrowser >> loadLevel: aLevelIndex [
 				loadInitialCodeForLevel: self levelIndex andChapter: self chapter chapterNumber.]].
 	
 	self updateVisibleClassSetToMethods: self activeLevel visibleMethods.
-
 	self playground ifNotNil: [
 		self playground removeAllMorphs.].
 	
