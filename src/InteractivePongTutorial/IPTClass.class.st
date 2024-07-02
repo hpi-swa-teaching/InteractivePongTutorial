@@ -10,25 +10,13 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 14:51'
+	#'squeak_changestamp' : 'FH 7/2/2024 10:46'
 }
 IPTClass class >> ballClass [
 	^ IPTClass new 
 		name: 'IPTBall';
 		source: IPTBall;
-		methodCodePieces: {
-			IPTCodePiece ball_initialize.
-			IPTCodePiece ball_game.
-			IPTCodePiece ball_game_setter.
-			IPTCodePiece ball_speed.
-			IPTCodePiece ball_speed_setter.
-			IPTCodePiece ball_step.
-			IPTCodePiece ball_stepTime.
-			IPTCodePiece ball_turnVertical.
-			IPTCodePiece ball_turnHorizontal.
-			IPTCodePiece ball_checkCollisionWithWalls.
-			IPTCodePiece ball_startOver.}
-			asOrderedCollection;
+		methodCodePieces: (IPTAssetLoader methodCodePiecesFor: 'IPTBall');
 		yourself.
 ]
 
@@ -42,18 +30,13 @@ IPTClass class >> classList [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 14:51'
+	#'squeak_changestamp' : 'FH 7/2/2024 10:46'
 }
 IPTClass class >> gameClass [
 	^ IPTClass new 
 		name: 'IPTGame';
 		source: IPTGame;
-		methodCodePieces: {
-			IPTCodePiece game_initialize.
-			IPTCodePiece game_initializeBall.
-			IPTCodePiece game_ball.
-			IPTCodePiece game_ball_setter.}
-			asOrderedCollection;
+		methodCodePieces: (IPTAssetLoader methodCodePiecesFor: 'IPTGame');
 		yourself.
 ]
 
