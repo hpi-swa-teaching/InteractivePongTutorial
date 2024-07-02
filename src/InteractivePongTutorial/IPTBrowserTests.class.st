@@ -220,6 +220,21 @@ IPTBrowserTests >> testNextLevelButtonEnabled [
 ]
 
 {
+	#category : #building,
+	#'squeak_changestamp' : 'sv 7/2/2024 16:28'
+}
+IPTBrowserTests >> testPlayground [
+
+	| playground |
+	
+	playground := IPTPlayground new. 
+
+	browser playground: playground.
+	
+	self assert: ((browser instVarNamed: 'playground') = playground).
+]
+
+{
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 20:22'
 }
