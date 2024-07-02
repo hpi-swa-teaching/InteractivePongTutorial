@@ -295,6 +295,27 @@ IPTBrowserTests >> testSelectMethod [
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'sv 7/2/2024 20:18'
+}
+IPTBrowserTests >> testSolutionButtonAction [
+
+	| cp |
+	
+	cp := ((browser visibleClassSet at: 1) methodCodePieces at: 1).
+	
+	browser selectCodePiece: cp.
+	
+	browser showSolutionButtonAction.
+	
+	self assert:
+		(cp code =
+			(cp addHeadToCode:
+				((cp variantForLevel: initialLevelIndex fromChapter: chapter chapterNumber)
+					solutionCode))).
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 14:22'
 }
 IPTBrowserTests >> testshowSolutionButtonEnabled [

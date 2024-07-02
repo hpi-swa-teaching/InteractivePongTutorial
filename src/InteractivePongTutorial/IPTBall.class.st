@@ -20,7 +20,7 @@ IPTBall >> checkCollisionWithPlayer [
 
 {
 	#category : #collision,
-	#'squeak_changestamp' : 'sv 7/2/2024 20:16'
+	#'squeak_changestamp' : 'sv 7/2/2024 20:18'
 }
 IPTBall >> checkCollisionWithWalls [
 	
@@ -54,7 +54,7 @@ IPTBall >> defaultSpeed [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'sv 7/2/2024 20:16'
+	#'squeak_changestamp' : 'sv 7/2/2024 20:18'
 }
 IPTBall >> game [
 	
@@ -62,7 +62,7 @@ IPTBall >> game [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'sv 7/2/2024 20:16'
+	#'squeak_changestamp' : 'sv 7/2/2024 20:18'
 }
 IPTBall >> game: aGame [
 	
@@ -70,7 +70,7 @@ IPTBall >> game: aGame [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'sv 7/2/2024 20:16'
+	#'squeak_changestamp' : 'sv 7/2/2024 20:18'
 }
 IPTBall >> initialize [
 	
@@ -78,7 +78,7 @@ IPTBall >> initialize [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'sv 7/2/2024 20:16'
+	#'squeak_changestamp' : 'sv 7/2/2024 20:18'
 }
 IPTBall >> speed [
 	
@@ -86,7 +86,7 @@ IPTBall >> speed [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'sv 7/2/2024 20:16'
+	#'squeak_changestamp' : 'sv 7/2/2024 20:18'
 }
 IPTBall >> speed: aNumber [
 	
@@ -94,7 +94,7 @@ IPTBall >> speed: aNumber [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'sv 7/2/2024 20:16'
+	#'squeak_changestamp' : 'sv 7/2/2024 20:18'
 }
 IPTBall >> startOver [
 	
@@ -102,7 +102,7 @@ IPTBall >> startOver [
 
 {
 	#category : #stepping,
-	#'squeak_changestamp' : 'sv 7/2/2024 20:16'
+	#'squeak_changestamp' : 'sv 7/2/2024 20:18'
 }
 IPTBall >> step [
 	
@@ -110,7 +110,7 @@ IPTBall >> step [
 
 {
 	#category : #stepping,
-	#'squeak_changestamp' : 'sv 7/2/2024 20:16'
+	#'squeak_changestamp' : 'sv 7/2/2024 20:18'
 }
 IPTBall >> stepTime [
 	^ 10.
@@ -118,7 +118,7 @@ IPTBall >> stepTime [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'sv 7/2/2024 20:16'
+	#'squeak_changestamp' : 'sv 7/2/2024 20:18'
 }
 IPTBall >> turnHorizontal [
 	
@@ -126,7 +126,7 @@ IPTBall >> turnHorizontal [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'sv 7/2/2024 20:16'
+	#'squeak_changestamp' : 'sv 7/2/2024 20:18'
 }
 IPTBall >> turnVertical [
 	
