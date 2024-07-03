@@ -139,14 +139,14 @@ IPTLevel0103 >> test_Game_initialize [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 21:13'
+	#'squeak_changestamp' : 'sv 7/3/2024 10:32'
 }
 IPTLevel0103 >> test_Game_initializeBall [
 	self testedMethod: (IPTGame >> #initializeBall).
 	
 	game initializeBall.
 	self assert: (game ball isKindOf: IPTBall) description: 'Ball should be of class Ball'.
-	self assert: (game ball position = game center) description: 'You should set the position of the Ball to the center of the game'.
+	self assert: (game ball center = game center) description: 'You should set the position of the Ball to the center of the game'.
 	self assert: (ball speed = (ball defaultSpeed @ ball defaultSpeed)) description: 'You did not set the speed correctly (speed is saved as Point x @ y)'.
 
 ]
