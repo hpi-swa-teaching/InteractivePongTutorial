@@ -443,7 +443,7 @@ IPTBrowser >> codeEditor: anObject [
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 12:38'
+	#'squeak_changestamp' : 'sv 7/3/2024 09:45'
 }
 IPTBrowser >> explanationBoxContent [
 	

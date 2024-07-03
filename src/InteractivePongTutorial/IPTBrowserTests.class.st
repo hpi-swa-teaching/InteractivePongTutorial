@@ -280,6 +280,22 @@ IPTBrowserTests >> testResetButtonAction [
 ]
 
 {
+	#category : #building,
+	#'squeak_changestamp' : 'sv 7/3/2024 09:47'
+}
+IPTBrowserTests >> testRunCode [
+
+	browser chapter levels: {IPTMockLevel}.
+	
+	browser loadLevel: 1.
+	
+	browser runCode.
+	
+	self assert: (browser testResult at: #errors) isEmpty not.
+	self assert: (browser testResult at: #failures) isEmpty.
+]
+
+{
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 19:38'
 }
