@@ -19,7 +19,7 @@ IPTGame class >> open [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'sv 7/3/2024 10:32'
+	#'squeak_changestamp' : 'sv 7/3/2024 11:06'
 }
 IPTGame >> ball [
 	"Return the value of ball."
@@ -27,7 +27,7 @@ IPTGame >> ball [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'sv 7/3/2024 10:32'
+	#'squeak_changestamp' : 'sv 7/3/2024 11:06'
 }
 IPTGame >> ball: aBall [
 	"To update ball you should set ball to the given input."
@@ -44,7 +44,7 @@ IPTGame >> handlesKeyboard: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'sv 7/3/2024 10:32'
+	#'squeak_changestamp' : 'sv 7/3/2024 11:06'
 }
 IPTGame >> initialize [
 	super initialize.
@@ -55,7 +55,7 @@ IPTGame >> initialize [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'sv 7/3/2024 10:32'
+	#'squeak_changestamp' : 'sv 7/3/2024 11:06'
 }
 IPTGame >> initializeBall [
 	"You should set ball to a new IPTBall and then add the Morph.
