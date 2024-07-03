@@ -1,0 +1,13 @@
+initializePlayers
+°°°°°
+"Level and Chapternumbers need to be added, only solution until now"
+	
+	self
+		playerLeft: (IPTPlayer new
+			position: self position + (15 @ (self extent y / 2-50));
+			game: self);
+		playerRight: (IPTPlayer new
+			position:  self position + (self extent x - 30 @ (self extent y / 2-50));
+			game: self);
+		addMorph: self playerLeft;
+		addMorph: self playerRight.

@@ -1,0 +1,10 @@
+move: aNumber
+°°°°°
+"Level and Chapternumbers need to be added, only solution until now"
+
+	| newPosition |
+	newPosition := self position y + aNumber.
+	((newPosition - self game position y)
+		between: 0
+		and: self game height - self height)
+			ifTrue: [self position: self position x @ newPosition].

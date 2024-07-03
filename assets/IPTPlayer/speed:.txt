@@ -1,0 +1,5 @@
+speed: aNumber
+°°°°°
+"Level and Chapternumbers need to be added, only solution until now"
+
+	speed := aNumber

@@ -1,0 +1,6 @@
+keyDown: anEvent
+°°°°°
+"Level and Chapternumbers need to be added, only solution until now"
+
+	(anEvent keyCharacter asUppercase = $S ) ifTrue: [self playerLeft down].
+	(anEvent keyCharacter = Character arrowDown) ifTrue: [self playerRight down].

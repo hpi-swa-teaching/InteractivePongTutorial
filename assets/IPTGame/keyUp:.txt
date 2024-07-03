@@ -1,0 +1,6 @@
+keyUp: anEvent
+°°°°°
+"Level and Chapternumbers need to be added, only solution until now"
+
+	(anEvent keyCharacter asUppercase = $W ) ifTrue: [self playerLeft up].
+	(anEvent keyCharacter = Character arrowUp) ifTrue: [self playerRight up].
