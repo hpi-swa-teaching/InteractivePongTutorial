@@ -367,15 +367,13 @@ IPTBrowser >> chapter: anObject [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 14:19'
+	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:38'
 }
 IPTBrowser >> checkAndSaveCode [
 	| code errMsg |
 	self closeAllAutoCompletionMorphs.
 	
-	code := self codeEditor
-		"accept;"
-		code.
+	code := self codeEditor code.
 	errMsg := self selectedCodePiece checkSyntaxAndSaveCode: code.
 	
 	(errMsg = '')
@@ -577,7 +575,7 @@ IPTBrowser >> nextLevelButtonEnabled [
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 20:42'
+	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:26'
 }
 IPTBrowser >> outputBoxContent [
 	| output |
@@ -585,7 +583,7 @@ IPTBrowser >> outputBoxContent [
 	self testResult ifNotNil: [
 	output := ((self testResult at: #errors) inject: 'Errors:' into: [:run :err |
 		 run, Character cr, (IPTLevel resultEntryToString: err) ]), Character cr, Character cr.
-	output := ((self testResult at: #failures) inject: (output, 'Failures:') into: [:run :err |
+	output := ((self testResult at: #failures) inject: (output, 'Test failures:') into: [:run :err |
 		 run, Character cr, (IPTLevel resultEntryToString: err) ]).
 	
 	(self testResult at: #success) ifTrue: [

@@ -61,10 +61,10 @@ IPTLevel0102 class >> visibleMethods [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'FH 7/2/2024 11:07'
+	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:30'
 }
 IPTLevel0102 >> test_Ball_game [
-	self testedMethod: (IPTBall >> #game).
+	self methodToBeTested: (IPTBall >> #game).
 	
 	"Use instVarNamed:put: instead of the setter in case the player did not implement the setter."
 	ball instVarNamed: 'game' put: game.
@@ -73,10 +73,10 @@ IPTLevel0102 >> test_Ball_game [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 20:45'
+	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:30'
 }
 IPTLevel0102 >> test_Ball_game_setter [
-	self testedMethod: (IPTBall >> #game:).
+	self methodToBeTested: (IPTBall >> #game:).
 	
 	ball game: game.
 	self assert: (ball instVarNamed: 'game') = game description: 'Ball game: should set game on the input'.
@@ -84,10 +84,10 @@ IPTLevel0102 >> test_Ball_game_setter [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 20:45'
+	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:30'
 }
 IPTLevel0102 >> test_Ball_initialize [
-	self testedMethod: (IPTBall >> #initialize).
+	self methodToBeTested: (IPTBall >> #initialize).
 	
 	self assert: (ball isKindOf: IPTBall) description: 'You may not return a value!'.
 	self assert: ball color isNil not description: 'Have you initialized the morph?'.
@@ -97,10 +97,10 @@ IPTLevel0102 >> test_Ball_initialize [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'FH 7/2/2024 11:08'
+	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:30'
 }
 IPTLevel0102 >> test_Game_ball [
-	self testedMethod: (IPTGame >> #ball).
+	self methodToBeTested: (IPTGame >> #ball).
 	
 	"Use instVarNamed:put: instead of the setter in case the player did not implement the setter."
 	game instVarNamed: 'ball' put: ball.
@@ -109,10 +109,10 @@ IPTLevel0102 >> test_Game_ball [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 20:46'
+	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:30'
 }
 IPTLevel0102 >> test_Game_ball_setter [
-	self testedMethod: (IPTGame >> #ball:).
+	self methodToBeTested: (IPTGame >> #ball:).
 	
 	game ball: ball.
 	self assert: (game instVarNamed: 'ball') = ball description: 'Game ball: should set ball on the input'.
@@ -120,10 +120,10 @@ IPTLevel0102 >> test_Game_ball_setter [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 20:46'
+	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:30'
 }
 IPTLevel0102 >> test_Game_initialize [
-	self testedMethod: (IPTGame >> #initialize).
+	self methodToBeTested: (IPTGame >> #initialize).
 	
 	self assert: (game isKindOf: IPTGame) description: 'You may not return a value!'.
 	self assert: game color isNil not description: 'Have you initialized the morph?'.
@@ -132,10 +132,10 @@ IPTLevel0102 >> test_Game_initialize [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'sv 7/3/2024 10:31'
+	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:30'
 }
 IPTLevel0102 >> test_Game_initializeBall [
-	self testedMethod: (IPTGame >> #initializeBall).
+	self methodToBeTested: (IPTGame >> #initializeBall).
 	
 	game initializeBall.
 	self assert: (game ball isKindOf: IPTBall) description: 'Ball should be of class Ball'.

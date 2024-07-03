@@ -64,10 +64,10 @@ IPTLevel0103 class >> visibleMethods [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 20:49'
+	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:30'
 }
 IPTLevel0103 >> test_Ball_initialize [
-	self testedMethod: (IPTBall >> #initialize).
+	self methodToBeTested: (IPTBall >> #initialize).
 	
 	self assert: (ball isKindOf: IPTBall) description: 'You may not return a value!'.
 	self assert: ball color isNil not description: 'Have you initialized the morph?'.
@@ -77,11 +77,11 @@ IPTLevel0103 >> test_Ball_initialize [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 20:50'
+	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:30'
 }
 IPTLevel0103 >> test_Ball_step [
 	|expectedPosition|
-	self testedMethod: (IPTBall >> #step).
+	self methodToBeTested: (IPTBall >> #step).
 	
 	expectedPosition := ball position + ball speed.
 	ball step.
@@ -90,21 +90,21 @@ IPTLevel0103 >> test_Ball_step [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 20:50'
+	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:30'
 }
 IPTLevel0103 >> test_Ball_stepTime [
-	self testedMethod: (IPTBall >> #stepTime).
+	self methodToBeTested: (IPTBall >> #stepTime).
 	
 	self assert: (ball stepTime isKindOf: Number) description: 'stepTime has to be a Number.'.
 ]
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 20:50'
+	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:30'
 }
 IPTLevel0103 >> test_Ball_turnHorizontal [
 	| expectedSpeed |
-	self testedMethod: (IPTBall >> #turnHorizontal).
+	self methodToBeTested: (IPTBall >> #turnHorizontal).
 	
 	expectedSpeed := ball speed x negated @ ball speed y.
 	ball turnHorizontal.
@@ -113,11 +113,11 @@ IPTLevel0103 >> test_Ball_turnHorizontal [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 20:51'
+	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:30'
 }
 IPTLevel0103 >> test_Ball_turnVertical [
 	| expectedSpeed |
-	self testedMethod: (IPTBall >> #turnVertical).
+	self methodToBeTested: (IPTBall >> #turnVertical).
 	
 	expectedSpeed := ball speed x @ ball speed y negated.
 	ball turnVertical.
@@ -126,10 +126,10 @@ IPTLevel0103 >> test_Ball_turnVertical [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 20:50'
+	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:30'
 }
 IPTLevel0103 >> test_Game_initialize [
-	self testedMethod: (IPTGame >> #initialize).
+	self methodToBeTested: (IPTGame >> #initialize).
 	
 	self assert: (ball isKindOf: IPTBall) description: 'You may not return a value!'.
 	self assert: ball color isNil not description: 'Have you initialized the morph?'.
@@ -139,10 +139,10 @@ IPTLevel0103 >> test_Game_initialize [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'sv 7/3/2024 10:32'
+	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:30'
 }
 IPTLevel0103 >> test_Game_initializeBall [
-	self testedMethod: (IPTGame >> #initializeBall).
+	self methodToBeTested: (IPTGame >> #initializeBall).
 	
 	game initializeBall.
 	self assert: (game ball isKindOf: IPTBall) description: 'Ball should be of class Ball'.
