@@ -1,0 +1,5 @@
+playerBounds
+°°°°°
+"Level and Chapternumbers need to be added, only solution until now"
+
+^ {self playerLeft bounds . self playerRight bounds}.

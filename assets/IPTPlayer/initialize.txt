@@ -1,0 +1,9 @@
+initialize
+°°°°°
+"Level and Chapternumbers need to be added, only solution until now"
+
+	super initialize.
+	self 
+		color: Color white;
+		extent: 15 @100;
+		stop.
