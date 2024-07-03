@@ -66,10 +66,10 @@ IPTLevel0104 class >> visibleMethods [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 20:49'
+	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:30'
 }
 IPTLevel0104 >> test_Game_initialize [
-	self testedMethod: (IPTGame >> #initialize).
+	self methodToBeTested: (IPTGame >> #initialize).
 		
 	self assert: game color equals: Color black description: 'You did not choose the right color!'.
 ]

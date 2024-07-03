@@ -44,11 +44,12 @@ IPTCodePiece >> addHeadToCode: aCodeString [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 14:42'
+	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:40'
 }
 IPTCodePiece >> checkSyntaxAndSaveCode: aString [
+	
+	self readOnly ifTrue: [^ 'You cannot change this code!'].	
 
-	"self safelyCompile: aString."
 	(((aString splitBy: {Character cr}) at: 1) withBlanksTrimmed = self head)
 		ifFalse: [^ 'You must leave the head line unchanged!'].
 	

@@ -5,7 +5,7 @@ Class {
 		'game',
 		'ball',
 		'player',
-		'testedMethod'
+		'methodToBeTested'
 	],
 	#category : #'InteractivePongTutorial-Levels'
 }
@@ -39,14 +39,14 @@ IPTLevel class >> explanations [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 21:08'
+	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:30'
 }
 IPTLevel class >> extractTestedMethodFromException: anException [
 	|context|
 	context := anException signalerContext.
-	[context methodClass superclass = IPTLevel] 
+	[context methodClass = self] 
 		whileFalse: [context := context sender].
-	^ context receiver testedMethod.
+	^ context receiver methodToBeTested.
 
 ]
 
@@ -108,6 +108,22 @@ IPTLevel class >> visibleMethods [
 ]
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:30'
+}
+IPTLevel >> methodToBeTested [
+	^ methodToBeTested
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:30'
+}
+IPTLevel >> methodToBeTested: anObject [
+	methodToBeTested := anObject
+]
+
+{
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 15:23'
 }
@@ -128,17 +144,18 @@ IPTLevel >> tearDown [
 ]
 
 {
-	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 16:39'
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:32'
 }
-IPTLevel >> testedMethod [
-	^ testedMethod
+IPTLevel >> testPlaygroundLaunch [
+	self methodToBeTested: 0.
 ]
 
 {
-	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 16:39'
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:32'
 }
-IPTLevel >> testedMethod: anObject [
-	testedMethod := anObject
+IPTLevel >> testRunCode [
+	self methodToBeTested: (IPTPlayground >> #runCode).
+	
 ]

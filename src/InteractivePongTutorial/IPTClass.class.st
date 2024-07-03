@@ -59,6 +59,14 @@ IPTClass >> copy [
 ]
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:46'
+}
+IPTClass >> initialize [
+	self readOnly: true.
+]
+
+{
 	#category : #behaviour,
 	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 14:08'
 }
