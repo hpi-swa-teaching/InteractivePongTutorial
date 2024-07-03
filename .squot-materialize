@@ -154,6 +154,12 @@
 		],
 		#encoding : 'TXT'
 	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'LICENSE'
+		],
+		#encoding : 'TXT'
+	},
 	SquotImageMapper {
 		#path : FSAbsolutePath [
 			'assets',
@@ -164,16 +170,22 @@
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
 			'assets',
-			'IPTGame',
-			'playerRight:.txt'
+			'IPTBall',
+			'checkCollisionWithWalls.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'README.md'
 		],
 		#encoding : 'TXT'
 	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
 			'assets',
-			'IPTBall',
-			'checkCollisionWithWalls.txt'
+			'IPTGame',
+			'playerRight:.txt'
 		],
 		#encoding : 'TXT'
 	},
@@ -277,7 +289,7 @@
 		#path : FSAbsolutePath [
 			'assets',
 			'IPTGame',
-			'initializePlayers.txt'
+			'initialize.txt'
 		],
 		#encoding : 'TXT'
 	},
@@ -301,7 +313,7 @@
 		#path : FSAbsolutePath [
 			'assets',
 			'IPTGame',
-			'initialize.txt'
+			'initializePlayers.txt'
 		],
 		#encoding : 'TXT'
 	},
