@@ -125,12 +125,15 @@ IPTLevel >> methodToBeTested: anObject [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 15:23'
+	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 12:40'
 }
 IPTLevel >> setUp [
 	game := IPTGame new.
 	ball := IPTBall new.
 	player := IPTPlayer new.
+	
+	ball game: game.
+	game ball: ball.
 ]
 
 {
