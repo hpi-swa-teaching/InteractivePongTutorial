@@ -1,0 +1,13 @@
+SmalltalkCISpec {
+	#loading : [
+		SCIMetacelloLoadSpec {
+			#baseline : 'InteractivePongTutorial',
+			#directory : 'src/InteractivePongTutorial',
+			#platforms : [#squeak],
+			#load : ['tests']
+		}
+	],
+	#testing : {
+		#packages : ['SmalltalkCITest-Tests']
+	}
+}
