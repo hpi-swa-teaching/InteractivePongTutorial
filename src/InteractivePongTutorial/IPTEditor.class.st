@@ -63,16 +63,19 @@ IPTEditor >> activeCodePiece [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/23/2024 23:38'
+	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 19:49'
 }
 IPTEditor >> activeCodePiece: aCodePiece [
 	activeCodePiece := aCodePiece.
 	
 	aCodePiece 
 		ifNil: [
-			self code: '']
+			self contents: '']
 		ifNotNil: [
-			self code: aCodePiece code.].
+			aCodePiece isClass ifFalse: [
+			self setClass: aCodePiece referencedClass selector: aCodePiece referencedMethod.].
+			self contents: aCodePiece code.].
+	self update.
 		
 		
 		
@@ -96,38 +99,23 @@ IPTEditor >> browser: anObject [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'FH 6/19/2024 14:38'
+	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 19:05'
 }
-IPTEditor >> buildCodePaneWith: abuilder [
-	^ (super buildCodePaneWith: abuilder)
+IPTEditor >> buildCodePaneWith: aBuilder [
+
+	^ (super buildCodePaneWith: aBuilder)
 		setText: #evaluateAndSaveText:notifying:;
 		yourself
 ]
 
 {
-	#category : #accessing,
-	#'squeak_changestamp' : 'FH 6/19/2024 14:38'
-}
-IPTEditor >> code [
-	^ self contents.
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'FH 6/19/2024 14:38'
-}
-IPTEditor >> code: aString [
-	self contents: aString;
-		update.
-]
-
-{
 	#category : #evaluating,
-	#'squeak_changestamp' : 'FH 6/19/2024 14:39'
+	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 19:05'
 }
 IPTEditor >> evaluateAndSaveText: aText notifying: aController [
-	self code: aText.
+	self contents: aText.
 	self actionOnSave value.
+	self update.
 	
 	
 ]

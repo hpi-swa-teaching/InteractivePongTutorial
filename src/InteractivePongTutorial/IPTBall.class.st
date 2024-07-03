@@ -20,7 +20,7 @@ IPTBall >> checkCollisionWithPlayer [
 
 {
 	#category : #collision,
-	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:47'
+	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 20:03'
 }
 IPTBall >> checkCollisionWithWalls [
 	
@@ -54,7 +54,7 @@ IPTBall >> defaultSpeed [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:47'
+	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 20:03'
 }
 IPTBall >> game [
 	
@@ -62,7 +62,7 @@ IPTBall >> game [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:47'
+	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 20:03'
 }
 IPTBall >> game: aGame [
 	
@@ -70,7 +70,7 @@ IPTBall >> game: aGame [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:47'
+	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 20:03'
 }
 IPTBall >> initialize [
 	
@@ -78,7 +78,7 @@ IPTBall >> initialize [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:47'
+	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 20:03'
 }
 IPTBall >> speed [
 	
@@ -86,7 +86,7 @@ IPTBall >> speed [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:47'
+	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 20:03'
 }
 IPTBall >> speed: aNumber [
 	
@@ -94,7 +94,7 @@ IPTBall >> speed: aNumber [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:47'
+	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 20:03'
 }
 IPTBall >> startOver [
 	
@@ -102,7 +102,7 @@ IPTBall >> startOver [
 
 {
 	#category : #stepping,
-	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:47'
+	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 20:03'
 }
 IPTBall >> step [
 	
@@ -110,7 +110,7 @@ IPTBall >> step [
 
 {
 	#category : #stepping,
-	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:47'
+	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 20:03'
 }
 IPTBall >> stepTime [
 	^ 10.
@@ -118,7 +118,7 @@ IPTBall >> stepTime [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:47'
+	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 20:03'
 }
 IPTBall >> turnHorizontal [
 	
@@ -126,7 +126,7 @@ IPTBall >> turnHorizontal [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:47'
+	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 20:03'
 }
 IPTBall >> turnVertical [
 	

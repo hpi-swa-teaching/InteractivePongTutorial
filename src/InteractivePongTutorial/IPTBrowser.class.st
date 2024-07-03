@@ -367,17 +367,16 @@ IPTBrowser >> chapter: anObject [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:38'
+	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 19:22'
 }
 IPTBrowser >> checkAndSaveCode [
 	| code errMsg |
 	self closeAllAutoCompletionMorphs.
 	
-	code := self codeEditor code.
+	code := self codeEditor contents.
 	errMsg := self selectedCodePiece checkSyntaxAndSaveCode: code.
 	
-	(errMsg = '')
-		ifFalse: [ UIManager default inform: errMsg ].	
+	errMsg ifNotEmpty: [ UIManager default inform: errMsg].
 	"self playground clear."
 	"self selectedLecture checkCode: code on: self playground."
 	
@@ -506,32 +505,25 @@ IPTBrowser >> levelIndex: anObject [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Josua Zehner 7/2/2024 16:57'
+	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 18:41'
 }
 IPTBrowser >> loadLevel: aLevelIndex [
+
 	self 
 		levelIndex: aLevelIndex;
 		explanationIndex: 1;
+		reloadCodePieces;
 		selectCodePiece: nil.
-
-	"load the solutionCode for all invisible/readOnly CodePieces;
-		load the initialCode for all visible CodePieces without readonly"
-	self classSet do: [ :c | 
-		c methodCodePieces do: [ :codePiece | 
-			codePiece 
-				readOnly: false;
-				isGreen: false;
-				loadInitialCodeForLevel: self levelIndex andChapter: self chapter chapterNumber.]].
-	
-	self updateVisibleClassSetToMethods: self activeLevel visibleMethods.
+		
 	self playground ifNotNil: [
 		self playground removeAllMorphs.].
-	
+	self updateVisibleClassSetToMethods: self activeLevel visibleMethods.
+		
 	self squeaky mood: #neutral.
-	self 
-		update;
-		"expand the CodePiece tree view"
-		changed: #expandRootsRequested.
+	self
+		"Expand the CodePiece tree view"
+		changed: #expandRootsRequested;
+		update.
 	
 		
 	
@@ -654,6 +646,22 @@ IPTBrowser >> previousLevelButtonEnabled [
 
 {
 	#category : #actions,
+	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 18:35'
+}
+IPTBrowser >> reloadCodePieces [
+
+	"load the solutionCode for all invisible/readOnly CodePieces;
+	load the initialCode for all visible CodePieces without readonly"
+	self classSet do: [ :c | 
+		c methodCodePieces do: [ :codePiece | 
+			codePiece 
+				readOnly: false;
+				isGreen: false;
+				loadInitialCodeForLevel: self levelIndex andChapter: self chapter chapterNumber.]].
+]
+
+{
+	#category : #actions,
 	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 15:10'
 }
 IPTBrowser >> resetButtonAction [
@@ -700,13 +708,12 @@ IPTBrowser >> runCode [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 14:22'
+	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 18:32'
 }
 IPTBrowser >> selectCodePiece: aCodePiece [
+
 	self selectedCodePiece: aCodePiece.
-	
 	self codeEditor activeCodePiece: aCodePiece.
-	
 	self update.
 ]
 
