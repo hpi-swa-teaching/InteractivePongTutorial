@@ -19,7 +19,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 13:57'
+	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 20:12'
 }
 IPTBrowser class >> openFrom: anIPT chapter: aChapter levelIndex: aNumber [
 
@@ -386,10 +386,9 @@ IPTBrowser >> checkAndSaveCode [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 17:50'
+	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 20:08'
 }
 IPTBrowser >> classSet [
-	classSet ifNil: [self classSet: IPTClass classList].
 	^ classSet
 ]
 
@@ -422,11 +421,10 @@ IPTBrowser >> closeAllAutoCompletionMorphs [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 12:17'
+	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 20:07'
 }
 IPTBrowser >> codeEditor [
 
-	codeEditor ifNil: [self codeEditor: ((IPTEditor openOnBrowser: self) actionOnSave: [self checkAndSaveCode])].
 	^ codeEditor
 ]
 
@@ -469,6 +467,19 @@ IPTBrowser >> explanationIndex: anObject [
 }
 IPTBrowser >> homeButtonAction [
 	self ipt openChapterView.
+]
+
+{
+	#category : #'initialize-release',
+	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 20:12'
+}
+IPTBrowser >> initialize [
+	super initialize.
+	self 
+		codeEditor: ((IPTEditor openOnBrowser: self) actionOnSave: [self checkAndSaveCode]);
+		classSet: IPTClass classList;
+		playground: IPTPlayground new;
+		squeaky: IPTSqueaky new.
 ]
 
 {
@@ -586,11 +597,11 @@ IPTBrowser >> outputBoxContent [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 18:16'
+	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 20:09'
 }
 IPTBrowser >> playground [
-	playground ifNil: [playground := IPTPlayground new].
-	^ playground
+
+	^ playground.
 ]
 
 {
@@ -759,11 +770,10 @@ IPTBrowser >> showSolutionButtonEnabled [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 18:16'
+	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 20:09'
 }
 IPTBrowser >> squeaky [
-	squeaky ifNil: [squeaky := IPTSqueaky new].
-	^ squeaky
+	^ squeaky.
 ]
 
 {

@@ -99,13 +99,13 @@ IPTEditor >> browser: anObject [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 19:05'
+	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 20:22'
 }
 IPTEditor >> buildCodePaneWith: aBuilder [
 
 	^ (super buildCodePaneWith: aBuilder)
 		setText: #evaluateAndSaveText:notifying:;
-		yourself
+		yourself.
 ]
 
 {
