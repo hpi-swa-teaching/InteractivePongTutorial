@@ -255,13 +255,13 @@ IPTBrowser >> buildResetButtonWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'FH 6/15/2024 11:24'
+	#'squeak_changestamp' : 'Josua Zehner 7/5/2024 15:48'
 }
 IPTBrowser >> buildShowSolutionButtonWith: aBuilder [
 
 	^ aBuilder pluggableButtonSpec new
 		model: self;
-		label: 'Show Solution';
+		label: 'Load Solution';
 		action: #showSolutionButtonAction;
 		enabled: #showSolutionButtonEnabled;
 		frame: (LayoutFrame new
@@ -516,7 +516,7 @@ IPTBrowser >> levelIndex: anObject [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 18:41'
+	#'squeak_changestamp' : 'Josua Zehner 7/5/2024 15:34'
 }
 IPTBrowser >> loadLevel: aLevelIndex [
 
@@ -533,8 +533,8 @@ IPTBrowser >> loadLevel: aLevelIndex [
 	self squeaky mood: #neutral.
 	self
 		"Expand the CodePiece tree view"
-		changed: #expandRootsRequested;
-		update.
+		update;
+		changed: #expandRootsRequested.
 	
 		
 	

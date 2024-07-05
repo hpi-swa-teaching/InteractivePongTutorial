@@ -21,11 +21,14 @@ IPTEditor class >> openOnBrowser: aBrowser [
 
 {
 	#category : #style,
-	#'squeak_changestamp' : 'FH 6/19/2024 14:35'
+	#'squeak_changestamp' : 'Josua Zehner 7/5/2024 15:42'
 }
 IPTEditor >> aboutToStyle: aStyler [
 	self activeCodePiece ifNotNil: [
-		aStyler classOrMetaClass: self activeCodePiece class].
+		self activeCodePiece isClass ifTrue: [
+			aStyler classOrMetaClass: nil.]
+		ifFalse: [
+		aStyler classOrMetaClass: self activeCodePiece referencedClass]].
 	^ true.
 ]
 
@@ -63,7 +66,7 @@ IPTEditor >> activeCodePiece [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/5/2024 15:16'
+	#'squeak_changestamp' : 'Josua Zehner 7/5/2024 15:31'
 }
 IPTEditor >> activeCodePiece: aCodePiece [
 	activeCodePiece := aCodePiece.
@@ -75,7 +78,6 @@ IPTEditor >> activeCodePiece: aCodePiece [
 			aCodePiece isClass ifTrue: []
 			ifFalse: [
 			self setClass: aCodePiece referencedClass selector: aCodePiece referencedMethod.].
-			self halt.
 			self contents: aCodePiece code.].
 	self changed: #contents.
 		
