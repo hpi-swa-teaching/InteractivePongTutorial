@@ -19,18 +19,20 @@ IPTGame class >> open [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 20:23'
+	#'squeak_changestamp' : 'Josua Zehner 7/4/2024 19:09'
 }
 IPTGame >> ball [
-	
+	"Return the value of ball."
+	^ball.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 20:23'
+	#'squeak_changestamp' : 'Josua Zehner 7/4/2024 19:08'
 }
 IPTGame >> ball: aBall [
-	
+	"To update ball you should set ball to the given input."
+	ball.
 ]
 
 {
@@ -44,13 +46,13 @@ IPTGame >> handlesKeyboard: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 20:23'
+	#'squeak_changestamp' : 'Josua Zehner 7/4/2024 19:09'
 }
 IPTGame >> initialize [
 	"Please change the color to black."
 	super initialize.
 	self 
-		color: Color blue;
+		color: Color black;
 		beSticky.
 ]
 

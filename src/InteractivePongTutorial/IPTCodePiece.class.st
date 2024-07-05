@@ -1,6 +1,6 @@
 Class {
 	#name : #IPTCodePiece,
-	#superclass : #PluggableListItemWrapper,
+	#superclass : #Object,
 	#instVars : [
 		'variants',
 		'code',
@@ -48,7 +48,7 @@ IPTCodePiece >> addHeadToCode: aCodeString [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 19:40'
+	#'squeak_changestamp' : 'Josua Zehner 7/4/2024 09:20'
 }
 IPTCodePiece >> checkSyntaxAndSaveCode: aString [
 	
@@ -57,7 +57,7 @@ IPTCodePiece >> checkSyntaxAndSaveCode: aString [
 	(((aString splitBy: {Character cr}) at: 1) withBlanksTrimmed = self head)
 		ifFalse: [^ 'You must leave the head line unchanged!'].
 	
-	self referencedClass compile: aString.
+	"self referencedClass compile: aString."
 	self code: aString.
 	^ ''.
 
