@@ -48,16 +48,15 @@ IPTCodePiece >> addHeadToCode: aCodeString [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 7/5/2024 15:45'
+	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:08'
 }
-IPTCodePiece >> checkSyntaxAndSaveCode: aString [
+IPTCodePiece >> checkSyntax: aString [
 	
 	self readOnly ifTrue: [^ 'You cannot change this code!'].	
 
 	(((aString splitBy: {Character cr}) at: 1) withBlanksTrimmed = self head)
 		ifFalse: [^ 'You must leave the head line unchanged!'].
 	
-	self referencedClass compile: aString.
 	self code: aString.
 	^ ''.
 
@@ -79,6 +78,15 @@ IPTCodePiece >> code [
 }
 IPTCodePiece >> code: anObject [
 	code := anObject
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:14'
+}
+IPTCodePiece >> compileCode [
+
+	self referencedClass compile: self code.
 ]
 
 {
@@ -147,20 +155,21 @@ IPTCodePiece >> isSameSourceAs: aCompiledMethod [
 
 {
 	#category : #loading,
-	#'squeak_changestamp' : 'Felix Knöfel 6/23/2024 23:39'
+	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:14'
 }
 IPTCodePiece >> loadInitialCodeForLevel: aLevelIndex andChapter: aChapterNumber [
+
 	self code: (self addHeadToCode: (self variantForLevel: aLevelIndex fromChapter: aChapterNumber) initialCode).
-	self checkSyntaxAndSaveCode: self code.
+	self compileCode.
 ]
 
 {
 	#category : #loading,
-	#'squeak_changestamp' : 'Felix Knöfel 6/24/2024 00:27'
+	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:08'
 }
 IPTCodePiece >> loadSolutionCodeForLevel: aLevelIndex andChapter: aChapterNumber [
 	self code: (self addHeadToCode: (self variantForLevel: aLevelIndex fromChapter: aChapterNumber) solutionCode).
-	self checkSyntaxAndSaveCode: self code.
+	self checkSyntax: self code.
 ]
 
 {

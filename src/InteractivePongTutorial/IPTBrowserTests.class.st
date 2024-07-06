@@ -129,12 +129,12 @@ IPTBrowserTests >> testBuildResetButtonWith [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:51'
+	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:29'
 }
 IPTBrowserTests >> testBuildShowSolutionButtonWith [
 
 	| spec |
-	spec := browser buildShowSolutionButtonWith: ToolBuilder new.
+	spec := browser buildLoadSolutionButtonWith: ToolBuilder new.
 	
 	self assert: true equals: (spec isKindOf: PluggableButtonSpec).
 	self assert: browser equals: spec model.
@@ -320,7 +320,7 @@ IPTBrowserTests >> testSelectMethod [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'sv 7/2/2024 20:18'
+	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:29'
 }
 IPTBrowserTests >> testSolutionButtonAction [
 
@@ -330,7 +330,7 @@ IPTBrowserTests >> testSolutionButtonAction [
 	
 	browser selectCodePiece: cp.
 	
-	browser showSolutionButtonAction.
+	browser loadSolutionButtonAction.
 	
 	self assert:
 		(cp code =
@@ -356,10 +356,10 @@ IPTBrowserTests >> testSqueaky [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 14:22'
+	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:30'
 }
 IPTBrowserTests >> testshowSolutionButtonEnabled [
 	
 	browser selectCodePiece: nil.
-	self assert: browser showSolutionButtonEnabled == false.
+	self assert: browser loadSolutionButtonEnabled == false.
 ]

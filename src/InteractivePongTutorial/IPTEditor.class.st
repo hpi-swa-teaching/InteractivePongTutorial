@@ -3,7 +3,6 @@ Class {
 	#superclass : #CodeHolder,
 	#instVars : [
 		'activeCodePiece',
-		'actionOnSave',
 		'browser'
 	],
 	#category : #'InteractivePongTutorial-Core'
@@ -11,78 +10,24 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 19:09'
+	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:31'
 }
 IPTEditor class >> openOnBrowser: aBrowser [
-	^ self new 
-		browser: aBrowser;
-		yourself.
+
+	^ self new 	browser: aBrowser.
 ]
 
 {
 	#category : #style,
-	#'squeak_changestamp' : 'Josua Zehner 7/5/2024 15:42'
+	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:01'
 }
 IPTEditor >> aboutToStyle: aStyler [
-	self activeCodePiece ifNotNil: [
-		self activeCodePiece isClass ifTrue: [
+	self codePiece ifNotNil: [
+		self codePiece isClass ifTrue: [
 			aStyler classOrMetaClass: nil.]
 		ifFalse: [
-		aStyler classOrMetaClass: self activeCodePiece referencedClass]].
+		aStyler classOrMetaClass: self codePiece referencedClass]].
 	^ true.
-]
-
-{
-	#category : #building,
-	#'squeak_changestamp' : 'FH 6/19/2024 14:35'
-}
-IPTEditor >> accept [
-	self changed: #acceptChanges.
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'FH 6/19/2024 14:36'
-}
-IPTEditor >> actionOnSave [
-	^ actionOnSave.
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'FH 6/19/2024 14:37'
-}
-IPTEditor >> actionOnSave: anAction [
-	actionOnSave := anAction.
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'FH 6/19/2024 14:37'
-}
-IPTEditor >> activeCodePiece [
-	^ activeCodePiece.
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/5/2024 15:31'
-}
-IPTEditor >> activeCodePiece: aCodePiece [
-	activeCodePiece := aCodePiece.
-	
-	aCodePiece 
-		ifNil: [
-			self contents: '']
-		ifNotNil: [
-			aCodePiece isClass ifTrue: []
-			ifFalse: [
-			self setClass: aCodePiece referencedClass selector: aCodePiece referencedMethod.].
-			self contents: aCodePiece code.].
-	self changed: #contents.
-		
-		
-		
 ]
 
 {
@@ -102,46 +47,55 @@ IPTEditor >> browser: anObject [
 ]
 
 {
-	#category : #evaluating,
-	#'squeak_changestamp' : 'Josua Zehner 7/4/2024 09:23'
+	#category : #accessing,
+	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:01'
 }
-IPTEditor >> checkSyntax [
+IPTEditor >> codePiece [
+	^ activeCodePiece.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:01'
+}
+IPTEditor >> codePiece: aCodePiece [
+	activeCodePiece := aCodePiece.
 	
-	self activeCodePiece readOnly ifTrue: [^ 'You cannot change this code!'].	
-
-	(((self contents splitBy: {Character cr}) at: 1) withBlanksTrimmed = self activeCodePiece head)
-		ifFalse: [^ 'You must leave the head line unchanged!'].
-	^ ''.
-
+	aCodePiece 
+		ifNil: [
+			self contents: '']
+		ifNotNil: [
+			aCodePiece isClass ifTrue: []
+			ifFalse: [
+			self setClass: aCodePiece referencedClass selector: aCodePiece referencedMethod.].
+			self contents: aCodePiece code.].
+	self changed: #contents.
+		
+		
+		
 ]
 
 {
 	#category : #evaluating,
-	#'squeak_changestamp' : 'Josua Zehner 7/4/2024 19:09'
+	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:40'
 }
 IPTEditor >> contents: input notifying: aController [
 
 	| errorMessage |
 	
-	self browser closeAllAutoCompletionMorphs.
-	errorMessage := self checkSyntax.
-	errorMessage ifNotEmpty: [ UIManager default inform: errorMessage].
-	self activeCodePiece code: self contents.
-	self activeCodePiece referencedClass compile: input.
-	super contents: input notifying: aController.
-	self changed: #contents.
-]
-
-{
-	#category : #evaluating,
-	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 19:05'
-}
-IPTEditor >> evaluateAndSaveText: aText notifying: aController [
-	self contents: aText.
-	self actionOnSave value.
-	self update.
 	
-	
+	errorMessage := self codePiece checkSyntax: input.
+	errorMessage 
+		ifNotEmpty: [
+			UIManager default inform: errorMessage.
+			self codePiece readOnly ifTrue: [
+				self contents: self codePiece code.
+				self changed: #contents.]]
+		ifEmpty: [
+			super contents: input notifying: aController.
+			self codePiece code: input.
+			self codePiece compileCode.
+			self changed: #contents.].
 ]
 
 {
@@ -151,6 +105,49 @@ IPTEditor >> evaluateAndSaveText: aText notifying: aController [
 IPTEditor >> evaluateExpression: aString [
 	UIManager default inform: 'Please use the "Verify" button to test your code'.
 	^ nil.
+]
+
+{
+	#category : #evaluating,
+	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:21'
+}
+IPTEditor >> save: input [
+	
+	| errorMessage |
+	
+	self browser closeAllAutoCompletionMorphs.
+	errorMessage := self codePiece checkSyntax: input.
+	errorMessage 
+		ifNotEmpty: 
+			[UIManager default inform: errorMessage]
+		ifEmpty: [.
+			self codePiece code: input.
+			self codePiece compileCode.
+			self changed: #contents.].
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:44'
+}
+IPTEditor >> setCodePiece: aCodePiece [
+	
+	self codePiece: aCodePiece.
+	aCodePiece 
+		ifNil: [
+			self contents: '']
+		ifNotNil: [
+			aCodePiece isClass ifTrue: []
+			ifFalse: [
+			self setClass: aCodePiece referencedClass selector: aCodePiece referencedMethod.].
+			self contents: aCodePiece code.].
+	self changed: #contents.
+	self changed: #readOnly.
+	
+	
+		
+		
+		
 ]
 
 {

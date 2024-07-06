@@ -113,6 +113,24 @@ IPTBrowser >> buildHomeButtonWith: aBuilder [
 
 {
 	#category : #building,
+	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:30'
+}
+IPTBrowser >> buildLoadSolutionButtonWith: aBuilder [
+
+	^ aBuilder pluggableButtonSpec new
+		model: self;
+		label: 'Load Solution';
+		action: #loadSolutionButtonAction;
+		enabled: #loadSolutionButtonEnabled;
+		frame: (LayoutFrame new
+			leftFraction: self buttonWidth;
+			topFraction: (1 - (2 * self buttonHeight));
+			rightFraction: self buttonWidth * 2;
+			bottomFraction: (1 - self buttonHeight))
+]
+
+{
+	#category : #building,
 	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 12:07'
 }
 IPTBrowser >> buildNextExplanationButtonWith: aBuilder [
@@ -255,24 +273,6 @@ IPTBrowser >> buildResetButtonWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Josua Zehner 7/5/2024 15:48'
-}
-IPTBrowser >> buildShowSolutionButtonWith: aBuilder [
-
-	^ aBuilder pluggableButtonSpec new
-		model: self;
-		label: 'Load Solution';
-		action: #showSolutionButtonAction;
-		enabled: #showSolutionButtonEnabled;
-		frame: (LayoutFrame new
-			leftFraction: self buttonWidth;
-			topFraction: (1 - (2 * self buttonHeight));
-			rightFraction: self buttonWidth * 2;
-			bottomFraction: (1 - self buttonHeight))
-]
-
-{
-	#category : #building,
 	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 18:52'
 }
 IPTBrowser >> buildSqueakyPanelWith: aBuilder [
@@ -307,7 +307,7 @@ IPTBrowser >> buildTitleBarWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 13:56'
+	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:29'
 }
 IPTBrowser >> buildWith: aBuilder [
 	^ aBuilder build: (aBuilder pluggableWindowSpec new
@@ -327,7 +327,7 @@ IPTBrowser >> buildWith: aBuilder [
 			self buildPreviousExplanationButtonWith: aBuilder.
 			self buildPreviousLevelButtonWith: aBuilder.
 			self buildResetButtonWith: aBuilder.			
-			self buildShowSolutionButtonWith: aBuilder.
+			self buildLoadSolutionButtonWith: aBuilder.
 			self buildSqueakyPanelWith: aBuilder.
 			self buildTitleBarWith: aBuilder. };
 		yourself)
@@ -366,25 +366,6 @@ IPTBrowser >> chapter: anObject [
 ]
 
 {
-	#category : #actions,
-	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 19:22'
-}
-IPTBrowser >> checkAndSaveCode [
-	| code errMsg |
-	self closeAllAutoCompletionMorphs.
-	
-	code := self codeEditor contents.
-	errMsg := self selectedCodePiece checkSyntaxAndSaveCode: code.
-	
-	errMsg ifNotEmpty: [ UIManager default inform: errMsg].
-	"self playground clear."
-	"self selectedLecture checkCode: code on: self playground."
-	
-	"self changed: #categoryList"
-
-]
-
-{
 	#category : #accessing,
 	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 20:08'
 }
@@ -406,17 +387,6 @@ IPTBrowser >> classSet: anObject [
 }
 IPTBrowser >> close [
 	self changed: #close.
-]
-
-{
-	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 11:56'
-}
-IPTBrowser >> closeAllAutoCompletionMorphs [
-
-	(Project currentWorld submorphs
-		select: [:morph | morph isKindOf: OMenuMorph])
-		do: [:morph | morph abandon]
 ]
 
 {
@@ -471,12 +441,12 @@ IPTBrowser >> homeButtonAction [
 
 {
 	#category : #'initialize-release',
-	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 20:12'
+	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:05'
 }
 IPTBrowser >> initialize [
 	super initialize.
 	self 
-		codeEditor: ((IPTEditor openOnBrowser: self) actionOnSave: [self checkAndSaveCode]);
+		codeEditor: (IPTEditor openOnBrowser: self);
 		classSet: IPTClass classList;
 		playground: IPTPlayground new;
 		squeaky: IPTSqueaky new.
@@ -538,6 +508,32 @@ IPTBrowser >> loadLevel: aLevelIndex [
 	
 		
 	
+]
+
+{
+	#category : #actions,
+	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:29'
+}
+IPTBrowser >> loadSolutionButtonAction [
+	
+	self levelIndex ifNotNil: [
+		self selectedCodePiece loadSolutionCodeForLevel: self levelIndex andChapter: self chapter chapterNumber.
+		self codeEditor setCodePiece: self selectedCodePiece.
+		self selectedCodePiece compileCode.
+	].
+	
+	
+]
+
+{
+	#category : #ui,
+	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:30'
+}
+IPTBrowser >> loadSolutionButtonEnabled [
+
+	^ self selectedCodePiece isNil not
+		and: [self selectedCodePiece isClass not]
+		and: [self selectedCodePiece readOnly not].
 ]
 
 {
@@ -673,12 +669,12 @@ IPTBrowser >> reloadCodePieces [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 15:10'
+	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:02'
 }
 IPTBrowser >> resetButtonAction [
 	self levelIndex ifNotNil: [
 		self selectedCodePiece loadInitialCodeForLevel: self levelIndex andChapter: self chapter chapterNumber.
-		self codeEditor activeCodePiece: self selectedCodePiece.
+		self codeEditor setCodePiece: self selectedCodePiece.
 	].
 	
 	
@@ -719,12 +715,12 @@ IPTBrowser >> runCode [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 18:32'
+	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:03'
 }
 IPTBrowser >> selectCodePiece: aCodePiece [
 
 	self selectedCodePiece: aCodePiece.
-	self codeEditor activeCodePiece: aCodePiece.
+	self codeEditor setCodePiece: aCodePiece.
 	self update.
 ]
 
@@ -742,30 +738,6 @@ IPTBrowser >> selectedCodePiece [
 }
 IPTBrowser >> selectedCodePiece: anObject [
 	selectedCodePiece := anObject
-]
-
-{
-	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 14:20'
-}
-IPTBrowser >> showSolutionButtonAction [
-	self levelIndex ifNotNil: [
-		self selectedCodePiece loadSolutionCodeForLevel: self levelIndex andChapter: self chapter chapterNumber.
-		self codeEditor activeCodePiece: self selectedCodePiece.
-	].
-	
-	
-]
-
-{
-	#category : #ui,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 16:00'
-}
-IPTBrowser >> showSolutionButtonEnabled [
-
-	^ self selectedCodePiece isNil not
-		and: [self selectedCodePiece isClass not]
-		and: [self selectedCodePiece readOnly not].
 ]
 
 {
@@ -827,7 +799,7 @@ IPTBrowser >> titleBarHeight [
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 16:00'
+	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:30'
 }
 IPTBrowser >> update [
 	self 
@@ -836,7 +808,7 @@ IPTBrowser >> update [
 		changed: #outputBoxContent;
 		changed: #nextLevelButtonEnabled;
 		changed: #previousLevelButtonEnabled;
-		changed: #showSolutionButtonEnabled;
+		changed: #loadSolutionButtonEnabled;
 		changed: #resetButtonEnabled;
 		changed: #visibleClassSet;
 		changed: #explanationBoxContent;

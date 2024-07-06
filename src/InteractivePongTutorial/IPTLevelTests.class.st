@@ -9,7 +9,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'sv 7/3/2024 10:23'
+	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:29'
 }
 IPTLevelTests >> int_tstLevel: levelIndex inChapter: chapter [
 
@@ -18,7 +18,7 @@ IPTLevelTests >> int_tstLevel: levelIndex inChapter: chapter [
 	ipt browser visibleClassSet do: [ :el |
 		el methodCodePieces do: [ :cp |
 			ipt browser selectCodePiece: cp;
-			showSolutionButtonAction.]].
+			loadSolutionButtonAction.]].
 	
 	ipt browser runCode.
 	
