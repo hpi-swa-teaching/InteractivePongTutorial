@@ -486,7 +486,7 @@ IPTBrowser >> levelIndex: anObject [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Josua Zehner 7/5/2024 15:34'
+	#'squeak_changestamp' : 'Felix Knöfel 7/8/2024 15:43'
 }
 IPTBrowser >> loadLevel: aLevelIndex [
 
@@ -494,6 +494,7 @@ IPTBrowser >> loadLevel: aLevelIndex [
 		levelIndex: aLevelIndex;
 		explanationIndex: 1;
 		reloadCodePieces;
+		testResult: nil;
 		selectCodePiece: nil.
 		
 	self playground ifNotNil: [
