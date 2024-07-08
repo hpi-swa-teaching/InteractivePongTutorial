@@ -57,12 +57,13 @@ IPTLevel0101 class >> visibleMethods [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:30'
+	#'squeak_changestamp' : 'Felix Knöfel 7/8/2024 15:25'
 }
 IPTLevel0101 >> test_Game_initialize [
 	self methodToBeTested: (IPTGame >> #initialize).
 	
-	self assert: (game isKindOf: IPTGame) description: 'You may not return a value!'.
+	self requiredAssert: (game isKindOf: IPTGame) description: 'You may not return a value!'.
+	
 	self assert: game color isNil not description: 'Have you initialized the morph?'.
 	self assert: (game color = Color black) description: 'You did not choose the right color!'.
 ]

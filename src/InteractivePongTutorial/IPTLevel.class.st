@@ -5,7 +5,8 @@ Class {
 		'game',
 		'ball',
 		'player',
-		'methodToBeTested'
+		'methodToBeTested',
+		'isPlayable'
 	],
 	#category : #'InteractivePongTutorial-Levels'
 }
@@ -39,19 +40,6 @@ IPTLevel class >> explanations [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:30'
-}
-IPTLevel class >> extractTestedMethodFromException: anException [
-	|context|
-	context := anException signalerContext.
-	[context methodClass = self] 
-		whileFalse: [context := context sender].
-	^ context receiver methodToBeTested.
-
-]
-
-{
-	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 12:16'
 }
 IPTLevel class >> levelIndex [
@@ -70,31 +58,33 @@ IPTLevel class >> resultEntryToString: aTestResultEntry [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 16:50'
+	#'squeak_changestamp' : 'Felix Knöfel 7/8/2024 15:36'
 }
 IPTLevel class >> runTests [
 	"Runs all tests and returns occuring errors and failures"
 
-	| errors failures |
+	| errors failures instance |
 	
 	errors := {} asOrderedCollection.
 	failures := {} asOrderedCollection.
+	instance := self new.
 
 	(self allMethodsInCategory: #levelTests) do: [:method |
-		[(self selector: method) runCase]
+		[instance setTestSelector: method; runCase]
 			on: Error do: [:ex | errors add: (Dictionary new
 				at: #string put: ex printString;
-				at: #method put: (self extractTestedMethodFromException: ex);
+				at: #method put: instance methodToBeTested;
 				yourself)]
 			on: TestFailure do: [:ex | failures add:  (Dictionary new
 				at: #string put: ex printString;
-				at: #method put: (self extractTestedMethodFromException: ex);
+				at: #method put: instance methodToBeTested;
 				yourself)]].
 
 	^ Dictionary new
 		at: #errors put: errors;
 		at: #failures put: failures;
 		at: #success put: ((errors isEmpty) and: [failures isEmpty]);
+		at: #isPlayable put: instance isPlayable;
 		yourself.
 ]
 
@@ -105,6 +95,30 @@ IPTLevel class >> runTests [
 IPTLevel class >> visibleMethods [
 	"Returns a list of IPTMethodSelectors"
 	^ self subclassResponsibility.
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Felix Knöfel 7/8/2024 15:31'
+}
+IPTLevel >> initialize [
+	self isPlayable: true.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 7/8/2024 15:19'
+}
+IPTLevel >> isPlayable [
+	^ isPlayable
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Felix Knöfel 7/8/2024 15:19'
+}
+IPTLevel >> isPlayable: anObject [
+	isPlayable := anObject
 ]
 
 {
@@ -125,15 +139,27 @@ IPTLevel >> methodToBeTested: anObject [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 12:40'
+	#'squeak_changestamp' : 'Felix Knöfel 7/8/2024 15:38'
+}
+IPTLevel >> requiredAssert: aBooleanOrBlock description: aStringOrBlock [
+	aBooleanOrBlock value ifFalse:
+		[self
+			isPlayable: false;
+			fail: aStringOrBlock].
+
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Felix Knöfel 7/8/2024 15:24'
 }
 IPTLevel >> setUp [
 	game := IPTGame new.
 	ball := IPTBall new.
 	player := IPTPlayer new.
 	
-	ball game: game.
-	game ball: ball.
+	(ball isKindOf: IPTBall) ifTrue: [ball game: game].
+	(game isKindOf: IPTGame) ifTrue: [game ball: ball].
 ]
 
 {
@@ -144,14 +170,6 @@ IPTLevel >> tearDown [
 	game := nil.
 	ball := nil.
 	player := nil.
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:32'
-}
-IPTLevel >> testPlaygroundLaunch [
-	self methodToBeTested: 0.
 ]
 
 {

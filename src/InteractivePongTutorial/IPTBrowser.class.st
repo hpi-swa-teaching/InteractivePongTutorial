@@ -185,14 +185,14 @@ IPTBrowser >> buildOutputBoxWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 11:07'
+	#'squeak_changestamp' : 'Felix Knöfel 7/8/2024 15:30'
 }
 IPTBrowser >> buildPlayButtonWith: aBuilder [
 
 	^ aBuilder pluggableButtonSpec new
 		model: self;
-		label: 'Play';
-		action: #runCode;
+		label: #playButtonLabel;
+		action: #playButtonAction;
 		enabled: true;
 		frame: (LayoutFrame new
 			leftFraction: 0;
@@ -592,6 +592,29 @@ IPTBrowser >> outputBoxContent [
 ]
 
 {
+	#category : #actions,
+	#'squeak_changestamp' : 'Felix Knöfel 7/8/2024 15:41'
+}
+IPTBrowser >> playButtonAction [
+	self playground isRunning
+		ifTrue: [self playground clear]
+		ifFalse: [self runCode].
+		
+	self changed: #playButtonLabel.
+]
+
+{
+	#category : #ui,
+	#'squeak_changestamp' : 'Felix Knöfel 7/8/2024 15:39'
+}
+IPTBrowser >> playButtonLabel [
+	
+	self playground isRunning
+		ifTrue: [^ 'Stop']
+		ifFalse: [^ 'Play'].
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 20:09'
 }
@@ -693,17 +716,13 @@ IPTBrowser >> resetButtonEnabled [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 21:29'
+	#'squeak_changestamp' : 'Felix Knöfel 7/8/2024 15:26'
 }
 IPTBrowser >> runCode [
 	
-	| errors failures |
-	
 	 self testResult: self activeLevel runTests.
-	 failures := self testResult at: #failures.
-	 errors := self testResult at: #errors.
 	
-	(errors isEmpty and: [failures isEmpty])
+	(self testResult at: #isPlayable)
 		ifTrue: [self playground runCode.].
 		
 	self 
@@ -799,7 +818,7 @@ IPTBrowser >> titleBarHeight [
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:30'
+	#'squeak_changestamp' : 'Felix Knöfel 7/8/2024 15:40'
 }
 IPTBrowser >> update [
 	self 
@@ -814,7 +833,8 @@ IPTBrowser >> update [
 		changed: #explanationBoxContent;
 		changed: #previousExplanationButtonEnabled;
 		changed: #nextExplanationButtonEnabled;
-		changed: #squeakyInCollection.
+		changed: #squeakyInCollection;
+		changed: #playButtonLabel.
 ]
 
 {
