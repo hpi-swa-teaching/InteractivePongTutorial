@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'ipt'
 	],
-	#category : #'InteractivePongTutorial-Core-Tests'
+	#category : #'InteractivePongTutorial-Tests'
 }
 
 {

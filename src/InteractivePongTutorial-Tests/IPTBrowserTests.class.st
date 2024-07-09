@@ -7,7 +7,7 @@ Class {
 		'chapter',
 		'initialLevelIndex'
 	],
-	#category : #'InteractivePongTutorial-Core-Tests'
+	#category : #'InteractivePongTutorial-Tests'
 }
 
 {

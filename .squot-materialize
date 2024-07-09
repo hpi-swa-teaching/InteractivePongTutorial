@@ -1,4 +1,12 @@
 [
+	SquotTonelMapper {
+		#package : MCPackage {
+			#name : 'InteractivePongTutorial-Tests'
+		},
+		#path : FSAbsolutePath [
+			'src'
+		]
+	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
 			'assets',
@@ -36,6 +44,12 @@
 			'game.txt'
 		],
 		#encoding : 'TXT'
+	},
+	SquotTonelMapper {
+		#package : MCPackage {
+			#name : 'InteractivePongTutorial-Core'
+		},
+		#path : @4
 	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
@@ -83,6 +97,12 @@
 			'.properties'
 		],
 		#encoding : 'TXT'
+	},
+	SquotTonelMapper {
+		#package : MCPackage {
+			#name : 'InteractivePongTutorial-Game'
+		},
+		#path : @4
 	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
@@ -208,7 +228,7 @@
 			'assets',
 			'squeaky-sad.png'
 		],
-		#encoding : @46
+		#encoding : @53
 	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
@@ -236,9 +256,7 @@
 		#package : MCPackage {
 			#name : 'BaselineOfInteractivePongTutorial'
 		},
-		#path : FSAbsolutePath [
-			'src'
-		]
+		#path : @4
 	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
@@ -293,7 +311,7 @@
 			'assets',
 			'squeaky-neutr.png'
 		],
-		#encoding : @46
+		#encoding : @53
 	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
@@ -325,12 +343,6 @@
 		],
 		#encoding : 'TXT'
 	},
-	SquotTonelMapper {
-		#package : MCPackage {
-			#name : 'InteractivePongTutorial'
-		},
-		#path : @65
-	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
 			'assets',
@@ -353,5 +365,11 @@
 			'ball:.txt'
 		],
 		#encoding : 'TXT'
+	},
+	SquotTonelMapper {
+		#package : MCPackage {
+			#name : 'InteractivePongTutorial-Levels'
+		},
+		#path : @4
 	}
 ]

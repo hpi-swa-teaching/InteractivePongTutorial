@@ -5,7 +5,7 @@ Class {
 		'chapterview',
 		'ipt'
 	],
-	#category : #'InteractivePongTutorial-Core-Tests'
+	#category : #'InteractivePongTutorial-Tests'
 }
 
 {

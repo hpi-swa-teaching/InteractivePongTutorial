@@ -1,7 +1,7 @@
 Class {
 	#name : #IPTMockLevel,
 	#superclass : #IPTLevel,
-	#category : #'InteractivePongTutorial-Core-Tests'
+	#category : #'InteractivePongTutorial-Tests'
 }
 
 {
