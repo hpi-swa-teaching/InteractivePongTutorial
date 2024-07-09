@@ -66,9 +66,9 @@ IPTLevel0104 class >> visibleMethods [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 12:41'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:36'
 }
-IPTLevel0104 >> test_Ball_startOver [
+IPTLevel0104 >> testBallStartOver [
 	self methodToBeTested: (IPTBall >> #startOver).
 	
 	ball startOver.
@@ -83,9 +83,9 @@ IPTLevel0104 >> test_Ball_startOver [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:59'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:37'
 }
-IPTLevel0104 >> test_Game_initialize [
+IPTLevel0104 >> testGameInitialize [
 	self methodToBeTested: (IPTGame >> #initialize).
 	
 	self assert: (ball isKindOf: IPTBall) description: 'You may not return a value!'.
@@ -96,9 +96,9 @@ IPTLevel0104 >> test_Game_initialize [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 12:25'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:37'
 }
-IPTLevel0104 >> test_Game_initializeBall [
+IPTLevel0104 >> testGameInitializeBall [
 	self methodToBeTested: (IPTGame >> #initializeBall).
 	
 	game initializeBall.

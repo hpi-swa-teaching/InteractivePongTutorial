@@ -64,9 +64,9 @@ IPTLevel0103 class >> visibleMethods [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:30'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:38'
 }
-IPTLevel0103 >> test_Ball_initialize [
+IPTLevel0103 >> testBallInitialize [
 	self methodToBeTested: (IPTBall >> #initialize).
 	
 	self assert: (ball isKindOf: IPTBall) description: 'You may not return a value!'.
@@ -77,9 +77,9 @@ IPTLevel0103 >> test_Ball_initialize [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:30'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:38'
 }
-IPTLevel0103 >> test_Ball_step [
+IPTLevel0103 >> testBallStep [
 	|expectedPosition|
 	self methodToBeTested: (IPTBall >> #step).
 	
@@ -90,9 +90,9 @@ IPTLevel0103 >> test_Ball_step [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:30'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:38'
 }
-IPTLevel0103 >> test_Ball_stepTime [
+IPTLevel0103 >> testBallStepTime [
 	self methodToBeTested: (IPTBall >> #stepTime).
 	
 	self assert: (ball stepTime isKindOf: Number) description: 'stepTime has to be a Number.'.
@@ -100,9 +100,9 @@ IPTLevel0103 >> test_Ball_stepTime [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:30'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:38'
 }
-IPTLevel0103 >> test_Ball_turnHorizontal [
+IPTLevel0103 >> testBallTurnHorizontal [
 	| expectedSpeed |
 	self methodToBeTested: (IPTBall >> #turnHorizontal).
 	
@@ -113,9 +113,9 @@ IPTLevel0103 >> test_Ball_turnHorizontal [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:30'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:39'
 }
-IPTLevel0103 >> test_Ball_turnVertical [
+IPTLevel0103 >> testBallTurnVertical [
 	| expectedSpeed |
 	self methodToBeTested: (IPTBall >> #turnVertical).
 	
@@ -126,9 +126,9 @@ IPTLevel0103 >> test_Ball_turnVertical [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:30'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:37'
 }
-IPTLevel0103 >> test_Game_initialize [
+IPTLevel0103 >> testGameInitialize [
 	self methodToBeTested: (IPTGame >> #initialize).
 	
 	self assert: (ball isKindOf: IPTBall) description: 'You may not return a value!'.
@@ -139,9 +139,9 @@ IPTLevel0103 >> test_Game_initialize [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 12:25'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:37'
 }
-IPTLevel0103 >> test_Game_initializeBall [
+IPTLevel0103 >> testGameInitializeBall [
 	self methodToBeTested: (IPTGame >> #initializeBall).
 	
 	game initializeBall.
