@@ -19,7 +19,7 @@ IPTPlayer >> defaultSpeed [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:09'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
 }
 IPTPlayer >> down [
 	
@@ -27,32 +27,31 @@ IPTPlayer >> down [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:09'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
 }
 IPTPlayer >> game [
-	^ game.
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:09'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
 }
 IPTPlayer >> game: aGame [
-	game := aGame.
+	
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:09'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
 }
 IPTPlayer >> initialize [
-	"Please set the color to white, extent to 15x100 and speed to 0"
-	super initialize.
+	
 ]
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:09'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
 }
 IPTPlayer >> move: aNumber [
 	
@@ -60,7 +59,7 @@ IPTPlayer >> move: aNumber [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:09'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
 }
 IPTPlayer >> speed [
 	
@@ -68,7 +67,7 @@ IPTPlayer >> speed [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:09'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
 }
 IPTPlayer >> speed: aNumber [
 	
@@ -76,7 +75,7 @@ IPTPlayer >> speed: aNumber [
 
 {
 	#category : #stepping,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:09'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
 }
 IPTPlayer >> step [
 	
@@ -92,7 +91,7 @@ IPTPlayer >> stepTime [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:09'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
 }
 IPTPlayer >> stop [
 	
@@ -100,7 +99,7 @@ IPTPlayer >> stop [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:09'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
 }
 IPTPlayer >> up [
 	

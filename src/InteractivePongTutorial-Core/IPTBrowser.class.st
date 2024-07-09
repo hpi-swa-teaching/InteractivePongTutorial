@@ -885,7 +885,7 @@ IPTBrowser >> updateSqueaky [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 14:29'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:41'
 }
 IPTBrowser >> updateVisibleClassSetToMethods: aMethodsCollection [	
 	aMethodsCollection ifNil: [ ^nil.].
@@ -893,8 +893,8 @@ IPTBrowser >> updateVisibleClassSetToMethods: aMethodsCollection [
 	
 	self visibleClassSet do: [:iptclass |
 		iptclass methodCodePieces removeAllSuchThat: [:codePiece |
-			aMethodsCollection noneSatisfy: [ :selectors | 
-				(codePiece referencedClass =  selectors first) and: (codePiece referencedMethod = selectors second)]]].
+			aMethodsCollection noneSatisfy: [ :compiledMethod | 
+				codePiece isSameSourceAs: compiledMethod]]].
 	self visibleClassSet removeAllSuchThat: [:iptclass |  iptclass methodCodePieces isEmpty].
 	
 ]

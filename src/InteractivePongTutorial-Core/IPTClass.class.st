@@ -51,6 +51,15 @@ IPTClass >> initialize [
 ]
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:26'
+}
+IPTClass >> isSameSourceAs: aCompiledMethod [
+
+	^ false.
+]
+
+{
 	#category : #behaviour,
 	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 14:54'
 }

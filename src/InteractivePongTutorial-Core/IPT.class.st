@@ -10,14 +10,6 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 20:33'
-}
-IPT class >> compiledMethodToString: aCompiledMethod [
-	^ aCompiledMethod asString copyFrom: 2 to: (aCompiledMethod asString indexOf: Character space) - 1.
-]
-
-{
-	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 19:41'
 }
 IPT class >> open [

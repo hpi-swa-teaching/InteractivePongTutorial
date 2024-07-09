@@ -49,19 +49,19 @@ IPTLevel0104 class >> levelIndex [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 14:39'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:41'
 }
 IPTLevel0104 class >> visibleMethods [
 
-	^ {{IPTGame. #initialize }. 
-		{IPTGame. #initializeBall }.
+	^ {IPTGame>>#initialize.
+		IPTGame>>#initializeBall.
 		
-		{IPTBall. #turnHorizontal }. 
-		{IPTBall. #step }. 
-		{IPTBall. #turnVertical }. 
-		{IPTBall. #initialize }.
-		{IPTBall. #checkCollisionWithWalls }. 
-		{IPTBall. #startOver }}.
+		IPTBall>>#turnHorizontal.
+		IPTBall>>#step.
+		IPTBall>>#turnVertical.
+		IPTBall>>#initialize.
+		IPTBall>>#checkCollisionWithWalls.
+		IPTBall>>#startOver}.
 ]
 
 {

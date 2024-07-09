@@ -49,11 +49,14 @@ IPTLevel class >> levelIndex [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 21:11'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:33'
 }
 IPTLevel class >> resultEntryToString: aTestResultEntry [
-	(aTestResultEntry at: #method) ifNil: [^ (aTestResultEntry at: #string)].
-	^ (IPT compiledMethodToString: (aTestResultEntry at: #method)), ' - ', (aTestResultEntry at: #string)
+	
+	| testedMethod |
+	testedMethod := aTestResultEntry at: #method.
+	testedMethod ifNil: [^ (aTestResultEntry at: #string)].
+	^ testedMethod methodClass asString, '>>', testedMethod selector asSymbol,  ' - ', (aTestResultEntry at: #string)
 ]
 
 {

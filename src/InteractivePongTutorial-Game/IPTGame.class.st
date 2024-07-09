@@ -19,7 +19,7 @@ IPTGame class >> open [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:09'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
 }
 IPTGame >> ball [
 	^ ball.
@@ -27,7 +27,7 @@ IPTGame >> ball [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:09'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
 }
 IPTGame >> ball: aBall [
 	ball := aBall.
@@ -44,7 +44,7 @@ IPTGame >> handlesKeyboard: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:09'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
 }
 IPTGame >> initialize [
 	super initialize.
@@ -55,23 +55,22 @@ IPTGame >> initialize [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:09'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
 }
 IPTGame >> initializeBall [
+	"Instead of setting the Position of the ball you should now call the method starOver."
 	self 
 		ball: (IPTBall new game: self);
 		addMorph: self ball.
-	self ball startOver.
+	self ball center: self center.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:09'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
 }
 IPTGame >> initializePlayers [
-	"Initialize the left and right player like you did with the ball. For each player, be sure to set the center, and set the game to self."
-	| offset | 
-	offset := (self extent x / 2 - 30 @ 0).
+	
 ]
 
 {
@@ -125,34 +124,34 @@ IPTGame >> playerBounds [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:09'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
 }
 IPTGame >> playerLeft [
-	^ playerLeft.
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:09'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
 }
 IPTGame >> playerLeft: aPlayer [
-	playerLeft := aPlayer.
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:09'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
 }
 IPTGame >> playerRight [
-	^ playerRight.
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:09'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
 }
 IPTGame >> playerRight: aPlayer [
-	playerRight := aPlayer.
+	
 ]
 
 {

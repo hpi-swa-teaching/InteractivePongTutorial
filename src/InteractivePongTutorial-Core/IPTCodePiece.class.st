@@ -151,15 +151,11 @@ IPTCodePiece >> isGreen: anObject [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 19:49'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:26'
 }
 IPTCodePiece >> isSameSourceAs: aCompiledMethod [
-	self isClass ifTrue: [^ false].
-	Transcript show: (IPT compiledMethodToString: self referencedClass >> self referencedMethod), ' - ', 
-	(IPT compiledMethodToString: aCompiledMethod), Character cr.
 	
-	^ (IPT compiledMethodToString: self referencedClass >> self referencedMethod)
-		= (IPT compiledMethodToString: aCompiledMethod).
+	^ (aCompiledMethod selector asSymbol = self referencedMethod) and: (aCompiledMethod methodClass = self referencedClass).
 ]
 
 {
