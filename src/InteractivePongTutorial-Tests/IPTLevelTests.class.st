@@ -57,17 +57,3 @@ IPTLevelTests >> testLevelDescriptions [
 			self setUp.
 			]].
 ]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'sv 7/3/2024 10:28'
-}
-IPTLevelTests >> testLevelSolution [
-	
-	IPTChapter chapterSet do: [ :chapter |
-		chapter levels do: [ :lvl |
-			self int_tstLevel: lvl levelIndex inChapter: chapter.
-			self tearDown.
-			self setUp.
-			]].
-]
