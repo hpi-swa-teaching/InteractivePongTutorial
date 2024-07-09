@@ -77,25 +77,24 @@ IPTEditor >> codePiece: aCodePiece [
 
 {
 	#category : #evaluating,
-	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:40'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:31'
 }
 IPTEditor >> contents: input notifying: aController [
 
 	| errorMessage |
-	
-	
 	errorMessage := self codePiece checkSyntax: input.
 	errorMessage 
 		ifNotEmpty: [
 			UIManager default inform: errorMessage.
 			self codePiece readOnly ifTrue: [
-				self contents: self codePiece code.
-				self changed: #contents.]]
+				self contents: self codePiece code.]]
 		ifEmpty: [
 			super contents: input notifying: aController.
 			self codePiece code: input.
 			self codePiece compileCode.
-			self changed: #contents.].
+			self browser clearPlayground.].
+		
+	self changed: #contents.
 ]
 
 {
@@ -105,25 +104,6 @@ IPTEditor >> contents: input notifying: aController [
 IPTEditor >> evaluateExpression: aString [
 	UIManager default inform: 'Please use the "Verify" button to test your code'.
 	^ nil.
-]
-
-{
-	#category : #evaluating,
-	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:21'
-}
-IPTEditor >> save: input [
-	
-	| errorMessage |
-	
-	self browser closeAllAutoCompletionMorphs.
-	errorMessage := self codePiece checkSyntax: input.
-	errorMessage 
-		ifNotEmpty: 
-			[UIManager default inform: errorMessage]
-		ifEmpty: [.
-			self codePiece code: input.
-			self codePiece compileCode.
-			self changed: #contents.].
 ]
 
 {

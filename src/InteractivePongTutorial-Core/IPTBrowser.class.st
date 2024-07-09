@@ -383,6 +383,16 @@ IPTBrowser >> classSet: anObject [
 
 {
 	#category : #actions,
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:33'
+}
+IPTBrowser >> clearPlayground [
+
+	self playground clear.
+	self update.
+]
+
+{
+	#category : #actions,
 	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 19:52'
 }
 IPTBrowser >> close [
@@ -594,14 +604,14 @@ IPTBrowser >> outputBoxContent [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 7/8/2024 15:41'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:33'
 }
 IPTBrowser >> playButtonAction [
 	self playground isRunning
-		ifTrue: [self playground clear]
+		ifTrue: [self clearPlayground]
 		ifFalse: [self runCode].
 		
-	self changed: #playButtonLabel.
+	self update.
 ]
 
 {
