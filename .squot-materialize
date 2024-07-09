@@ -1,263 +1,4 @@
 [
-	SquotTonelMapper {
-		#package : MCPackage {
-			#name : 'InteractivePongTutorial-Tests'
-		},
-		#path : FSAbsolutePath [
-			'src'
-		]
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'assets',
-			'IPTPlayer',
-			'stop.txt'
-		],
-		#encoding : 'TXT'
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'assets',
-			'IPTBall',
-			'initialize.txt'
-		],
-		#encoding : 'TXT'
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'assets',
-			'IPTPlayer',
-			'move:.txt'
-		],
-		#encoding : 'TXT'
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'README.md'
-		],
-		#encoding : 'TXT'
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'assets',
-			'IPTBall',
-			'game.txt'
-		],
-		#encoding : 'TXT'
-	},
-	SquotTonelMapper {
-		#package : MCPackage {
-			#name : 'InteractivePongTutorial-Core'
-		},
-		#path : @4
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'assets',
-			'IPTGame',
-			'initializeBall.txt'
-		],
-		#encoding : 'TXT'
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'assets',
-			'IPTBall',
-			'speed:.txt'
-		],
-		#encoding : 'TXT'
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'assets',
-			'IPTPlayer',
-			'down.txt'
-		],
-		#encoding : 'TXT'
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'assets',
-			'IPTBall',
-			'turnVertical.txt'
-		],
-		#encoding : 'TXT'
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'assets',
-			'IPTBall',
-			'checkCollisionWithWalls.txt'
-		],
-		#encoding : 'TXT'
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'src',
-			'.properties'
-		],
-		#encoding : 'TXT'
-	},
-	SquotTonelMapper {
-		#package : MCPackage {
-			#name : 'InteractivePongTutorial-Game'
-		},
-		#path : @4
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'assets',
-			'IPTGame',
-			'initializePlayers.txt'
-		],
-		#encoding : 'TXT'
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'assets',
-			'IPTGame',
-			'initialize.txt'
-		],
-		#encoding : 'TXT'
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'assets',
-			'IPTPlayer',
-			'game.txt'
-		],
-		#encoding : 'TXT'
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'assets',
-			'IPTBall',
-			'stepTime.txt'
-		],
-		#encoding : 'TXT'
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'assets',
-			'IPTBall',
-			'turnHorizontal.txt'
-		],
-		#encoding : 'TXT'
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'assets',
-			'IPTBall',
-			'startOver.txt'
-		],
-		#encoding : 'TXT'
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'assets',
-			'IPTPlayer',
-			'speed:.txt'
-		],
-		#encoding : 'TXT'
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'assets',
-			'IPTGame',
-			'keyUp:.txt'
-		],
-		#encoding : 'TXT'
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'assets',
-			'IPTPlayer',
-			'step.txt'
-		],
-		#encoding : 'TXT'
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'assets',
-			'IPTPlayer',
-			'up.txt'
-		],
-		#encoding : 'TXT'
-	},
-	SquotImageMapper {
-		#path : FSAbsolutePath [
-			'assets',
-			'squeaky-happy.png'
-		],
-		#encoding : Class [ #PNGReadWriter ]
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'assets',
-			'IPTGame',
-			'playerLeft:.txt'
-		],
-		#encoding : 'TXT'
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'assets',
-			'IPTGame',
-			'playerRight:.txt'
-		],
-		#encoding : 'TXT'
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'assets',
-			'IPTPlayer',
-			'game:.txt'
-		],
-		#encoding : 'TXT'
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'.github',
-			'workflows',
-			'ci.yml'
-		],
-		#encoding : 'TXT'
-	},
-	SquotImageMapper {
-		#path : FSAbsolutePath [
-			'assets',
-			'squeaky-sad.png'
-		],
-		#encoding : @53
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'assets',
-			'IPTBall',
-			'checkCollisionWithPlayer.txt'
-		],
-		#encoding : 'TXT'
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'LICENSE'
-		],
-		#encoding : 'TXT'
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'assets',
-			'IPTBall',
-			'game:.txt'
-		],
-		#encoding : 'TXT'
-	},
-	SquotTonelMapper {
-		#package : MCPackage {
-			#name : 'BaselineOfInteractivePongTutorial'
-		},
-		#path : @4
-	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
 			'assets',
@@ -277,61 +18,8 @@
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
 			'assets',
-			'IPTGame',
-			'ball.txt'
-		],
-		#encoding : 'TXT'
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'assets',
-			'IPTGame',
-			'playerBounds.txt'
-		],
-		#encoding : 'TXT'
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'assets',
-			'IPTGame',
-			'keyDown:.txt'
-		],
-		#encoding : 'TXT'
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'assets',
 			'IPTPlayer',
-			'speed.txt'
-		],
-		#encoding : 'TXT'
-	},
-	SquotImageMapper {
-		#path : FSAbsolutePath [
-			'assets',
-			'squeaky-neutr.png'
-		],
-		#encoding : @53
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'assets',
-			'IPTBall',
-			'checkCollisions.txt'
-		],
-		#encoding : 'TXT'
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'.smalltalk.ston'
-		],
-		#encoding : 'TXT'
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'assets',
-			'IPTPlayer',
-			'initialize.txt'
+			'game:.txt'
 		],
 		#encoding : 'TXT'
 	},
@@ -346,6 +34,207 @@
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
 			'assets',
+			'IPTGame',
+			'initializeBall.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTGame',
+			'ball.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTPlayer',
+			'speed:.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTBall',
+			'checkCollisions.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTBall',
+			'game.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTPlayer',
+			'up.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotTonelMapper {
+		#package : MCPackage {
+			#name : 'InteractivePongTutorial-Levels'
+		},
+		#path : FSAbsolutePath [
+			'src'
+		]
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTBall',
+			'startOver.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTBall',
+			'stepTime.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'src',
+			'.properties'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTBall',
+			'checkCollisionWithWalls.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotTonelMapper {
+		#package : MCPackage {
+			#name : 'InteractivePongTutorial-Game'
+		},
+		#path : @24
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTGame',
+			'playerBounds.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotTonelMapper {
+		#package : MCPackage {
+			#name : 'BaselineOfInteractivePongTutorial'
+		},
+		#path : @24
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTGame',
+			'keyUp:.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTBall',
+			'game:.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotTonelMapper {
+		#package : MCPackage {
+			#name : 'InteractivePongTutorial-Core'
+		},
+		#path : @24
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTPlayer',
+			'defaultSpeed.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTGame',
+			'initializePlayers.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTGame',
+			'playerLeft:.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTPlayer',
+			'speed.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTBall',
+			'turnHorizontal.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTPlayer',
+			'stop.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTBall',
+			'turnVertical.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTGame',
+			'initialize.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTPlayer',
+			'initialize.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
 			'IPTBall',
 			'step.txt'
 		],
@@ -354,7 +243,124 @@
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
 			'assets',
+			'IPTPlayer',
+			'move:.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTPlayer',
+			'down.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTGame',
+			'playerRight:.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTPlayer',
+			'game.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTBall',
+			'initialize.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTPlayer',
+			'step.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTBall',
+			'checkCollisionWithPlayer.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'squeaky-sad.png'
+		],
+		#encoding : Class [ #PNGReadWriter ]
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'README.md'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'.github',
+			'workflows',
+			'ci.yml'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTBall',
+			'speed:.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'LICENSE'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
 			'methodIndex.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotTonelMapper {
+		#package : MCPackage {
+			#name : 'InteractivePongTutorial-Tests'
+		},
+		#path : @24
+	},
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'squeaky-happy.png'
+		],
+		#encoding : @81
+	},
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'squeaky-neutr.png'
+		],
+		#encoding : @81
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'.smalltalk.ston'
 		],
 		#encoding : 'TXT'
 	},
@@ -366,10 +372,12 @@
 		],
 		#encoding : 'TXT'
 	},
-	SquotTonelMapper {
-		#package : MCPackage {
-			#name : 'InteractivePongTutorial-Levels'
-		},
-		#path : @4
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTGame',
+			'keyDown:.txt'
+		],
+		#encoding : 'TXT'
 	}
 ]

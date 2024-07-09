@@ -1,5 +1,7 @@
 playerLeft
 °°°°°
-"Level and Chapternumbers need to be added, only solution until now"
-
-^ playerLeft.
+2
+1
+°°
+°°
+	^ playerLeft.

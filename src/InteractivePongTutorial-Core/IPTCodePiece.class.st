@@ -250,11 +250,11 @@ IPTCodePiece >> safelyCompile: aString [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 19:43'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 13:26'
 }
 IPTCodePiece >> variantForLevel: aLevelIndex fromChapter: aChapterNumber [
 	
-	^ self variants reversed detect: [:var | var levelIndex <= aLevelIndex and: var chapterNumber <= aChapterNumber].
+	^ self variants reversed detect: [:var | var chapterNumber <= aChapterNumber and: (var levelIndex <= aLevelIndex or: var chapterNumber ~= aChapterNumber)].
 ]
 
 {

@@ -1,5 +1,8 @@
 stop
 °°°°°
-"Level and Chapternumbers need to be added, only solution until now"
-
+2
+2
+°°
+	"Set the speed to 0."
+°°
 	self speed: 0.

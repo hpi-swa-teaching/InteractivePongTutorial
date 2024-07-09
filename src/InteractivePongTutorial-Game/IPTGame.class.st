@@ -19,18 +19,18 @@ IPTGame class >> open [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:33'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 13:26'
 }
 IPTGame >> ball [
-	
+	^ ball.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:33'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 13:26'
 }
 IPTGame >> ball: aBall [
-	
+	ball := aBall.
 ]
 
 {
@@ -44,10 +44,9 @@ IPTGame >> handlesKeyboard: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:34'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 13:26'
 }
 IPTGame >> initialize [
-	"Please change the color to black."
 	super initialize.
 	self 
 		color: Color black;
@@ -56,18 +55,24 @@ IPTGame >> initialize [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:33'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 13:26'
 }
 IPTGame >> initializeBall [
-	
+	"Instead of setting the Position of the ball you should now call the method starOver."
+	self 
+		ball: (IPTBall new game: self);
+		addMorph: self ball.
+	self ball center: self center.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 15:48'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 13:26'
 }
 IPTGame >> initializePlayers [
-
+	"Initialize the left and right player like you did with the ball. For each player, be sure to set the center, and set the game to self."
+	| offset | 
+	offset := (self extent x / 2 - 30 @ 0).
 ]
 
 {
@@ -121,38 +126,34 @@ IPTGame >> playerBounds [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'mp 10/29/2013 12:28:15.175'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 13:26'
 }
 IPTGame >> playerLeft [
-
-	^ playerLeft
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JZ 5/22/2024 17:00'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 13:26'
 }
 IPTGame >> playerLeft: aPlayer [
-
-	playerLeft := aPlayer
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'mp 10/29/2013 12:28:15.193'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 13:26'
 }
 IPTGame >> playerRight [
-
-	^ playerRight
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'mp 10/29/2013 12:28:15.201'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 13:26'
 }
-IPTGame >> playerRight: anObject [
-
-	playerRight := anObject
+IPTGame >> playerRight: aPlayer [
+	
 ]
 
 {

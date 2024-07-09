@@ -19,81 +19,67 @@ IPTPlayer >> defaultSpeed [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'JZ 5/22/2024 16:44'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 13:26'
 }
 IPTPlayer >> down [
-
-	self speed: self defaultSpeed.
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'JZ 5/22/2024 17:02'
-}
-IPTPlayer >> game [
-
-	^ game.
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'JZ 5/22/2024 17:02'
-}
-IPTPlayer >> game: aGame [
-
-	game := aGame.
-]
-
-{
-	#category : #initialization,
-	#'squeak_changestamp' : 'JZ 5/22/2024 16:50'
-}
-IPTPlayer >> initialize [
-
-	super initialize.
-	self 
-		color: Color white;
-		extent: 15 @100;
-		stop.
 	
 ]
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 13:26'
+}
+IPTPlayer >> game [
+	
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 13:26'
+}
+IPTPlayer >> game: aGame [
+	
+]
+
+{
+	#category : #initialization,
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 13:26'
+}
+IPTPlayer >> initialize [
+	"Please set the color to white, extent to 15x100 and speed to 0"
+	super initialize.
+]
+
+{
 	#category : #movement,
-	#'squeak_changestamp' : 'JZ 5/22/2024 17:04'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 13:26'
 }
 IPTPlayer >> move: aNumber [
-	| newPosition |
-	newPosition := self position y + aNumber.
-	((newPosition - self game position y)
-		between: 0
-		and: self game height - self height)
-			ifTrue: [self position: self position x @ newPosition].
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JZ 5/22/2024 17:02'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 13:26'
 }
 IPTPlayer >> speed [
-
-	^ speed.
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JZ 5/22/2024 17:02'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 13:26'
 }
 IPTPlayer >> speed: aNumber [
-	speed := aNumber.
+	
 ]
 
 {
 	#category : #stepping,
-	#'squeak_changestamp' : 'JZ 5/22/2024 16:47'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 13:26'
 }
 IPTPlayer >> step [
-	self move: self speed
+	
 ]
 
 {
@@ -106,17 +92,16 @@ IPTPlayer >> stepTime [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'JZ 5/22/2024 16:44'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 13:26'
 }
 IPTPlayer >> stop [
-	self speed: 0.
+	
 ]
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'JZ 5/22/2024 16:44'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 13:26'
 }
 IPTPlayer >> up [
-
-	self speed: self defaultSpeed negated.
+	
 ]

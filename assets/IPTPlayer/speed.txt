@@ -1,5 +1,7 @@
 speed
 °°°°°
-"Level and Chapternumbers need to be added, only solution until now"
-
+2
+2
+°°
+°°
 	^ speed.

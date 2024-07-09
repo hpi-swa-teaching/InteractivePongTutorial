@@ -1,7 +1,7 @@
-game
+defaultSpeed
 °°°°°
 2
-1
+2
 °°
 °°
-	^ game.
+	^ 10.

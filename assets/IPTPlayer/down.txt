@@ -1,5 +1,8 @@
 down
 °°°°°
-"Level and Chapternumbers need to be added, only solution until now"
-
-	self speed: self defaultSpeed
+2
+2
+°°
+	"Set the speed to defaultSpeed."
+°°
+	self speed: self defaultSpeed.

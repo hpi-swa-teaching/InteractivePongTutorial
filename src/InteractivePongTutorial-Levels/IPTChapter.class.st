@@ -13,7 +13,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/21/2024 17:00'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 12:54'
 }
 IPTChapter class >> chapterSet [
 	^ {IPTChapter 
@@ -34,7 +34,8 @@ IPTChapter class >> chapterSet [
 			withName: 'Player movement'
 			number: 2
 			description: 'This is Chapter 2'
-			levels: {}}
+			levels: {
+				IPTLevel0201.}}
 ]
 
 {

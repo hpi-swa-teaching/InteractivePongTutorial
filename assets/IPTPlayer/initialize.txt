@@ -1,9 +1,13 @@
 initialize
 °°°°°
-"Level and Chapternumbers need to be added, only solution until now"
-
+2
+1
+°°
+	"Please set the color to white, extent to 15x100 and speed to 0"
+	super initialize.
+°°
 	super initialize.
 	self 
 		color: Color white;
-		extent: 15 @100;
+		extent: (15@100);
 		stop.

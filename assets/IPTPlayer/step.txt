@@ -1,5 +1,8 @@
 step
 °°°°°
-"Level and Chapternumbers need to be added, only solution until now"
-
+2
+2
+°°
+	"Call move with the speed."
+°°
 	self move: self speed.

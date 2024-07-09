@@ -1,13 +1,20 @@
 initializePlayers
 °°°°°
-"Level and Chapternumbers need to be added, only solution until now"
-	
+2
+1
+°°
+	"Initialize the left and right player like you did with the ball. For each player, be sure to set the center, and set the game to self."
+	| offset | 
+	offset := (self extent x / 2 - 30 @ 0).
+°°
+	| offset | 
+	offset := (self extent x / 2 - 30 @ 0).
 	self
 		playerLeft: (IPTPlayer new
-			position: self position + (15 @ (self extent y / 2-50));
+			center: self center - offset;
 			game: self);
 		playerRight: (IPTPlayer new
-			position:  self position + (self extent x - 30 @ (self extent y / 2-50));
+			center:  self center + offset;
 			game: self);
 		addMorph: self playerLeft;
 		addMorph: self playerRight.

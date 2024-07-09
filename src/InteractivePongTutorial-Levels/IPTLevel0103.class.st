@@ -113,7 +113,7 @@ IPTLevel0103 >> testBallTurnHorizontal [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:39'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 11:51'
 }
 IPTLevel0103 >> testBallTurnVertical [
 	| expectedSpeed |
@@ -121,7 +121,7 @@ IPTLevel0103 >> testBallTurnVertical [
 	
 	expectedSpeed := ball speed x @ ball speed y negated.
 	ball turnVertical.
-	self assert: (ball speed = expectedSpeed) description: 'You did not set the speed correctly (turnVertical)'.
+	self assert: (ball speed = expectedSpeed) description: 'You did not set the speed correctly'.
 ]
 
 {
