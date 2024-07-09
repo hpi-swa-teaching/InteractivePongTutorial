@@ -11,5 +11,3 @@ game: aGame
 3
 °°
 	game := aGame.
-°°
-	game := aGame.

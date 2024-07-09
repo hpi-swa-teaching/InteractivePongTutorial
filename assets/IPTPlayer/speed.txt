@@ -3,5 +3,4 @@ speed
 2
 2
 °°
-°°
 	^ speed.

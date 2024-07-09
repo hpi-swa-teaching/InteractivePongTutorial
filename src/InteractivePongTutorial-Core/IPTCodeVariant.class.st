@@ -5,23 +5,27 @@ Class {
 		'chapterNumber',
 		'levelIndex',
 		'initialCode',
-		'solutionCode'
+		'solutionCode',
+		'readOnly'
 	],
 	#category : #'InteractivePongTutorial-Core'
 }
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 6/20/2024 12:08'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 13:56'
 }
 IPTCodeVariant class >> fromString: aString [
-	|splitString|
+
+	| splitString readOnly |
 	splitString := (aString splitBy: '°°') collect: [:string | string withBlanksTrimmed].
+	readOnly := (splitString size = 2).
 	^ self new
 		chapterNumber: splitString first lines first asInteger;
 		levelIndex: splitString first lines second asInteger;
 		initialCode: splitString second;
-		solutionCode: splitString third.
+		solutionCode: (readOnly ifFalse: [splitString third] ifTrue: [splitString second]);
+		readOnly: readOnly.
 ]
 
 {
@@ -70,6 +74,22 @@ IPTCodeVariant >> levelIndex [
 }
 IPTCodeVariant >> levelIndex: anObject [
 	levelIndex := anObject
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 13:53'
+}
+IPTCodeVariant >> readOnly [
+	^ readOnly
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 13:53'
+}
+IPTCodeVariant >> readOnly: anObject [
+	readOnly := anObject
 ]
 
 {

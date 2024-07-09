@@ -3,5 +3,4 @@ playerRight: aPlayer
 2
 1
 °°
-°°
 	playerRight := aPlayer.

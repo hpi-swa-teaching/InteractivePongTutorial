@@ -16,14 +16,13 @@ Class {
 
 {
 	#category : #creating,
-	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 19:45'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 13:52'
 }
 IPTCodePiece class >> fromFile: aFilePath [
 	| methodInfos fileContents |
 	methodInfos := (aFilePath splitBy: '/' ) allButFirst allButFirst.
 	fileContents := ((GitAssetLoader for: 'InteractivePongTutorial') loadString: aFilePath) splitBy: '°°°°°'.
 	^ self new
-		"source: ((Smalltalk at: methodInfos first asSymbol) >> (methodInfos second splitBy: '.') first  asSymbol);"
 		referencedClass: (Smalltalk at: methodInfos first asSymbol);
 		referencedMethod: (methodInfos second splitBy: '.') first  asSymbol;
 		head: fileContents first withBlanksTrimmed;
@@ -155,11 +154,14 @@ IPTCodePiece >> isSameSourceAs: aCompiledMethod [
 
 {
 	#category : #loading,
-	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:14'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 13:59'
 }
 IPTCodePiece >> loadInitialCodeForLevel: aLevelIndex andChapter: aChapterNumber [
-
-	self code: (self addHeadToCode: (self variantForLevel: aLevelIndex fromChapter: aChapterNumber) initialCode).
+	
+	| variant |
+	variant := self variantForLevel: aLevelIndex fromChapter: aChapterNumber.
+	self code: (self addHeadToCode: variant initialCode).
+	self readOnly: variant readOnly.
 	self compileCode.
 ]
 

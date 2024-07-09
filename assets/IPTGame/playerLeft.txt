@@ -3,5 +3,4 @@ playerLeft
 2
 1
 °°
-°°
 	^ playerLeft.

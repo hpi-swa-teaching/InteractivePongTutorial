@@ -42,27 +42,27 @@ IPTLevel0201 class >> levelIndex [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 12:53'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 14:41'
 }
 IPTLevel0201 class >> visibleMethods [
 
-	^ {IPTMethodSelector make: IPTGame >> #initialize readOnly: true. 
-		IPTMethodSelector make: IPTGame >> #initializeBall readOnly: true.
-		IPTMethodSelector make: IPTGame >> #initializePlayers readOnly: false.
-		IPTMethodSelector make: IPTGame >> #playerLeft readOnly: true.
-		IPTMethodSelector make: IPTGame >> #playerLeft: readOnly: true.
-		IPTMethodSelector make: IPTGame >> #playerRight readOnly: true.
-		IPTMethodSelector make: IPTGame >> #playerRight: readOnly: true.
+	^ {{IPTGame. #initialize}. 
+		{IPTGame. #initializeBall}.
+		{IPTGame. #initializePlayers}.
+		{IPTGame. #playerLeft}.
+		{IPTGame. #playerLeft:}.
+		{IPTGame. #playerRight}.
+		{IPTGame. #playerRight:}.
 		
-		IPTMethodSelector make: IPTBall >> #turnHorizontal readOnly: true. 
-		IPTMethodSelector make: IPTBall >> #step readOnly: true. 
-		IPTMethodSelector make: IPTBall >> #turnVertical readOnly: true. 
-		IPTMethodSelector make: IPTBall >> #initialize readOnly: true.
-		IPTMethodSelector make: IPTBall >> #checkCollisionWithWalls readOnly: true. 
-		IPTMethodSelector make: IPTBall >> #startOver readOnly: true.
+		{IPTBall. #turnHorizontal}. 
+		{IPTBall. #step}. 
+		{IPTBall. #turnVertical}. 
+		{IPTBall. #initialize}.
+		{IPTBall. #checkCollisionWithWalls}. 
+		{IPTBall. #startOver}.
 		
-		IPTMethodSelector make: IPTPlayer >> #initialize readOnly: false.
-		IPTMethodSelector make: IPTPlayer >> #game readOnly: true.
-		IPTMethodSelector make: IPTPlayer >> #game: readOnly: true.
+		{IPTPlayer. #initialize}.
+		{IPTPlayer. #game}.
+		{IPTPlayer. #game:}
 		}.
 ]

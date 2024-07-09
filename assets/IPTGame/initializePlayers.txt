@@ -18,3 +18,18 @@ initializePlayers
 			game: self);
 		addMorph: self playerLeft;
 		addMorph: self playerRight.
+°°°°°
+2
+2
+°°
+	| offset | 
+	offset := (self extent x / 2 - 30 @ 0).
+	self
+		playerLeft: (IPTPlayer new
+			center: self center - offset;
+			game: self);
+		playerRight: (IPTPlayer new
+			center:  self center + offset;
+			game: self);
+		addMorph: self playerLeft;
+		addMorph: self playerRight.

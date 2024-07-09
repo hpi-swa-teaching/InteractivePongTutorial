@@ -11,5 +11,3 @@ turnHorizontal
 4
 °°
 	self speed: self speed x negated @ self speed y.
-°°
-	self speed: self speed x negated @ self speed y.

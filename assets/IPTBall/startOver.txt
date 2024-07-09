@@ -8,3 +8,10 @@ startOver
 	self 
 		center: self game center;
 		speed: (self defaultSpeed * {1 .-1} atRandom) @ (self defaultSpeed * {1 .-1} atRandom).
+°°°°°
+1
+5
+°°
+	self 
+		center: self game center;
+		speed: (self defaultSpeed * {1 .-1} atRandom) @ (self defaultSpeed * {1 .-1} atRandom).

@@ -45,18 +45,18 @@ IPTLevel0102 class >> levelIndex [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 15:52'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 14:33'
 }
 IPTLevel0102 class >> visibleMethods [
 
-	^ {IPTMethodSelector make: IPTGame >> #initialize readOnly: true. 
-		IPTMethodSelector make: IPTGame >> #initializeBall readOnly: false. 
-		IPTMethodSelector make: IPTGame >> #ball readOnly: false. 
-		IPTMethodSelector make: IPTGame >> #ball: readOnly: false.
+	^ {{IPTGame. #initialize}. 
+		{IPTGame. #initializeBall }. 
+		{IPTGame. #ball }. 
+		{IPTGame. #ball: }.
 		
-		IPTMethodSelector make: IPTBall >> #initialize readOnly: false. 
-		IPTMethodSelector make: IPTBall >> #game readOnly: false. 
-		IPTMethodSelector make: IPTBall >> #game: readOnly: false.}.
+		{IPTBall. #initialize }.
+		{IPTBall. #game }.
+		{IPTBall. #game: }.}.
 ]
 
 {

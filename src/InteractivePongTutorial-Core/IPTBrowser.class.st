@@ -687,7 +687,7 @@ IPTBrowser >> previousLevelButtonEnabled [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 18:35'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 14:00'
 }
 IPTBrowser >> reloadCodePieces [
 
@@ -695,8 +695,7 @@ IPTBrowser >> reloadCodePieces [
 	load the initialCode for all visible CodePieces without readonly"
 	self classSet do: [ :c | 
 		c methodCodePieces do: [ :codePiece | 
-			codePiece 
-				readOnly: false;
+			codePiece
 				isGreen: false;
 				loadInitialCodeForLevel: self levelIndex andChapter: self chapter chapterNumber.]].
 ]
@@ -887,28 +886,17 @@ IPTBrowser >> updateSqueaky [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 22:03'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 14:29'
 }
 IPTBrowser >> updateVisibleClassSetToMethods: aMethodsCollection [	
 	aMethodsCollection ifNil: [ ^nil.].
 	self visibleClassSet: ((self classSet collect: [:c | c copy. ]) asOrderedCollection).
 	
-	"update readOnly for each visible codePiece"
-	self visibleClassSet removeAllSuchThat: [:c |
-		c methodCodePieces removeAllSuchThat: [:codePiece | |ms|
-			ms := aMethodsCollection detect: [ :methodSelector | 
-				codePiece isSameSourceAs: methodSelector method] ifNone: [].
-			ms 
-				ifNotNil: [codePiece readOnly: ms readOnly. false]
-				ifNil: [true]].
-		c methodCodePieces isEmpty].
-	
-	"Show all classes with methods that are in 'activeLevel visibleMethods'. If there are no methods in a class, dont show it"
-	"self visibleClassSet removeAllSuchThat: [ :klass | 
-		klass methodCodePieces removeAllSuchThat: [ :codePiece | 
-			(aMethodsCollection anySatisfy: [ :methodSelector | 
-				codePiece isSameSourceAs: methodSelector method]) not].
-		klass methodCodePieces isEmpty. ]."
+	self visibleClassSet do: [:iptclass |
+		iptclass methodCodePieces removeAllSuchThat: [:codePiece |
+			aMethodsCollection noneSatisfy: [ :selectors | 
+				(codePiece referencedClass =  selectors first) and: (codePiece referencedMethod = selectors second)]]].
+	self visibleClassSet removeAllSuchThat: [:iptclass |  iptclass methodCodePieces isEmpty].
 	
 ]
 

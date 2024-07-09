@@ -11,3 +11,11 @@ move: aNumber
 	offset := self height * 0.5.
 	self center: self center 
 		+ (0 @ (aNumber min: offset max: (self game height - offset))).
+°°°°°
+2
+3
+°°
+	| offset |
+	offset := self height * 0.5.
+	self center: self center 
+		+ (0 @ (aNumber min: offset max: (self game height - offset))).

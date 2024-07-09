@@ -3,5 +3,4 @@ game: aGame
 2
 1
 °°
-°°
 	game := aGame.

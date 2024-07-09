@@ -6,3 +6,8 @@ up
 	"Set the speed to negated defaultSpeed."
 °°
 	self speed: self defaultSpeed negated.
+°°°°°
+2
+3
+°°
+	self speed: self defaultSpeed negated.

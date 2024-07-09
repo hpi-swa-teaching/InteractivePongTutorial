@@ -6,3 +6,8 @@ down
 	"Set the speed to defaultSpeed."
 °°
 	self speed: self defaultSpeed.
+°°°°°
+2
+3
+°°
+	self speed: self defaultSpeed.

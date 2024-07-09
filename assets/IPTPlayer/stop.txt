@@ -6,3 +6,8 @@ stop
 	"Set the speed to 0."
 °°
 	self speed: 0.
+°°°°°
+2
+3
+°°
+	self speed: 0.

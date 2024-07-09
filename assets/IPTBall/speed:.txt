@@ -4,5 +4,3 @@ speed: aNumber
 3
 °°
 	speed := aNumber.
-°°
-	speed := aNumber.

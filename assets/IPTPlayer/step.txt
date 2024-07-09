@@ -6,3 +6,8 @@ step
 	"Call move with the speed."
 °°
 	self move: self speed.
+°°°°°
+2
+3
+°°
+	self move: self speed.

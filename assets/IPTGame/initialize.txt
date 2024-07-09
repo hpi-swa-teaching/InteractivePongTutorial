@@ -21,8 +21,3 @@ initialize
 	self 
 		color: Color black;
 		beSticky.
-°°
-	super initialize.
-	self 
-		color: Color black;
-		beSticky.

@@ -39,3 +39,11 @@ initialize
 	self 
 		color: Color white;
 		extent: self defaultExtent.
+°°°°°
+1
+5
+°°
+	super initialize.
+		self 
+			color: Color white;
+			extent: self defaultExtent.

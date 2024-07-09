@@ -11,5 +11,3 @@ ball
 3
 °°
 	^ ball.
-°°
-	^ ball.

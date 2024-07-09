@@ -11,5 +11,3 @@ ball: aBall
 3
 °°
 	ball := aBall.
-°°
-	ball := aBall.

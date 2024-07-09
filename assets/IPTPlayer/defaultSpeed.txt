@@ -3,5 +3,4 @@ defaultSpeed
 2
 2
 °°
-°°
 	^ 10.
