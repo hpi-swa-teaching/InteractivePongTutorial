@@ -6,7 +6,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 10:19'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 10:30'
 }
 BaselineOfInteractivePongTutorial >> baseline: spec [
 	<baseline>
@@ -17,13 +17,14 @@ BaselineOfInteractivePongTutorial >> baseline: spec [
 				baseline: 'Squot' with: [
 				spec repository: 'github://hpi-swa/Squot:mapper/src'. ].
 	            spec
-	                package: 'InteractivePongTutorial-Core' with: [spec requires: #('Squot'); postLoadDoIt: #postLoad];
+	                package: 'InteractivePongTutorial-Core' with: [spec requires: #('Squot' 'content'); postLoadDoIt: #postLoad];
 			    package: 'InteractivePongTutorial-Game';
 			    package: 'InteractivePongTutorial-Levels';
-	                package: 'InteractivePongTutorial-Tests' with: [spec requires: #('default')];
+	                package: 'InteractivePongTutorial-Tests' with: [spec requires: #('default' 'content')];
 	                yourself.
 	            spec
-	                group: 'default' with: #('InteractivePongTutorial-Core' 'InteractivePongTutorial-Game' 'InteractivePongTutorial-Levels');
+			    group: 'default' with: #('InteractivePongTutorial-Core');
+	                group: 'content' with: #('InteractivePongTutorial-Game' 'InteractivePongTutorial-Levels');
 	                group: 'tests' with: #('InteractivePongTutorial-Tests');
 	                yourself].
 ]
