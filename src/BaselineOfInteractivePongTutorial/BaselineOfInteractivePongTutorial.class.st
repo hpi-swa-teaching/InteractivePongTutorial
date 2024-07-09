@@ -30,7 +30,7 @@ BaselineOfInteractivePongTutorial >> baseline: spec [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 10:26'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 10:49'
 }
-BaselineOfInteractivePongTutorial >> postload [
+BaselineOfInteractivePongTutorial >> postLoad [
 ]
