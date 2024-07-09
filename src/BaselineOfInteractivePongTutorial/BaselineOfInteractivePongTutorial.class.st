@@ -27,3 +27,10 @@ BaselineOfInteractivePongTutorial >> baseline: spec [
 	                group: 'tests' with: #('InteractivePongTutorial-Tests');
 	                yourself].
 ]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 10:26'
+}
+BaselineOfInteractivePongTutorial >> postload [
+]
