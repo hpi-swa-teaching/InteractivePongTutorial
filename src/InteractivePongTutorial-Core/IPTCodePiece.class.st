@@ -16,9 +16,25 @@ Class {
 
 {
 	#category : #creating,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 13:52'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:07'
+}
+IPTCodePiece class >> createVariants: anAssetContent [
+	^ (anAssetContent allButFirst collect: [:variantString | IPTCodeVariant fromString: variantString]) asOrderedCollection
+			addFirst: (IPTCodeVariant new
+				chapterNumber: 0;
+				levelIndex: 0;
+				initialCode: '';
+				solutionCode: '';
+				readOnly: true);
+			yourself.
+]
+
+{
+	#category : #creating,
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:08'
 }
 IPTCodePiece class >> fromFile: aFilePath [
+
 	| methodInfos fileContents |
 	methodInfos := (aFilePath splitBy: '/' ) allButFirst allButFirst.
 	fileContents := ((GitAssetLoader for: 'InteractivePongTutorial') loadString: aFilePath) splitBy: '°°°°°'.
@@ -26,13 +42,7 @@ IPTCodePiece class >> fromFile: aFilePath [
 		referencedClass: (Smalltalk at: methodInfos first asSymbol);
 		referencedMethod: (methodInfos second splitBy: '.') first  asSymbol;
 		head: fileContents first withBlanksTrimmed;
-	 	variants: ((fileContents allButFirst collect: [:variantString | IPTCodeVariant fromString: variantString]) asOrderedCollection
-			addFirst: (IPTCodeVariant new
-				chapterNumber: 0;
-				levelIndex: 0;
-				initialCode: '';
-				solutionCode: '');
-			yourself);
+	 	variants: (self createVariants: fileContents);
 		readOnly: false;
 		isGreen: false.
 ]

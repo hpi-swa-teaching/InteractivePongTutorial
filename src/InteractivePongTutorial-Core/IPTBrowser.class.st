@@ -496,7 +496,7 @@ IPTBrowser >> levelIndex: anObject [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 7/8/2024 15:43'
+	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 14:59'
 }
 IPTBrowser >> loadLevel: aLevelIndex [
 
@@ -505,15 +505,14 @@ IPTBrowser >> loadLevel: aLevelIndex [
 		explanationIndex: 1;
 		reloadCodePieces;
 		testResult: nil;
-		selectCodePiece: nil.
+		selectCodePiece: nil;
+		updateVisibleClassSetToMethods: self activeLevel visibleMethods..
 		
 	self playground ifNotNil: [
-		self playground removeAllMorphs.].
-	self updateVisibleClassSetToMethods: self activeLevel visibleMethods.
+		self playground clear.].
 		
 	self squeaky mood: #neutral.
 	self
-		"Expand the CodePiece tree view"
 		update;
 		changed: #expandRootsRequested.
 	
