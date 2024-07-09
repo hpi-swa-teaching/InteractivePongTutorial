@@ -14,15 +14,21 @@ jobs:
         # Select platform(s)
         os:
           - ubuntu-latest
-          # If your application contains any OS-dependent logic (such as
-          # accesses to the filesystem or invocations of native libraries),
-          # you can enable further OS platforms here. Other than that, you may
-          # just leave them disabled to reduce energy usage and build time :)
-          # (Usually, windows builds are slower than ubuntu/macOS.)
-          #- macos-latest
-          #- windows-latest
         # Select compatible Smalltalk image(s)
-        smalltalk: [ Squeak64-trunk, Squeak64-5.3, Squeak64-5.2 ]
+        smalltalk: [ Squeak64-6.0]
+    name: ${{ matrix.smalltalk }} on ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: hpi-swa/setup-smalltalkCI@v1
+        with:
+          smalltalk-image: ${{ matrix.smalltalk }}
+      - run: smalltalkci -s ${{ matrix.smalltalk }}
+        shell: bash
+        timeout-minutes: 15
+        env:
+          # for uploading coverage reports
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+queak64-trunk, Squeak64-5.3, Squeak64-5.2 ]
     name: ${{ matrix.smalltalk }} on ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
