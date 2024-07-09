@@ -19,7 +19,7 @@ IPTPlayer >> defaultSpeed [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:48'
 }
 IPTPlayer >> down [
 	
@@ -27,7 +27,7 @@ IPTPlayer >> down [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:48'
 }
 IPTPlayer >> game [
 	
@@ -35,7 +35,7 @@ IPTPlayer >> game [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:48'
 }
 IPTPlayer >> game: aGame [
 	
@@ -43,7 +43,7 @@ IPTPlayer >> game: aGame [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:48'
 }
 IPTPlayer >> initialize [
 	
@@ -51,7 +51,7 @@ IPTPlayer >> initialize [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:48'
 }
 IPTPlayer >> move: aNumber [
 	
@@ -59,7 +59,7 @@ IPTPlayer >> move: aNumber [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:48'
 }
 IPTPlayer >> speed [
 	
@@ -67,7 +67,7 @@ IPTPlayer >> speed [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:48'
 }
 IPTPlayer >> speed: aNumber [
 	
@@ -75,7 +75,7 @@ IPTPlayer >> speed: aNumber [
 
 {
 	#category : #stepping,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:48'
 }
 IPTPlayer >> step [
 	
@@ -91,7 +91,7 @@ IPTPlayer >> stepTime [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:48'
 }
 IPTPlayer >> stop [
 	
@@ -99,7 +99,7 @@ IPTPlayer >> stop [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:48'
 }
 IPTPlayer >> up [
 	

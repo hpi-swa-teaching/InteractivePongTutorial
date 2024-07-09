@@ -19,18 +19,18 @@ IPTGame class >> open [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:48'
 }
 IPTGame >> ball [
-	^ ball.
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:48'
 }
 IPTGame >> ball: aBall [
-	ball := aBall.
+	
 ]
 
 {
@@ -44,30 +44,27 @@ IPTGame >> handlesKeyboard: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:48'
 }
 IPTGame >> initialize [
+	"Please change the color to black."
 	super initialize.
 	self 
-		color: Color black;
+		color: Color blue;
 		beSticky.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:48'
 }
 IPTGame >> initializeBall [
-	"Instead of setting the Position of the ball you should now call the method starOver."
-	self 
-		ball: (IPTBall new game: self);
-		addMorph: self ball.
-	self ball center: self center.
+	
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:48'
 }
 IPTGame >> initializePlayers [
 	
@@ -124,7 +121,7 @@ IPTGame >> playerBounds [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:48'
 }
 IPTGame >> playerLeft [
 	
@@ -132,7 +129,7 @@ IPTGame >> playerLeft [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:48'
 }
 IPTGame >> playerLeft: aPlayer [
 	
@@ -140,7 +137,7 @@ IPTGame >> playerLeft: aPlayer [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:48'
 }
 IPTGame >> playerRight [
 	
@@ -148,7 +145,7 @@ IPTGame >> playerRight [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:42'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:48'
 }
 IPTGame >> playerRight: aPlayer [
 	

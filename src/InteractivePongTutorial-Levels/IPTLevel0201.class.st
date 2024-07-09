@@ -15,11 +15,11 @@ IPTLevel0201 class >> asString [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 12:48'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:23'
 }
 IPTLevel0201 class >> description [
 	
-	^ ''.
+	^ 'This is a description'.
 ]
 
 {

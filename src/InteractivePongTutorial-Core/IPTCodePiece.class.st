@@ -160,15 +160,15 @@ IPTCodePiece >> isSameSourceAs: aCompiledMethod [
 
 {
 	#category : #loading,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 13:59'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:38'
 }
 IPTCodePiece >> loadInitialCodeForLevel: aLevelIndex andChapter: aChapterNumber [
 	
 	| variant |
 	variant := self variantForLevel: aLevelIndex fromChapter: aChapterNumber.
-	self code: (self addHeadToCode: variant initialCode).
-	self readOnly: variant readOnly.
-	self compileCode.
+	self code: (self addHeadToCode: variant initialCode);
+		readOnly: variant readOnly;
+		compileCode.
 ]
 
 {

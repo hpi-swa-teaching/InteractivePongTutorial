@@ -28,9 +28,10 @@ IPTLevelTests >> int_tstLevel: levelIndex inChapter: chapter [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'sv 7/3/2024 10:08'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:22'
 }
 IPTLevelTests >> setUp [
+
 	ipt := IPT new.
 
 ]
@@ -46,14 +47,12 @@ IPTLevelTests >> tearDown [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'sv 7/3/2024 11:06'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:23'
 }
 IPTLevelTests >> testLevelDescriptions [
 	
 	IPTChapter chapterSet do: [ :chapter |
 		chapter levels do: [ :lvl |
 			self assert: lvl description isEmpty not.
-			self tearDown.
-			self setUp.
 			]].
 ]

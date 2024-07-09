@@ -19,7 +19,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 20:12'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:24'
 }
 IPTBrowser class >> openFrom: anIPT chapter: aChapter levelIndex: aNumber [
 
@@ -27,24 +27,24 @@ IPTBrowser class >> openFrom: anIPT chapter: aChapter levelIndex: aNumber [
 	browser := self new 
 		ipt: anIPT;
 		chapter: aChapter;
-		loadLevel: aNumber;
-		yourself.
+		loadLevel: aNumber.
 	ToolBuilder open: browser.
 	browser changed: #expandRootsRequested.
-	^ browser
+	^ browser.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:05'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:24'
 }
 IPTBrowser >> activeLevel [
-	^ self chapter levels at: self levelIndex
+
+	^ self chapter levels at: self levelIndex.
 ]
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 12:38'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:24'
 }
 IPTBrowser >> buildCodeEditorWith: aBuilder [
 
@@ -53,7 +53,7 @@ IPTBrowser >> buildCodeEditorWith: aBuilder [
 			leftFraction: 0.25;
 			topFraction: 0.5;
 			rightFraction: 0.75;
-			bottomFraction: 1)
+			bottomFraction: 1).
 ]
 
 {
@@ -78,7 +78,7 @@ IPTBrowser >> buildCodePieceListWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 11:56'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:25'
 }
 IPTBrowser >> buildExplanationBoxWith: aBuilder [
 
@@ -91,12 +91,12 @@ IPTBrowser >> buildExplanationBoxWith: aBuilder [
 			leftFraction: 0.75;
 			topFraction: 0.4;
 			rightFraction: 1;
-			bottomFraction: 0.8 - self titleBarHeight)
+			bottomFraction: 0.8 - self titleBarHeight).
 ]
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:25'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:25'
 }
 IPTBrowser >> buildHomeButtonWith: aBuilder [
 
@@ -108,12 +108,12 @@ IPTBrowser >> buildHomeButtonWith: aBuilder [
 			leftFraction: 0;
 			topFraction: (1 - (2 * self buttonHeight));
 			rightFraction: self buttonWidth;
-			bottomFraction: (1 - self buttonHeight))
+			bottomFraction: (1 - self buttonHeight)).
 ]
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:30'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:25'
 }
 IPTBrowser >> buildLoadSolutionButtonWith: aBuilder [
 
@@ -126,7 +126,7 @@ IPTBrowser >> buildLoadSolutionButtonWith: aBuilder [
 			leftFraction: self buttonWidth;
 			topFraction: (1 - (2 * self buttonHeight));
 			rightFraction: self buttonWidth * 2;
-			bottomFraction: (1 - self buttonHeight))
+			bottomFraction: (1 - self buttonHeight)).
 ]
 
 {
@@ -149,7 +149,7 @@ IPTBrowser >> buildNextExplanationButtonWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:43'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:25'
 }
 IPTBrowser >> buildNextLevelButtonWith: aBuilder [
 
@@ -162,12 +162,12 @@ IPTBrowser >> buildNextLevelButtonWith: aBuilder [
 			leftFraction: 0.125;
 			topFraction: self titleBarHeight;
 			rightFraction: 0.25;
-			bottomFraction: (2 * self titleBarHeight))
+			bottomFraction: (2 * self titleBarHeight)).
 ]
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 12:14'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:25'
 }
 IPTBrowser >> buildOutputBoxWith: aBuilder [
 
@@ -180,12 +180,12 @@ IPTBrowser >> buildOutputBoxWith: aBuilder [
 			leftFraction: 0.75;
 			topFraction: 0;
 			rightFraction: 1;
-			bottomFraction: 0.4)
+			bottomFraction: 0.4).
 ]
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 7/8/2024 15:30'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:25'
 }
 IPTBrowser >> buildPlayButtonWith: aBuilder [
 
@@ -198,12 +198,12 @@ IPTBrowser >> buildPlayButtonWith: aBuilder [
 			leftFraction: 0;
 			topFraction: (1 - self buttonHeight);
 			rightFraction: 0.25 / 2;
-			bottomFraction: 1)
+			bottomFraction: 1).
 ]
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 10:00'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:25'
 }
 IPTBrowser >> buildPlaygroundWith: aBuilder [
 
@@ -214,7 +214,7 @@ IPTBrowser >> buildPlaygroundWith: aBuilder [
 			leftFraction: 0.25;
 			topFraction: 0;
 			rightFraction: 0.75;
-			bottomFraction: 0.5)
+			bottomFraction: 0.5).
 ]
 
 {
@@ -237,7 +237,7 @@ IPTBrowser >> buildPreviousExplanationButtonWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:43'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:25'
 }
 IPTBrowser >> buildPreviousLevelButtonWith: aBuilder [
 
@@ -250,12 +250,12 @@ IPTBrowser >> buildPreviousLevelButtonWith: aBuilder [
 			leftFraction: 0;
 			topFraction: self titleBarHeight;
 			rightFraction: 0.125;
-			bottomFraction: (2 * self titleBarHeight))
+			bottomFraction: (2 * self titleBarHeight)).
 ]
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 16:00'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:25'
 }
 IPTBrowser >> buildResetButtonWith: aBuilder [
 
@@ -268,12 +268,12 @@ IPTBrowser >> buildResetButtonWith: aBuilder [
 			leftFraction: 0.25 / 2;
 			topFraction: (1 - self buttonHeight);
 			rightFraction: 0.25;
-			bottomFraction: 1)
+			bottomFraction: 1).
 ]
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 18:52'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:26'
 }
 IPTBrowser >> buildSqueakyPanelWith: aBuilder [
 
@@ -284,12 +284,12 @@ IPTBrowser >> buildSqueakyPanelWith: aBuilder [
 			leftFraction: 0.75;
 			topFraction: 0.8;
 			rightFraction: 1;
-			bottomFraction: 1)
+			bottomFraction: 1).
 ]
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:26'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:26'
 }
 IPTBrowser >> buildTitleBarWith: aBuilder [
 
@@ -302,12 +302,12 @@ IPTBrowser >> buildTitleBarWith: aBuilder [
 			leftFraction: 0;
 			topFraction: 0;
 			rightFraction: 0.25;
-			bottomFraction: self titleBarHeight)
+			bottomFraction: self titleBarHeight).
 ]
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:29'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:26'
 }
 IPTBrowser >> buildWith: aBuilder [
 	^ aBuilder build: (aBuilder pluggableWindowSpec new
@@ -329,56 +329,61 @@ IPTBrowser >> buildWith: aBuilder [
 			self buildResetButtonWith: aBuilder.			
 			self buildLoadSolutionButtonWith: aBuilder.
 			self buildSqueakyPanelWith: aBuilder.
-			self buildTitleBarWith: aBuilder. };
-		yourself)
+			self buildTitleBarWith: aBuilder. }).
 ]
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:22'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:27'
 }
 IPTBrowser >> buttonHeight [
-	^ 0.08
+
+	^ 0.08.
 ]
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:22'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:27'
 }
 IPTBrowser >> buttonWidth [
-	^ 0.125
+
+	^ 0.125.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JZ 6/7/2024 15:46'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:27'
 }
 IPTBrowser >> chapter [
-	^ chapter
+
+	^ chapter.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JZ 6/7/2024 15:46'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:27'
 }
-IPTBrowser >> chapter: anObject [
-	chapter := anObject
+IPTBrowser >> chapter: aChapter [
+
+	chapter := aChapter.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 20:08'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:27'
 }
 IPTBrowser >> classSet [
-	^ classSet
+
+	^ classSet.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 14:08'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:28'
 }
-IPTBrowser >> classSet: anObject [
-	classSet := anObject
+IPTBrowser >> classSet: aClassSet [
+
+	classSet := aClassSet.
 ]
 
 {
@@ -393,27 +398,29 @@ IPTBrowser >> clearPlayground [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 19:52'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:28'
 }
 IPTBrowser >> close [
+
 	self changed: #close.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 20:07'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:28'
 }
 IPTBrowser >> codeEditor [
 
-	^ codeEditor
+	^ codeEditor.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 12:35'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:28'
 }
-IPTBrowser >> codeEditor: anObject [
-	codeEditor := anObject
+IPTBrowser >> codeEditor: aCodeEditor [
+
+	codeEditor := aCodeEditor.
 ]
 
 {
@@ -427,33 +434,37 @@ IPTBrowser >> explanationBoxContent [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 11:48'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:29'
 }
 IPTBrowser >> explanationIndex [
-	^ explanationIndex
+
+	^ explanationIndex.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 11:48'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:29'
 }
-IPTBrowser >> explanationIndex: anObject [
-	explanationIndex := anObject
+IPTBrowser >> explanationIndex: aNumber [
+
+	explanationIndex := aNumber.
 ]
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:06'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:29'
 }
 IPTBrowser >> homeButtonAction [
+
 	self ipt openChapterView.
 ]
 
 {
 	#category : #'initialize-release',
-	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:05'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:29'
 }
 IPTBrowser >> initialize [
+
 	super initialize.
 	self 
 		codeEditor: (IPTEditor openOnBrowser: self);
@@ -464,34 +475,38 @@ IPTBrowser >> initialize [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JZ 6/7/2024 13:30'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:30'
 }
 IPTBrowser >> ipt [
-	^ ipt
+
+	^ ipt.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JZ 6/7/2024 13:30'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:30'
 }
-IPTBrowser >> ipt: anObject [
-	ipt := anObject
+IPTBrowser >> ipt: anIPT [
+
+	ipt := anIPT.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:02'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:30'
 }
 IPTBrowser >> levelIndex [
-	^ levelIndex
+
+	^ levelIndex.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:02'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:30'
 }
-IPTBrowser >> levelIndex: anObject [
-	levelIndex := anObject
+IPTBrowser >> levelIndex: aNumber [
+
+	levelIndex := aNumber.
 ]
 
 {
@@ -559,34 +574,38 @@ IPTBrowser >> nextExplanationButtonAction [
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 12:10'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:32'
 }
 IPTBrowser >> nextExplanationButtonEnabled [
+
 	^ self activeLevel explanations size > self explanationIndex.
 ]
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:47'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:32'
 }
 IPTBrowser >> nextLevelButtonAction [
+
 	self loadLevel: (self levelIndex + 1).
 	
 ]
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:42'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:32'
 }
 IPTBrowser >> nextLevelButtonEnabled [
+
 	^ self chapter levels size > self levelIndex.
 ]
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:26'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:32'
 }
 IPTBrowser >> outputBoxContent [
+
 	| output |
 	output := ''.
 	self testResult ifNotNil: [
@@ -603,9 +622,10 @@ IPTBrowser >> outputBoxContent [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:33'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:33'
 }
 IPTBrowser >> playButtonAction [
+
 	self playground isRunning
 		ifTrue: [self clearPlayground]
 		ifFalse: [self runCode].
@@ -635,10 +655,11 @@ IPTBrowser >> playground [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/18/2024 16:47'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:34'
 }
-IPTBrowser >> playground: anObject [
-	playground := anObject
+IPTBrowser >> playground: aPlayground [
+
+	playground := aPlayground.
 ]
 
 {
@@ -662,38 +683,39 @@ IPTBrowser >> previousExplanationButtonAction [
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 12:34'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:34'
 }
 IPTBrowser >> previousExplanationButtonEnabled [
+
 	^ self explanationIndex > 1.
 ]
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:44'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:35'
 }
 IPTBrowser >> previousLevelButtonAction [
+
 	self loadLevel: (self levelIndex - 1).
 ]
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Felix Knöfel 6/11/2024 18:42'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:35'
 }
 IPTBrowser >> previousLevelButtonEnabled [
+
 	^ self levelIndex > 1.
 ]
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 14:00'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:38'
 }
 IPTBrowser >> reloadCodePieces [
 
-	"load the solutionCode for all invisible/readOnly CodePieces;
-	load the initialCode for all visible CodePieces without readonly"
-	self classSet do: [ :c | 
-		c methodCodePieces do: [ :codePiece | 
+	self classSet do: [ :iptClass | 
+		iptClass methodCodePieces do: [ :codePiece | 
 			codePiece
 				isGreen: false;
 				loadInitialCodeForLevel: self levelIndex andChapter: self chapter chapterNumber.]].
@@ -701,9 +723,10 @@ IPTBrowser >> reloadCodePieces [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:02'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:37'
 }
 IPTBrowser >> resetButtonAction [
+
 	self levelIndex ifNotNil: [
 		self selectedCodePiece loadInitialCodeForLevel: self levelIndex andChapter: self chapter chapterNumber.
 		self codeEditor setCodePiece: self selectedCodePiece.
@@ -754,34 +777,38 @@ IPTBrowser >> selectCodePiece: aCodePiece [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 14:18'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:38'
 }
 IPTBrowser >> selectedCodePiece [
-	^ selectedCodePiece
+
+	^ selectedCodePiece.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 14:18'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:39'
 }
-IPTBrowser >> selectedCodePiece: anObject [
-	selectedCodePiece := anObject
+IPTBrowser >> selectedCodePiece: aCodePiece [
+
+	selectedCodePiece := aCodePiece.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 20:09'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:39'
 }
 IPTBrowser >> squeaky [
+
 	^ squeaky.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 18:11'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:39'
 }
-IPTBrowser >> squeaky: anObject [
-	squeaky := anObject
+IPTBrowser >> squeaky: anIPTSqueaky [
+
+	squeaky := anIPTSqueaky.
 ]
 
 {
@@ -795,41 +822,46 @@ IPTBrowser >> squeakyInCollection [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 13:47'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:40'
 }
 IPTBrowser >> testResult [
-	^ testResult
+
+	^ testResult.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/26/2024 13:47'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:40'
 }
-IPTBrowser >> testResult: anObject [
-	testResult := anObject
+IPTBrowser >> testResult: aTestResult [
+
+	testResult := aTestResult.
 ]
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 11:49'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:40'
 }
 IPTBrowser >> titleBarContent [
+
 	^ self activeLevel asString.
 ]
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 12:12'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:40'
 }
 IPTBrowser >> titleBarHeight [
-	^ 0.05
+
+	^ 0.05.
 ]
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Felix Knöfel 7/8/2024 15:40'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:40'
 }
 IPTBrowser >> update [
+
 	self 
 		changed: #levelIndex;
 		changed: #titleBarContent;
@@ -848,7 +880,7 @@ IPTBrowser >> update [
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 12:48'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:45'
 }
 IPTBrowser >> updateCodePieceTestIndicators [
 
@@ -856,43 +888,38 @@ IPTBrowser >> updateCodePieceTestIndicators [
 	errors := self testResult at: #errors.
 	failures := self testResult at: #failures.
 	
-	self visibleClassSet do: [ :c |
-		(c methodCodePieces
-			select: [ :codePiece | 
-				codePiece isGreen: true.
-				errors, failures anySatisfy: [ :entry |
-					 codePiece isSameSourceAs: (entry at: #method)]]) 
+	self visibleClassSet do: [ :iptClass |
+		(iptClass methodCodePieces
 			do: [ :codePiece | 
-				codePiece isGreen: false. ]].
+				codePiece isGreen:
+				(errors, failures anySatisfy: [ :entry |
+					 codePiece isSameSourceAs: (entry at: #method)])])].
 ]
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 18:34'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:46'
 }
 IPTBrowser >> updateSqueaky [
-
-	| errors failures |
-	errors := self testResult at: #errors.
-	failures := self testResult at: #failures.
 	
-	(errors isEmpty and: [failures isEmpty]) 
+	((self testResult at: #errors) isEmpty and: [(self testResult at: #failures) isEmpty]) 
 		ifTrue: [self squeaky mood: #happy]
-		ifFalse: [self squeaky mood: #sad]
+		ifFalse: [self squeaky mood: #sad].
 	
 	
 ]
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:41'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:48'
 }
 IPTBrowser >> updateVisibleClassSetToMethods: aMethodsCollection [	
-	aMethodsCollection ifNil: [ ^nil.].
-	self visibleClassSet: ((self classSet collect: [:c | c copy. ]) asOrderedCollection).
 	
-	self visibleClassSet do: [:iptclass |
-		iptclass methodCodePieces removeAllSuchThat: [:codePiece |
+	aMethodsCollection ifNil: [ ^nil.].
+	self visibleClassSet: ((self classSet deepCopy) asOrderedCollection).
+	
+	self visibleClassSet do: [:iptClass |
+		iptClass methodCodePieces removeAllSuchThat: [:codePiece |
 			aMethodsCollection noneSatisfy: [ :compiledMethod | 
 				codePiece isSameSourceAs: compiledMethod]]].
 	self visibleClassSet removeAllSuchThat: [:iptclass |  iptclass methodCodePieces isEmpty].
@@ -901,16 +928,18 @@ IPTBrowser >> updateVisibleClassSetToMethods: aMethodsCollection [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 11:57'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:49'
 }
 IPTBrowser >> visibleClassSet [
-	^ visibleClassSet
+
+	^ visibleClassSet.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/15/2024 11:57'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:49'
 }
-IPTBrowser >> visibleClassSet: anObject [
-	visibleClassSet := anObject
+IPTBrowser >> visibleClassSet: aClassSet [
+
+	visibleClassSet := aClassSet.
 ]

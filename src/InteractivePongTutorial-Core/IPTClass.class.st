@@ -9,19 +9,26 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 19:55'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:19'
 }
 IPTClass class >> classList [
-	^ {IPTClass new 
-			referencedClass: IPTGame;
-			methodCodePieces: (IPTAssetLoader methodCodePiecesFor: 'IPTGame').
-		IPTClass new 
-			referencedClass: IPTBall;
-			methodCodePieces: (IPTAssetLoader methodCodePiecesFor: 'IPTBall').
-		IPTClass new 
-			referencedClass: IPTPlayer;
-			methodCodePieces: (IPTAssetLoader methodCodePiecesFor: 'IPTPlayer')
-		}.
+
+	^ {IPTGame. IPTBall. IPTPlayer} collect: [:classSelector | 
+		IPTClass new
+			referencedClass: classSelector;
+			methodCodePieces: (self methodCodePiecesFor: classSelector).].
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:20'
+}
+IPTClass class >> methodCodePiecesFor: aClass [
+
+	| filePaths |
+	filePaths := ((GitAssetLoader for: 'InteractivePongTutorial') loadString: '/assets/methodIndex.txt') lines asOrderedCollection.
+	^ (filePaths select: [:filePath | (filePath includesSubstring: aClass asString)])
+				collect: [:filePath | IPTCodePiece fromFile: filePath].
 ]
 
 {

@@ -10,49 +10,55 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 19:41'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:11'
 }
 IPT class >> open [
+
 	^ self new openChapterView.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 6/19/2024 14:29'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:09'
 }
 IPT >> browser [
+
 	^ browser.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 6/19/2024 14:29'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:10'
 }
 IPT >> browser: aBrowser [
+
 	browser := aBrowser.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 6/19/2024 14:30'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:10'
 }
 IPT >> chapterview [
+
 	^ chapterview.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 6/19/2024 14:30'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:10'
 }
 IPT >> chapterview: aChapterview [
+
 	chapterview := aChapterview.
 ]
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:14'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:10'
 }
 IPT >> closeAllWindows [
+
 	self browser ifNotNil: [
 		self browser close.
 		self browser: nil].
@@ -64,26 +70,29 @@ IPT >> closeAllWindows [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 19:42'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:10'
 }
 IPT >> initialize [
+
 	TheWorldMenu registerOpenCommand: {'Interactive Pong Tutorial'. {self class. #open}}.
 ]
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:05'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:11'
 }
 IPT >> openChapterView [
+
 	self closeAllWindows.
 	self chapterview: (IPTChapterView openFrom: self).
 ]
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:05'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:11'
 }
 IPT >> openLevel: aNumber inChapter: aChapter [
+
 	self closeAllWindows.
 	self browser: (IPTBrowser openFrom: self chapter: aChapter levelIndex: aNumber).
 ]
