@@ -49,19 +49,19 @@ IPTLevel class >> levelIndex [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:33'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:22'
 }
 IPTLevel class >> resultEntryToString: aTestResultEntry [
 	
-	| testedMethod |
-	testedMethod := aTestResultEntry at: #method.
-	testedMethod ifNil: [^ (aTestResultEntry at: #string)].
-	^ testedMethod methodClass asString, '>>', testedMethod selector asSymbol,  ' - ', (aTestResultEntry at: #string)
+	(aTestResultEntry at: #method)
+		ifNotNil: [ :testedMethod |
+			^ testedMethod methodClass asString, '>>', testedMethod selector asSymbol,  ' - ', (aTestResultEntry at: #string)]
+	 	ifNil: [^ (aTestResultEntry at: #string)].
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 7/8/2024 15:36'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:27'
 }
 IPTLevel class >> runTests [
 	"Runs all tests and returns occuring errors and failures"
@@ -78,7 +78,7 @@ IPTLevel class >> runTests [
 				at: #string put: ex printString;
 				at: #method put: instance methodToBeTested;
 				yourself)]
-			on: TestFailure do: [:ex | failures add:  (Dictionary new
+			on: TestFailure do: [:ex | failures add: (Dictionary new
 				at: #string put: ex printString;
 				at: #method put: instance methodToBeTested;
 				yourself)]].
