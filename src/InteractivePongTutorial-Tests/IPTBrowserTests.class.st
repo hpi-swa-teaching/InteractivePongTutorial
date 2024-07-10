@@ -12,7 +12,7 @@ Class {
 
 {
 	#category : #running,
-	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:16'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:06'
 }
 IPTBrowserTests >> setUp [
 
@@ -24,7 +24,10 @@ IPTBrowserTests >> setUp [
 			levels: {IPTMockLevel0101. IPTMockLevel0102}.
 	initialLevelIndex := 2.
 	ipt := IPT new.
-	browser := IPTBrowser openFrom: ipt chapter: chapter levelIndex: initialLevelIndex.
+	browser := IPTBrowser openFrom: ipt 
+		chapter: chapter 
+		levelIndex: initialLevelIndex
+		classSet: IPTMockClass mockClassList.
 	ipt browser: browser.
 ]
 
@@ -272,13 +275,13 @@ IPTBrowserTests >> testPreviousLevelButtonEnabled [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:26'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:14'
 }
 IPTBrowserTests >> testResetButtonAction [
 
 	| codePiece |
 	
-	codePiece := ((browser visibleClassSet at: 1) methodCodePieces at: 1).
+	codePiece := ((browser visibleClassSet first) methodCodePieces first).
 	
 	browser selectCodePiece: codePiece.
 	
@@ -287,7 +290,7 @@ IPTBrowserTests >> testResetButtonAction [
 	browser resetButtonAction.
 	
 	self assert:
-		codePiece code =	(codePiece loadInitialCodeForLevel: browser levelIndex andChapter: chapter chapterNumber).
+		codePiece code =	(codePiece loadInitialCodeForLevel: browser levelIndex andChapter: chapter chapterNumber) code.
 ]
 
 {
@@ -330,7 +333,7 @@ IPTBrowserTests >> testSelectCodePiece [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:26'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:25'
 }
 IPTBrowserTests >> testSolutionButtonAction [
 
@@ -343,7 +346,7 @@ IPTBrowserTests >> testSolutionButtonAction [
 	browser loadSolutionButtonAction.
 	
 	self assert:
-		codePiece code =	(codePiece loadSolutionCodeForLevel: browser levelIndex andChapter: chapter chapterNumber).
+		codePiece code =	(codePiece loadSolutionCodeForLevel: browser levelIndex andChapter: chapter chapterNumber) code.
 ]
 
 {

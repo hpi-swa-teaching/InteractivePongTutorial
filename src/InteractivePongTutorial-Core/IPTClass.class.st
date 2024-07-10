@@ -13,14 +13,21 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:19'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:42'
 }
 IPTClass class >> classList [
 
-	^ {IPTGame. IPTBall. IPTPlayer} collect: [:classSelector | 
-		IPTClass new
-			referencedClass: classSelector;
-			methodCodePieces: (self methodCodePiecesFor: classSelector).].
+	^ {IPTGame. IPTBall. IPTPlayer} collect: [:class | self fromClass: class].
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:42'
+}
+IPTClass class >> fromClass: aClass [
+	^ IPTClass new
+			referencedClass: aClass;
+			methodCodePieces: (self methodCodePiecesFor: aClass).
 ]
 
 {

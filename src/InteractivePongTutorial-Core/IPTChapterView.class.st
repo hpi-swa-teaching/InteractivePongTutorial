@@ -16,12 +16,15 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:55'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:46'
 }
-IPTChapterView class >> openFrom: anIPT [
+IPTChapterView class >> openFrom: anIPT withChapters: aChapterCollection [
 	
 	| chapterView |
-	chapterView := self new ipt: anIPT.
+	chapterView := self new
+		ipt: anIPT;
+		chapters: aChapterCollection;
+		setInitialState.
 	ToolBuilder open: chapterView.
 	^ chapterView.
 ]
@@ -186,21 +189,6 @@ IPTChapterView >> close [
 ]
 
 {
-	#category : #initialization,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:05'
-}
-IPTChapterView >> initialize [
-
-	self 
-		chapters: IPTChapter chapterSet;
-		selectedChapter: self chapters first;
-		selectedLevel: (self levels 
-			ifEmpty: [nil]
-			ifNotEmpty: [self levels first]).
-	
-]
-
-{
 	#category : #accessing,
 	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:05'
 }
@@ -317,6 +305,19 @@ IPTChapterView >> selectedLevel [
 IPTChapterView >> selectedLevel: aLevel [
 
 	selectedLevel := aLevel.
+]
+
+{
+	#category : #actions,
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:45'
+}
+IPTChapterView >> setInitialState [
+
+	self 
+		selectedChapter: self chapters first;
+		selectedLevel: (self levels 
+			ifEmpty: [nil]
+			ifNotEmpty: [self levels first]).
 ]
 
 {

@@ -1,7 +1,7 @@
 Class {
 	#name : #IPTMockLevel0101,
 	#superclass : #IPTLevel,
-	#category : #'InteractivePongTutorial-Tests'
+	#category : #'InteractivePongTutorial-Levels'
 }
 
 {
@@ -42,18 +42,19 @@ IPTMockLevel0101 class >> levelIndex [
 
 {
 	#category : #information,
-	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:09'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:04'
 }
 IPTMockLevel0101 class >> visibleMethods [
 
-	^ {IPTMockClass>>#mockMethod}.
+	^ {IPTMockGame>>#mockMethod}.
 ]
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:06'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:27'
 }
 IPTMockLevel0101 >> testMockMethod [
 	
-	self assert: IPTMockClass new mockMethod description: 'mockMethod not changed'.
+	self methodToBeTested: (IPTMockGame >> #mockMethod).
+	self assert: IPTMockGame new mockMethod = true description: 'mockMethod not changed'.
 ]

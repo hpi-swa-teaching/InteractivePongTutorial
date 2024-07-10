@@ -1,7 +1,7 @@
 [
 	SquotTonelMapper {
 		#package : MCPackage {
-			#name : 'InteractivePongTutorial-Levels'
+			#name : 'InteractivePongTutorial-Tests'
 		},
 		#path : FSAbsolutePath [
 			'src'
@@ -28,14 +28,6 @@
 			'assets',
 			'IPTPlayer',
 			'move:.txt'
-		],
-		#encoding : 'TXT'
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'assets',
-			'IPTMockClass',
-			'mockMethod.txt'
 		],
 		#encoding : 'TXT'
 	},
@@ -109,6 +101,14 @@
 			'assets',
 			'IPTBall',
 			'turnVertical.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTMockGame',
+			'mockMethod.txt'
 		],
 		#encoding : 'TXT'
 	},
@@ -392,7 +392,7 @@
 	},
 	SquotTonelMapper {
 		#package : MCPackage {
-			#name : 'InteractivePongTutorial-Tests'
+			#name : 'InteractivePongTutorial-Levels'
 		},
 		#path : @4
 	}

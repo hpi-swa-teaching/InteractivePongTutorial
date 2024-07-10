@@ -19,18 +19,18 @@ IPTGame class >> open [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:31'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:01'
 }
 IPTGame >> ball [
-	"Return the value of ball."
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:31'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:01'
 }
 IPTGame >> ball: aBall [
-	"To update ball you should set ball to the given input."
+	
 ]
 
 {
@@ -44,27 +44,27 @@ IPTGame >> handlesKeyboard: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:31'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:01'
 }
 IPTGame >> initialize [
+	"Please change the color to black."
 	super initialize.
 	self 
-		color: Color black;
+		color: Color blue;
 		beSticky.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:31'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:01'
 }
 IPTGame >> initializeBall [
-	"You should set ball to a new IPTBall and then add the Morph.
-	To see it you should also set the position of the ball so it is in the center of the game."
+	
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:31'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:01'
 }
 IPTGame >> initializePlayers [
 	
@@ -121,7 +121,7 @@ IPTGame >> playerBounds [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:31'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:01'
 }
 IPTGame >> playerLeft [
 	
@@ -129,7 +129,7 @@ IPTGame >> playerLeft [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:31'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:01'
 }
 IPTGame >> playerLeft: aPlayer [
 	
@@ -137,7 +137,7 @@ IPTGame >> playerLeft: aPlayer [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:31'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:01'
 }
 IPTGame >> playerRight [
 	
@@ -145,7 +145,7 @@ IPTGame >> playerRight [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:31'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:01'
 }
 IPTGame >> playerRight: aPlayer [
 	
