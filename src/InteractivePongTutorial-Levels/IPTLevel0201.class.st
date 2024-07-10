@@ -19,20 +19,24 @@ IPTLevel0201 class >> asString [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:23'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:36'
 }
 IPTLevel0201 class >> description [
 	
-	^ 'This is a description'.
+	^ 'In this Level you will implement the Player class and connect it to the already existing game'.
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 12:54'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:52'
 }
 IPTLevel0201 class >> explanations [
 	
-	^ {''.}.
+	^ {'Until now we only had a game and a ball bouncing around in it. To be able to really call it a game you should now implement the IPTPlayer class for some action.'.
+		'Similiar to how you went about implementing the Ball, you will now first write an initialize Method for the player and then the initializePlayers method for the game. Be aware that you need to set two Players. Looking at the getter and setter may help.'.
+		'If you are unsure how to proceed or a stuck at a method there are some hints following.'.
+		'Hint 1: To set the speed to 0 you can call the "stop" method on a morph.'.
+		'Hint 2: You need to create two players in initializePlayers, playerLeft and playerRight. They should be placed "offset" away from the center of the game. Don´t forget to add the Morphs.'.}.
 ]
 
 {
