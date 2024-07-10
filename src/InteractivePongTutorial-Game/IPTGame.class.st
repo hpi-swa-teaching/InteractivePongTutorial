@@ -19,7 +19,7 @@ IPTGame class >> open [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:56'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 18:58'
 }
 IPTGame >> ball [
 	"Return the value of ball."
@@ -27,7 +27,7 @@ IPTGame >> ball [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:56'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 18:58'
 }
 IPTGame >> ball: aBall [
 	"To update ball you should set ball to the given input."
@@ -44,7 +44,7 @@ IPTGame >> handlesKeyboard: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:56'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 18:58'
 }
 IPTGame >> initialize [
 	super initialize.
@@ -55,7 +55,7 @@ IPTGame >> initialize [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:56'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 18:58'
 }
 IPTGame >> initializeBall [
 	"You should set ball to a new IPTBall and then add the Morph.
@@ -64,7 +64,7 @@ IPTGame >> initializeBall [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:56'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 18:58'
 }
 IPTGame >> initializePlayers [
 	
@@ -121,7 +121,7 @@ IPTGame >> playerBounds [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:56'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 18:58'
 }
 IPTGame >> playerLeft [
 	
@@ -129,7 +129,7 @@ IPTGame >> playerLeft [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:56'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 18:58'
 }
 IPTGame >> playerLeft: aPlayer [
 	
@@ -137,7 +137,7 @@ IPTGame >> playerLeft: aPlayer [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:56'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 18:58'
 }
 IPTGame >> playerRight [
 	
@@ -145,7 +145,7 @@ IPTGame >> playerRight [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:56'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 18:58'
 }
 IPTGame >> playerRight: aPlayer [
 	

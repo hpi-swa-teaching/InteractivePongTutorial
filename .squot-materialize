@@ -1,7 +1,7 @@
 [
 	SquotTonelMapper {
 		#package : MCPackage {
-			#name : 'InteractivePongTutorial-Tests'
+			#name : 'InteractivePongTutorial-Levels'
 		},
 		#path : FSAbsolutePath [
 			'src'
@@ -392,7 +392,7 @@
 	},
 	SquotTonelMapper {
 		#package : MCPackage {
-			#name : 'InteractivePongTutorial-Levels'
+			#name : 'InteractivePongTutorial-Tests'
 		},
 		#path : @4
 	}
