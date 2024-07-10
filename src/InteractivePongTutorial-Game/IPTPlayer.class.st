@@ -14,7 +14,7 @@ Class {
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:27'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:01'
 }
 IPTPlayer >> defaultSpeed [
 	
@@ -22,7 +22,7 @@ IPTPlayer >> defaultSpeed [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:27'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:01'
 }
 IPTPlayer >> down [
 	
@@ -30,7 +30,7 @@ IPTPlayer >> down [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:27'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:01'
 }
 IPTPlayer >> game [
 	
@@ -38,7 +38,7 @@ IPTPlayer >> game [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:27'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:01'
 }
 IPTPlayer >> game: aGame [
 	
@@ -46,7 +46,7 @@ IPTPlayer >> game: aGame [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:27'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:01'
 }
 IPTPlayer >> initialize [
 	
@@ -54,7 +54,7 @@ IPTPlayer >> initialize [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:27'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:01'
 }
 IPTPlayer >> move: aNumber [
 	
@@ -62,7 +62,7 @@ IPTPlayer >> move: aNumber [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:27'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:01'
 }
 IPTPlayer >> speed [
 	
@@ -70,7 +70,7 @@ IPTPlayer >> speed [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:27'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:01'
 }
 IPTPlayer >> speed: aNumber [
 	
@@ -78,7 +78,7 @@ IPTPlayer >> speed: aNumber [
 
 {
 	#category : #stepping,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:27'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:01'
 }
 IPTPlayer >> step [
 	
@@ -94,7 +94,7 @@ IPTPlayer >> stepTime [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:27'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:01'
 }
 IPTPlayer >> stop [
 	
@@ -102,7 +102,7 @@ IPTPlayer >> stop [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:27'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:01'
 }
 IPTPlayer >> up [
 	

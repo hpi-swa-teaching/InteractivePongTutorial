@@ -23,7 +23,7 @@ IPTGame class >> open [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:27'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:01'
 }
 IPTGame >> ball [
 	^ ball.
@@ -31,7 +31,7 @@ IPTGame >> ball [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:27'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:01'
 }
 IPTGame >> ball: aBall [
 	ball := aBall.
@@ -48,7 +48,7 @@ IPTGame >> handlesKeyboard: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:27'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:01'
 }
 IPTGame >> initialize [
 	super initialize.
@@ -59,16 +59,19 @@ IPTGame >> initialize [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:27'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:01'
 }
 IPTGame >> initializeBall [
-	"You should set ball to a new IPTBall and then add the Morph.
-	To see it you should also set the position of the ball so it is in the center of the game."
+	"Instead of setting the Position of the ball you should now call the method starOver."
+	self 
+		ball: (IPTBall new game: self);
+		addMorph: self ball.
+	self ball center: self center.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:27'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:01'
 }
 IPTGame >> initializePlayers [
 	
@@ -125,7 +128,7 @@ IPTGame >> playerBounds [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:27'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:01'
 }
 IPTGame >> playerLeft [
 	
@@ -133,7 +136,7 @@ IPTGame >> playerLeft [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:27'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:01'
 }
 IPTGame >> playerLeft: aPlayer [
 	
@@ -141,7 +144,7 @@ IPTGame >> playerLeft: aPlayer [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:27'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:01'
 }
 IPTGame >> playerRight [
 	
@@ -149,7 +152,7 @@ IPTGame >> playerRight [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:27'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:01'
 }
 IPTGame >> playerRight: aPlayer [
 	

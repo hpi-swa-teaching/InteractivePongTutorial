@@ -28,22 +28,8 @@ initialize
 1
 4
 °°
-	"You dont need to set the speed anymore, it should be done in startOver"
 	super initialize.
 	self 
 		color: Color white;
 		extent: self defaultExtent;
 		speed: self defaultSpeed @ self defaultSpeed.
-°°
-	super initialize.
-	self 
-		color: Color white;
-		extent: self defaultExtent.
-°°°°°
-1
-5
-°°
-	super initialize.
-		self 
-			color: Color white;
-			extent: self defaultExtent.

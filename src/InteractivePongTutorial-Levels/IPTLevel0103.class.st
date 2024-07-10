@@ -117,9 +117,10 @@ IPTLevel0103 >> testBallTurnHorizontal [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 11:51'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 11:45'
 }
 IPTLevel0103 >> testBallTurnVertical [
+
 	| expectedSpeed |
 	self methodToBeTested: (IPTBall >> #turnVertical).
 	
