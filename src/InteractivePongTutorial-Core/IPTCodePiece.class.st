@@ -53,25 +53,28 @@ IPTCodePiece class >> fromFile: aFilePath [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/17/2024 12:19'
+	#category : #actions,
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:07'
 }
 IPTCodePiece >> addHeadToCode: aCodeString [
+
 	^ self head, Character cr, Character tab, aCodeString.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:08'
+	#category : #actions,
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:08'
 }
 IPTCodePiece >> checkSyntax: aString [
 	
-	self readOnly ifTrue: [^ 'You cannot change this code!'].	
+	self readOnly 
+		ifTrue: [^ 'You cannot change this code!'].	
 
 	(((aString splitBy: {Character cr}) at: 1) withBlanksTrimmed = self head)
 		ifFalse: [^ 'You must leave the head line unchanged!'].
 	
 	self code: aString.
+	
 	^ ''.
 
 ]
@@ -87,14 +90,15 @@ IPTCodePiece >> code [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/12/2024 13:48'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:08'
 }
-IPTCodePiece >> code: anObject [
-	code := anObject
+IPTCodePiece >> code: aString [
+
+	code := aString.
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #actions,
 	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:14'
 }
 IPTCodePiece >> compileCode [
@@ -104,46 +108,51 @@ IPTCodePiece >> compileCode [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/17/2024 12:10'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:08'
 }
 IPTCodePiece >> head [
-	^ head
+
+	^ head.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/17/2024 12:10'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:09'
 }
-IPTCodePiece >> head: anObject [
-	head := anObject
+IPTCodePiece >> head: aString [
+
+	head := aString.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 19:53'
+	#category : #actions,
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:09'
 }
 IPTCodePiece >> isClass [
+
 	^ self referencedMethod isNil.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 14:47'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:09'
 }
 IPTCodePiece >> isGreen [
-	^ isGreen
+
+	^ isGreen.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 14:47'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:09'
 }
-IPTCodePiece >> isGreen: anObject [
-	isGreen := anObject
+IPTCodePiece >> isGreen: aBoolean [
+
+	isGreen := aBoolean.
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #actions,
 	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:11'
 }
 IPTCodePiece >> isSameSourceAs: aCompiledMethod [
@@ -176,7 +185,7 @@ IPTCodePiece >> loadSolutionCodeForLevel: aLevelIndex andChapter: aChapterNumber
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #accessing,
 	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:12'
 }
 IPTCodePiece >> name [
@@ -186,54 +195,60 @@ IPTCodePiece >> name [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 15:50'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:10'
 }
 IPTCodePiece >> readOnly [
-	^ readOnly
+
+	^ readOnly.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 15:50'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:10'
 }
-IPTCodePiece >> readOnly: anObject [
-	readOnly := anObject
+IPTCodePiece >> readOnly: aBoolean [
+
+	readOnly := aBoolean.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 19:38'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:11'
 }
 IPTCodePiece >> referencedClass [
-	^ referencedClass
+
+	^ referencedClass.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 19:38'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:11'
 }
-IPTCodePiece >> referencedClass: anObject [
-	referencedClass := anObject
+IPTCodePiece >> referencedClass: aClass [
+
+	referencedClass := aClass.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 19:38'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:11'
 }
 IPTCodePiece >> referencedMethod [
-	^ referencedMethod
+
+	^ referencedMethod.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 19:38'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:11'
 }
-IPTCodePiece >> referencedMethod: anObject [
-	referencedMethod := anObject
+IPTCodePiece >> referencedMethod: aMethod [
+
+	referencedMethod := aMethod.
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #actions,
 	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:15'
 }
 IPTCodePiece >> variantForLevel: aLevelIndex fromChapter: aChapterNumber [
@@ -245,16 +260,18 @@ IPTCodePiece >> variantForLevel: aLevelIndex fromChapter: aChapterNumber [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 11:39'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:12'
 }
 IPTCodePiece >> variants [
-	^ variants
+
+	^ variants.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 11:39'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:12'
 }
-IPTCodePiece >> variants: anObject [
-	variants := anObject
+IPTCodePiece >> variants: aCodePieceVariant [
+
+	variants := aCodePieceVariant.
 ]

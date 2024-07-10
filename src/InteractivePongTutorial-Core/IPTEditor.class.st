@@ -36,33 +36,37 @@ IPTEditor >> aboutToStyle: aStyler [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 6/19/2024 14:37'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:18'
 }
 IPTEditor >> browser [
+
 	^ browser.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 6/19/2024 14:38'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:18'
 }
-IPTEditor >> browser: anObject [
-	browser := anObject.
+IPTEditor >> browser: anIPTBrowser [
+
+	browser := anIPTBrowser.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:01'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:18'
 }
 IPTEditor >> codePiece [
+
 	^ activeCodePiece.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:23'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:18'
 }
 IPTEditor >> codePiece: aCodePiece [
+
 	activeCodePiece := aCodePiece.
 		
 		
@@ -93,9 +97,10 @@ IPTEditor >> contents: input notifying: aController [
 
 {
 	#category : #evaluating,
-	#'squeak_changestamp' : 'FH 6/19/2024 14:39'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:19'
 }
 IPTEditor >> evaluateExpression: aString [
+
 	UIManager default inform: 'Please use the "Verify" button to test your code'.
 	^ nil.
 ]
@@ -122,16 +127,18 @@ IPTEditor >> setCodePiece: aCodePiece [
 
 {
 	#category : #style,
-	#'squeak_changestamp' : 'FH 6/19/2024 14:39'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:19'
 }
 IPTEditor >> wantsAnnotationPane [
+
 	^ false.
 ]
 
 {
 	#category : #style,
-	#'squeak_changestamp' : 'Josua Zehner 7/4/2024 19:03'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:19'
 }
 IPTEditor >> wantsOptionalButtons [
+
 	^ false.
 ]

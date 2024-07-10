@@ -1,3 +1,6 @@
+"
+This class contains the Code for the Ball of the IPT. It is changed via the Code in the editor.
+"
 Class {
 	#name : #IPTBall,
 	#superclass : #Morph,
@@ -5,7 +8,8 @@ Class {
 		'game',
 		'speed'
 	],
-	#category : #'InteractivePongTutorial-Game'
+	#category : #'InteractivePongTutorial-Game',
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 11:19'
 }
 
 {
