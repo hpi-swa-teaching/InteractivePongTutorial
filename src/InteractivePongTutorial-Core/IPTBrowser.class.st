@@ -1,3 +1,6 @@
+"
+This class is responsible for displaying the Methods, Content of the Levels and most UI elements. It also connects CodePieces, editor and the playground
+"
 Class {
 	#name : #IPTBrowser,
 	#superclass : #Model,
@@ -14,7 +17,8 @@ Class {
 		'playground',
 		'squeaky'
 	],
-	#category : #'InteractivePongTutorial-Core'
+	#category : #'InteractivePongTutorial-Core',
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 10:38'
 }
 
 {

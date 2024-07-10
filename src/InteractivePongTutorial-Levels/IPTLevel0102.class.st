@@ -1,7 +1,11 @@
+"
+This class contains the informations for Level 2 in Chapter 1. It is a Subclass of IPTLevel.
+"
 Class {
 	#name : #IPTLevel0102,
 	#superclass : #IPTLevel,
-	#category : #'InteractivePongTutorial-Levels'
+	#category : #'InteractivePongTutorial-Levels',
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 11:24'
 }
 
 {

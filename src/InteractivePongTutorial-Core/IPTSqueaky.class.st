@@ -1,10 +1,14 @@
+"
+This class contains the Squeaky images and Displays it.
+"
 Class {
 	#name : #IPTSqueaky,
 	#superclass : #ImageMorph,
 	#instVars : [
 		'mood'
 	],
-	#category : #'InteractivePongTutorial-Core'
+	#category : #'InteractivePongTutorial-Core',
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 11:17'
 }
 
 {

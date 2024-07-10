@@ -1,3 +1,6 @@
+"
+This class creates the Methodvariants for the different levels. They are loaded from the Assets.
+"
 Class {
 	#name : #IPTCodeVariant,
 	#superclass : #Object,
@@ -8,7 +11,8 @@ Class {
 		'solutionCode',
 		'readOnly'
 	],
-	#category : #'InteractivePongTutorial-Core'
+	#category : #'InteractivePongTutorial-Core',
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 11:09'
 }
 
 {

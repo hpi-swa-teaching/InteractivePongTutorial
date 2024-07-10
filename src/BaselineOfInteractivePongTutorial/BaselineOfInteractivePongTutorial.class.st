@@ -6,7 +6,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 10:46'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:18'
 }
 BaselineOfInteractivePongTutorial >> baseline: spec [
 	<baseline>
@@ -21,11 +21,8 @@ BaselineOfInteractivePongTutorial >> baseline: spec [
 				package: 'InteractivePongTutorial-Levels' with: [spec requires: #('InteractivePongTutorial-Game')];             
 			   	package: 'InteractivePongTutorial-Core' with: [spec requires: #('Squot' 'InteractivePongTutorial-Levels' 'InteractivePongTutorial-Game'); postLoadDoIt: #postLoad];
 	      		package: 'InteractivePongTutorial-Tests' with: [spec requires: #('default')];
-	                yourself.
-	            spec
-			    group: 'default' with: #('InteractivePongTutorial-Core' 'InteractivePongTutorial-Game' 'InteractivePongTutorial-Levels');
-	                group: 'tests' with: #('InteractivePongTutorial-Tests');
-	                yourself].
+			      group: 'default' with: #('InteractivePongTutorial-Core' 'InteractivePongTutorial-Game' 'InteractivePongTutorial-Levels');
+	                  group: 'tests' with: #('InteractivePongTutorial-Tests')].
 ]
 
 {

@@ -1,3 +1,6 @@
+"
+This class contains the code for its referenced methods and loads it from the Assets.
+"
 Class {
 	#name : #IPTCodePiece,
 	#superclass : #Object,
@@ -11,7 +14,8 @@ Class {
 		'referencedClass',
 		'parent'
 	],
-	#category : #'InteractivePongTutorial-Core'
+	#category : #'InteractivePongTutorial-Core',
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 10:42'
 }
 
 {
