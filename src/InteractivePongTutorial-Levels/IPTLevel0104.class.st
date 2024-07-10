@@ -87,28 +87,71 @@ IPTLevel0104 >> testBallStartOver [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:37'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:01'
 }
-IPTLevel0104 >> testGameInitialize [
-	self methodToBeTested: (IPTGame >> #initialize).
+IPTLevel0104 >> testBallStep [
+
+	| expectedPosition  expectedSpeed |
+	self methodToBeTested: (IPTBall >> #step).
 	
-	self assert: (ball isKindOf: IPTBall) description: 'You may not return a value!'.
-	self assert: ball color isNil not description: 'Have you initialized the morph?'.
-	self assert: (ball color = Color white) description: 'You did not choose the right color!'.
-	self assert: (ball extent = ball defaultExtent) description: 'You should set the extent to defaultExtent'.
+	expectedPosition := ball position + ball speed.
+	expectedSpeed := ball speed negated.
+	
+	ball step.
+	self assert: (ball position = expectedPosition) description: 'You did not update the position correctly'.
+	
+	ball position: ball game left -1.
+	ball speed: -1.
+	ball step.
+	self assert: (ball center = game center) description: 'You should call startOver when the ball reaches the left wall'.
+	
+	ball position: (ball game right - ball width + 1).
+	ball speed: 1.
+	ball step.
+	self assert: (ball center = game center) description: 'You should call startOver when the ball reaches the right wall'.
 ]
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:37'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 13:48'
+}
+IPTLevel0104 >> testBallcheckCollisionWithWalls [
+
+	| expectedSpeed |
+	
+	self methodToBeTested: (IPTBall >> #checkCollisionWithWalls).	
+		
+	ball position: ball game left -1.
+	ball checkCollisionWithWalls.
+	self assert: (ball center = game center) description: 'You should call startOver when the ball reaches the left wall'.
+	
+	ball position: (ball game right - ball width + 1).
+	ball checkCollisionWithWalls.
+	self assert: (ball center = game center) description: 'You should call startOver when the ball reaches the right wall'.
+		
+	expectedSpeed := ball speed x @ ball speed y negated.	
+	ball position: (ball game center x)@(ball game top - 1).
+	ball checkCollisionWithWalls.
+	self assert: (ball speed = expectedSpeed) description: 'You should change the speed when the ball reaches the top'.
+	.
+	expectedSpeed := ball speed x @ ball speed y negated.
+	ball position: (ball game bottom - ball height +1).
+	ball checkCollisionWithWalls.
+	self assert: (ball speed = expectedSpeed) description: 'You should change the speed when the ball reaches the bottom'.
+]
+
+{
+	#category : #levelTests,
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 12:15'
 }
 IPTLevel0104 >> testGameInitializeBall [
 	self methodToBeTested: (IPTGame >> #initializeBall).
 	
 	game initializeBall.
 	self assert: (game ball isKindOf: IPTBall) description: 'Ball should be of class Ball'.
-	self assert: (game ball center = game center) description: 'You should position the Ball in the center of the game'.
-	self assert: (ball speed = (ball defaultSpeed @ ball defaultSpeed)) description: 'You did not set the speed correctly (speed is saved as Point x @ y)'.
+	
+	self assert: (game ball center = game center) description: 'You should call startOver'.
+	
 
 
 ]

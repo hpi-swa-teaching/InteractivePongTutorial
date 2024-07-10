@@ -83,20 +83,20 @@ IPT >> initialize [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:11'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:37'
 }
 IPT >> openChapterView [
 
 	self closeAllWindows.
-	self chapterview: (IPTChapterView openFrom: self).
+	self chapterview: (IPTChapterView openFrom: self withChapters: IPTChapter chapterSet).
 ]
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:11'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:53'
 }
 IPT >> openLevel: aNumber inChapter: aChapter [
 
 	self closeAllWindows.
-	self browser: (IPTBrowser openFrom: self chapter: aChapter levelIndex: aNumber).
+	self browser: (IPTBrowser openFrom: self chapter: aChapter levelIndex: aNumber classSet: IPTClass classList).
 ]

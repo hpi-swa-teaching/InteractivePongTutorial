@@ -23,14 +23,15 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:24'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:52'
 }
-IPTBrowser class >> openFrom: anIPT chapter: aChapter levelIndex: aNumber [
+IPTBrowser class >> openFrom: anIPT chapter: aChapter levelIndex: aNumber classSet: anIPTClassCollection [
 
 	| browser |
 	browser := self new 
 		ipt: anIPT;
 		chapter: aChapter;
+		classSet: anIPTClassCollection;
 		loadLevel: aNumber.
 	ToolBuilder open: browser.
 	browser changed: #expandRootsRequested.
@@ -464,15 +465,14 @@ IPTBrowser >> homeButtonAction [
 ]
 
 {
-	#category : #'initialize-release',
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:29'
+	#category : #initialization,
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:57'
 }
 IPTBrowser >> initialize [
 
 	super initialize.
 	self 
 		codeEditor: (IPTEditor openOnBrowser: self);
-		classSet: IPTClass classList;
 		playground: IPTPlayground new;
 		squeaky: IPTSqueaky new.
 ]
@@ -907,7 +907,7 @@ IPTBrowser >> updateSqueaky [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:54'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:09'
 }
 IPTBrowser >> updateVisibleClassSetToMethods: aMethodsCollection [	
 	

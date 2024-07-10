@@ -12,7 +12,7 @@ Class {
 }
 
 {
-	#category : #'as yet unclassified',
+	#category : #displaying,
 	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 19:06'
 }
 IPTSqueaky >> drawOn: aCanvas [
@@ -24,23 +24,25 @@ IPTSqueaky >> drawOn: aCanvas [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 18:33'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:24'
 }
 IPTSqueaky >> mood [
-	^ mood
+
+	^ mood.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 19:02'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:24'
 }
 IPTSqueaky >> mood: aSelector [
+
 	mood := aSelector.
 	self updateImage.
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #displaying,
 	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:29'
 }
 IPTSqueaky >> setImageFromPath: anImagePath [
@@ -49,10 +51,11 @@ IPTSqueaky >> setImageFromPath: anImagePath [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 17:35'
+	#category : #accessing,
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:23'
 }
 IPTSqueaky >> squeakyPaths [
+
 	^ Dictionary new 
 		at: #sad put: 'assets/squeaky-sad.png';
 		at: #happy put: 'assets/squeaky-happy.png';
@@ -61,7 +64,7 @@ IPTSqueaky >> squeakyPaths [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #displaying,
 	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:31'
 }
 IPTSqueaky >> updateImage [

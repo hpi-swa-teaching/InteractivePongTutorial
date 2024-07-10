@@ -8,7 +8,7 @@ Class {
 }
 
 {
-	#category : #'as yet unclassified',
+	#category : #running,
 	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:22'
 }
 IPTLevelTests >> setUp [
@@ -18,7 +18,7 @@ IPTLevelTests >> setUp [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #running,
 	#'squeak_changestamp' : 'sv 7/3/2024 10:08'
 }
 IPTLevelTests >> tearDown [
@@ -27,7 +27,7 @@ IPTLevelTests >> tearDown [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #testing,
 	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 11:44'
 }
 IPTLevelTests >> testInitialState [
@@ -45,7 +45,7 @@ IPTLevelTests >> testInitialState [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #testing,
 	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:23'
 }
 IPTLevelTests >> testLevelDescriptions [
@@ -57,7 +57,7 @@ IPTLevelTests >> testLevelDescriptions [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #testing,
 	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 11:40'
 }
 IPTLevelTests >> testSolutionCode [

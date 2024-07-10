@@ -19,18 +19,18 @@ IPTGame class >> open [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:09'
 }
 IPTGame >> ball [
-	
+	"Return the value of ball."
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:09'
 }
 IPTGame >> ball: aBall [
-	
+	"To update ball you should set ball to the given input."
 ]
 
 {
@@ -43,7 +43,7 @@ IPTGame >> handlesKeyboard: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:07'
 }
 IPTGame >> initialize [
 	"Please change the color to black."
@@ -55,15 +55,16 @@ IPTGame >> initialize [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:09'
 }
 IPTGame >> initializeBall [
-	
+	"You should set ball to a new IPTBall and then add the Morph.
+	To see it you should also set the position of the ball so it is in the center of the game."
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:07'
 }
 IPTGame >> initializePlayers [
 	
@@ -113,7 +114,7 @@ IPTGame >> playerBounds [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:07'
 }
 IPTGame >> playerLeft [
 	
@@ -121,7 +122,7 @@ IPTGame >> playerLeft [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:07'
 }
 IPTGame >> playerLeft: aPlayer [
 	
@@ -129,7 +130,7 @@ IPTGame >> playerLeft: aPlayer [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:07'
 }
 IPTGame >> playerRight [
 	
@@ -137,7 +138,7 @@ IPTGame >> playerRight [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:07'
 }
 IPTGame >> playerRight: aPlayer [
 	

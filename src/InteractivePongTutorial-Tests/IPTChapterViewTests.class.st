@@ -9,27 +9,28 @@ Class {
 }
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:21'
+	#category : #actions,
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:35'
 }
 IPTChapterViewTests >> selectChapterTwoLevelOne [
 	
-	chapterview selectChapter: (IPTChapter chapterSet at: 2).
+	chapterview selectChapter: chapterview chapters second.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 11:45'
+	#category : #running,
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:44'
 }
 IPTChapterViewTests >> setUp [
 
 	super setUp.
-	ipt := IPT new openChapterView.
-	chapterview := ipt chapterview.
+	ipt := IPT new.
+	chapterview := IPTChapterView openFrom: ipt withChapters: IPTMockInfos mockChapterSet.
+	ipt chapterview: chapterview.
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #running,
 	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:23'
 }
 IPTChapterViewTests >> tearDown [
@@ -39,7 +40,7 @@ IPTChapterViewTests >> tearDown [
 ]
 
 {
-	#category : #building,
+	#category : #'testing-builds',
 	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:13'
 }
 IPTChapterViewTests >> testBuildChapterDescriptionBoxWith [
@@ -52,7 +53,7 @@ IPTChapterViewTests >> testBuildChapterDescriptionBoxWith [
 ]
 
 {
-	#category : #building,
+	#category : #'testing-builds',
 	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:25'
 }
 IPTChapterViewTests >> testBuildChapterListWith [
@@ -65,7 +66,7 @@ IPTChapterViewTests >> testBuildChapterListWith [
 ]
 
 {
-	#category : #building,
+	#category : #'testing-builds',
 	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 16:52'
 }
 IPTChapterViewTests >> testBuildColumnAreaSpecWith [
@@ -79,7 +80,7 @@ IPTChapterViewTests >> testBuildColumnAreaSpecWith [
 ]
 
 {
-	#category : #building,
+	#category : #'testing-builds',
 	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:13'
 }
 IPTChapterViewTests >> testBuildLevelDescriptionBoxWith [
@@ -92,7 +93,7 @@ IPTChapterViewTests >> testBuildLevelDescriptionBoxWith [
 ]
 
 {
-	#category : #building,
+	#category : #'testing-builds',
 	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:24'
 }
 IPTChapterViewTests >> testBuildLevelListWith [
@@ -105,7 +106,7 @@ IPTChapterViewTests >> testBuildLevelListWith [
 ]
 
 {
-	#category : #building,
+	#category : #'testing-builds',
 	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:32'
 }
 IPTChapterViewTests >> testBuildStartButtonWith [
@@ -118,18 +119,19 @@ IPTChapterViewTests >> testBuildStartButtonWith [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:21'
+	#category : #testing,
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:46'
 }
 IPTChapterViewTests >> testCanStartLevel [
 
-	self assert: chapterview canStartLevel == false.
-	self selectChapterTwoLevelOne.
-	self	 assert: chapterview canStartLevel == true.
+	chapterview selectLevel: nil.
+	self assert: chapterview canStartLevel = false.
+	chapterview selectChapter: chapterview chapters second.
+	self	 assert: chapterview canStartLevel = true.
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #testing,
 	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 20:22'
 }
 IPTChapterViewTests >> testInitialState [
@@ -139,7 +141,7 @@ IPTChapterViewTests >> testInitialState [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #testing,
 	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 20:08'
 }
 IPTChapterViewTests >> testNoLevelSelected [
@@ -149,7 +151,7 @@ IPTChapterViewTests >> testNoLevelSelected [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #testing,
 	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 20:23'
 }
 IPTChapterViewTests >> testSelectChapter [
@@ -163,7 +165,7 @@ IPTChapterViewTests >> testSelectChapter [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #testing,
 	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 20:23'
 }
 IPTChapterViewTests >> testSelectLevel [
@@ -189,7 +191,7 @@ IPTChapterViewTests >> testSelectLevel [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #testing,
 	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:23'
 }
 IPTChapterViewTests >> testStartLevel [

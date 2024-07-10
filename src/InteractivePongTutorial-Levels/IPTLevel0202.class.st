@@ -19,20 +19,23 @@ IPTLevel0202 class >> asString [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'FH 7/10/2024 10:06'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:37'
 }
 IPTLevel0202 class >> description [
 	
-	^ 'This is a description'.
+	^ 'In this Chapter you will implement the foundations of the movement for the Player class'.
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'FH 7/10/2024 10:07'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:09'
 }
 IPTLevel0202 class >> explanations [
 	
-	^ {''.}.
+	^ {'We now have a player but it cant really do much. We want it to be able to move. Therefore you should implement the step and move methods. The step method should be similar to the one you wrote for the ball. '.
+		'If you are unsure how to proceed or a stuck at a method there are some hints following.'.
+		'Hint 1: You should set the new center of the player by adding a new point with 0 as x value and the input clamped to the game border as y value'.
+		'Hint 2: You can clamp the y value by using: "input" min: "upper border" max: "lower border".'.}.
 ]
 
 {

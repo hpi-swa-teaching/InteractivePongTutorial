@@ -11,8 +11,7 @@ step
 4
 °°
 	"You should now also check for Collisions with walls."
-
-		self position: self position + self speed.
+	self position: self position + self speed.
 °°
 	self position: self position + self speed.
 	self checkCollisionWithWalls.

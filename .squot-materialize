@@ -241,7 +241,7 @@
 		#path : FSAbsolutePath [
 			'assets',
 			'IPTGame',
-			'playerLeft.txt'
+			'playerRight:.txt'
 		],
 		#encoding : 'TXT'
 	},
@@ -249,7 +249,7 @@
 		#path : FSAbsolutePath [
 			'assets',
 			'IPTGame',
-			'playerRight:.txt'
+			'playerLeft.txt'
 		],
 		#encoding : 'TXT'
 	},
@@ -309,8 +309,8 @@
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
 			'assets',
-			'IPTBall',
-			'checkCollisions.txt'
+			'IPTGame',
+			'initialize.txt'
 		],
 		#encoding : 'TXT'
 	},
@@ -333,8 +333,8 @@
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
 			'assets',
-			'IPTGame',
-			'initialize.txt'
+			'IPTMockGame',
+			'mockMethod.txt'
 		],
 		#encoding : 'TXT'
 	},
@@ -356,6 +356,14 @@
 			'assets',
 			'IPTBall',
 			'checkCollisionWithPlayer.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTBall',
+			'checkCollisions.txt'
 		],
 		#encoding : 'TXT'
 	},

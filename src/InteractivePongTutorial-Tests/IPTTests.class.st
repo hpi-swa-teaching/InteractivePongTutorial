@@ -8,7 +8,7 @@ Class {
 }
 
 {
-	#category : #'as yet unclassified',
+	#category : #running,
 	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 11:26'
 }
 IPTTests >> setUp [
@@ -16,7 +16,7 @@ IPTTests >> setUp [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #running,
 	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:07'
 }
 IPTTests >> tearDown [
@@ -25,7 +25,7 @@ IPTTests >> tearDown [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #testing,
 	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:12'
 }
 IPTTests >> testCloseAllWindows [
@@ -37,7 +37,7 @@ IPTTests >> testCloseAllWindows [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #testing,
 	#'squeak_changestamp' : 'sv 7/2/2024 16:14'
 }
 IPTTests >> testOpen [
@@ -51,7 +51,7 @@ IPTTests >> testOpen [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #testing,
 	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:14'
 }
 IPTTests >> testOpenBrowser [
@@ -60,7 +60,7 @@ IPTTests >> testOpenBrowser [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #testing,
 	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:10'
 }
 IPTTests >> testOpenChapterView [

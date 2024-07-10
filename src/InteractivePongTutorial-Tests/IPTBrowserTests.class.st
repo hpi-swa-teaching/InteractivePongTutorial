@@ -11,21 +11,24 @@ Class {
 }
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'sv 7/2/2024 16:23'
+	#category : #running,
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:41'
 }
 IPTBrowserTests >> setUp [
 
 	super setUp.
-	chapter := IPTChapter chapterSet at: 2.
-	initialLevelIndex := 2.
+	chapter := IPTMockInfos mockChapterSet second.
+	initialLevelIndex := 1.
 	ipt := IPT new.
-	browser := IPTBrowser openFrom: ipt chapter: chapter levelIndex: initialLevelIndex.
+	browser := IPTBrowser openFrom: ipt 
+		chapter: chapter 
+		levelIndex: initialLevelIndex
+		classSet: IPTMockInfos mockClassList.
 	ipt browser: browser.
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #running,
 	#'squeak_changestamp' : 'sv 7/2/2024 16:24'
 }
 IPTBrowserTests >> tearDown [
@@ -37,7 +40,7 @@ IPTBrowserTests >> tearDown [
 ]
 
 {
-	#category : #building,
+	#category : #'testing-builds',
 	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:56'
 }
 IPTBrowserTests >> testBuildCodeEditorWith [
@@ -50,7 +53,7 @@ IPTBrowserTests >> testBuildCodeEditorWith [
 ]
 
 {
-	#category : #building,
+	#category : #'testing-builds',
 	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:47'
 }
 IPTBrowserTests >> testBuildCodePieceListWith [
@@ -63,7 +66,7 @@ IPTBrowserTests >> testBuildCodePieceListWith [
 ]
 
 {
-	#category : #building,
+	#category : #'testing-builds',
 	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 11:42'
 }
 IPTBrowserTests >> testBuildDescriptionBoxWith [
@@ -76,7 +79,7 @@ IPTBrowserTests >> testBuildDescriptionBoxWith [
 ]
 
 {
-	#category : #building,
+	#category : #'testing-builds',
 	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:48'
 }
 IPTBrowserTests >> testBuildHomeButtonWith [
@@ -89,7 +92,7 @@ IPTBrowserTests >> testBuildHomeButtonWith [
 ]
 
 {
-	#category : #building,
+	#category : #'testing-builds',
 	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:49'
 }
 IPTBrowserTests >> testBuildNextLevelButtonWith [
@@ -102,7 +105,7 @@ IPTBrowserTests >> testBuildNextLevelButtonWith [
 ]
 
 {
-	#category : #building,
+	#category : #'testing-builds',
 	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:49'
 }
 IPTBrowserTests >> testBuildPreviousLevelButtonWith [
@@ -115,7 +118,7 @@ IPTBrowserTests >> testBuildPreviousLevelButtonWith [
 ]
 
 {
-	#category : #building,
+	#category : #'testing-builds',
 	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:50'
 }
 IPTBrowserTests >> testBuildResetButtonWith [
@@ -128,7 +131,7 @@ IPTBrowserTests >> testBuildResetButtonWith [
 ]
 
 {
-	#category : #building,
+	#category : #'testing-builds',
 	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:29'
 }
 IPTBrowserTests >> testBuildShowSolutionButtonWith [
@@ -141,7 +144,7 @@ IPTBrowserTests >> testBuildShowSolutionButtonWith [
 ]
 
 {
-	#category : #building,
+	#category : #'testing-builds',
 	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 17:51'
 }
 IPTBrowserTests >> testBuildTitleBarWith [
@@ -154,7 +157,7 @@ IPTBrowserTests >> testBuildTitleBarWith [
 ]
 
 {
-	#category : #building,
+	#category : #'testing-builds',
 	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 11:07'
 }
 IPTBrowserTests >> testBuildVerifyButtonWith [
@@ -167,10 +170,11 @@ IPTBrowserTests >> testBuildVerifyButtonWith [
 ]
 
 {
-	#category : #building,
-	#'squeak_changestamp' : 'sv 7/2/2024 16:23'
+	#category : #'testing-builds',
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:30'
 }
 IPTBrowserTests >> testHomeButtonAction [
+
 	ipt browser homeButtonAction.
 	
 	self assert: (ipt browser = nil).
@@ -178,7 +182,7 @@ IPTBrowserTests >> testHomeButtonAction [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #testing,
 	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 20:22'
 }
 IPTBrowserTests >> testInitialState [
@@ -189,7 +193,7 @@ IPTBrowserTests >> testInitialState [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #testing,
 	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 20:22'
 }
 IPTBrowserTests >> testLoadLevel [
@@ -199,18 +203,28 @@ IPTBrowserTests >> testLoadLevel [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 21:16'
+	#category : #testing,
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:29'
 }
-IPTBrowserTests >> testNextLevelButton [
-
-	browser nextLevelButtonEnabled ifTrue: [
-	browser nextLevelButtonAction.
-	self assert: browser levelIndex == (initialLevelIndex + 1).]
+IPTBrowserTests >> testLoadSolutionButtonEnabled [
+	
+	browser selectCodePiece: nil.
+	self assert: browser loadSolutionButtonEnabled == false.
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #testing,
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:19'
+}
+IPTBrowserTests >> testNextLevelButton [
+
+	browser loadLevel: 1.
+	browser nextLevelButtonAction.
+	self assert: browser levelIndex == 2.
+]
+
+{
+	#category : #testing,
 	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 20:22'
 }
 IPTBrowserTests >> testNextLevelButtonEnabled [
@@ -220,7 +234,7 @@ IPTBrowserTests >> testNextLevelButtonEnabled [
 ]
 
 {
-	#category : #building,
+	#category : #'testing-builds',
 	#'squeak_changestamp' : 'sv 7/2/2024 16:28'
 }
 IPTBrowserTests >> testPlayground [
@@ -235,19 +249,18 @@ IPTBrowserTests >> testPlayground [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 20:22'
+	#category : #testing,
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:19'
 }
 IPTBrowserTests >> testPreviousLevelButton [
 
-	(chapter levels size > 1) ifTrue: [
-	browser loadLevel: chapter levels size.
+	browser loadLevel: 2.
 	browser previousLevelButtonAction.
-	self assert: browser levelIndex == (chapter levels size - 1).]
+	self assert: browser levelIndex == 1.
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #testing,
 	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 20:22'
 }
 IPTBrowserTests >> testPreviousLevelButtonEnabled [
@@ -257,109 +270,86 @@ IPTBrowserTests >> testPreviousLevelButtonEnabled [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'sv 7/2/2024 20:16'
+	#category : #testing,
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:14'
 }
 IPTBrowserTests >> testResetButtonAction [
 
-	| cp |
+	| codePiece |
 	
-	cp := ((browser visibleClassSet at: 1) methodCodePieces at: 1).
+	codePiece := ((browser visibleClassSet first) methodCodePieces first).
 	
-	browser selectCodePiece: cp.
+	browser selectCodePiece: codePiece.
 	
-	cp code: 'ÄÄÄÄ'.
+	codePiece code: 'ÄÄÄÄ'.
 	
 	browser resetButtonAction.
 	
 	self assert:
-		(cp code =
-			(cp addHeadToCode:
-				((cp variantForLevel: initialLevelIndex fromChapter: chapter chapterNumber)
-					initialCode))).
+		codePiece code =	(codePiece loadInitialCodeForLevel: browser levelIndex andChapter: chapter chapterNumber) code.
 ]
 
 {
-	#category : #building,
-	#'squeak_changestamp' : 'sv 7/3/2024 09:47'
+	#category : #testing,
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:29'
+}
+IPTBrowserTests >> testResetButtonEnabled [
+	
+	browser selectCodePiece: nil.
+	self assert: browser resetButtonEnabled = false.
+]
+
+{
+	#category : #'testing-builds',
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 13:42'
 }
 IPTBrowserTests >> testRunCode [
-
-	browser chapter levels: {IPTMockLevel}.
-	
-	browser loadLevel: 1.
 	
 	browser runCode.
 	
-	self assert: (browser testResult at: #errors) isEmpty not.
-	self assert: (browser testResult at: #failures) isEmpty.
+	self assert: (browser testResult at: #errors) isEmpty.
+	self assert: (browser testResult at: #failures) isEmpty not.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 19:38'
+	#category : #testing,
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:24'
 }
-IPTBrowserTests >> testSelectClass [
+IPTBrowserTests >> testSelectCodePiece [
+
+	| codePiece |
+	
+	codePiece := (browser visibleClassSet at: 1) methodCodePieces at: 1.
+	
+	browser selectCodePiece: codePiece.
+	
+	self assert: (codePiece = (browser selectedCodePiece)).
+	self assert: (codePiece = (browser codeEditor codePiece)).
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'sv 7/2/2024 20:24'
-}
-IPTBrowserTests >> testSelectMethod [
-
-	| cp |
-	
-	cp := (browser visibleClassSet at: 1) methodCodePieces at: 1.
-	
-	browser selectCodePiece: cp.
-	
-	self assert: (cp = (browser instVarNamed: 'selectedCodePiece')).
-	self assert: (cp = (browser codeEditor instVarNamed: 'activeCodePiece')).
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:29'
+	#category : #testing,
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:25'
 }
 IPTBrowserTests >> testSolutionButtonAction [
 
-	| cp |
+	| codePiece |
 	
-	cp := ((browser visibleClassSet at: 1) methodCodePieces at: 1).
+	codePiece := ((browser visibleClassSet at: 1) methodCodePieces at: 1).
 	
-	browser selectCodePiece: cp.
+	browser selectCodePiece: codePiece.
 	
 	browser loadSolutionButtonAction.
 	
 	self assert:
-		(cp code =
-			(cp addHeadToCode:
-				((cp variantForLevel: initialLevelIndex fromChapter: chapter chapterNumber)
-					solutionCode))).
+		codePiece code =	(codePiece loadSolutionCodeForLevel: browser levelIndex andChapter: chapter chapterNumber) code.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'sv 7/2/2024 20:22'
+	#category : #testing,
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:28'
 }
 IPTBrowserTests >> testSqueaky [
 
-	| squeaky |
-
-	squeaky := IPTSqueaky new.
-
-	browser squeaky: squeaky.
-	
-	self assert: (squeaky = (browser instVarNamed: 'squeaky')).
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:30'
-}
-IPTBrowserTests >> testshowSolutionButtonEnabled [
-	
-	browser selectCodePiece: nil.
-	self assert: browser loadSolutionButtonEnabled == false.
+	self assert: (browser squeaky isKindOf: IPTSqueaky).
 ]

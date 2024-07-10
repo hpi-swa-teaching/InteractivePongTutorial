@@ -34,80 +34,90 @@ IPTCodeVariant class >> fromString: aString [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 6/20/2024 10:00'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:16'
 }
 IPTCodeVariant >> chapterNumber [
-	^ chapterNumber
+
+	^ chapterNumber.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 6/20/2024 10:00'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:16'
 }
-IPTCodeVariant >> chapterNumber: anObject [
-	chapterNumber := anObject
+IPTCodeVariant >> chapterNumber: aNumber [
+
+	chapterNumber := aNumber.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 11:40'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:16'
 }
 IPTCodeVariant >> initialCode [
-	^ initialCode
+
+	^ initialCode.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 11:40'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:16'
 }
-IPTCodeVariant >> initialCode: anObject [
-	initialCode := anObject
+IPTCodeVariant >> initialCode: aString [
+
+	initialCode := aString.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 6/20/2024 10:00'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:16'
 }
 IPTCodeVariant >> levelIndex [
-	^ levelIndex
+
+	^ levelIndex.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 6/20/2024 10:00'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:16'
 }
-IPTCodeVariant >> levelIndex: anObject [
-	levelIndex := anObject
+IPTCodeVariant >> levelIndex: aNumber [
+
+	levelIndex := aNumber.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 13:53'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:16'
 }
 IPTCodeVariant >> readOnly [
-	^ readOnly
+
+	^ readOnly.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 13:53'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:17'
 }
-IPTCodeVariant >> readOnly: anObject [
-	readOnly := anObject
+IPTCodeVariant >> readOnly: aBoolean [
+
+	readOnly := aBoolean.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 11:40'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:17'
 }
 IPTCodeVariant >> solutionCode [
-	^ solutionCode
+
+	^ solutionCode.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 11:40'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:17'
 }
-IPTCodeVariant >> solutionCode: anObject [
-	solutionCode := anObject
+IPTCodeVariant >> solutionCode: aString [
+
+	solutionCode := aString.
 ]

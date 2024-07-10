@@ -16,12 +16,15 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:55'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:46'
 }
-IPTChapterView class >> openFrom: anIPT [
+IPTChapterView class >> openFrom: anIPT withChapters: aChapterCollection [
 	
 	| chapterView |
-	chapterView := self new ipt: anIPT.
+	chapterView := self new
+		ipt: anIPT;
+		chapters: aChapterCollection;
+		setInitialState.
 	ToolBuilder open: chapterView.
 	^ chapterView.
 ]
@@ -85,9 +88,10 @@ IPTChapterView >> buildLevelDescriptionBoxWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 12:44'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:04'
 }
 IPTChapterView >> buildLevelListWith: aBuilder [
+
 	^ aBuilder pluggableListSpec new
 		model: self;
 		list: #levels;
@@ -103,9 +107,10 @@ IPTChapterView >> buildLevelListWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 14:43'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:05'
 }
 IPTChapterView >> buildStartButtonWith: aBuilder [
+
 	^ aBuilder pluggableButtonSpec new
 		model: self;
 		label: 'Start';
@@ -121,9 +126,10 @@ IPTChapterView >> buildStartButtonWith: aBuilder [
 
 {
 	#category : #building,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:56'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:05'
 }
 IPTChapterView >> buildWith: aBuilder [
+
 	^ aBuilder build: (aBuilder pluggableWindowSpec new
 		model: self;
 		label: 'Interactive Pong Tutorial: Chapter View';
@@ -139,79 +145,73 @@ IPTChapterView >> buildWith: aBuilder [
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'FH 6/19/2024 14:25'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:05'
 }
 IPTChapterView >> canStartLevel [
+
 	^ self selectedLevel isNil not.
 ]
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'FH 6/19/2024 14:25'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:05'
 }
 IPTChapterView >> chapterDescription [
+
 	^ self selectedChapter description.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 6/19/2024 14:25'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:05'
 }
 IPTChapterView >> chapters [
+
 	^ chapters.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 12:47'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:05'
 }
 IPTChapterView >> chapters: aChapter [
+
 	chapters := aChapter.
 ]
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 19:53'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:05'
 }
 IPTChapterView >> close [
+
 	self changed: #close.
 ]
 
 {
-	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:03'
-}
-IPTChapterView >> initialize [
-	self 
-		chapters: IPTChapter chapterSet;
-		selectedChapter: self chapters first;
-		selectedLevel: (self levels 
-			ifEmpty: [nil]
-			ifNotEmpty: [self levels first]).
-	
-]
-
-{
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 12:47'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:05'
 }
 IPTChapterView >> ipt [
+
 	^ ipt.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 12:47'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:05'
 }
 IPTChapterView >> ipt: anIPT [
+
 	ipt := anIPT.
 ]
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'FH 6/19/2024 14:27'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:05'
 }
 IPTChapterView >> levelDescription [
+
 	^ self selectedLevel 
 		ifNotNil: [self selectedLevel description] 
 		ifNil: [self noLevelSelectedMessage].
@@ -219,25 +219,29 @@ IPTChapterView >> levelDescription [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:02'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:06'
 }
 IPTChapterView >> levels [
-	^ self selectedChapter levels ifNil: [{}].
+
+	^ self selectedChapter levels 
+		ifNil: [{}].
 ]
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'sv 6/15/2024 10:30'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:06'
 }
 IPTChapterView >> noLevelSelectedMessage [
+
 	^ 'Please select a level.'.
 ]
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'JZ 6/7/2024 14:29'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:06'
 }
 IPTChapterView >> padding [
+
 	^ 5.
 ]
 
@@ -259,50 +263,69 @@ IPTChapterView >> selectChapter: aChapter [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'FH 6/15/2024 11:30'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:06'
 }
 IPTChapterView >> selectLevel: aLevel [
+
 	self selectedLevel: aLevel.
 	self update.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 12:48'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:06'
 }
 IPTChapterView >> selectedChapter [
+
 	^ selectedChapter.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JZ 6/7/2024 14:10'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:06'
 }
 IPTChapterView >> selectedChapter: aChapter [
+
 	selectedChapter := aChapter.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 12:48'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:06'
 }
 IPTChapterView >> selectedLevel [
+
 	^ selectedLevel.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JZ 6/7/2024 14:10'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:07'
 }
 IPTChapterView >> selectedLevel: aLevel [
+
 	selectedLevel := aLevel.
 ]
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:05'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:45'
+}
+IPTChapterView >> setInitialState [
+
+	self 
+		selectedChapter: self chapters first;
+		selectedLevel: (self levels 
+			ifEmpty: [nil]
+			ifNotEmpty: [self levels first]).
+]
+
+{
+	#category : #actions,
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:07'
 }
 IPTChapterView >> startSelectedLevel [
+
 	self ipt 
 		openLevel: self selectedLevel levelIndex 
 		inChapter: self selectedChapter.
@@ -310,9 +333,10 @@ IPTChapterView >> startSelectedLevel [
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:06'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:07'
 }
 IPTChapterView >> update [
+
 	self 
 		changed: #selectedChapter;
 		changed: #levels;

@@ -18,7 +18,7 @@ IPTBall >> checkCollisionWithPlayer [
 
 {
 	#category : #collision,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:07'
 }
 IPTBall >> checkCollisionWithWalls [
 	
@@ -52,31 +52,31 @@ IPTBall >> defaultSpeed [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:09'
 }
 IPTBall >> game [
-	
+	"Return the value of game."
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:09'
 }
 IPTBall >> game: aGame [
-	
+	"To update game you should set game to the given input."
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:09'
 }
 IPTBall >> initialize [
-	
+	"Initialize the ball (similar to IPTGame initialize) but set the extent to defaultExtent."
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:07'
 }
 IPTBall >> speed [
 	
@@ -84,7 +84,7 @@ IPTBall >> speed [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:07'
 }
 IPTBall >> speed: aNumber [
 	
@@ -92,7 +92,7 @@ IPTBall >> speed: aNumber [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:07'
 }
 IPTBall >> startOver [
 	
@@ -100,7 +100,7 @@ IPTBall >> startOver [
 
 {
 	#category : #stepping,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:07'
 }
 IPTBall >> step [
 	
@@ -108,7 +108,7 @@ IPTBall >> step [
 
 {
 	#category : #stepping,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:07'
 }
 IPTBall >> stepTime [
 	^ 10.
@@ -116,7 +116,7 @@ IPTBall >> stepTime [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:07'
 }
 IPTBall >> turnHorizontal [
 	
@@ -124,7 +124,7 @@ IPTBall >> turnHorizontal [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:07'
 }
 IPTBall >> turnVertical [
 	
