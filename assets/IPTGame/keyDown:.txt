@@ -14,7 +14,7 @@ keyDown: anEvent
 	
 °°°°°
 2
-3
+4
 °°
 
 	(anEvent keyCharacter asUppercase = $W ) ifTrue: [self playerLeft up].

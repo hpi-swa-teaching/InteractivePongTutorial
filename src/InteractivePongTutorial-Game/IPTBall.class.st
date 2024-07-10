@@ -10,18 +10,22 @@ Class {
 
 {
 	#category : #collision,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
 }
 IPTBall >> checkCollisionWithPlayer [
-	
+	(self game playerBounds anySatisfy: [:bounds | bounds intersects: self bounds])
+			ifTrue: [self turnHorizontal].
 ]
 
 {
 	#category : #collision,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:07'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
 }
 IPTBall >> checkCollisionWithWalls [
-	
+	(self position x between: self game left and: self game right - self width)
+		ifFalse: [self startOver].
+	(self position y between: self game top and: self game bottom - self height)
+		ifFalse: [self turnVertical].
 ]
 
 {
@@ -52,63 +56,71 @@ IPTBall >> defaultSpeed [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:09'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
 }
 IPTBall >> game [
-	"Return the value of game."
+	^ game.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:09'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
 }
 IPTBall >> game: aGame [
-	"To update game you should set game to the given input."
+	game := aGame.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:09'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
 }
 IPTBall >> initialize [
-	"Initialize the ball (similar to IPTGame initialize) but set the extent to defaultExtent."
+	super initialize.
+	self 
+		color: Color white;
+		extent: self defaultExtent;
+		speed: self defaultSpeed @ self defaultSpeed.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:07'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
 }
 IPTBall >> speed [
-	
+	^ speed.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:07'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
 }
 IPTBall >> speed: aNumber [
-	
+	speed := aNumber.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:07'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
 }
 IPTBall >> startOver [
-	
+	self 
+		center: self game center;
+		speed: (self defaultSpeed * {1 .-1} atRandom) @ (self defaultSpeed * {1 .-1} atRandom).
 ]
 
 {
 	#category : #stepping,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:07'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
 }
 IPTBall >> step [
-	
+	self position: self position + self speed.
+	self checkCollisionWithWalls;
+		checkCollisionWithPlayer.
 ]
 
 {
 	#category : #stepping,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:07'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
 }
 IPTBall >> stepTime [
 	^ 10.
@@ -116,16 +128,16 @@ IPTBall >> stepTime [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:07'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
 }
 IPTBall >> turnHorizontal [
-	
+	self speed: self speed x negated @ self speed y.
 ]
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:07'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
 }
 IPTBall >> turnVertical [
-	
+	self speed: self speed x @ self speed y negated.
 ]

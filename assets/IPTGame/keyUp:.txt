@@ -10,8 +10,8 @@ keyUp: anEvent
 	({$W.$S} anySatisfy: [ :key |
 		anEvent keyCharacter asUppercase = key])
 			ifTrue: [self playerLeft stop].
-	(anEvent keyCharacter = Character arrowUp) 
-		or: (anEvent keyCharacter = Character arrowDown) ifTrue: [self playerRight stop].
+	((anEvent keyCharacter = Character arrowUp) 
+		or: (anEvent keyCharacter = Character arrowDown)) ifTrue: [self playerRight stop].
 °°°°°
 
 2

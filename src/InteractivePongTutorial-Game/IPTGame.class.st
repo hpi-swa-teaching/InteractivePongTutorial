@@ -19,71 +19,89 @@ IPTGame class >> open [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:09'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
 }
 IPTGame >> ball [
-	"Return the value of ball."
+	^ ball.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:09'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
 }
 IPTGame >> ball: aBall [
-	"To update ball you should set ball to the given input."
+	ball := aBall.
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
 }
 IPTGame >> handlesKeyboard: anEvent [
-	
+	^ true.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:07'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
 }
 IPTGame >> initialize [
-	"Please change the color to black."
 	super initialize.
 	self 
-		color: Color blue;
+		color: Color black;
 		beSticky.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:09'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
 }
 IPTGame >> initializeBall [
-	"You should set ball to a new IPTBall and then add the Morph.
-	To see it you should also set the position of the ball so it is in the center of the game."
+	self 
+		ball: (IPTBall new game: self);
+		addMorph: self ball.
+	self ball startOver.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:07'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
 }
 IPTGame >> initializePlayers [
-	
+	| offset | 
+	offset := (self extent x / 2 - 30 @ 0).
+	self
+		playerLeft: (IPTPlayer new
+			center: self center - offset;
+			game: self);
+		playerRight: (IPTPlayer new
+			center:  self center + offset;
+			game: self);
+		addMorph: self playerLeft;
+		addMorph: self playerRight.
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
 }
 IPTGame >> keyDown: anEvent [
-	
+	(anEvent keyCharacter asUppercase = $W ) ifTrue: [self playerLeft up].
+	(anEvent keyCharacter asUppercase = $S ) ifTrue: [self playerLeft down].
+	(anEvent keyCharacter = Character arrowUp) ifTrue: [self playerRight up].
+	(anEvent keyCharacter = Character arrowDown) ifTrue: [self playerRight down].
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
 }
 IPTGame >> keyUp: anEvent [
-	
+	({$W.$S} anySatisfy: [ :key |
+		anEvent keyCharacter asUppercase = key])
+			ifTrue: [self playerLeft stop].
+	((anEvent keyCharacter = Character arrowUp) 
+		or: (anEvent keyCharacter = Character arrowDown)) ifTrue: [self playerRight stop].
 ]
 
 {
@@ -106,42 +124,42 @@ IPTGame >> mouseLeave: anEvent [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:41'
 }
 IPTGame >> playerBounds [
-	
+	^ {self playerLeft bounds . self playerRight bounds}.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:07'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
 }
 IPTGame >> playerLeft [
-	
+	^ playerLeft.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:07'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
 }
 IPTGame >> playerLeft: aPlayer [
-	
+	playerLeft := aPlayer.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:07'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
 }
 IPTGame >> playerRight [
-	
+	^ playerRight.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:07'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
 }
 IPTGame >> playerRight: aPlayer [
-	
+	playerRight := aPlayer.
 ]
 
 {
