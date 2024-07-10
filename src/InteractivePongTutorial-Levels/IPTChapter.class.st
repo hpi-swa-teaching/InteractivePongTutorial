@@ -1,3 +1,6 @@
+"
+This class contains the informations for necessary for each Chapter.
+"
 Class {
 	#name : #IPTChapter,
 	#superclass : #Object,
@@ -8,7 +11,8 @@ Class {
 		'levels',
 		'activeLevelNumber'
 	],
-	#category : #'InteractivePongTutorial-Levels'
+	#category : #'InteractivePongTutorial-Levels',
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 11:21'
 }
 
 {
