@@ -3,8 +3,18 @@ keyDown: anEvent
 2
 3
 °°
-"Let left Player move on W/S an right player on arrowUp/arrowDown"
+"Let left Player move on W/S an right player on arrowUp/arrowDown."
 
+°°
+
+	(anEvent keyCharacter asUppercase = $W ) ifTrue: [self playerLeft up].
+	(anEvent keyCharacter asUppercase = $S ) ifTrue: [self playerLeft down].
+	(anEvent keyCharacter = Character arrowUp) ifTrue: [self playerRight up].
+	(anEvent keyCharacter = Character arrowDown) ifTrue: [self playerRight down].
+	
+°°°°°
+2
+3
 °°
 
 	(anEvent keyCharacter asUppercase = $W ) ifTrue: [self playerLeft up].

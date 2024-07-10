@@ -18,6 +18,9 @@
 /assets/IPTGame/playerRight.txt
 /assets/IPTGame/playerLeft:.txt
 /assets/IPTGame/playerRight:.txt
+/assets/IPTGame/keyUp:.txt
+/assets/IPTGame/keyDown:.txt
+/assets/IPTGame/handlesKeyboard:.txt
 /assets/IPTPlayer/down.txt
 /assets/IPTPlayer/game.txt
 /assets/IPTPlayer/game:.txt

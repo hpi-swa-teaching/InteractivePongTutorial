@@ -4,9 +4,20 @@ keyUp: anEvent
 3
 °°
 
-"Stop movement on key release. W/S for the left and arrowUp/arrowDown for right Player"
+"Stop movement on key release. W/S for the left and arrowUp/arrowDown for right Player. Try using 'or:' or 'anySatisfy:'"
 °°
-	(anEvent keyCharacter asUppercase = $W ) ifTrue: [self playerLeft stop].
-	(anEvent keyCharacter asUppercase = $S) ifTrue: [self playerLeft stop].
-	(anEvent keyCharacter = Character arrowUp) ifTrue: [self playerRight stop].
-	(anEvent keyCharacter = Character arrowDown) ifTrue: [self playerRight stop].
+	({$W.$S} anySatisfy: [ :key |
+		anEvent keyCharacter asUppercase = key])
+			ifTrue: [self playerLeft stop].
+	(anEvent keyCharacter = Character arrowUp) 
+		or: (anEvent keyCharacter = Character arrowDown) ifTrue: [self playerRight stop].
+°°°°°
+
+2
+4
+°°
+	({$W.$S} anySatisfy: [ :key |
+		anEvent keyCharacter asUppercase = key])
+			ifTrue: [self playerLeft stop].
+	(anEvent keyCharacter = Character arrowUp) 
+		or: (anEvent keyCharacter = Character arrowDown) ifTrue: [self playerRight stop].

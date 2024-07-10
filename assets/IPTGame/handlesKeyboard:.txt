@@ -3,5 +3,13 @@ handlesKeyboard: anEvent
 2
 3
 °°
+"Return true to enable Keyboard handling."
+°°
+
+	^ true.
+°°°°°
+2
+4
+°°
 
 	^ true.

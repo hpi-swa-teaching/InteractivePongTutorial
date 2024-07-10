@@ -17,7 +17,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'FH 7/10/2024 10:11'
+	#'squeak_changestamp' : 'FH 7/10/2024 17:58'
 }
 IPTChapter class >> chapterSet [
 	^ {IPTChapter 
@@ -40,7 +40,8 @@ IPTChapter class >> chapterSet [
 			description: 'This is Chapter 2'
 			levels: {
 				IPTLevel0201.
-				IPTLevel0202.}}
+				IPTLevel0202.
+				IPTLevel0203}}
 ]
 
 {

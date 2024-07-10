@@ -1,54 +1,50 @@
-"
-This class contains the informations for Level 2 in Chapter 2. It is a Subclass of IPTLevel.
-"
 Class {
-	#name : #IPTLevel0202,
+	#name : #IPTLevel0203,
 	#superclass : #IPTLevel,
-	#category : #'InteractivePongTutorial-Levels',
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 11:24'
+	#category : #'InteractivePongTutorial-Levels'
 }
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'FH 7/10/2024 10:06'
+	#'squeak_changestamp' : 'FH 7/10/2024 18:11'
 }
-IPTLevel0202 class >> asString [
+IPTLevel0203 class >> asString [
 
-	^ 'Level 02: Player Movement'.
+	^ 'Level 03: Keyboard Input'.
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'FH 7/10/2024 10:06'
+	#'squeak_changestamp' : 'FH 7/10/2024 18:00'
 }
-IPTLevel0202 class >> description [
+IPTLevel0203 class >> description [
 	
 	^ 'This is a description'.
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'FH 7/10/2024 10:07'
+	#'squeak_changestamp' : 'FH 7/10/2024 18:00'
 }
-IPTLevel0202 class >> explanations [
+IPTLevel0203 class >> explanations [
 	
 	^ {''.}.
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'FH 7/10/2024 18:01'
+	#'squeak_changestamp' : 'FH 7/10/2024 18:10'
 }
-IPTLevel0202 class >> levelIndex [
+IPTLevel0203 class >> levelIndex [
 
-	^ 2.
+	^ 3.
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'FH 7/10/2024 10:13'
+	#'squeak_changestamp' : 'FH 7/10/2024 18:02'
 }
-IPTLevel0202 class >> visibleMethods [
+IPTLevel0203 class >> visibleMethods [
 
 	^ {IPTGame>>#initialize.
 		IPTGame>>#initializeBall.
@@ -57,6 +53,10 @@ IPTLevel0202 class >> visibleMethods [
 		IPTGame>>#playerLeft:.
 		IPTGame>>#playerRight.
 		IPTGame>>#playerRight:.
+		IPTGame>>#keyUp:.
+		IPTGame>>#keyDown:.
+		IPTGame>>#handlesKeyboard:.
+		
 		
 		IPTBall>>#turnHorizontal.
 		IPTBall>>#step. 

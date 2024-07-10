@@ -19,7 +19,7 @@ IPTGame class >> open [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
+	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
 }
 IPTGame >> ball [
 	^ ball.
@@ -27,7 +27,7 @@ IPTGame >> ball [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
+	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
 }
 IPTGame >> ball: aBall [
 	ball := aBall.
@@ -35,16 +35,15 @@ IPTGame >> ball: aBall [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'JZ 5/22/2024 14:46'
+	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
 }
 IPTGame >> handlesKeyboard: anEvent [
-
-	^ true.
+	"Return true to enable Keyboard handling."
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
+	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
 }
 IPTGame >> initialize [
 	super initialize.
@@ -55,7 +54,7 @@ IPTGame >> initialize [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
+	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
 }
 IPTGame >> initializeBall [
 	self 
@@ -66,7 +65,7 @@ IPTGame >> initializeBall [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
+	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
 }
 IPTGame >> initializePlayers [
 	| offset | 
@@ -84,25 +83,18 @@ IPTGame >> initializePlayers [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 09:47'
+	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
 }
 IPTGame >> keyDown: anEvent [
-	Transcript show: anEvent keyCharacter.
-	(anEvent keyCharacter asUppercase = $W ) ifTrue: [self playerLeft up].
-	(anEvent keyCharacter asUppercase = $S ) ifTrue: [self playerLeft down].
-	(anEvent keyCharacter = Character arrowUp) ifTrue: [self playerRight up].
-	(anEvent keyCharacter = Character arrowDown) ifTrue: [self playerRight down].
+	"Let left Player move on W/S an right player on arrowUp/arrowDown"
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Felix Knöfel 5/29/2024 09:48'
+	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
 }
 IPTGame >> keyUp: anEvent [
-	(anEvent keyCharacter asUppercase = $W ) ifTrue: [self playerLeft stop].
-	(anEvent keyCharacter asUppercase = $S) ifTrue: [self playerLeft stop].
-	(anEvent keyCharacter = Character arrowUp) ifTrue: [self playerRight stop].
-	(anEvent keyCharacter = Character arrowDown) ifTrue: [self playerRight stop].
+	"Stop movement on key release. W/S for the left and arrowUp/arrowDown for right Player. Try using 'or:' or 'anySatisfy:'"
 ]
 
 {
@@ -133,7 +125,7 @@ IPTGame >> playerBounds [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
+	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
 }
 IPTGame >> playerLeft [
 	^ playerLeft.
@@ -141,7 +133,7 @@ IPTGame >> playerLeft [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
+	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
 }
 IPTGame >> playerLeft: aPlayer [
 	playerLeft := aPlayer.
@@ -149,7 +141,7 @@ IPTGame >> playerLeft: aPlayer [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
+	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
 }
 IPTGame >> playerRight [
 	^ playerRight.
@@ -157,7 +149,7 @@ IPTGame >> playerRight [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
+	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
 }
 IPTGame >> playerRight: aPlayer [
 	playerRight := aPlayer.

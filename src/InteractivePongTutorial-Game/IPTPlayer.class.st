@@ -10,7 +10,7 @@ Class {
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
+	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
 }
 IPTPlayer >> defaultSpeed [
 	^ 10.
@@ -18,15 +18,15 @@ IPTPlayer >> defaultSpeed [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
+	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
 }
 IPTPlayer >> down [
-	"Set the speed to defaultSpeed."
+	self speed: self defaultSpeed.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
+	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
 }
 IPTPlayer >> game [
 	^ game.
@@ -34,7 +34,7 @@ IPTPlayer >> game [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
+	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
 }
 IPTPlayer >> game: aGame [
 	game := aGame.
@@ -42,7 +42,7 @@ IPTPlayer >> game: aGame [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
+	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
 }
 IPTPlayer >> initialize [
 	super initialize.
@@ -54,17 +54,18 @@ IPTPlayer >> initialize [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
+	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
 }
 IPTPlayer >> move: aNumber [
-	"Add the number to our center. Clamp the new center y component to the game border by using this offset."
 	| offset |
 	offset := self height * 0.5.
+	self center: self center 
+		+ (0 @ (aNumber min: offset max: (self game height - offset))).
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
+	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
 }
 IPTPlayer >> speed [
 	^ speed.
@@ -72,7 +73,7 @@ IPTPlayer >> speed [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
+	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
 }
 IPTPlayer >> speed: aNumber [
 	speed := aNumber.
@@ -80,10 +81,10 @@ IPTPlayer >> speed: aNumber [
 
 {
 	#category : #stepping,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
+	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
 }
 IPTPlayer >> step [
-	"Call move with the speed."
+	self move: self speed.
 ]
 
 {
@@ -96,16 +97,16 @@ IPTPlayer >> stepTime [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
+	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
 }
 IPTPlayer >> stop [
-	"Set the speed to 0."
+	self speed: 0.
 ]
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
+	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
 }
 IPTPlayer >> up [
-	"Set the speed to negated defaultSpeed."
+	self speed: self defaultSpeed negated.
 ]
