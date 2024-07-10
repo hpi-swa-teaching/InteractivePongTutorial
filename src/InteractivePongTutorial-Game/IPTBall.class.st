@@ -1,6 +1,3 @@
-"
-This class contains the Code for the Ball of the IPT. It is changed via the Code in the editor.
-"
 Class {
 	#name : #IPTBall,
 	#superclass : #Morph,
@@ -8,8 +5,7 @@ Class {
 		'game',
 		'speed'
 	],
-	#category : #'InteractivePongTutorial-Game',
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 11:19'
+	#category : #'InteractivePongTutorial-Game'
 }
 
 {
@@ -24,13 +20,10 @@ IPTBall >> checkCollisionWithPlayer [
 
 {
 	#category : #collision,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:10'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:31'
 }
 IPTBall >> checkCollisionWithWalls [
-	(self position x between: self game left and: self game right - self width)
-		ifFalse: [self startOver].
-	(self position y between: self game top and: self game bottom - self height)
-		ifFalse: [self turnVertical].
+	
 ]
 
 {
@@ -61,70 +54,63 @@ IPTBall >> defaultSpeed [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:09'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:11'
 }
 IPTBall >> game [
-	^ game.
+	"Return the value of game."
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:09'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:11'
 }
 IPTBall >> game: aGame [
-	game := aGame.
+	"To update game you should set game to the given input."
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:09'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:11'
 }
 IPTBall >> initialize [
-	super initialize.
-	self 
-		color: Color white;
-		extent: self defaultExtent;
-		speed: self defaultSpeed @ self defaultSpeed.
+	"Initialize the ball (similar to IPTGame initialize) but set the extent to defaultExtent."
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:09'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:11'
 }
 IPTBall >> speed [
-	^ speed.
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:09'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:11'
 }
 IPTBall >> speed: aNumber [
-	speed := aNumber.
+	
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:09'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:11'
 }
 IPTBall >> startOver [
-	self 
-		center: self game center;
-		speed: (self defaultSpeed * {1 .-1} atRandom) @ (self defaultSpeed * {1 .-1} atRandom).
+	
 ]
 
 {
 	#category : #stepping,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:09'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:11'
 }
 IPTBall >> step [
-	self position: self position + self speed.
-	self checkCollisionWithWalls.
+	
 ]
 
 {
 	#category : #stepping,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:09'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:11'
 }
 IPTBall >> stepTime [
 	^ 10.
@@ -132,16 +118,16 @@ IPTBall >> stepTime [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:09'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:11'
 }
 IPTBall >> turnHorizontal [
-	self speed: self speed x negated @ self speed y.
+	
 ]
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:09'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:11'
 }
 IPTBall >> turnVertical [
-	self speed: self speed x @ self speed y negated.
+	
 ]

@@ -1,6 +1,3 @@
-"
-This class contains the Code for the Player of the IPT. It is changed via the Code in the editor.
-"
 Class {
 	#name : #IPTPlayer,
 	#superclass : #Morph,
@@ -8,87 +5,79 @@ Class {
 		'game',
 		'speed'
 	],
-	#category : #'InteractivePongTutorial-Game',
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 11:19'
+	#category : #'InteractivePongTutorial-Game'
 }
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:09'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:11'
 }
 IPTPlayer >> defaultSpeed [
-	^ 10.
+	
 ]
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:10'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:31'
 }
 IPTPlayer >> down [
-	self speed: self defaultSpeed.
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:09'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:11'
 }
 IPTPlayer >> game [
-	^ game.
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:09'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:11'
 }
 IPTPlayer >> game: aGame [
-	game := aGame.
+	
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:09'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:11'
 }
 IPTPlayer >> initialize [
-	super initialize.
-		self 
-			color: Color white;
-			extent: (15@100);
-			speed: 0.
+	
 ]
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:10'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:31'
 }
 IPTPlayer >> move: aNumber [
-	| offset |
-	offset := self height * 0.5.
-	self center: self center 
-		+ (0 @ (aNumber min: offset max: (self game height - offset))).
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:09'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:11'
 }
 IPTPlayer >> speed [
-	^ speed.
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:09'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:11'
 }
 IPTPlayer >> speed: aNumber [
-	speed := aNumber.
+	
 ]
 
 {
 	#category : #stepping,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:09'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:11'
 }
 IPTPlayer >> step [
-	"Call move with the speed."
+	
 ]
 
 {
@@ -101,16 +90,16 @@ IPTPlayer >> stepTime [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:09'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:11'
 }
 IPTPlayer >> stop [
-	"Set the speed to 0."
+	
 ]
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:09'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 15:11'
 }
 IPTPlayer >> up [
-	"Set the speed to negated defaultSpeed."
+	
 ]

@@ -179,14 +179,6 @@
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
 			'assets',
-			'IPTBall',
-			'step.txt'
-		],
-		#encoding : 'TXT'
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'assets',
 			'IPTGame',
 			'initializePlayers.txt'
 		],
@@ -195,8 +187,16 @@
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
 			'assets',
+			'IPTGame',
+			'playerLeft:.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
 			'IPTPlayer',
-			'initialize.txt'
+			'speed.txt'
 		],
 		#encoding : 'TXT'
 	},
@@ -205,14 +205,6 @@
 			'assets',
 			'IPTPlayer',
 			'stop.txt'
-		],
-		#encoding : 'TXT'
-	},
-	SquotPlaintextMapper {
-		#path : FSAbsolutePath [
-			'assets',
-			'IPTGame',
-			'playerLeft:.txt'
 		],
 		#encoding : 'TXT'
 	},
@@ -244,7 +236,15 @@
 		#path : FSAbsolutePath [
 			'assets',
 			'IPTPlayer',
-			'speed.txt'
+			'initialize.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTBall',
+			'step.txt'
 		],
 		#encoding : 'TXT'
 	},
@@ -259,16 +259,16 @@
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
 			'assets',
-			'IPTGame',
-			'playerRight:.txt'
+			'IPTPlayer',
+			'down.txt'
 		],
 		#encoding : 'TXT'
 	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
 			'assets',
-			'IPTPlayer',
-			'down.txt'
+			'IPTGame',
+			'playerRight:.txt'
 		],
 		#encoding : 'TXT'
 	},
@@ -319,8 +319,9 @@
 	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
-			'assets',
-			'methodIndex.txt'
+			'.github',
+			'workflows',
+			'ci.yml'
 		],
 		#encoding : 'TXT'
 	},
@@ -340,9 +341,8 @@
 	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
-			'.github',
-			'workflows',
-			'ci.yml'
+			'assets',
+			'methodIndex.txt'
 		],
 		#encoding : 'TXT'
 	},
@@ -350,6 +350,13 @@
 		#path : FSAbsolutePath [
 			'assets',
 			'squeaky-happy.png'
+		],
+		#encoding : @83
+	},
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'squeaky-neutr.png'
 		],
 		#encoding : @83
 	},
@@ -365,18 +372,19 @@
 		},
 		#path : @26
 	},
-	SquotImageMapper {
-		#path : FSAbsolutePath [
-			'assets',
-			'squeaky-neutr.png'
-		],
-		#encoding : @83
-	},
 	SquotPlaintextMapper {
 		#path : FSAbsolutePath [
 			'assets',
 			'IPTGame',
 			'ball:.txt'
+		],
+		#encoding : 'TXT'
+	},
+	SquotPlaintextMapper {
+		#path : FSAbsolutePath [
+			'assets',
+			'IPTMockClass',
+			'mockMethod.txt'
 		],
 		#encoding : 'TXT'
 	},
