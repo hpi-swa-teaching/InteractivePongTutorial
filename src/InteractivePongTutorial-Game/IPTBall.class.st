@@ -20,10 +20,13 @@ IPTBall >> checkCollisionWithPlayer [
 
 {
 	#category : #collision,
-	#'squeak_changestamp' : 'FH 7/10/2024 10:20'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 11:47'
 }
 IPTBall >> checkCollisionWithWalls [
-	"Check if the Ball stays inside the bounds if not take action."
+	(self position x between: self game left and: self game right - self width)
+		ifFalse: [self startOver].
+	(self position y between: self game top and: self game bottom - self height)
+		ifFalse: [self turnVertical].
 ]
 
 {
@@ -54,7 +57,7 @@ IPTBall >> defaultSpeed [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 10:20'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 11:47'
 }
 IPTBall >> game [
 	^ game.
@@ -62,7 +65,7 @@ IPTBall >> game [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 10:20'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 11:47'
 }
 IPTBall >> game: aGame [
 	game := aGame.
@@ -70,18 +73,18 @@ IPTBall >> game: aGame [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'FH 7/10/2024 10:20'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 11:47'
 }
 IPTBall >> initialize [
 	super initialize.
-		self 
-			color: Color white;
-			extent: self defaultExtent.
+	self 
+		color: Color white;
+		extent: self defaultExtent.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 10:20'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 11:47'
 }
 IPTBall >> speed [
 	^ speed.
@@ -89,7 +92,7 @@ IPTBall >> speed [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 10:20'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 11:47'
 }
 IPTBall >> speed: aNumber [
 	speed := aNumber.
@@ -97,7 +100,7 @@ IPTBall >> speed: aNumber [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'FH 7/10/2024 10:20'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 11:47'
 }
 IPTBall >> startOver [
 	self 
@@ -107,7 +110,7 @@ IPTBall >> startOver [
 
 {
 	#category : #stepping,
-	#'squeak_changestamp' : 'FH 7/10/2024 10:20'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 11:47'
 }
 IPTBall >> step [
 	self position: self position + self speed.
@@ -116,7 +119,7 @@ IPTBall >> step [
 
 {
 	#category : #stepping,
-	#'squeak_changestamp' : 'FH 7/10/2024 10:20'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 11:47'
 }
 IPTBall >> stepTime [
 	^ 10.
@@ -124,7 +127,7 @@ IPTBall >> stepTime [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'FH 7/10/2024 10:20'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 11:47'
 }
 IPTBall >> turnHorizontal [
 	self speed: self speed x negated @ self speed y.
@@ -132,7 +135,7 @@ IPTBall >> turnHorizontal [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'FH 7/10/2024 10:20'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 11:47'
 }
 IPTBall >> turnVertical [
 	self speed: self speed x @ self speed y negated.

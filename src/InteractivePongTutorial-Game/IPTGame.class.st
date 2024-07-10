@@ -19,7 +19,7 @@ IPTGame class >> open [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 10:20'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 11:47'
 }
 IPTGame >> ball [
 	^ ball.
@@ -27,7 +27,7 @@ IPTGame >> ball [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 10:20'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 11:47'
 }
 IPTGame >> ball: aBall [
 	ball := aBall.
@@ -44,7 +44,7 @@ IPTGame >> handlesKeyboard: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'FH 7/10/2024 10:20'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 11:47'
 }
 IPTGame >> initialize [
 	super initialize.
@@ -55,7 +55,7 @@ IPTGame >> initialize [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'FH 7/10/2024 10:20'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 11:47'
 }
 IPTGame >> initializeBall [
 	self 
@@ -66,20 +66,10 @@ IPTGame >> initializeBall [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'FH 7/10/2024 10:20'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 11:47'
 }
 IPTGame >> initializePlayers [
-	| offset | 
-	offset := (self extent x / 2 - 30 @ 0).
-	self
-		playerLeft: (IPTPlayer new
-			center: self center - offset;
-			game: self);
-		playerRight: (IPTPlayer new
-			center:  self center + offset;
-			game: self);
-		addMorph: self playerLeft;
-		addMorph: self playerRight.
+	
 ]
 
 {
@@ -133,34 +123,34 @@ IPTGame >> playerBounds [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 10:20'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 11:47'
 }
 IPTGame >> playerLeft [
-	^ playerLeft.
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 10:20'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 11:47'
 }
 IPTGame >> playerLeft: aPlayer [
-	playerLeft := aPlayer.
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 10:20'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 11:47'
 }
 IPTGame >> playerRight [
-	^ playerRight.
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 10:20'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 11:47'
 }
 IPTGame >> playerRight: aPlayer [
-	playerRight := aPlayer.
+	
 ]
 
 {
