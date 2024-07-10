@@ -23,7 +23,7 @@ IPTGame class >> open [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:27'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:32'
 }
 IPTGame >> ball [
 	^ ball.
@@ -31,7 +31,7 @@ IPTGame >> ball [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:27'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:32'
 }
 IPTGame >> ball: aBall [
 	ball := aBall.
@@ -48,7 +48,7 @@ IPTGame >> handlesKeyboard: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:27'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:32'
 }
 IPTGame >> initialize [
 	super initialize.
@@ -59,19 +59,31 @@ IPTGame >> initialize [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:27'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:32'
 }
 IPTGame >> initializeBall [
-	"You should set ball to a new IPTBall and then add the Morph.
-	To see it you should also set the position of the ball so it is in the center of the game."
+	self 
+		ball: (IPTBall new game: self);
+		addMorph: self ball.
+	self ball startOver.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:27'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:32'
 }
 IPTGame >> initializePlayers [
-	
+	| offset | 
+	offset := (self extent x / 2 - 30 @ 0).
+	self
+		playerLeft: (IPTPlayer new
+			center: self center - offset;
+			game: self);
+		playerRight: (IPTPlayer new
+			center:  self center + offset;
+			game: self);
+		addMorph: self playerLeft;
+		addMorph: self playerRight.
 ]
 
 {
@@ -125,34 +137,34 @@ IPTGame >> playerBounds [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:27'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:32'
 }
 IPTGame >> playerLeft [
-	
+	^ playerLeft.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:27'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:32'
 }
 IPTGame >> playerLeft: aPlayer [
-	
+	playerLeft := aPlayer.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:27'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:32'
 }
 IPTGame >> playerRight [
-	
+	^ playerRight.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:27'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:32'
 }
 IPTGame >> playerRight: aPlayer [
-	
+	playerRight := aPlayer.
 ]
 
 {

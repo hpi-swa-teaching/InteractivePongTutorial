@@ -13,12 +13,12 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:24'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:21'
 }
-IPTCodePieceListItemWrapper class >> with: anIPTMethod model: aModel parent: aParent [
+IPTCodePieceListItemWrapper class >> with: aCodePiece model: aModel parent: aParent [
 
 	^ self new 
-		setItem: anIPTMethod model: aModel parent: aParent
+		setItem: aCodePiece model: aModel parent: aParent
 
 ]
 
@@ -51,11 +51,11 @@ IPTCodePieceListItemWrapper >> hasContents [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 15:52'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:19'
 }
 IPTCodePieceListItemWrapper >> icon [
 	(self item isClass or: [self item readOnly]) ifTrue: [^ nil].
-	^ ToolIcons iconNamed: ("self item passed" self item isGreen
+	^ ToolIcons iconNamed: (self item isGreen
 		ifTrue: [#testGreen]
 		ifFalse: [#testRed])
 ]
@@ -78,10 +78,10 @@ IPTCodePieceListItemWrapper >> parent: anObject [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:23'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:21'
 }
-IPTCodePieceListItemWrapper >> setItem: anIPTMethod model: aModel parent: itemParent [
+IPTCodePieceListItemWrapper >> setItem: aCodePiece model: aModel parent: itemParent [
 
 	self parent: itemParent.
-	self setItem: anIPTMethod model: aModel
+	self setItem: aCodePiece model: aModel
 ]
