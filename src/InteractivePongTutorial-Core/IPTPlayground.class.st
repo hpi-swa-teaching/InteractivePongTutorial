@@ -1,10 +1,14 @@
+"
+This class displays and runs the game code. It is opened in the Browser.
+"
 Class {
 	#name : #IPTPlayground,
 	#superclass : #PasteUpMorph,
 	#instVars : [
 		'isRunning'
 	],
-	#category : #'InteractivePongTutorial-Core'
+	#category : #'InteractivePongTutorial-Core',
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 11:14'
 }
 
 {

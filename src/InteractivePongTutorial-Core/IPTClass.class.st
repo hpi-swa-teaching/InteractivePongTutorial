@@ -1,10 +1,14 @@
+"
+This class is a CodePiece but for class code.
+"
 Class {
 	#name : #IPTClass,
 	#superclass : #IPTCodePiece,
 	#instVars : [
 		'methodCodePieces'
 	],
-	#category : #'InteractivePongTutorial-Core'
+	#category : #'InteractivePongTutorial-Core',
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 11:06'
 }
 
 {

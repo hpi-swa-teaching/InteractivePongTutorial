@@ -1,3 +1,6 @@
+"
+This class displays the Chapter and levels and loads the selected Level into the IPTBrowser
+"
 Class {
 	#name : #IPTChapterView,
 	#superclass : #Model,
@@ -7,7 +10,8 @@ Class {
 		'chapters',
 		'selectedChapter'
 	],
-	#category : #'InteractivePongTutorial-Core'
+	#category : #'InteractivePongTutorial-Core',
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 10:40'
 }
 
 {

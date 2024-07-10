@@ -1,10 +1,14 @@
+"
+This class organizes the IPTCodePiece and IPTClass instances and displays them in a TreeView in the Browser.
+"
 Class {
 	#name : #IPTCodePieceListItemWrapper,
 	#superclass : #PluggableListItemWrapper,
 	#instVars : [
 		'parent'
 	],
-	#category : #'InteractivePongTutorial-Core'
+	#category : #'InteractivePongTutorial-Core',
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 11:07'
 }
 
 {

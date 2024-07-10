@@ -1,3 +1,6 @@
+"
+This class shows the code of the selected Method and allows you to change it. It is opened in the Browser
+"
 Class {
 	#name : #IPTEditor,
 	#superclass : #CodeHolder,
@@ -5,7 +8,8 @@ Class {
 		'activeCodePiece',
 		'browser'
 	],
-	#category : #'InteractivePongTutorial-Core'
+	#category : #'InteractivePongTutorial-Core',
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 11:11'
 }
 
 {

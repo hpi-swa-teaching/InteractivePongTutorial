@@ -1,3 +1,6 @@
+"
+This class contains the Code necessary for the Levels. Each Level has the Tests for the user code on instance side and the necessary informations on class side.
+"
 Class {
 	#name : #IPTLevel,
 	#superclass : #TestCase,
@@ -8,7 +11,8 @@ Class {
 		'methodToBeTested',
 		'isPlayable'
 	],
-	#category : #'InteractivePongTutorial-Levels'
+	#category : #'InteractivePongTutorial-Levels',
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 11:25'
 }
 
 {
