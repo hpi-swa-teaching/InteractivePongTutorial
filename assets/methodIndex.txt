@@ -25,6 +25,7 @@
 /assets/IPTPlayer/move:.txt
 /assets/IPTPlayer/speed.txt
 /assets/IPTPlayer/speed:.txt
+/assets/IPTPlayer/defaultSpeed.txt
 /assets/IPTPlayer/step.txt
 /assets/IPTPlayer/stop.txt
 /assets/IPTPlayer/up.txt

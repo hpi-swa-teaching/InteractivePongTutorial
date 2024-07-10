@@ -1,32 +1,32 @@
 Class {
-	#name : #IPTLevel0201,
+	#name : #IPTLevel0202,
 	#superclass : #IPTLevel,
 	#category : #'InteractivePongTutorial-Levels'
 }
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 12:48'
+	#'squeak_changestamp' : 'FH 7/10/2024 10:06'
 }
-IPTLevel0201 class >> asString [
+IPTLevel0202 class >> asString [
 
-	^ 'Level 01: Initialize Player'.
+	^ 'Level 02: Player Movement'.
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:23'
+	#'squeak_changestamp' : 'FH 7/10/2024 10:06'
 }
-IPTLevel0201 class >> description [
+IPTLevel0202 class >> description [
 	
 	^ 'This is a description'.
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 12:54'
+	#'squeak_changestamp' : 'FH 7/10/2024 10:07'
 }
-IPTLevel0201 class >> explanations [
+IPTLevel0202 class >> explanations [
 	
 	^ {''.}.
 ]
@@ -35,16 +35,16 @@ IPTLevel0201 class >> explanations [
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'FH 7/10/2024 10:07'
 }
-IPTLevel0201 class >> levelIndex [
+IPTLevel0202 class >> levelIndex [
 
-	^ 1.
+	^ 2.
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:40'
+	#'squeak_changestamp' : 'FH 7/10/2024 10:13'
 }
-IPTLevel0201 class >> visibleMethods [
+IPTLevel0202 class >> visibleMethods [
 
 	^ {IPTGame>>#initialize.
 		IPTGame>>#initializeBall.
@@ -63,6 +63,14 @@ IPTLevel0201 class >> visibleMethods [
 		
 		IPTPlayer>>#initialize.
 		IPTPlayer>>#game.
-		IPTPlayer>>#game:
+		IPTPlayer>>#game:.
+		IPTPlayer>>#up.
+		IPTPlayer>>#down.
+		IPTPlayer>>#stop.
+		IPTPlayer>>#move:.
+		IPTPlayer>>#step.
+		IPTPlayer>>#defaultSpeed.
+		IPTPlayer>>#speed.
+		IPTPlayer>>#speed:
 		}.
 ]
