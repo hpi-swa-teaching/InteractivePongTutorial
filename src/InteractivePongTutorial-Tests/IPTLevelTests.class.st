@@ -9,25 +9,6 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:29'
-}
-IPTLevelTests >> int_tstLevel: levelIndex inChapter: chapter [
-
-	ipt openLevel: levelIndex inChapter: chapter.
-	
-	ipt browser visibleClassSet do: [ :el |
-		el methodCodePieces do: [ :cp |
-			ipt browser selectCodePiece: cp;
-			loadSolutionButtonAction.]].
-	
-	ipt browser runCode.
-	
-	self assert: ((ipt browser testResult at: #errors) isEmpty).
-	self assert: ((ipt browser testResult at: #failures) isEmpty).
-]
-
-{
-	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:22'
 }
 IPTLevelTests >> setUp [
@@ -47,6 +28,24 @@ IPTLevelTests >> tearDown [
 
 {
 	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 11:44'
+}
+IPTLevelTests >> testInitialState [
+	
+	IPTChapter chapterSet do: [ :chapter |
+		chapter levels do: [ :level |
+			
+			ipt openLevel: (chapter levels indexOf: level) inChapter: chapter.
+			ipt browser runCode.
+			
+			self assert: ((ipt browser testResult at: #failures) isEmpty and: (ipt browser testResult at: #errors) isEmpty) not.
+			ipt closeAllWindows.
+			]
+		]
+]
+
+{
+	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:23'
 }
 IPTLevelTests >> testLevelDescriptions [
@@ -55,4 +54,29 @@ IPTLevelTests >> testLevelDescriptions [
 		chapter levels do: [ :lvl |
 			self assert: lvl description isEmpty not.
 			]].
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 11:40'
+}
+IPTLevelTests >> testSolutionCode [
+	
+	IPTChapter chapterSet do: [ :chapter |
+		chapter levels do: [ :level |
+			
+			ipt openLevel: (chapter levels indexOf: level) inChapter: chapter.
+	
+			ipt browser visibleClassSet do: [ :iptClass |
+				iptClass methodCodePieces do: [ :codePiece |
+					ipt browser 
+						selectCodePiece: codePiece;
+						loadSolutionButtonAction.]].
+			ipt browser runCode.
+	
+			self assert: (ipt browser testResult at: #errors) isEmpty.
+			self assert: (ipt browser testResult at: #failures) isEmpty.
+			ipt closeAllWindows.
+			]
+		]
 ]

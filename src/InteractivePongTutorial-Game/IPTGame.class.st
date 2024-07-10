@@ -1,6 +1,3 @@
-"
-This class contains the Code for the Game of the IPT. It is changed via the Code in the editor.
-"
 Class {
 	#name : #IPTGame,
 	#superclass : #Morph,
@@ -9,8 +6,7 @@ Class {
 		'playerRight',
 		'ball'
 	],
-	#category : #'InteractivePongTutorial-Game',
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 11:19'
+	#category : #'InteractivePongTutorial-Game'
 }
 
 {
@@ -23,7 +19,7 @@ IPTGame class >> open [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:01'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:03'
 }
 IPTGame >> ball [
 	^ ball.
@@ -31,7 +27,7 @@ IPTGame >> ball [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:01'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:03'
 }
 IPTGame >> ball: aBall [
 	ball := aBall.
@@ -48,7 +44,7 @@ IPTGame >> handlesKeyboard: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:01'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:03'
 }
 IPTGame >> initialize [
 	super initialize.
@@ -59,22 +55,31 @@ IPTGame >> initialize [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:01'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
 }
 IPTGame >> initializeBall [
-	"Instead of setting the Position of the ball you should now call the method starOver."
 	self 
 		ball: (IPTBall new game: self);
 		addMorph: self ball.
-	self ball center: self center.
+	self ball startOver.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:01'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:03'
 }
 IPTGame >> initializePlayers [
-	
+	| offset | 
+	offset := (self extent x / 2 - 30 @ 0).
+	self
+		playerLeft: (IPTPlayer new
+			center: self center - offset;
+			game: self);
+		playerRight: (IPTPlayer new
+			center:  self center + offset;
+			game: self);
+		addMorph: self playerLeft;
+		addMorph: self playerRight.
 ]
 
 {
@@ -128,34 +133,34 @@ IPTGame >> playerBounds [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:01'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:03'
 }
 IPTGame >> playerLeft [
-	
+	^ playerLeft.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:01'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:03'
 }
 IPTGame >> playerLeft: aPlayer [
-	
+	playerLeft := aPlayer.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:01'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:03'
 }
 IPTGame >> playerRight [
-	
+	^ playerRight.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:01'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:03'
 }
 IPTGame >> playerRight: aPlayer [
-	
+	playerRight := aPlayer.
 ]
 
 {
