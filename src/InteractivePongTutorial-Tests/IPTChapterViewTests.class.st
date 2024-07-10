@@ -9,23 +9,24 @@ Class {
 }
 
 {
-	#category : #running,
-	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:21'
+	#category : #actions,
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:35'
 }
 IPTChapterViewTests >> selectChapterTwoLevelOne [
 	
-	chapterview selectChapter: (IPTChapter chapterSet at: 2).
+	chapterview selectChapter: chapterview chapters second.
 ]
 
 {
 	#category : #running,
-	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 11:45'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:44'
 }
 IPTChapterViewTests >> setUp [
 
 	super setUp.
-	ipt := IPT new openChapterView.
-	chapterview := ipt chapterview.
+	ipt := IPT new.
+	chapterview := IPTChapterView openFrom: ipt withChapters: IPTMockInfos mockChapterSet.
+	ipt chapterview: chapterview.
 ]
 
 {
@@ -119,13 +120,14 @@ IPTChapterViewTests >> testBuildStartButtonWith [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:21'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:46'
 }
 IPTChapterViewTests >> testCanStartLevel [
 
-	self assert: chapterview canStartLevel == false.
-	self selectChapterTwoLevelOne.
-	self	 assert: chapterview canStartLevel == true.
+	chapterview selectLevel: nil.
+	self assert: chapterview canStartLevel = false.
+	chapterview selectChapter: chapterview chapters second.
+	self	 assert: chapterview canStartLevel = true.
 ]
 
 {

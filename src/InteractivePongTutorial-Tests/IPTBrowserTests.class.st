@@ -12,22 +12,18 @@ Class {
 
 {
 	#category : #running,
-	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:06'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:41'
 }
 IPTBrowserTests >> setUp [
 
 	super setUp.
-	chapter := IPTChapter 
-			withName: 'MockChapter'
-			number: 1
-			description: 'MockChapter'
-			levels: {IPTMockLevel0101. IPTMockLevel0102}.
-	initialLevelIndex := 2.
+	chapter := IPTMockInfos mockChapterSet second.
+	initialLevelIndex := 1.
 	ipt := IPT new.
 	browser := IPTBrowser openFrom: ipt 
 		chapter: chapter 
 		levelIndex: initialLevelIndex
-		classSet: IPTMockClass mockClassList.
+		classSet: IPTMockInfos mockClassList.
 	ipt browser: browser.
 ]
 
