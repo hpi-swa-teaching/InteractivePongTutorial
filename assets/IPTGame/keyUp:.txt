@@ -1,6 +1,12 @@
 keyUp: anEvent
 °°°°°
-"Level and Chapternumbers need to be added, only solution until now"
+2
+3
+°°
 
-	(anEvent keyCharacter asUppercase = $W ) ifTrue: [self playerLeft up].
-	(anEvent keyCharacter = Character arrowUp) ifTrue: [self playerRight up].
+"Stop movement on key release. W/S for the left and arrowUp/arrowDown for right Player"
+°°
+	(anEvent keyCharacter asUppercase = $W ) ifTrue: [self playerLeft stop].
+	(anEvent keyCharacter asUppercase = $S) ifTrue: [self playerLeft stop].
+	(anEvent keyCharacter = Character arrowUp) ifTrue: [self playerRight stop].
+	(anEvent keyCharacter = Character arrowDown) ifTrue: [self playerRight stop].

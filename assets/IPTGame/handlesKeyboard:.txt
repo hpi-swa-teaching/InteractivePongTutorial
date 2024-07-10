@@ -1,0 +1,7 @@
+handlesKeyboard: anEvent
+°°°°°
+2
+3
+°°
+
+	^ true.
