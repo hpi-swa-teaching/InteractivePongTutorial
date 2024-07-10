@@ -1,6 +1,3 @@
-"
-This class contains the Code for the Game of the IPT. It is changed via the Code in the editor.
-"
 Class {
 	#name : #IPTGame,
 	#superclass : #Morph,
@@ -9,8 +6,7 @@ Class {
 		'playerRight',
 		'ball'
 	],
-	#category : #'InteractivePongTutorial-Game',
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 11:19'
+	#category : #'InteractivePongTutorial-Game'
 }
 
 {
@@ -23,7 +19,7 @@ IPTGame class >> open [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:32'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
 }
 IPTGame >> ball [
 	^ ball.
@@ -31,7 +27,7 @@ IPTGame >> ball [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:32'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
 }
 IPTGame >> ball: aBall [
 	ball := aBall.
@@ -48,7 +44,7 @@ IPTGame >> handlesKeyboard: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:32'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
 }
 IPTGame >> initialize [
 	super initialize.
@@ -59,7 +55,7 @@ IPTGame >> initialize [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:32'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
 }
 IPTGame >> initializeBall [
 	self 
@@ -70,7 +66,7 @@ IPTGame >> initializeBall [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:32'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
 }
 IPTGame >> initializePlayers [
 	| offset | 
@@ -137,7 +133,7 @@ IPTGame >> playerBounds [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:32'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
 }
 IPTGame >> playerLeft [
 	^ playerLeft.
@@ -145,7 +141,7 @@ IPTGame >> playerLeft [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:32'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
 }
 IPTGame >> playerLeft: aPlayer [
 	playerLeft := aPlayer.
@@ -153,7 +149,7 @@ IPTGame >> playerLeft: aPlayer [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:32'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
 }
 IPTGame >> playerRight [
 	^ playerRight.
@@ -161,7 +157,7 @@ IPTGame >> playerRight [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:32'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
 }
 IPTGame >> playerRight: aPlayer [
 	playerRight := aPlayer.
