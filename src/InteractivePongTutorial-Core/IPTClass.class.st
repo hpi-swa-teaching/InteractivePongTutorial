@@ -1,10 +1,14 @@
+"
+This class is a CodePiece but for class code.
+"
 Class {
 	#name : #IPTClass,
 	#superclass : #IPTCodePiece,
 	#instVars : [
 		'methodCodePieces'
 	],
-	#category : #'InteractivePongTutorial-Core'
+	#category : #'InteractivePongTutorial-Core',
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 11:06'
 }
 
 {
@@ -21,14 +25,15 @@ IPTClass class >> classList [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:20'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:17'
 }
 IPTClass class >> methodCodePiecesFor: aClass [
 
 	| filePaths |
 	filePaths := ((GitAssetLoader for: 'InteractivePongTutorial') loadString: '/assets/methodIndex.txt') lines asOrderedCollection.
-	^ (filePaths select: [:filePath | (filePath includesSubstring: aClass asString)])
-				collect: [:filePath | IPTCodePiece fromFile: filePath].
+	^ (filePaths 
+		select: [:filePath | filePath includesSubstring: aClass asString])
+		collect: [:filePath | IPTCodePiece fromFile: filePath].
 ]
 
 {
@@ -37,16 +42,6 @@ IPTClass class >> methodCodePiecesFor: aClass [
 }
 IPTClass >> code [
 	^ self referencedClass definition.
-]
-
-{
-	#category : #behaviour,
-	#'squeak_changestamp' : 'Felix Knöfel 6/24/2024 11:58'
-}
-IPTClass >> copy [
-	^ super copy 
-		methodCodePieces: (self methodCodePieces copy);
-		yourself.
 ]
 
 {

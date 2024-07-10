@@ -1,10 +1,14 @@
+"
+This class contains the Squeaky images and Displays it.
+"
 Class {
 	#name : #IPTSqueaky,
 	#superclass : #ImageMorph,
 	#instVars : [
 		'mood'
 	],
-	#category : #'InteractivePongTutorial-Core'
+	#category : #'InteractivePongTutorial-Core',
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 11:17'
 }
 
 {
@@ -37,12 +41,11 @@ IPTSqueaky >> mood: aSelector [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 18:18'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:29'
 }
 IPTSqueaky >> setImageFromPath: anImagePath [
 	
-	self image: ((GitAssetLoader for: 'InteractivePongTutorial')
-				loadForm: anImagePath).
+	self image: ((GitAssetLoader for: 'InteractivePongTutorial') loadForm: anImagePath).
 ]
 
 {
@@ -59,15 +62,15 @@ IPTSqueaky >> squeakyPaths [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 6/30/2024 19:04'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:31'
 }
 IPTSqueaky >> updateImage [
 
 	self setImageFromPath: (self squeakyPaths at: self mood).
-	self owner ifNotNil: [
-		self image: (self image scaledToHeight: self owner height).
-		(self image width > self owner width) ifTrue: 
-			[self image: (self image scaledToWidth: self owner width)]].
+	self owner ifNotNil: [ :owner |
+		self image: (self image scaledToHeight: owner height).
+		(self image width > owner width) ifTrue: [
+			self image: (self image scaledToWidth: owner width)]].
 
 	
 

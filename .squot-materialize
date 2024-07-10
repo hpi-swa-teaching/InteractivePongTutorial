@@ -120,7 +120,7 @@
 		#path : FSAbsolutePath [
 			'assets',
 			'IPTGame',
-			'initializePlayers.txt'
+			'handlesKeyboard:.txt'
 		],
 		#encoding : 'TXT'
 	},
@@ -144,7 +144,7 @@
 		#path : FSAbsolutePath [
 			'assets',
 			'IPTGame',
-			'handlesKeyboard:.txt'
+			'initializePlayers.txt'
 		],
 		#encoding : 'TXT'
 	},

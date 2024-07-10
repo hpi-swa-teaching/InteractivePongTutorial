@@ -1,3 +1,6 @@
+"
+This class is responsible for displaying the Methods, Content of the Levels and most UI elements. It also connects CodePieces, editor and the playground
+"
 Class {
 	#name : #IPTBrowser,
 	#superclass : #Model,
@@ -14,7 +17,8 @@ Class {
 		'playground',
 		'squeaky'
 	],
-	#category : #'InteractivePongTutorial-Core'
+	#category : #'InteractivePongTutorial-Core',
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 10:38'
 }
 
 {
@@ -511,7 +515,7 @@ IPTBrowser >> levelIndex: aNumber [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 14:59'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:35'
 }
 IPTBrowser >> loadLevel: aLevelIndex [
 
@@ -523,8 +527,7 @@ IPTBrowser >> loadLevel: aLevelIndex [
 		selectCodePiece: nil;
 		updateVisibleClassSetToMethods: self activeLevel visibleMethods..
 		
-	self playground ifNotNil: [
-		self playground clear.].
+	self playground ifNotNil: [self playground clear].
 		
 	self squeaky mood: #neutral.
 	self
@@ -537,15 +540,14 @@ IPTBrowser >> loadLevel: aLevelIndex [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:29'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:35'
 }
 IPTBrowser >> loadSolutionButtonAction [
 	
 	self levelIndex ifNotNil: [
 		self selectedCodePiece loadSolutionCodeForLevel: self levelIndex andChapter: self chapter chapterNumber.
 		self codeEditor setCodePiece: self selectedCodePiece.
-		self selectedCodePiece compileCode.
-	].
+		self selectedCodePiece compileCode].
 	
 	
 ]
@@ -563,11 +565,11 @@ IPTBrowser >> loadSolutionButtonEnabled [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Josua Zehner 6/26/2024 12:07'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:36'
 }
 IPTBrowser >> nextExplanationButtonAction [
 
-	self explanationIndex: self explanationIndex +1.
+	self explanationIndex: self explanationIndex + 1.
 	self update.
 	
 ]
@@ -602,21 +604,19 @@ IPTBrowser >> nextLevelButtonEnabled [
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:32'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:45'
 }
 IPTBrowser >> outputBoxContent [
 
 	| output |
 	output := ''.
-	self testResult ifNotNil: [
-	output := ((self testResult at: #errors) inject: 'Errors:' into: [:run :err |
-		 run, Character cr, (IPTLevel resultEntryToString: err) ]), Character cr, Character cr.
-	output := ((self testResult at: #failures) inject: (output, 'Test failures:') into: [:run :err |
-		 run, Character cr, (IPTLevel resultEntryToString: err) ]).
 	
-	(self testResult at: #success) ifTrue: [
-			output := 'Well done! :)']].
-
+	self testResult ifNotNil: [ :testResult |
+		(testResult at: #success) ifTrue: [^ 'Well done! :)'].
+		output := ((testResult at: #errors) inject: (output, 'Errors: ') into: [:run :err |
+			 run, Character cr, (IPTLevel resultEntryToString: err)]), Character cr, Character cr, 'Test failures: '.
+		output := ((testResult at: #failures) inject: (output, 'Test failures:') into: [:run :err |
+			 run, Character cr, (IPTLevel resultEntryToString: err)])].
 	^ output.
 ]
 
@@ -723,14 +723,13 @@ IPTBrowser >> reloadCodePieces [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:37'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:46'
 }
 IPTBrowser >> resetButtonAction [
 
 	self levelIndex ifNotNil: [
 		self selectedCodePiece loadInitialCodeForLevel: self levelIndex andChapter: self chapter chapterNumber.
-		self codeEditor setCodePiece: self selectedCodePiece.
-	].
+		self codeEditor setCodePiece: self selectedCodePiece].
 	
 	
 ]
@@ -748,14 +747,14 @@ IPTBrowser >> resetButtonEnabled [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 7/8/2024 15:26'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:46'
 }
 IPTBrowser >> runCode [
 	
 	 self testResult: self activeLevel runTests.
 	
 	(self testResult at: #isPlayable)
-		ifTrue: [self playground runCode.].
+		ifTrue: [self playground runCode].
 		
 	self 
 		updateSqueaky;
@@ -880,20 +879,17 @@ IPTBrowser >> update [
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:45'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:14'
 }
 IPTBrowser >> updateCodePieceTestIndicators [
 
-	| errors failures |
-	errors := self testResult at: #errors.
-	failures := self testResult at: #failures.
+	| results |
+	results := (self testResult at: #errors), (self testResult at: #failures).
 	
 	self visibleClassSet do: [ :iptClass |
-		(iptClass methodCodePieces
-			do: [ :codePiece | 
-				codePiece isGreen:
-				(errors, failures anySatisfy: [ :entry |
-					 codePiece isSameSourceAs: (entry at: #method)])])].
+		iptClass methodCodePieces do: [ :codePiece | 
+			codePiece isGreen: (results anySatisfy: [ :entry |
+				 codePiece isSameSourceAs: (entry at: #method)])]].
 ]
 
 {
@@ -911,18 +907,18 @@ IPTBrowser >> updateSqueaky [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:48'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:54'
 }
 IPTBrowser >> updateVisibleClassSetToMethods: aMethodsCollection [	
 	
-	aMethodsCollection ifNil: [ ^nil.].
 	self visibleClassSet: ((self classSet deepCopy) asOrderedCollection).
 	
-	self visibleClassSet do: [:iptClass |
-		iptClass methodCodePieces removeAllSuchThat: [:codePiece |
-			aMethodsCollection noneSatisfy: [ :compiledMethod | 
-				codePiece isSameSourceAs: compiledMethod]]].
-	self visibleClassSet removeAllSuchThat: [:iptclass |  iptclass methodCodePieces isEmpty].
+	self visibleClassSet removeAllSuchThat: [:iptClass |
+		iptClass methodCodePieces 
+			removeAllSuchThat: [:codePiece |
+				aMethodsCollection noneSatisfy: [ :compiledMethod | 
+					codePiece isSameSourceAs: compiledMethod]];
+			isEmpty "remove class if it has no more codePieces"].
 	
 ]
 

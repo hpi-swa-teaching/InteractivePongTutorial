@@ -1,10 +1,14 @@
+"
+This class displays and runs the game code. It is opened in the Browser.
+"
 Class {
 	#name : #IPTPlayground,
 	#superclass : #PasteUpMorph,
 	#instVars : [
 		'isRunning'
 	],
-	#category : #'InteractivePongTutorial-Core'
+	#category : #'InteractivePongTutorial-Core',
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 11:14'
 }
 
 {
@@ -20,21 +24,19 @@ IPTPlayground >> clear [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 7/8/2024 15:31'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:28'
 }
 IPTPlayground >> initialize [
-	| theme |
-
+	
 	super initialize.
 	self 
 		layoutFrame: (LayoutFrame fractions: (0@0 rect: 1@1));
 		isRunning: false;
 		beSticky.
 	
-	theme := Smalltalk at: #SqueakTheme ifAbsent: nil.
-	theme
-		ifNil: [self color: Preferences defaultWorldColor] 
-		ifNotNil: [self setAsBackground: theme linenblue].
+	(Smalltalk at: #SqueakTheme ifAbsent: nil)
+		ifNotNil: [:theme | self setAsBackground: theme linenblue]
+		ifNil: [self color: Preferences defaultWorldColor] .
 ]
 
 {
@@ -55,11 +57,12 @@ IPTPlayground >> isRunning: anObject [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 7/8/2024 15:28'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:29'
 }
 IPTPlayground >> runCode [
 	
-	self clear;
+	self 
+		clear;
 		isRunning: true;
 		addMorph: (IPTGame new
 			setupWithExtent: self extent position: self position;

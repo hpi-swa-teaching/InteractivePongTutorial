@@ -1,3 +1,6 @@
+"
+This class contains the code for its referenced methods and loads it from the Assets.
+"
 Class {
 	#name : #IPTCodePiece,
 	#superclass : #Object,
@@ -11,27 +14,29 @@ Class {
 		'referencedClass',
 		'parent'
 	],
-	#category : #'InteractivePongTutorial-Core'
+	#category : #'InteractivePongTutorial-Core',
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 10:42'
 }
 
 {
 	#category : #creating,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:07'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:07'
 }
 IPTCodePiece class >> createVariants: anAssetContent [
+
 	^ (anAssetContent allButFirst collect: [:variantString | IPTCodeVariant fromString: variantString]) asOrderedCollection
-			addFirst: (IPTCodeVariant new
-				chapterNumber: 0;
-				levelIndex: 0;
-				initialCode: '';
-				solutionCode: '';
-				readOnly: true);
-			yourself.
+		addFirst: (IPTCodeVariant new
+			chapterNumber: 0;
+			levelIndex: 0;
+			initialCode: '';
+			solutionCode: '';
+			readOnly: true);
+		yourself.
 ]
 
 {
 	#category : #creating,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:08'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:07'
 }
 IPTCodePiece class >> fromFile: aFilePath [
 
@@ -40,7 +45,7 @@ IPTCodePiece class >> fromFile: aFilePath [
 	fileContents := ((GitAssetLoader for: 'InteractivePongTutorial') loadString: aFilePath) splitBy: '°°°°°'.
 	^ self new
 		referencedClass: (Smalltalk at: methodInfos first asSymbol);
-		referencedMethod: (methodInfos second splitBy: '.') first  asSymbol;
+		referencedMethod: (methodInfos second splitBy: '.') first asSymbol;
 		head: fileContents first withBlanksTrimmed;
 	 	variants: (self createVariants: fileContents);
 		readOnly: false;
@@ -73,11 +78,10 @@ IPTCodePiece >> checkSyntax: aString [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 19:41'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:09'
 }
 IPTCodePiece >> code [
-	"self source ifNil: [ ^ nil ].
-	code ifNil: [ self code: self source getSource asString ]."
+
 	^ code.
 ]
 
@@ -96,17 +100,6 @@ IPTCodePiece >> code: anObject [
 IPTCodePiece >> compileCode [
 
 	self referencedClass compile: self code.
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 20:01'
-}
-IPTCodePiece >> contents [
-	"Assuming self is an IPTClass object"
-	^ self methodCodePieces collect: [ :each | 
-		IPTCodePieceListItemWrapper with: each model: self model parent: self]
-
 ]
 
 {
@@ -151,11 +144,12 @@ IPTCodePiece >> isGreen: anObject [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:26'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:11'
 }
 IPTCodePiece >> isSameSourceAs: aCompiledMethod [
 	
-	^ (aCompiledMethod selector asSymbol = self referencedMethod) and: (aCompiledMethod methodClass = self referencedClass).
+	^ (aCompiledMethod selector asSymbol = self referencedMethod) 
+		and: (aCompiledMethod methodClass = self referencedClass).
 ]
 
 {
@@ -173,24 +167,21 @@ IPTCodePiece >> loadInitialCodeForLevel: aLevelIndex andChapter: aChapterNumber 
 
 {
 	#category : #loading,
-	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:08'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:12'
 }
 IPTCodePiece >> loadSolutionCodeForLevel: aLevelIndex andChapter: aChapterNumber [
+
 	self code: (self addHeadToCode: (self variantForLevel: aLevelIndex fromChapter: aChapterNumber) solutionCode).
-	self checkSyntax: self code.
+	self compileCode.
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 19:39'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:12'
 }
 IPTCodePiece >> name [
-"Extract method name"
+
 	^ self referencedMethod asString.
-"	| paramCount strings|
-	strings := self source literalStrings.
-	paramCount := 1 max: self source tempNames size.
-	^ (strings copyFrom: (strings size - paramCount) to: (strings size - 1 )) join."
 ]
 
 {
@@ -243,26 +234,13 @@ IPTCodePiece >> referencedMethod: anObject [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 19:42'
-}
-IPTCodePiece >> safelyCompile: aString [
-	"We want to make sure the user is not playing any games, like trying to compile new methods into our class"
-	| previousMethods newMethods |
-	previousMethods := self class methodDict keys copy.
-	self referencedClass compile: aString.
-	newMethods := self class methodDict keys difference: previousMethods.
-	newMethods do: [:each|
-		self class removeSelector: each].
-	^ newMethods isEmpty
-]
-
-{
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 13:26'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:15'
 }
 IPTCodePiece >> variantForLevel: aLevelIndex fromChapter: aChapterNumber [
 	
-	^ self variants reversed detect: [:var | var chapterNumber <= aChapterNumber and: (var levelIndex <= aLevelIndex or: var chapterNumber ~= aChapterNumber)].
+	^ self variants reversed detect: [:var | 
+		var chapterNumber <= aChapterNumber 
+			and: (var levelIndex <= aLevelIndex or: var chapterNumber ~= aChapterNumber)].
 ]
 
 {

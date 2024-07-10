@@ -1,3 +1,6 @@
+"
+This class shows the code of the selected Method and allows you to change it. It is opened in the Browser
+"
 Class {
 	#name : #IPTEditor,
 	#superclass : #CodeHolder,
@@ -5,28 +8,29 @@ Class {
 		'activeCodePiece',
 		'browser'
 	],
-	#category : #'InteractivePongTutorial-Core'
+	#category : #'InteractivePongTutorial-Core',
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 11:11'
 }
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:31'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:27'
 }
 IPTEditor class >> openOnBrowser: aBrowser [
 
-	^ self new 	browser: aBrowser.
+	^ self new browser: aBrowser.
 ]
 
 {
 	#category : #style,
-	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:01'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:23'
 }
 IPTEditor >> aboutToStyle: aStyler [
+
 	self codePiece ifNotNil: [
-		self codePiece isClass ifTrue: [
-			aStyler classOrMetaClass: nil.]
-		ifFalse: [
-		aStyler classOrMetaClass: self codePiece referencedClass]].
+		aStyler classOrMetaClass: (self codePiece isClass 
+			ifTrue: [nil]
+			ifFalse: [self codePiece referencedClass])].
 	^ true.
 ]
 
@@ -56,20 +60,10 @@ IPTEditor >> codePiece [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:01'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:23'
 }
 IPTEditor >> codePiece: aCodePiece [
 	activeCodePiece := aCodePiece.
-	
-	aCodePiece 
-		ifNil: [
-			self contents: '']
-		ifNotNil: [
-			aCodePiece isClass ifTrue: []
-			ifFalse: [
-			self setClass: aCodePiece referencedClass selector: aCodePiece referencedMethod.].
-			self contents: aCodePiece code.].
-	self changed: #contents.
 		
 		
 		
@@ -108,21 +102,17 @@ IPTEditor >> evaluateExpression: aString [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/6/2024 17:44'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:25'
 }
 IPTEditor >> setCodePiece: aCodePiece [
 	
 	self codePiece: aCodePiece.
-	aCodePiece 
-		ifNil: [
-			self contents: '']
-		ifNotNil: [
-			aCodePiece isClass ifTrue: []
-			ifFalse: [
-			self setClass: aCodePiece referencedClass selector: aCodePiece referencedMethod.].
-			self contents: aCodePiece code.].
+	self contents: ''.
+	aCodePiece ifNotNil: [
+		self contents: aCodePiece code.
+		aCodePiece isClass ifFalse: [
+			self setClass: aCodePiece referencedClass selector: aCodePiece referencedMethod]].
 	self changed: #contents.
-	self changed: #readOnly.
 	
 	
 		

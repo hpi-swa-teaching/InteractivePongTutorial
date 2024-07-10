@@ -19,7 +19,7 @@ IPTGame class >> open [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 10:20'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
 }
 IPTGame >> ball [
 	^ ball.
@@ -27,7 +27,7 @@ IPTGame >> ball [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 10:20'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
 }
 IPTGame >> ball: aBall [
 	ball := aBall.
@@ -44,7 +44,7 @@ IPTGame >> handlesKeyboard: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'FH 7/10/2024 10:20'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
 }
 IPTGame >> initialize [
 	super initialize.
@@ -55,7 +55,7 @@ IPTGame >> initialize [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'FH 7/10/2024 10:20'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
 }
 IPTGame >> initializeBall [
 	self 
@@ -66,7 +66,7 @@ IPTGame >> initializeBall [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'FH 7/10/2024 10:20'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
 }
 IPTGame >> initializePlayers [
 	| offset | 
@@ -133,7 +133,7 @@ IPTGame >> playerBounds [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 10:20'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
 }
 IPTGame >> playerLeft [
 	^ playerLeft.
@@ -141,7 +141,7 @@ IPTGame >> playerLeft [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 10:20'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
 }
 IPTGame >> playerLeft: aPlayer [
 	playerLeft := aPlayer.
@@ -149,7 +149,7 @@ IPTGame >> playerLeft: aPlayer [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 10:20'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
 }
 IPTGame >> playerRight [
 	^ playerRight.
@@ -157,7 +157,7 @@ IPTGame >> playerRight [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 10:20'
+	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:33'
 }
 IPTGame >> playerRight: aPlayer [
 	playerRight := aPlayer.

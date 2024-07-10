@@ -1,3 +1,6 @@
+"
+This is the orchastrating class of the Interactive Pong Tutorial. It gets called when the Tutorial is open
+"
 Class {
 	#name : #IPT,
 	#superclass : #Object,
@@ -5,7 +8,8 @@ Class {
 		'browser',
 		'chapterview'
 	],
-	#category : #'InteractivePongTutorial-Core'
+	#category : #'InteractivePongTutorial-Core',
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 10:34'
 }
 
 {
