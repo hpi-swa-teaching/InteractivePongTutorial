@@ -158,9 +158,10 @@ IPTLevel >> requiredAssert: aBooleanOrBlock description: aStringOrBlock [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 7/8/2024 15:24'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 11:43'
 }
 IPTLevel >> setUp [
+
 	game := IPTGame new.
 	ball := IPTBall new.
 	player := IPTPlayer new.

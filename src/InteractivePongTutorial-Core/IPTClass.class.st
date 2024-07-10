@@ -38,17 +38,19 @@ IPTClass class >> methodCodePiecesFor: aClass [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 19:56'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:12'
 }
 IPTClass >> code [
+
 	^ self referencedClass definition.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:46'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:12'
 }
 IPTClass >> initialize [
+
 	self readOnly: true.
 ]
 
@@ -63,48 +65,54 @@ IPTClass >> isSameSourceAs: aCompiledMethod [
 
 {
 	#category : #behaviour,
-	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 14:54'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:13'
 }
 IPTClass >> loadInitialCodeForLevel: aLevelIndex andChapter: aChapterNumber [
+
 	^self shouldNotImplement.
 ]
 
 {
 	#category : #behaviour,
-	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 14:54'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:13'
 }
 IPTClass >> loadSolutionCodeForLevel: aLevelIndex andChapter: aChapterNumber [
+
 	self shouldNotImplement.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 11:47'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:13'
 }
 IPTClass >> methodCodePieces [
-	^ methodCodePieces
+
+	^ methodCodePieces.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/26/2024 14:50'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:13'
 }
-IPTClass >> methodCodePieces: anObject [
-	methodCodePieces := anObject
+IPTClass >> methodCodePieces: aCodePiece [
+
+	methodCodePieces := aCodePiece.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 19:51'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:13'
 }
 IPTClass >> name [
+
 	^ self referencedClass asString.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/3/2024 19:52'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:13'
 }
 IPTClass >> referencedMethod [
+
 	^ nil.
 ]

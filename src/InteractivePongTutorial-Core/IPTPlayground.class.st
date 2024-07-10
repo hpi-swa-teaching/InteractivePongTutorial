@@ -12,7 +12,7 @@ Class {
 }
 
 {
-	#category : #'as yet unclassified',
+	#category : #actions,
 	#'squeak_changestamp' : 'Felix Knöfel 7/8/2024 15:28'
 }
 IPTPlayground >> clear [
@@ -23,7 +23,7 @@ IPTPlayground >> clear [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #actions,
 	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:28'
 }
 IPTPlayground >> initialize [
@@ -41,22 +41,24 @@ IPTPlayground >> initialize [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/8/2024 15:27'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:20'
 }
 IPTPlayground >> isRunning [
-	^ isRunning
+
+	^ isRunning.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/8/2024 15:27'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:20'
 }
-IPTPlayground >> isRunning: anObject [
-	isRunning := anObject
+IPTPlayground >> isRunning: aBoolean [
+
+	isRunning := aBoolean.
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #actions,
 	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:29'
 }
 IPTPlayground >> runCode [

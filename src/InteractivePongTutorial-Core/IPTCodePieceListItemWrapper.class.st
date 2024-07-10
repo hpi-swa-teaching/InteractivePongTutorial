@@ -13,75 +13,81 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:21'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:14'
 }
 IPTCodePieceListItemWrapper class >> with: aCodePiece model: aModel parent: aParent [
 
 	^ self new 
-		setItem: aCodePiece model: aModel parent: aParent
+		setItem: aCodePiece model: aModel parent: aParent.
 
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/5/2024 11:56'
+	#category : #accessing,
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:14'
 }
 IPTCodePieceListItemWrapper >> asString [
+
 	^ self item name.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 14:15'
+	#category : #accessing,
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:14'
 }
 IPTCodePieceListItemWrapper >> contents [
+
 	"Assuming self is an IPTClass object"
 	^ item methodCodePieces collect: [ :each | 
-		IPTCodePieceListItemWrapper with: each model: self model parent: self]
+		IPTCodePieceListItemWrapper with: each model: self model parent: self].
 
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 7/1/2024 14:12'
+	#category : #accessing,
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:14'
 }
 IPTCodePieceListItemWrapper >> hasContents [
+
 	^ item isClass.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:19'
+	#category : #accessing,
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:15'
 }
 IPTCodePieceListItemWrapper >> icon [
+
 	(self item isClass or: [self item readOnly]) ifTrue: [^ nil].
 	^ ToolIcons iconNamed: (self item isGreen
 		ifTrue: [#testGreen]
-		ifFalse: [#testRed])
+		ifFalse: [#testRed]).
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:25'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:15'
 }
 IPTCodePieceListItemWrapper >> parent [
-	^ parent
+
+	^ parent.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/2/2024 11:25'
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:15'
 }
-IPTCodePieceListItemWrapper >> parent: anObject [
-	parent := anObject
+IPTCodePieceListItemWrapper >> parent: aParent [.
+
+	parent := aParent.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:21'
+	#category : #actions,
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:15'
 }
 IPTCodePieceListItemWrapper >> setItem: aCodePiece model: aModel parent: itemParent [
 
 	self parent: itemParent.
-	self setItem: aCodePiece model: aModel
+	self setItem: aCodePiece model: aModel.
 ]
