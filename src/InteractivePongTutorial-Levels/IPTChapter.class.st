@@ -17,7 +17,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'FH 7/10/2024 17:58'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:00'
 }
 IPTChapter class >> chapterSet [
 	^ {IPTChapter 
@@ -41,7 +41,13 @@ IPTChapter class >> chapterSet [
 			levels: {
 				IPTLevel0201.
 				IPTLevel0202.
-				IPTLevel0203}}
+				IPTLevel0203}.
+		IPTChapter 
+			withName: 'Collisions'
+			number: 3
+			description: 'This is Chapter 3'
+			levels: {
+				IPTLevel0301.}}
 ]
 
 {

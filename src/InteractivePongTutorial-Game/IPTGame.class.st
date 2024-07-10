@@ -19,82 +19,70 @@ IPTGame class >> open [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
 }
 IPTGame >> ball [
-	^ ball.
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
 }
 IPTGame >> ball: aBall [
-	ball := aBall.
+	
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
 }
 IPTGame >> handlesKeyboard: anEvent [
-	"Return true to enable Keyboard handling."
+	
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
 }
 IPTGame >> initialize [
+	"Please change the color to black."
 	super initialize.
 	self 
-		color: Color black;
+		color: Color blue;
 		beSticky.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
 }
 IPTGame >> initializeBall [
-	self 
-		ball: (IPTBall new game: self);
-		addMorph: self ball.
-	self ball startOver.
+	
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
 }
 IPTGame >> initializePlayers [
-	| offset | 
-	offset := (self extent x / 2 - 30 @ 0).
-	self
-		playerLeft: (IPTPlayer new
-			center: self center - offset;
-			game: self);
-		playerRight: (IPTPlayer new
-			center:  self center + offset;
-			game: self);
-		addMorph: self playerLeft;
-		addMorph: self playerRight.
+	
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
 }
 IPTGame >> keyDown: anEvent [
-	"Let left Player move on W/S an right player on arrowUp/arrowDown"
+	
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
 }
 IPTGame >> keyUp: anEvent [
-	"Stop movement on key release. W/S for the left and arrowUp/arrowDown for right Player. Try using 'or:' or 'anySatisfy:'"
+	
 ]
 
 {
@@ -117,42 +105,42 @@ IPTGame >> mouseLeave: anEvent [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JZ 5/22/2024 16:25'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
 }
 IPTGame >> playerBounds [
-	^ {self playerLeft bounds . self playerRight bounds}.
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
 }
 IPTGame >> playerLeft [
-	^ playerLeft.
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
 }
 IPTGame >> playerLeft: aPlayer [
-	playerLeft := aPlayer.
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
 }
 IPTGame >> playerRight [
-	^ playerRight.
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
 }
 IPTGame >> playerRight: aPlayer [
-	playerRight := aPlayer.
+	
 ]
 
 {

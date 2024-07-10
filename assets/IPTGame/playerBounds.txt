@@ -1,5 +1,16 @@
 playerBounds
 °°°°°
-"Level and Chapternumbers need to be added, only solution until now"
+3
+1
 
-^ {self playerLeft bounds . self playerRight bounds}.
+°°
+"Return a colletion of the bounds of all Players. Use 'bounds' message of Morphs."
+°°
+ 
+	^ {self playerLeft bounds . self playerRight bounds}.
+°°
+3
+2
+°°
+ 
+	^ {self playerLeft bounds . self playerRight bounds}.

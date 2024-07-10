@@ -1,4 +1,5 @@
 /assets/IPTBall/checkCollisionWithWalls.txt
+/assets/IPTBall/checkCollisionWithPlayer.txt
 /assets/IPTBall/game.txt
 /assets/IPTBall/game:.txt
 /assets/IPTBall/initialize.txt
@@ -18,6 +19,7 @@
 /assets/IPTGame/playerRight.txt
 /assets/IPTGame/playerLeft:.txt
 /assets/IPTGame/playerRight:.txt
+/assets/IPTGame/playerBounds.txt
 /assets/IPTGame/keyUp:.txt
 /assets/IPTGame/keyDown:.txt
 /assets/IPTGame/handlesKeyboard:.txt

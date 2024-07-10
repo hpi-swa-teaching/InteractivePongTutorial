@@ -10,81 +10,74 @@ Class {
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
 }
 IPTPlayer >> defaultSpeed [
-	^ 10.
+	
 ]
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
 }
 IPTPlayer >> down [
-	self speed: self defaultSpeed.
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
 }
 IPTPlayer >> game [
-	^ game.
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
 }
 IPTPlayer >> game: aGame [
-	game := aGame.
+	
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
 }
 IPTPlayer >> initialize [
-	super initialize.
-		self 
-			color: Color white;
-			extent: (15@100);
-			speed: 0.
+	
 ]
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
 }
 IPTPlayer >> move: aNumber [
-	| offset |
-	offset := self height * 0.5.
-	self center: self center 
-		+ (0 @ (aNumber min: offset max: (self game height - offset))).
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
 }
 IPTPlayer >> speed [
-	^ speed.
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
 }
 IPTPlayer >> speed: aNumber [
-	speed := aNumber.
+	
 ]
 
 {
 	#category : #stepping,
-	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
 }
 IPTPlayer >> step [
-	self move: self speed.
+	
 ]
 
 {
@@ -97,16 +90,16 @@ IPTPlayer >> stepTime [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
 }
 IPTPlayer >> stop [
-	self speed: 0.
+	
 ]
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'FH 7/10/2024 18:23'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:06'
 }
 IPTPlayer >> up [
-	self speed: self defaultSpeed negated.
+	
 ]

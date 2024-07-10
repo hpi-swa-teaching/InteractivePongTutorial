@@ -1,6 +1,19 @@
 checkCollisionWithPlayer
 °°°°°
-"Level and Chapternumbers need to be added, only solution until now"
+3
+1
+°°
+	"Check collision with Players using 'intersects:' message."
+
+°°
+
+	(self game playerBounds anySatisfy: [:bounds | bounds intersects: self bounds])
+			ifTrue: [self turnHorizontal].
+°°°°°
+3
+2
+
+°°
 
 	(self game playerBounds anySatisfy: [:bounds | bounds intersects: self bounds])
 			ifTrue: [self turnHorizontal].

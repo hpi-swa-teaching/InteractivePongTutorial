@@ -11,6 +11,8 @@ step
 4
 °°
 	"You should now also check for Collisions with walls."
+
+		self position: self position + self speed.
 °°
 	self position: self position + self speed.
 	self checkCollisionWithWalls.
@@ -20,3 +22,22 @@ step
 °°
 	self position: self position + self speed.
 	self checkCollisionWithWalls.
+°°°°°
+3
+1
+°°
+	"Check for collision with a Player."
+
+	self position: self position + self speed.
+	self checkCollisionWithWalls
+°°
+	self position: self position + self speed.
+	self checkCollisionWithWalls;
+		checkCollisionWithPlayer.
+°°°°°
+3
+2
+°°
+	self position: self position + self speed.
+	self checkCollisionWithWalls;
+		checkCollisionWithPlayer.
