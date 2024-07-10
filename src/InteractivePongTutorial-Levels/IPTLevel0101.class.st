@@ -10,11 +10,11 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/21/2024 16:47'
+	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:07'
 }
 IPTLevel0101 class >> asString [
 
-	^ 'Level 01: Intro'
+	^ 'Level 01: Intro'.
 ]
 
 {

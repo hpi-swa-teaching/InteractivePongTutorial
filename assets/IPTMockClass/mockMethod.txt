@@ -1,0 +1,10 @@
+mockMethod
+°°°°°
+100
+1
+°°
+
+	^ false.
+°°
+
+	^ true.
