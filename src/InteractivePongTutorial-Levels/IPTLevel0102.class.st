@@ -136,10 +136,12 @@ IPTLevel0102 >> testGameInitialize [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:37'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 14:49'
 }
 IPTLevel0102 >> testGameInitializeBall [
 	self methodToBeTested: (IPTGame >> #initializeBall).
+	
+	self requiredAssert: (game ball ~= game) description: '(IPTGame >> ball) is not implemented, or ball has been set to game!'.
 	
 	game initializeBall.
 	self assert: (game ball isKindOf: IPTBall) description: 'Ball should be of class Ball'.
