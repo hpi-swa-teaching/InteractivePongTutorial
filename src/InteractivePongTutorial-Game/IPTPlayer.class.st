@@ -14,7 +14,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 18:24'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 21:34'
 }
 IPTPlayer >> defaultExtent [
 	^ (15@100).
@@ -22,7 +22,7 @@ IPTPlayer >> defaultExtent [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 18:24'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 21:34'
 }
 IPTPlayer >> defaultSpeed [
 	^ 10.
@@ -30,7 +30,7 @@ IPTPlayer >> defaultSpeed [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 18:24'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 21:34'
 }
 IPTPlayer >> down [
 	self speed: self defaultSpeed.
@@ -38,7 +38,7 @@ IPTPlayer >> down [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 18:24'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 21:34'
 }
 IPTPlayer >> game [
 	^ game.
@@ -46,7 +46,7 @@ IPTPlayer >> game [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 18:24'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 21:34'
 }
 IPTPlayer >> game: aGame [
 	game := aGame.
@@ -54,7 +54,7 @@ IPTPlayer >> game: aGame [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 18:24'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 21:34'
 }
 IPTPlayer >> initialize [
 	super initialize.
@@ -66,7 +66,7 @@ IPTPlayer >> initialize [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 18:24'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 21:34'
 }
 IPTPlayer >> move: aNumber [
 	| dist |
@@ -77,7 +77,7 @@ IPTPlayer >> move: aNumber [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 18:24'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 21:34'
 }
 IPTPlayer >> speed [
 	^ speed.
@@ -85,7 +85,7 @@ IPTPlayer >> speed [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 18:24'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 21:34'
 }
 IPTPlayer >> speed: aNumber [
 	speed := aNumber.
@@ -93,7 +93,7 @@ IPTPlayer >> speed: aNumber [
 
 {
 	#category : #stepping,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 18:24'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 21:34'
 }
 IPTPlayer >> step [
 	self move: self speed.
@@ -109,7 +109,7 @@ IPTPlayer >> stepTime [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 18:24'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 21:34'
 }
 IPTPlayer >> stop [
 	self speed: 0.
@@ -117,7 +117,7 @@ IPTPlayer >> stop [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 18:24'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 21:34'
 }
 IPTPlayer >> up [
 	self speed: self defaultSpeed negated.

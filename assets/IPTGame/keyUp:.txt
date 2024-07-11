@@ -6,12 +6,13 @@ keyUp: anEvent
 
 "Stop movement on key release. W/S for the left and arrowUp/arrowDown for right Player. Try using 'or:' or 'anySatisfy:'"
 °°
- 
-	({$W.$S} anySatisfy: [ :key |
-		anEvent keyCharacter asUppercase = key])
-			ifTrue: [self playerLeft stop].
+ 	
+	"These are two possible ways of doing it."
+	({$W.$S} anySatisfy: [ :key | anEvent keyCharacter asUppercase = key])
+		ifTrue: [self playerLeft stop].
 	((anEvent keyCharacter = Character arrowUp) 
-		or: (anEvent keyCharacter = Character arrowDown)) ifTrue: [self playerRight stop].
+		or: (anEvent keyCharacter = Character arrowDown)) 
+		ifTrue: [self playerRight stop].
 °°°°°
 
 2
