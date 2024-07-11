@@ -146,13 +146,27 @@ IPTLevel >> methodToBeTested: anObject [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 7/8/2024 15:38'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 14:13'
 }
 IPTLevel >> requiredAssert: aBooleanOrBlock description: aStringOrBlock [
-	aBooleanOrBlock value ifFalse:
-		[self
+
+	aBooleanOrBlock value ifFalse: [self
+		isPlayable: false;
+		fail: aStringOrBlock].
+
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 14:31'
+}
+IPTLevel >> requiredShouldntRaiseError: aBlock description: aString [
+
+	^ [ aBlock value ]
+		on: Exception
+		do: [:e | self 
 			isPlayable: false;
-			fail: aStringOrBlock].
+			fail: aString, e className, ': ', e messageText].
 
 ]
 
@@ -181,10 +195,13 @@ IPTLevel >> tearDown [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:32'
+	#category : #levelTests,
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 14:32'
 }
 IPTLevel >> testRunCode [
 	self methodToBeTested: (IPTPlayground >> #runCode).
+	
+	self requiredShouldntRaiseError: [IPTGame new setupWithExtent: (200@100) position: (0@0)] 
+		description: 'A fatal error occured during execution: '.
 	
 ]
