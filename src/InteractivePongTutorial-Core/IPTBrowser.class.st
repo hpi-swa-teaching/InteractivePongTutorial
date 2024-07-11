@@ -540,15 +540,16 @@ IPTBrowser >> loadLevel: aLevelIndex [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:35'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 14:01'
 }
 IPTBrowser >> loadSolutionButtonAction [
 	
 	self levelIndex ifNotNil: [
-		self selectedCodePiece loadSolutionCodeForLevel: self levelIndex andChapter: self chapter chapterNumber.
+		self selectedCodePiece 
+			loadSolutionCodeForLevel: self levelIndex andChapter: self chapter chapterNumber;
+			compileCode.
 		self codeEditor setCodePiece: self selectedCodePiece.
-		self selectedCodePiece compileCode].
-	
+		self clearPlayground].
 	
 ]
 
@@ -723,13 +724,16 @@ IPTBrowser >> reloadCodePieces [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:46'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 13:57'
 }
 IPTBrowser >> resetButtonAction [
 
 	self levelIndex ifNotNil: [
-		self selectedCodePiece loadInitialCodeForLevel: self levelIndex andChapter: self chapter chapterNumber.
-		self codeEditor setCodePiece: self selectedCodePiece].
+		self selectedCodePiece 
+			loadInitialCodeForLevel: self levelIndex andChapter: self chapter chapterNumber;
+			compileCode.
+		self codeEditor setCodePiece: self selectedCodePiece.
+		self clearPlayground].
 	
 	
 ]

@@ -75,22 +75,20 @@ IPTEditor >> codePiece: aCodePiece [
 
 {
 	#category : #evaluating,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:31'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 13:39'
 }
 IPTEditor >> contents: input notifying: aController [
 
-	| errorMessage |
-	errorMessage := self codePiece checkSyntax: input.
-	errorMessage 
-		ifNotEmpty: [
+	(self codePiece checkSyntax: input)
+		ifNotEmpty: [ :errorMessage |
 			UIManager default inform: errorMessage.
-			self codePiece readOnly ifTrue: [
-				self contents: self codePiece code.]]
+			self codePiece readOnly ifTrue: [self contents: self codePiece code]]
 		ifEmpty: [
 			super contents: input notifying: aController.
-			self codePiece code: input.
-			self codePiece compileCode.
-			self browser clearPlayground.].
+			self codePiece 
+				code: input;
+				compileCode.
+			self browser clearPlayground].
 		
 	self changed: #contents.
 ]
