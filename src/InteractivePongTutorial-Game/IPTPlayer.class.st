@@ -1,3 +1,6 @@
+"
+This class contains the Code for the Player of the IPT. It is changed via the Code in the editor.
+"
 Class {
 	#name : #IPTPlayer,
 	#superclass : #Morph,
@@ -5,12 +8,13 @@ Class {
 		'game',
 		'speed'
 	],
-	#category : #'InteractivePongTutorial-Game'
+	#category : #'InteractivePongTutorial-Game',
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 11:19'
 }
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 13:35'
 }
 IPTPlayer >> defaultSpeed [
 	
@@ -18,7 +22,7 @@ IPTPlayer >> defaultSpeed [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 13:35'
 }
 IPTPlayer >> down [
 	
@@ -26,7 +30,7 @@ IPTPlayer >> down [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 13:35'
 }
 IPTPlayer >> game [
 	
@@ -34,7 +38,7 @@ IPTPlayer >> game [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 13:35'
 }
 IPTPlayer >> game: aGame [
 	
@@ -42,7 +46,7 @@ IPTPlayer >> game: aGame [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 13:35'
 }
 IPTPlayer >> initialize [
 	
@@ -50,7 +54,7 @@ IPTPlayer >> initialize [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 13:35'
 }
 IPTPlayer >> move: aNumber [
 	
@@ -58,7 +62,7 @@ IPTPlayer >> move: aNumber [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 13:35'
 }
 IPTPlayer >> speed [
 	
@@ -66,7 +70,7 @@ IPTPlayer >> speed [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 13:35'
 }
 IPTPlayer >> speed: aNumber [
 	
@@ -74,7 +78,7 @@ IPTPlayer >> speed: aNumber [
 
 {
 	#category : #stepping,
-	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 13:35'
 }
 IPTPlayer >> step [
 	
@@ -90,7 +94,7 @@ IPTPlayer >> stepTime [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 13:35'
 }
 IPTPlayer >> stop [
 	
@@ -98,7 +102,7 @@ IPTPlayer >> stop [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 13:35'
 }
 IPTPlayer >> up [
 	

@@ -879,7 +879,7 @@ IPTBrowser >> update [
 
 {
 	#category : #ui,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:14'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 13:35'
 }
 IPTBrowser >> updateCodePieceTestIndicators [
 
@@ -888,7 +888,7 @@ IPTBrowser >> updateCodePieceTestIndicators [
 	
 	self visibleClassSet do: [ :iptClass |
 		iptClass methodCodePieces do: [ :codePiece | 
-			codePiece isGreen: (results anySatisfy: [ :entry |
+			codePiece isGreen: (results noneSatisfy: [ :entry |
 				 codePiece isSameSourceAs: (entry at: #method)])]].
 ]
 

@@ -1,3 +1,6 @@
+"
+This class contains the Code for the Game of the IPT. It is changed via the Code in the editor.
+"
 Class {
 	#name : #IPTGame,
 	#superclass : #Morph,
@@ -6,7 +9,8 @@ Class {
 		'playerRight',
 		'ball'
 	],
-	#category : #'InteractivePongTutorial-Game'
+	#category : #'InteractivePongTutorial-Game',
+	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 11:19'
 }
 
 {
@@ -19,7 +23,7 @@ IPTGame class >> open [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 13:35'
 }
 IPTGame >> ball [
 	
@@ -27,7 +31,7 @@ IPTGame >> ball [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 13:35'
 }
 IPTGame >> ball: aBall [
 	
@@ -35,7 +39,7 @@ IPTGame >> ball: aBall [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 13:35'
 }
 IPTGame >> handlesKeyboard: anEvent [
 	
@@ -43,19 +47,19 @@ IPTGame >> handlesKeyboard: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 13:35'
 }
 IPTGame >> initialize [
 	"Please change the color to black."
 	super initialize.
 	self 
-		color: Color blue;
+		color: Color green;
 		beSticky.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 13:35'
 }
 IPTGame >> initializeBall [
 	
@@ -63,7 +67,7 @@ IPTGame >> initializeBall [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 13:35'
 }
 IPTGame >> initializePlayers [
 	
@@ -71,7 +75,7 @@ IPTGame >> initializePlayers [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 13:35'
 }
 IPTGame >> keyDown: anEvent [
 	
@@ -79,7 +83,7 @@ IPTGame >> keyDown: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 13:35'
 }
 IPTGame >> keyUp: anEvent [
 	
@@ -105,7 +109,7 @@ IPTGame >> mouseLeave: anEvent [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 13:35'
 }
 IPTGame >> playerBounds [
 	
@@ -113,7 +117,7 @@ IPTGame >> playerBounds [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 13:35'
 }
 IPTGame >> playerLeft [
 	
@@ -121,7 +125,7 @@ IPTGame >> playerLeft [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 13:35'
 }
 IPTGame >> playerLeft: aPlayer [
 	
@@ -129,7 +133,7 @@ IPTGame >> playerLeft: aPlayer [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 13:35'
 }
 IPTGame >> playerRight [
 	
@@ -137,7 +141,7 @@ IPTGame >> playerRight [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 13:35'
 }
 IPTGame >> playerRight: aPlayer [
 	
