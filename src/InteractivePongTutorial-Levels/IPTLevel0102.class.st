@@ -28,13 +28,13 @@ IPTLevel0102 class >> description [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/2/2024 10:28'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 14:57'
 }
 IPTLevel0102 class >> explanations [
 	
 	^ {'Now you have another class to work on, IPTBall. You should also initialize it, similar to IPTGame.'.
 	'If you look at the IPTBall and IPTGame class code, you will notice that they have instance variables for referencing each other. For those instance variables you need to create getters and setters to use the reference in their respective classes. It is best to do this first so you can use it in the implementation of the other methods.'.	
-		'Another important aspect of Morhps is submorph behaviour. The ball is supposed to be in the game and have its position set in relation to the game. This can be implemented with calling addMorph: aMorph (here ball) on the parent.'.
+		'Another important aspect of Morhps is submorph behaviour. The ball is supposed to be in the game and have its position set relative to the game. This can be implemented with calling addMorph: aMorph (here ball) on the parent.'.
 	}
 ]
 
@@ -136,7 +136,7 @@ IPTLevel0102 >> testGameInitialize [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 14:49'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 15:02'
 }
 IPTLevel0102 >> testGameInitializeBall [
 	self methodToBeTested: (IPTGame >> #initializeBall).
@@ -144,6 +144,7 @@ IPTLevel0102 >> testGameInitializeBall [
 	self requiredAssert: (game ball ~= game) description: '(IPTGame >> ball) is not implemented, or ball has been set to game!'.
 	
 	game initializeBall.
-	self assert: (game ball isKindOf: IPTBall) description: 'Ball should be of class Ball'.
-	self assert: (game ball center = game center) description: 'You should position the Ball in the center of the game'.
+	self assert: (game ball isNil not) description: 'You have not set a ball.'.
+	self assert: (game ball isKindOf: IPTBall) description: 'Ball should be of class Ball.'.
+	self assert: (game ball center = game center) description: 'You should position the Ball in the center of the game.'.
 ]

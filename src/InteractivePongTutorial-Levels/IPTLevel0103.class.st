@@ -52,7 +52,7 @@ IPTLevel0103 class >> levelIndex [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 15:37'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 15:17'
 }
 IPTLevel0103 class >> visibleMethods [
 
@@ -60,6 +60,7 @@ IPTLevel0103 class >> visibleMethods [
 		IPTGame>>#initializeBall.
 		
 		IPTBall>>#initialize.
+		IPTBall>>#defaultSpeed.
 		IPTBall>>#turnHorizontal.
 		IPTBall>>#turnVertical.
 		IPTBall>>#step.
@@ -68,7 +69,7 @@ IPTLevel0103 class >> visibleMethods [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:38'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 15:21'
 }
 IPTLevel0103 >> testBallInitialize [
 	self methodToBeTested: (IPTBall >> #initialize).
@@ -77,6 +78,8 @@ IPTLevel0103 >> testBallInitialize [
 	self assert: ball color isNil not description: 'Have you initialized the morph?'.
 	self assert: (ball color = Color white) description: 'You did not choose the right color!'.
 	self assert: (ball extent = ball defaultExtent) description: 'You should set the extent to defaultExtent'.
+	self assert: (ball speed isKindOf: Point) description: 'Speed should be set to a Point'.
+	self assert: (ball speed = (ball defaultSpeed @ ball defaultSpeed)) description: 'You should set the speed with defaultSpeed values.'.
 ]
 
 {
@@ -131,7 +134,7 @@ IPTLevel0103 >> testBallTurnVertical [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:37'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 15:20'
 }
 IPTLevel0103 >> testGameInitialize [
 	self methodToBeTested: (IPTGame >> #initialize).

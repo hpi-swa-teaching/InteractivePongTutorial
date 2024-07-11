@@ -1,6 +1,6 @@
 speed: aNumber
 °°°°°
 2
-2
+1
 °°
 	speed := aNumber.

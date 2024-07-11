@@ -28,17 +28,18 @@ IPTLevel0104 class >> description [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/2/2024 11:31'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 15:33'
 }
 IPTLevel0104 class >> explanations [
 	
 	^ {
-	'In the last level we needed to set the postion of the ball manually to be able to see it. Now we want to be able to reset the ball for example if it hits the wall, therefore you will need to implement the new method startOver.'.
-	'It would be boring if the ball would always start with the same direction, therefore try to set the direction randomly but still use defaultSpeed. Also dont forget to put the ball in the center of the game.'.
-	'Until now the ball just moves in one direction, we want it to bounce off the top and bottom walls. The walls on the left and right side should reset the ball on collision. Test the collision by comparing the position of the ball with the top, bottom, left and right of the game.'.
+	'In the last level we had to set the postion of the ball manually to see it. Now we want to reset the e.g. if it hits the wall. Therefore you will need to implement the new method startOver.'.
+	'It would be boring if the ball always started moving in the same direction, therefore try to set the direction randomly to one of four diagonal directions (still use defaultSpeed). Also dont forget to place the ball in the center of the game again.'.
+	'Until now, the ball moved straight forward only. In this level, we want it to bounce off the top and bottom walls. Upon touching a wall left or right, the ball should start over. Test the collision by comparing the position of the ball with the top, bottom, left and right of the game.'.
 	'If you are unsure how to proceed or a stuck at a method there are some hints following.'.
 	'Hint 1: You can use {1 . -1} atRandom for a random positive or negative Value'.
-	'Hint 2: To check if a value is in between to Numbers you can use between: aNumber and: aNumber.'.
+	'Hint 2: You get can get the coordinates of the games outer walls with game left / game top / game right / game bottom.'.
+	'Hint 3: To check if a value is in between to Numbers you can use between: aNumber and: aNumber.'.
 	}.
 ]
 

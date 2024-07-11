@@ -153,10 +153,11 @@ IPTCodePiece >> isGreen: aBoolean [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:11'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 15:47'
 }
 IPTCodePiece >> isSameSourceAs: aCompiledMethod [
 	
+	aCompiledMethod ifNil: [^ false].
 	^ (aCompiledMethod selector asSymbol = self referencedMethod) 
 		and: (aCompiledMethod methodClass = self referencedClass).
 ]

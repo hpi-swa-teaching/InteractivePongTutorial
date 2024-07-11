@@ -23,23 +23,23 @@ IPTGame class >> open [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 14:51'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 16:25'
 }
 IPTGame >> ball [
-	"Return the value of ball."
+	^ ball.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 14:51'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 16:25'
 }
 IPTGame >> ball: aBall [
-	"To update ball you should set ball to the given input."
+	ball := aBall.
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 14:51'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 16:25'
 }
 IPTGame >> handlesKeyboard: anEvent [
 	
@@ -47,7 +47,7 @@ IPTGame >> handlesKeyboard: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 14:51'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 16:25'
 }
 IPTGame >> initialize [
 	super initialize.
@@ -58,24 +58,37 @@ IPTGame >> initialize [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 14:51'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 16:25'
 }
 IPTGame >> initializeBall [
-	"You should set ball to a new IPTBall and then add the Morph.
-	To see it you should also set the position of the ball so it is in the center of the game."
+	self 
+		ball: (IPTBall new 
+			game: self;
+			startOver);
+		addMorph: self ball.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 14:51'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 16:25'
 }
 IPTGame >> initializePlayers [
-	
+	| offset | 
+	offset := (self extent x / 2 - 30 @ 0).
+	self
+		playerLeft: (IPTPlayer new
+			center: self center - offset;
+			game: self);
+		playerRight: (IPTPlayer new
+			center:  self center + offset;
+			game: self);
+		addMorph: self playerLeft;
+		addMorph: self playerRight.
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 14:51'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 16:25'
 }
 IPTGame >> keyDown: anEvent [
 	
@@ -83,7 +96,7 @@ IPTGame >> keyDown: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 14:51'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 16:25'
 }
 IPTGame >> keyUp: anEvent [
 	
@@ -109,7 +122,7 @@ IPTGame >> mouseLeave: anEvent [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 14:51'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 16:25'
 }
 IPTGame >> playerBounds [
 	
@@ -117,34 +130,34 @@ IPTGame >> playerBounds [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 14:51'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 16:25'
 }
 IPTGame >> playerLeft [
-	
+	^ playerLeft.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 14:51'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 16:25'
 }
 IPTGame >> playerLeft: aPlayer [
-	
+	playerLeft := aPlayer.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 14:51'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 16:25'
 }
 IPTGame >> playerRight [
-	
+	^ playerRight.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 14:51'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 16:25'
 }
 IPTGame >> playerRight: aPlayer [
-	
+	playerRight := aPlayer.
 ]
 
 {

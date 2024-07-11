@@ -49,35 +49,17 @@ IPTLevel0202 class >> levelIndex [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'FH 7/10/2024 10:13'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 16:14'
 }
 IPTLevel0202 class >> visibleMethods [
 
-	^ {IPTGame>>#initialize.
-		IPTGame>>#initializeBall.
-		IPTGame>>#initializePlayers.
-		IPTGame>>#playerLeft.
-		IPTGame>>#playerLeft:.
-		IPTGame>>#playerRight.
-		IPTGame>>#playerRight:.
-		
-		IPTBall>>#turnHorizontal.
-		IPTBall>>#step. 
-		IPTBall>>#turnVertical. 
-		IPTBall>>#initialize.
-		IPTBall>>#checkCollisionWithWalls. 
-		IPTBall>>#startOver.
-		
+	^ {
 		IPTPlayer>>#initialize.
-		IPTPlayer>>#game.
-		IPTPlayer>>#game:.
+		IPTPlayer>>#defaultSpeed.
 		IPTPlayer>>#up.
 		IPTPlayer>>#down.
 		IPTPlayer>>#stop.
 		IPTPlayer>>#move:.
 		IPTPlayer>>#step.
-		IPTPlayer>>#defaultSpeed.
-		IPTPlayer>>#speed.
-		IPTPlayer>>#speed:
 		}.
 ]

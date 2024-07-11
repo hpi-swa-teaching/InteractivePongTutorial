@@ -3,25 +3,19 @@ move: aNumber
 2
 2
 °°
-	"Add the number to our center. Clamp the new center y component to the game border by using this offset."
-	| offset |
-	offset := self height * 0.5.
+	"Add the number to our center. Clamp the new center y component when player gets as close to the game border as dist."
+	| dist |
+	dist := self height * 0.5.
 °°
-
-	| newPosition |
-	newPosition := self position y + aNumber.
-	((newPosition - self game position y)
-		between: 0
-		and: self game height - self height)
-			ifTrue: [self position: self position x @ newPosition].
+	| dist |
+	dist := self height * 0.5.
+	self center:  (self center x @ (self center y + aNumber 
+		min: (self game bottom - dist) max: self game top + dist)).
 °°°°°
 2
 3
 °°
-
-	| newPosition |
-	newPosition := self position y + aNumber.
-	((newPosition - self game position y)
-		between: 0
-		and: self game height - self height)
-			ifTrue: [self position: self position x @ newPosition].
+	| dist |
+	dist := self height * 0.5.
+	self center:  (self center x @ (self center y + aNumber 
+		min: (self game bottom - dist) max: self game top + dist)).

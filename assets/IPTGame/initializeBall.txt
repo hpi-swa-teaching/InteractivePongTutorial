@@ -7,28 +7,41 @@ initializeBall
 	To see it you should also set the position of the ball so it is in the center of the game."
 °°
 	self 
-		ball: (IPTBall new game: self);
+		ball: (IPTBall new 
+			game: self;
+			center: self center);
 		addMorph: self ball.
-	self ball center: self center.
+°°°°°
+1
+3
+°°
+	self 
+		ball: (IPTBall new 
+			game: self;
+			center: self center);
+		addMorph: self ball.
 °°°°°
 1
 4
 °°
 	"Instead of setting the Position of the ball you should now call the method starOver."
 	self 
-		ball: (IPTBall new game: self);
+		ball: (IPTBall new 
+			game: self;
+			center: self center);
 		addMorph: self ball.
-	self ball center: self center.
 °°
 	self 
-		ball: (IPTBall new game: self);
+		ball: (IPTBall new 
+			game: self;
+			startOver);
 		addMorph: self ball.
-	self ball startOver.
 °°°°°
 1
 5
 °°
 	self 
-		ball: (IPTBall new game: self);
+		ball: (IPTBall new 
+			game: self;
+			startOver);
 		addMorph: self ball.
-	self ball startOver.

@@ -3,6 +3,7 @@
 /assets/IPTBall/game.txt
 /assets/IPTBall/game:.txt
 /assets/IPTBall/initialize.txt
+/assets/IPTBall/defaultSpeed.txt
 /assets/IPTBall/speed.txt
 /assets/IPTBall/speed:.txt
 /assets/IPTBall/startOver.txt
@@ -31,6 +32,7 @@
 /assets/IPTPlayer/speed.txt
 /assets/IPTPlayer/speed:.txt
 /assets/IPTPlayer/defaultSpeed.txt
+/assets/IPTPlayer/defaultExtent.txt
 /assets/IPTPlayer/step.txt
 /assets/IPTPlayer/stop.txt
 /assets/IPTPlayer/up.txt

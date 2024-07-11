@@ -16,7 +16,9 @@ initialize
 2
 °°
 	super initialize.
-		self 
-			color: Color white;
-			extent: (15@100);
-			speed: 0.
+	self 
+		color: Color white;
+		extent: (15@100);
+		speed: 0;
+		"let the player move up for testing purposes"
+		up.
