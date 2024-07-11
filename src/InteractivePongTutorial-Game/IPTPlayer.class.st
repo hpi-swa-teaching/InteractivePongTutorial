@@ -10,83 +10,74 @@ Class {
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
 }
 IPTPlayer >> defaultSpeed [
-	^ 10.
+	
 ]
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
 }
 IPTPlayer >> down [
-	self speed: self defaultSpeed.
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
 }
 IPTPlayer >> game [
-	^ game.
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
 }
 IPTPlayer >> game: aGame [
-	game := aGame.
+	
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
 }
 IPTPlayer >> initialize [
-	super initialize.
-		self 
-			color: Color white;
-			extent: (15@100);
-			speed: 0.
+	
 ]
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
 }
 IPTPlayer >> move: aNumber [
-	| newPosition |
-	newPosition := self position y + aNumber.
-	((newPosition - self game position y)
-		between: 0
-		and: self game height - self height)
-			ifTrue: [self position: self position x @ newPosition].
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
 }
 IPTPlayer >> speed [
-	^ speed.
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
 }
 IPTPlayer >> speed: aNumber [
-	speed := aNumber.
+	
 ]
 
 {
 	#category : #stepping,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
 }
 IPTPlayer >> step [
-	self move: self speed.
+	
 ]
 
 {
@@ -99,16 +90,16 @@ IPTPlayer >> stepTime [
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
 }
 IPTPlayer >> stop [
-	self speed: 0.
+	
 ]
 
 {
 	#category : #movement,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
 }
 IPTPlayer >> up [
-	self speed: self defaultSpeed negated.
+	
 ]

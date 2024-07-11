@@ -19,89 +19,70 @@ IPTGame class >> open [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
 }
 IPTGame >> ball [
-	^ ball.
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
 }
 IPTGame >> ball: aBall [
-	ball := aBall.
+	
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
 }
 IPTGame >> handlesKeyboard: anEvent [
-	^ true.
+	
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
 }
 IPTGame >> initialize [
+	"Please change the color to black."
 	super initialize.
 	self 
-		color: Color black;
+		color: Color blue;
 		beSticky.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
 }
 IPTGame >> initializeBall [
-	self 
-		ball: (IPTBall new game: self);
-		addMorph: self ball.
-	self ball startOver.
+	
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
 }
 IPTGame >> initializePlayers [
-	| offset | 
-	offset := (self extent x / 2 - 30 @ 0).
-	self
-		playerLeft: (IPTPlayer new
-			center: self center - offset;
-			game: self);
-		playerRight: (IPTPlayer new
-			center:  self center + offset;
-			game: self);
-		addMorph: self playerLeft;
-		addMorph: self playerRight.
+	
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
 }
 IPTGame >> keyDown: anEvent [
-	(anEvent keyCharacter asUppercase = $W ) ifTrue: [self playerLeft up].
-	(anEvent keyCharacter asUppercase = $S ) ifTrue: [self playerLeft down].
-	(anEvent keyCharacter = Character arrowUp) ifTrue: [self playerRight up].
-	(anEvent keyCharacter = Character arrowDown) ifTrue: [self playerRight down].
+	
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
 }
 IPTGame >> keyUp: anEvent [
-	({$W.$S} anySatisfy: [ :key |
-		anEvent keyCharacter asUppercase = key])
-			ifTrue: [self playerLeft stop].
-	((anEvent keyCharacter = Character arrowUp) 
-		or: (anEvent keyCharacter = Character arrowDown)) ifTrue: [self playerRight stop].
+	
 ]
 
 {
@@ -124,42 +105,42 @@ IPTGame >> mouseLeave: anEvent [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:41'
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
 }
 IPTGame >> playerBounds [
-	^ {self playerLeft bounds . self playerRight bounds}.
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
 }
 IPTGame >> playerLeft [
-	^ playerLeft.
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
 }
 IPTGame >> playerLeft: aPlayer [
-	playerLeft := aPlayer.
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
 }
 IPTGame >> playerRight [
-	^ playerRight.
+	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/10/2024 19:40'
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
 }
 IPTGame >> playerRight: aPlayer [
-	playerRight := aPlayer.
+	
 ]
 
 {

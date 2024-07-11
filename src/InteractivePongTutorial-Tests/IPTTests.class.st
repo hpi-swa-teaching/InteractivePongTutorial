@@ -9,61 +9,75 @@ Class {
 
 {
 	#category : #running,
-	#'squeak_changestamp' : 'Josua Zehner 6/12/2024 11:26'
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 08:55'
 }
 IPTTests >> setUp [
+
 	ipt := IPT new.
 ]
 
 {
 	#category : #running,
-	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:07'
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 08:55'
 }
 IPTTests >> tearDown [
+
 	ipt closeAllWindows.
 	ipt := nil.
 ]
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:12'
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
 }
 IPTTests >> testCloseAllWindows [
+	
 	ipt openChapterView.
-	ipt openLevel: 1 inChapter: (IPTChapter chapterSet at: 2).
+	ipt openLevel: 1 inChapter: IPTMockInfos mockChapterSet second.
 	ipt closeAllWindows.
+	
 	self assert: ipt chapterview isNil.
 	self assert: ipt browser isNil.
+	
 ]
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'sv 7/2/2024 16:14'
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:06'
 }
 IPTTests >> testOpen [
+
 	| instance |
 	
 	instance := IPT open.
 	
 	self assert: (instance isKindOf: IPT).
-	
+	self assert: (instance chapterview isKindOf: IPTChapterView).
+	self assert: (SystemWindow allSubInstances anySatisfy: [:window |
+		window model == ipt chapterview]).
 	instance closeAllWindows.
 ]
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:14'
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:04'
 }
 IPTTests >> testOpenBrowser [
-	ipt openLevel: 1 inChapter: (IPTChapter chapterSet at: 2).
+
+	ipt openLevel: 1 inChapter: IPTMockInfos mockChapterSet second.
 	self assert: (ipt browser isKindOf: IPTBrowser).
+	self assert: (SystemWindow allSubInstances anySatisfy: [:window |
+		window model == ipt browser]).
 ]
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:10'
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:05'
 }
 IPTTests >> testOpenChapterView [
+	
 	ipt openChapterView.
 	self assert: (ipt chapterview isKindOf: IPTChapterView).
+	self assert: (SystemWindow allSubInstances anySatisfy: [:window |
+		window model == ipt chapterview]).
 ]

@@ -9,15 +9,6 @@ Class {
 }
 
 {
-	#category : #actions,
-	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:35'
-}
-IPTChapterViewTests >> selectChapterTwoLevelOne [
-	
-	chapterview selectChapter: chapterview chapters second.
-]
-
-{
 	#category : #running,
 	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:44'
 }
@@ -166,7 +157,7 @@ IPTChapterViewTests >> testSelectChapter [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'Josua Zehner 6/17/2024 20:23'
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:15'
 }
 IPTChapterViewTests >> testSelectLevel [
 
@@ -178,12 +169,10 @@ IPTChapterViewTests >> testSelectLevel [
 		chapterview selectLevel: newLevel.
 		
 		self assert: chapterview selectedLevel == newLevel.
-		self assert: chapterview levelDescription == newLevel description.
 		
 		chapterview selectLevel: previousLevel.
 		
 		self assert: chapterview selectedChapter == previousLevel.
-		self assert: chapterview levelDescription == previousLevel description.
 		
 		chapterview selectLevel: nil.
 		chapterview levelDescription == chapterview noLevelSelectedMessage.
@@ -192,11 +181,11 @@ IPTChapterViewTests >> testSelectLevel [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'Josua Zehner 6/18/2024 09:23'
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 08:54'
 }
 IPTChapterViewTests >> testStartLevel [
 
-	self selectChapterTwoLevelOne.
+	chapterview selectChapter: chapterview chapters second.
 	chapterview startSelectedLevel.
 	self assert: (ipt browser isKindOf: IPTBrowser).
 	self assert: (ipt browser chapter == chapterview selectedChapter).

@@ -19,16 +19,16 @@ IPTLevel0101 class >> asString [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/21/2024 17:48'
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 08:52'
 }
 IPTLevel0101 class >> description [
 	
-	^ 'In this level, you will get Introduced to the Tutorial and learn about basic Morph methods.'.
+	^ 'In this level, you will get an introduction to the tutorial and learn about basic Morph methods.'.
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/2/2024 11:15'
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 08:52'
 }
 IPTLevel0101 class >> explanations [
 
@@ -38,16 +38,16 @@ IPTLevel0101 class >> explanations [
 	'In this level the only method you need to change is IPTGame>>#initialize. The method with the name initialize will allways be executed when creating a new object of a class. The Game itself is a subclass of Morph and contains all elements of Pong.'.
 	'But what is a Morph? Morph is a class used to visualize objects in Squeak. Since IPTGame is a subclass of Morph, it can use all its methods'.
 	'Morphs have a lot of properties that can be changed, for example the position, color and its size (extent). Right now our game has the color blue which isnt really an appropriate background color for pong, is it?'.
-	}
+	}.
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 12:15'
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 08:52'
 }
 IPTLevel0101 class >> levelIndex [
 
-	^ 1
+	^ 1.
 ]
 
 {

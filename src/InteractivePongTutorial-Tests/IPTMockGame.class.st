@@ -5,8 +5,8 @@ Class {
 }
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:34'
+	#category : #mockCategory,
+	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:14'
 }
 IPTMockGame >> mockMethod [
 	^ false.
