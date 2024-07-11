@@ -17,11 +17,11 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 12:17'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 17:49'
 }
 IPTLevel class >> asString [
 
-	^ self subclassResponsibility.
+	^ 'IPTLevel'.
 ]
 
 {
@@ -172,16 +172,24 @@ IPTLevel >> requiredShouldntRaiseError: aBlock description: aString [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 11:43'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 18:24'
 }
 IPTLevel >> setUp [
-
-	game := IPTGame new.
-	ball := IPTBall new.
-	player := IPTPlayer new.
+	self methodToBeTested: (IPTLevel >> #setUp).
 	
-	(ball isKindOf: IPTBall) ifTrue: [ball game: game].
-	(game isKindOf: IPTGame) ifTrue: [game ball: ball].
+	game := IPTGame new.
+	(game isKindOf: IPTGame) ifFalse: [^ self].
+	[game setupWithExtent: (1000@600) position: (0@0)] 
+		on: Exception
+		do: [:e | Transcript show: e].
+	
+	player := game playerLeft.
+	ball := game ball.
+	
+	(ball isKindOf: IPTBall) ifFalse: [
+		ball := IPTBall new game: game; yourself].
+	(player isKindOf: IPTPlayer) ifFalse: [
+		player := IPTPlayer new game: game; yourself].
 ]
 
 {
@@ -196,12 +204,12 @@ IPTLevel >> tearDown [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 14:32'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 17:56'
 }
 IPTLevel >> testRunCode [
 	self methodToBeTested: (IPTPlayground >> #runCode).
 	
-	self requiredShouldntRaiseError: [IPTGame new setupWithExtent: (200@100) position: (0@0)] 
+	self requiredShouldntRaiseError: [IPTGame new setupWithExtent: (1000@600) position: (0@0)] 
 		description: 'A fatal error occured during execution: '.
 	
 ]

@@ -79,7 +79,7 @@ IPTLevel0202 >> testPlayerDown [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 17:27'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 17:43'
 }
 IPTLevel0202 >> testPlayerMove [
 	
@@ -93,16 +93,16 @@ IPTLevel0202 >> testPlayerMove [
 	player move: player defaultSpeed.
 	self assert: (player center = (prevCenter x @ (prevCenter y + player defaultSpeed))) description: 'The player should update its center to add the speed to its y component.'.
 	
-	player move: (self game height * 100).
-	self assert: (player center = (game bottom - dist)) description: 'The player should not move below the bottom wall'.
+	player move: (game height * 100).
+	self assert: (player center = (prevCenter x @(game bottom - dist))) description: 'The player should not move below the bottom wall'.
 	
-	player move: (self game height * -100).
-	self assert: (player center = (game top + dist)) description:  'The player should not move above the top wall'.
+	player move: (game height * -100).
+	self assert: (player center = (prevCenter x @(game top + dist))) description:  'The player should not move above the top wall'.
 ]
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 17:29'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 17:43'
 }
 IPTLevel0202 >> testPlayerStep [
 	
@@ -117,13 +117,13 @@ IPTLevel0202 >> testPlayerStep [
 	player step.
 	self assert: (player center = (prevCenter x @ (prevCenter y + player defaultSpeed))) description: 'See (IPTPlayer>>#move:).'.
 	
-	player speed: (self game height * 100).
+	player speed: (game height * 100).
 	player step.
-	self assert: (player center = (game bottom - dist)) description: 'See (Player>>#move:).'.
+	self assert: (player center = (prevCenter x @(game bottom - dist))) description: 'See (Player>>#move:).'.
 	
-	player speed: (self game height * -100).
+	player speed: (game height * -100).
 	player step.
-	self assert: (player center = (game top + dist)) description:  'See (Player>>#move:).'.
+	self assert: (player center = (prevCenter x @ (game top + dist))) description:  'See (Player>>#move:).'.
 ]
 
 {

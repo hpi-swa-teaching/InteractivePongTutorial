@@ -22,3 +22,12 @@ initialize
 		speed: 0;
 		"let the player move up for testing purposes"
 		up.
+°°°°°
+2
+3
+°°
+	super initialize.
+	self 
+		color: Color white;
+		extent: (15@100);
+		speed: 0.

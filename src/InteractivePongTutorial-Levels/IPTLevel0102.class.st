@@ -101,7 +101,7 @@ IPTLevel0102 >> testBallInitialize [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:40'
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 18:20'
 }
 IPTLevel0102 >> testGameBall [
 	self methodToBeTested: (IPTGame >> #ball).
