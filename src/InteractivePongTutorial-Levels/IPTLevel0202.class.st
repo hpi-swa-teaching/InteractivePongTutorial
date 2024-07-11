@@ -63,3 +63,91 @@ IPTLevel0202 class >> visibleMethods [
 		IPTPlayer>>#step.
 		}.
 ]
+
+{
+	#category : #levelTests,
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 17:13'
+}
+IPTLevel0202 >> testPlayerDown [
+	
+	self methodToBeTested: (IPTPlayer >> #down).
+	
+	player speed: 0.
+	player down.
+	self assert: (player speed = player defaultSpeed) description: 'The players speed should be defaultSpeed.'.
+]
+
+{
+	#category : #levelTests,
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 17:27'
+}
+IPTLevel0202 >> testPlayerMove [
+	
+	| prevCenter dist |
+	
+	self methodToBeTested: (IPTPlayer >> #move:).
+	
+	prevCenter := player center.
+	dist := player height * 0.5.
+	
+	player move: player defaultSpeed.
+	self assert: (player center = (prevCenter x @ (prevCenter y + player defaultSpeed))) description: 'The player should update its center to add the speed to its y component.'.
+	
+	player move: (self game height * 100).
+	self assert: (player center = (game bottom - dist)) description: 'The player should not move below the bottom wall'.
+	
+	player move: (self game height * -100).
+	self assert: (player center = (game top + dist)) description:  'The player should not move above the top wall'.
+]
+
+{
+	#category : #levelTests,
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 17:29'
+}
+IPTLevel0202 >> testPlayerStep [
+	
+	| prevCenter dist |
+	
+	self methodToBeTested: (IPTPlayer >> #step).
+	
+	prevCenter := player center.
+	dist := player height * 0.5.
+	
+	player speed: player defaultSpeed.
+	player step.
+	self assert: (player center = (prevCenter x @ (prevCenter y + player defaultSpeed))) description: 'See (IPTPlayer>>#move:).'.
+	
+	player speed: (self game height * 100).
+	player step.
+	self assert: (player center = (game bottom - dist)) description: 'See (Player>>#move:).'.
+	
+	player speed: (self game height * -100).
+	player step.
+	self assert: (player center = (game top + dist)) description:  'See (Player>>#move:).'.
+]
+
+{
+	#category : #levelTests,
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 17:12'
+}
+IPTLevel0202 >> testPlayerStop [
+	
+	self methodToBeTested: (IPTPlayer >> #stop).
+	
+	player speed: 10.
+	player stop.
+	self assert: (player speed = 0) description: 'The players speed should be 0.'.
+]
+
+{
+	#category : #levelTests,
+	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 17:12'
+}
+IPTLevel0202 >> testPlayerUp [
+	
+	self methodToBeTested: (IPTPlayer >> #up).
+	
+	player speed: 0.
+	player up.
+	self assert: (player speed = player defaultSpeed negated) description: 'The players speed should be -defaultSpeed.'.
+]
