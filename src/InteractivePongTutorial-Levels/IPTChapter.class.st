@@ -17,7 +17,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'sv 7/12/2024 18:03'
+	#'squeak_changestamp' : 'FH 7/10/2024 19:00'
 }
 IPTChapter class >> chapterSet [
 	^ {IPTChapter 
@@ -28,7 +28,7 @@ IPTChapter class >> chapterSet [
 		IPTChapter 
 			withName: 'Introduction'
 			number: 1
-			description: 'In this Chapter, you will learn about creating and initializing Morphs, as well as moving them and how simple Collisions work. For that you wil be implementing a Game and a Ball Class.'
+			description: 'In this Chapter you will learn about creating and initializing Morphs, as well as moving them and how simple Collisions work. For that you wil be implementing a Game and a Ball Class.'
 			levels: {
 				IPTLevel0101.
 				IPTLevel0102.
@@ -37,7 +37,7 @@ IPTChapter class >> chapterSet [
 		IPTChapter 
 			withName: 'Player movement'
 			number: 2
-			description: 'In this Chapter, we will build our player and make it respond to key presses. You will learn about handling user input in squeak and manipulating Morphs dynamically.'
+			description: 'This is Chapter 2'
 			levels: {
 				IPTLevel0201.
 				IPTLevel0202.
@@ -45,7 +45,7 @@ IPTChapter class >> chapterSet [
 		IPTChapter 
 			withName: 'Collisions'
 			number: 3
-			description: 'In this Chapter, we will make the Players and the Ball interact with each other and finish our game off.'
+			description: 'This is Chapter 3'
 			levels: {
 				IPTLevel0301.}}
 ]
