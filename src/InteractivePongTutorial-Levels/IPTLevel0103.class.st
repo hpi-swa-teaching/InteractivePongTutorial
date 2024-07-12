@@ -69,9 +69,10 @@ IPTLevel0103 class >> visibleMethods [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 15:21'
+	#'squeak_changestamp' : 'sv 7/12/2024 19:02'
 }
 IPTLevel0103 >> testBallInitialize [
+
 	self methodToBeTested: (IPTBall >> #initialize).
 	
 	self assert: (ball isKindOf: IPTBall) description: 'You may not return a value!'.
@@ -84,10 +85,11 @@ IPTLevel0103 >> testBallInitialize [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:38'
+	#'squeak_changestamp' : 'sv 7/12/2024 19:02'
 }
 IPTLevel0103 >> testBallStep [
-	|expectedPosition|
+
+	| expectedPosition |
 	self methodToBeTested: (IPTBall >> #step).
 	
 	expectedPosition := ball position + ball speed.
@@ -97,9 +99,10 @@ IPTLevel0103 >> testBallStep [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:38'
+	#'squeak_changestamp' : 'sv 7/12/2024 19:03'
 }
 IPTLevel0103 >> testBallStepTime [
+
 	self methodToBeTested: (IPTBall >> #stepTime).
 	
 	self assert: (ball stepTime isKindOf: Number) description: 'stepTime has to be a Number.'.
@@ -107,9 +110,10 @@ IPTLevel0103 >> testBallStepTime [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:38'
+	#'squeak_changestamp' : 'sv 7/12/2024 19:03'
 }
 IPTLevel0103 >> testBallTurnHorizontal [
+
 	| expectedSpeed |
 	self methodToBeTested: (IPTBall >> #turnHorizontal).
 	
@@ -134,9 +138,10 @@ IPTLevel0103 >> testBallTurnVertical [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 15:20'
+	#'squeak_changestamp' : 'sv 7/12/2024 19:03'
 }
 IPTLevel0103 >> testGameInitialize [
+
 	self methodToBeTested: (IPTGame >> #initialize).
 	
 	self assert: (ball isKindOf: IPTBall) description: 'You may not return a value!'.
@@ -147,12 +152,14 @@ IPTLevel0103 >> testGameInitialize [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:37'
+	#'squeak_changestamp' : 'sv 7/12/2024 19:03'
 }
 IPTLevel0103 >> testGameInitializeBall [
+
 	self methodToBeTested: (IPTGame >> #initializeBall).
 	
 	game initializeBall.
+	
 	self assert: (game ball isKindOf: IPTBall) description: 'Ball should be of class Ball'.
 	self assert: (game ball center = game center) description: 'You should position the Ball in the center of the game'.
 	self assert: (ball speed = (ball defaultSpeed @ ball defaultSpeed)) description: 'You did not set the speed correctly (speed is saved as Point x @ y)'.

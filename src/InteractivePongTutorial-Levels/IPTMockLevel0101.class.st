@@ -51,10 +51,11 @@ IPTMockLevel0101 class >> visibleMethods [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:27'
+	#'squeak_changestamp' : 'sv 7/12/2024 18:56'
 }
 IPTMockLevel0101 >> testMockMethod [
 	
 	self methodToBeTested: (IPTMockGame >> #mockMethod).
+	
 	self assert: IPTMockGame new mockMethod = true description: 'mockMethod not changed'.
 ]

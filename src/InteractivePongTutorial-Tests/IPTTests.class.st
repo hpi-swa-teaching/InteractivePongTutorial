@@ -43,7 +43,7 @@ IPTTests >> testCloseAllWindows [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:06'
+	#'squeak_changestamp' : 'sv 7/12/2024 18:53'
 }
 IPTTests >> testOpen [
 
@@ -53,31 +53,34 @@ IPTTests >> testOpen [
 	
 	self assert: (instance isKindOf: IPT).
 	self assert: (instance chapterview isKindOf: IPTChapterView).
-	self assert: (SystemWindow allSubInstances anySatisfy: [:window |
-		window model == ipt chapterview]).
+	self assert: (SystemWindow allSubInstances anySatisfy: [ :window |
+		window model == ipt chapterview ]).
+	
 	instance closeAllWindows.
 ]
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:04'
+	#'squeak_changestamp' : 'sv 7/12/2024 18:54'
 }
 IPTTests >> testOpenBrowser [
 
 	ipt openLevel: 1 inChapter: IPTMockInfos mockChapterSet second.
+	
 	self assert: (ipt browser isKindOf: IPTBrowser).
-	self assert: (SystemWindow allSubInstances anySatisfy: [:window |
-		window model == ipt browser]).
+	self assert: (SystemWindow allSubInstances anySatisfy: [ :window |
+		window model == ipt browser ]).
 ]
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 09:05'
+	#'squeak_changestamp' : 'sv 7/12/2024 18:54'
 }
 IPTTests >> testOpenChapterView [
 	
 	ipt openChapterView.
+	
 	self assert: (ipt chapterview isKindOf: IPTChapterView).
-	self assert: (SystemWindow allSubInstances anySatisfy: [:window |
-		window model == ipt chapterview]).
+	self assert: (SystemWindow allSubInstances anySatisfy: [ :window |
+		window model == ipt chapterview ]).
 ]

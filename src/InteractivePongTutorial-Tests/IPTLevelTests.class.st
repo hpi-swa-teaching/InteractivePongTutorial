@@ -28,7 +28,7 @@ IPTLevelTests >> tearDown [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 11:44'
+	#'squeak_changestamp' : 'sv 7/12/2024 18:53'
 }
 IPTLevelTests >> testInitialState [
 	
@@ -39,26 +39,23 @@ IPTLevelTests >> testInitialState [
 			ipt browser runCode.
 			
 			self assert: ((ipt browser testResult at: #failures) isEmpty and: (ipt browser testResult at: #errors) isEmpty) not.
-			ipt closeAllWindows.
-			]
-		]
+			ipt closeAllWindows. ]]
 ]
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:23'
+	#'squeak_changestamp' : 'sv 7/12/2024 18:53'
 }
 IPTLevelTests >> testLevelDescriptions [
 	
 	IPTChapter chapterSet do: [ :chapter |
 		chapter levels do: [ :lvl |
-			self assert: lvl description isEmpty not.
-			]].
+			self assert: lvl description isEmpty not. ]].
 ]
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 11:40'
+	#'squeak_changestamp' : 'sv 7/12/2024 18:55'
 }
 IPTLevelTests >> testSolutionCode [
 	
@@ -71,12 +68,10 @@ IPTLevelTests >> testSolutionCode [
 				iptClass methodCodePieces do: [ :codePiece |
 					ipt browser 
 						selectCodePiece: codePiece;
-						loadSolutionButtonAction.]].
+						loadSolutionButtonAction. ]].
 			ipt browser runCode.
 	
 			self assert: (ipt browser testResult at: #errors) isEmpty.
 			self assert: (ipt browser testResult at: #failures) isEmpty.
-			ipt closeAllWindows.
-			]
-		]
+			ipt closeAllWindows. ]]
 ]
