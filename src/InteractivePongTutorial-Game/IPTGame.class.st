@@ -23,7 +23,7 @@ IPTGame class >> open [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 21:34'
+	#'squeak_changestamp' : 'sv 7/12/2024 18:57'
 }
 IPTGame >> ball [
 	^ ball.
@@ -31,7 +31,7 @@ IPTGame >> ball [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 21:34'
+	#'squeak_changestamp' : 'sv 7/12/2024 18:57'
 }
 IPTGame >> ball: aBall [
 	ball := aBall.
@@ -39,7 +39,7 @@ IPTGame >> ball: aBall [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 21:41'
+	#'squeak_changestamp' : 'sv 7/12/2024 18:57'
 }
 IPTGame >> handlesKeyboard: anEvent [
 	^ true.
@@ -47,7 +47,7 @@ IPTGame >> handlesKeyboard: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 21:34'
+	#'squeak_changestamp' : 'sv 7/12/2024 18:57'
 }
 IPTGame >> initialize [
 	super initialize.
@@ -58,7 +58,7 @@ IPTGame >> initialize [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 21:34'
+	#'squeak_changestamp' : 'sv 7/12/2024 18:57'
 }
 IPTGame >> initializeBall [
 	self 
@@ -70,7 +70,7 @@ IPTGame >> initializeBall [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 21:34'
+	#'squeak_changestamp' : 'sv 7/12/2024 18:57'
 }
 IPTGame >> initializePlayers [
 	| offset | 
@@ -88,7 +88,7 @@ IPTGame >> initializePlayers [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 21:41'
+	#'squeak_changestamp' : 'sv 7/12/2024 18:57'
 }
 IPTGame >> keyDown: anEvent [
 	(anEvent keyCharacter asUppercase = $W ) ifTrue: [self playerLeft up].
@@ -99,15 +99,14 @@ IPTGame >> keyDown: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 21:41'
+	#'squeak_changestamp' : 'sv 7/12/2024 18:57'
 }
 IPTGame >> keyUp: anEvent [
-	"These are two possible ways of doing it."
-	({$W.$S} anySatisfy: [ :key | anEvent keyCharacter asUppercase = key])
-		ifTrue: [self playerLeft stop].
+	({$W.$S} anySatisfy: [ :key |
+		anEvent keyCharacter asUppercase = key])
+			ifTrue: [self playerLeft stop].
 	((anEvent keyCharacter = Character arrowUp) 
-		or: (anEvent keyCharacter = Character arrowDown)) 
-		ifTrue: [self playerRight stop].
+		or: (anEvent keyCharacter = Character arrowDown)) ifTrue: [self playerRight stop].
 ]
 
 {
@@ -130,15 +129,15 @@ IPTGame >> mouseLeave: anEvent [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 21:34'
+	#'squeak_changestamp' : 'sv 7/12/2024 18:57'
 }
 IPTGame >> playerBounds [
-	
+	"Return a colletion of the bounds of all Players. Use 'bounds' message of Morphs."
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 21:34'
+	#'squeak_changestamp' : 'sv 7/12/2024 18:57'
 }
 IPTGame >> playerLeft [
 	^ playerLeft.
@@ -146,7 +145,7 @@ IPTGame >> playerLeft [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 21:34'
+	#'squeak_changestamp' : 'sv 7/12/2024 18:57'
 }
 IPTGame >> playerLeft: aPlayer [
 	playerLeft := aPlayer.
@@ -154,7 +153,7 @@ IPTGame >> playerLeft: aPlayer [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 21:34'
+	#'squeak_changestamp' : 'sv 7/12/2024 18:57'
 }
 IPTGame >> playerRight [
 	^ playerRight.
@@ -162,7 +161,7 @@ IPTGame >> playerRight [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 21:34'
+	#'squeak_changestamp' : 'sv 7/12/2024 18:57'
 }
 IPTGame >> playerRight: aPlayer [
 	playerRight := aPlayer.

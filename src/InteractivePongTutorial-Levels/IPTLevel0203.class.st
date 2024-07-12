@@ -114,7 +114,7 @@ IPTLevel0203 >> testGameKeyDown [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 21:41'
+	#'squeak_changestamp' : 'sv 7/12/2024 19:01'
 }
 IPTLevel0203 >> testGameKeyUp [
 	| prevSpeed |
@@ -133,14 +133,20 @@ IPTLevel0203 >> testGameKeyUp [
 		game keyUp: (KeyboardEvent new keyValue: key asLowercase).
 		self assert: (game playerLeft speed = 0) description: 'The left player should also stop when letting go of ', key, '.'].
 	
-	{Character arrowUp. Character arrowDown} do: [ :key |
+	{Character arrowUp . Character arrowDown} do: [ :key |
 		game playerLeft up.
 		game playerRight up.
 		prevSpeed := game playerLeft speed.
 		game keyUp: (KeyboardEvent new keyValue: key).
 		self assert: (prevSpeed = game playerLeft speed) description: 'The left player should not be affected by letting go of ', 
-			(key = Character arrowUp ifTrue: ['arrowUp'] ifFalse: ['arrowDown']), '.'.
+			(key = Character arrowUp
+				ifTrue: ['arrowUp']
+				ifFalse: ['arrowDown']),
+			'.'.
 		self assert: (game playerRight speed = 0) description: 'The right player should stop when letting go of ',
-			(key = Character arrowUp ifTrue: ['arrowUp'] ifFalse: ['arrowDown']), '.'].
+			(key = Character arrowUp
+				ifTrue: ['arrowUp']
+				ifFalse: ['arrowDown']),
+			'.'].
 	
 ]

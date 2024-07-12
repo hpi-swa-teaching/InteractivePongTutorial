@@ -61,9 +61,10 @@ IPTLevel0101 class >> visibleMethods [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:37'
+	#'squeak_changestamp' : 'sv 7/12/2024 19:05'
 }
 IPTLevel0101 >> testGameInitialize [
+
 	self methodToBeTested: (IPTGame >> #initialize).
 	
 	self requiredAssert: (game isKindOf: IPTGame) description: 'You may not return a value!'.

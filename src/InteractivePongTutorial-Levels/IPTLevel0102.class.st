@@ -65,32 +65,37 @@ IPTLevel0102 class >> visibleMethods [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:39'
+	#'squeak_changestamp' : 'sv 7/12/2024 19:04'
 }
 IPTLevel0102 >> testBallGame [
+
 	self methodToBeTested: (IPTBall >> #game).
 	
 	"Use instVarNamed:put: instead of the setter in case the player did not implement the setter."
 	ball instVarNamed: 'game' put: game.
+	
 	self assert: (ball game = game) description: 'Ball game should return the value it was set on in game:'.
 ]
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:40'
+	#'squeak_changestamp' : 'sv 7/12/2024 19:04'
 }
 IPTLevel0102 >> testBallGameSetter [
+
 	self methodToBeTested: (IPTBall >> #game:).
 	
 	ball game: game.
+	
 	self assert: (ball instVarNamed: 'game') = game description: 'Ball game: should set game on the input'.
 ]
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:38'
+	#'squeak_changestamp' : 'sv 7/12/2024 19:04'
 }
 IPTLevel0102 >> testBallInitialize [
+
 	self methodToBeTested: (IPTBall >> #initialize).
 	
 	self assert: (ball isKindOf: IPTBall) description: 'You may not return a value!'.
@@ -101,32 +106,37 @@ IPTLevel0102 >> testBallInitialize [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 18:20'
+	#'squeak_changestamp' : 'sv 7/12/2024 19:04'
 }
 IPTLevel0102 >> testGameBall [
+
 	self methodToBeTested: (IPTGame >> #ball).
 	
 	"Use instVarNamed:put: instead of the setter in case the player did not implement the setter."
 	game instVarNamed: 'ball' put: ball.
+	
 	self assert: (game ball = ball) description: 'Game ball should return the value it was set on in ball:'.
 ]
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:40'
+	#'squeak_changestamp' : 'sv 7/12/2024 19:05'
 }
 IPTLevel0102 >> testGameBallSetter [
+
 	self methodToBeTested: (IPTGame >> #ball:).
 	
 	game ball: ball.
+	
 	self assert: (game instVarNamed: 'ball') = ball description: 'Game ball: should set ball on the input'.
 ]
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Josua Zehner 7/9/2024 11:37'
+	#'squeak_changestamp' : 'sv 7/12/2024 19:05'
 }
 IPTLevel0102 >> testGameInitialize [
+
 	self methodToBeTested: (IPTGame >> #initialize).
 	
 	self assert: (game isKindOf: IPTGame) description: 'You may not return a value!'.
@@ -136,14 +146,16 @@ IPTLevel0102 >> testGameInitialize [
 
 {
 	#category : #levelTests,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 15:02'
+	#'squeak_changestamp' : 'sv 7/12/2024 19:05'
 }
 IPTLevel0102 >> testGameInitializeBall [
+
 	self methodToBeTested: (IPTGame >> #initializeBall).
 	
 	self requiredAssert: (game ball ~= game) description: '(IPTGame >> ball) is not implemented, or ball has been set to game!'.
 	
 	game initializeBall.
+	
 	self assert: (game ball isNil not) description: 'You have not set a ball.'.
 	self assert: (game ball isKindOf: IPTBall) description: 'Ball should be of class Ball.'.
 	self assert: (game ball center = game center) description: 'You should position the Ball in the center of the game.'.
