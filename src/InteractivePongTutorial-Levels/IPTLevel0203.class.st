@@ -15,11 +15,11 @@ IPTLevel0203 class >> asString [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'FH 7/10/2024 18:00'
+	#'squeak_changestamp' : 'sv 7/12/2024 19:13'
 }
 IPTLevel0203 class >> description [
 	
-	^ 'This is a description'.
+	^ 'In this Level, you will make the player react to keyboard input.'.
 ]
 
 {
