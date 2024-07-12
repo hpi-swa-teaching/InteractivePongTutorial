@@ -15,20 +15,20 @@ IPTLevel0203 class >> asString [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'FH 7/10/2024 18:00'
+	#'squeak_changestamp' : 'FH 7/12/2024 19:13'
 }
 IPTLevel0203 class >> description [
 	
-	^ 'This is a description'.
+	^ 'In this level you will learn how to use the keyboard to interact with your Pong game.'.
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'FH 7/10/2024 18:00'
+	#'squeak_changestamp' : 'FH 7/12/2024 19:12'
 }
 IPTLevel0203 class >> explanations [
 	
-	^ {''.}.
+	^ {'In the last level we gave the player the possibility to move. In this level we want to make the player move by keyboard input. Therefore you have to enable keyboard event handling in the handlesKeyboard function of the game. Afterwards you can implement the moment with W/S for the left- and arrowUp/arrowDown for the right Player. The movement should start on keyDown and stop on keyUp.'. 'You get an Event and have to check if it triggers an explained action. You get the events character with the "keyCharacter" message. To define character you can use the Character Class or the "$" symbol like "$p".'. 'If you are unsure how to proceed or a stuck at a method there are some hints following.'. 'Hint 1: Return true in the handlesKeyboard message to enable keyboard interaction.'.'Hint 2: In keyUp/keyDown compare the keyboardEvent separatly with "Character arrayUp/arrowDown" an "$W,$S" and start/stop the movement in an "ifTrue:" block.'.'Hint 3: Use the message "asUppercase" to make sure the inputs of letters work with your comparison letter.'.'Hint 4: In the keyDown message you have different events triggering the same action. To make your code less redundant you can use the messages "or:" or "andSatisfy:". The or: message works simmilar to a logical or. The "anySatisfy:" message can be send to a collection and takes a block. If any element of the collection fits the block, "anySatisfy" will return true.'}.
 ]
 
 {
