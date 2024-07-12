@@ -58,7 +58,7 @@ IPTLevelTests >> testLevelDescriptions [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 11:40'
+	#'squeak_changestamp' : 'FH 7/12/2024 16:43'
 }
 IPTLevelTests >> testSolutionCode [
 	

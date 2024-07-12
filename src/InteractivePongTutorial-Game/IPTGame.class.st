@@ -23,7 +23,7 @@ IPTGame class >> open [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/12/2024 16:33'
+	#'squeak_changestamp' : 'FH 7/12/2024 16:44'
 }
 IPTGame >> ball [
 	^ ball.
@@ -31,7 +31,7 @@ IPTGame >> ball [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/12/2024 16:33'
+	#'squeak_changestamp' : 'FH 7/12/2024 16:44'
 }
 IPTGame >> ball: aBall [
 	ball := aBall.
@@ -39,7 +39,7 @@ IPTGame >> ball: aBall [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'FH 7/12/2024 16:33'
+	#'squeak_changestamp' : 'FH 7/12/2024 16:44'
 }
 IPTGame >> handlesKeyboard: anEvent [
 	^ true.
@@ -47,7 +47,7 @@ IPTGame >> handlesKeyboard: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'FH 7/12/2024 16:33'
+	#'squeak_changestamp' : 'FH 7/12/2024 16:44'
 }
 IPTGame >> initialize [
 	super initialize.
@@ -58,7 +58,7 @@ IPTGame >> initialize [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'FH 7/12/2024 16:33'
+	#'squeak_changestamp' : 'FH 7/12/2024 16:44'
 }
 IPTGame >> initializeBall [
 	self 
@@ -70,7 +70,7 @@ IPTGame >> initializeBall [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'FH 7/12/2024 16:33'
+	#'squeak_changestamp' : 'FH 7/12/2024 16:44'
 }
 IPTGame >> initializePlayers [
 	| offset | 
@@ -88,7 +88,7 @@ IPTGame >> initializePlayers [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'FH 7/12/2024 16:33'
+	#'squeak_changestamp' : 'FH 7/12/2024 16:44'
 }
 IPTGame >> keyDown: anEvent [
 	(anEvent keyCharacter asUppercase = $W ) ifTrue: [self playerLeft up].
@@ -99,7 +99,7 @@ IPTGame >> keyDown: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'FH 7/12/2024 16:33'
+	#'squeak_changestamp' : 'FH 7/12/2024 16:44'
 }
 IPTGame >> keyUp: anEvent [
 	({$W.$S} anySatisfy: [ :key |
@@ -129,7 +129,7 @@ IPTGame >> mouseLeave: anEvent [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/12/2024 16:33'
+	#'squeak_changestamp' : 'FH 7/12/2024 16:44'
 }
 IPTGame >> playerBounds [
 	^ {self playerLeft bounds . self playerRight bounds}.
@@ -137,7 +137,7 @@ IPTGame >> playerBounds [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/12/2024 16:33'
+	#'squeak_changestamp' : 'FH 7/12/2024 16:44'
 }
 IPTGame >> playerLeft [
 	^ playerLeft.
@@ -145,7 +145,7 @@ IPTGame >> playerLeft [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/12/2024 16:33'
+	#'squeak_changestamp' : 'FH 7/12/2024 16:44'
 }
 IPTGame >> playerLeft: aPlayer [
 	playerLeft := aPlayer.
@@ -153,7 +153,7 @@ IPTGame >> playerLeft: aPlayer [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/12/2024 16:33'
+	#'squeak_changestamp' : 'FH 7/12/2024 16:44'
 }
 IPTGame >> playerRight [
 	^ playerRight.
@@ -161,7 +161,7 @@ IPTGame >> playerRight [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'FH 7/12/2024 16:33'
+	#'squeak_changestamp' : 'FH 7/12/2024 16:44'
 }
 IPTGame >> playerRight: aPlayer [
 	playerRight := aPlayer.
