@@ -14,11 +14,12 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:27'
+	#'squeak_changestamp' : 'sv 7/12/2024 18:46'
 }
 IPTEditor class >> openOnBrowser: aBrowser [
 
-	^ self new browser: aBrowser.
+	^ self new
+		browser: aBrowser.
 ]
 
 {
@@ -75,14 +76,15 @@ IPTEditor >> codePiece: aCodePiece [
 
 {
 	#category : #evaluating,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 13:39'
+	#'squeak_changestamp' : 'sv 7/12/2024 18:46'
 }
 IPTEditor >> contents: input notifying: aController [
 
 	(self codePiece checkSyntax: input)
 		ifNotEmpty: [ :errorMessage |
 			UIManager default inform: errorMessage.
-			self codePiece readOnly ifTrue: [self contents: self codePiece code]]
+			self codePiece readOnly
+				ifTrue: [self contents: self codePiece code]]
 		ifEmpty: [
 			super contents: input notifying: aController.
 			self codePiece 
@@ -105,16 +107,17 @@ IPTEditor >> evaluateExpression: aString [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:25'
+	#'squeak_changestamp' : 'sv 7/12/2024 18:47'
 }
 IPTEditor >> setCodePiece: aCodePiece [
 	
 	self codePiece: aCodePiece.
 	self contents: ''.
-	aCodePiece ifNotNil: [
-		self contents: aCodePiece code.
-		aCodePiece isClass ifFalse: [
-			self setClass: aCodePiece referencedClass selector: aCodePiece referencedMethod]].
+	aCodePiece
+		ifNotNil: [
+			self contents: aCodePiece code.
+			aCodePiece isClass
+				ifFalse: [self setClass: aCodePiece referencedClass selector: aCodePiece referencedMethod]].
 	self changed: #contents.
 	
 	

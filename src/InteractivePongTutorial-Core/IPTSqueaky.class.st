@@ -65,15 +65,15 @@ IPTSqueaky >> squeakyPaths [
 
 {
 	#category : #displaying,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 12:31'
+	#'squeak_changestamp' : 'sv 7/12/2024 18:45'
 }
 IPTSqueaky >> updateImage [
 
 	self setImageFromPath: (self squeakyPaths at: self mood).
 	self owner ifNotNil: [ :owner |
 		self image: (self image scaledToHeight: owner height).
-		(self image width > owner width) ifTrue: [
-			self image: (self image scaledToWidth: owner width)]].
+		(self image width > owner width)
+			ifTrue: [self image: (self image scaledToWidth: owner width)]].
 
 	
 

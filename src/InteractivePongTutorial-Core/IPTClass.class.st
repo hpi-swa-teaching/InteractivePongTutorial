@@ -13,11 +13,11 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 14:42'
+	#'squeak_changestamp' : 'sv 7/12/2024 18:50'
 }
 IPTClass class >> classList [
 
-	^ {IPTGame. IPTBall. IPTPlayer} collect: [:class | self fromClass: class].
+	^ {IPTGame. IPTBall. IPTPlayer} collect: [ :class | self fromClass: class ].
 ]
 
 {

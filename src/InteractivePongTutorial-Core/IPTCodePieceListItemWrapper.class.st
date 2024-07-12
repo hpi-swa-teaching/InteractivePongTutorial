@@ -54,11 +54,12 @@ IPTCodePieceListItemWrapper >> hasContents [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:15'
+	#'squeak_changestamp' : 'sv 7/12/2024 18:48'
 }
 IPTCodePieceListItemWrapper >> icon [
 
-	(self item isClass or: [self item readOnly]) ifTrue: [^ nil].
+	(self item isClass or: [self item readOnly])
+		ifTrue: [^ nil].
 	^ ToolIcons iconNamed: (self item isGreen
 		ifTrue: [#testGreen]
 		ifFalse: [#testRed]).
