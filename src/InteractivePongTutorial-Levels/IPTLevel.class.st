@@ -105,64 +105,70 @@ IPTLevel class >> visibleMethods [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 7/8/2024 15:31'
+	#category : #setup,
+	#'squeak_changestamp' : 'FH 7/12/2024 19:04'
 }
 IPTLevel >> initialize [
+
 	self isPlayable: true.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/8/2024 15:19'
+	#'squeak_changestamp' : 'FH 7/12/2024 19:04'
 }
 IPTLevel >> isPlayable [
-	^ isPlayable
+
+	^ isPlayable.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/8/2024 15:19'
+	#'squeak_changestamp' : 'FH 7/12/2024 19:04'
 }
-IPTLevel >> isPlayable: anObject [
-	isPlayable := anObject
+IPTLevel >> isPlayable: aBoolean [ 
+
+	isPlayable := aBoolean.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:30'
+	#'squeak_changestamp' : 'FH 7/12/2024 19:03'
 }
 IPTLevel >> methodToBeTested [
-	^ methodToBeTested
+
+	^ methodToBeTested.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 7/3/2024 11:30'
+	#'squeak_changestamp' : 'FH 7/12/2024 19:03'
 }
-IPTLevel >> methodToBeTested: anObject [
-	methodToBeTested := anObject
+IPTLevel >> methodToBeTested: aMethod [ 
+
+	methodToBeTested := aMethod.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 14:13'
+	#category : #setup,
+	#'squeak_changestamp' : 'FH 7/12/2024 19:03'
 }
 IPTLevel >> requiredAssert: aBooleanOrBlock description: aStringOrBlock [
 
-	aBooleanOrBlock value ifFalse: [self
-		isPlayable: false;
-		fail: aStringOrBlock].
+	aBooleanOrBlock value 
+		ifFalse: [self
+			isPlayable: false;
+			fail: aStringOrBlock].
 
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 14:31'
+	#category : #setup,
+	#'squeak_changestamp' : 'FH 7/12/2024 19:02'
 }
 IPTLevel >> requiredShouldntRaiseError: aBlock description: aString [
 
-	^ [ aBlock value ]
+	^ [aBlock value]
 		on: Exception
 		do: [:e | self 
 			isPlayable: false;
@@ -171,8 +177,8 @@ IPTLevel >> requiredShouldntRaiseError: aBlock description: aString [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 18:24'
+	#category : #setup,
+	#'squeak_changestamp' : 'FH 7/12/2024 19:02'
 }
 IPTLevel >> setUp [
 	self methodToBeTested: (IPTLevel >> #setUp).
@@ -186,14 +192,14 @@ IPTLevel >> setUp [
 	player := game playerLeft.
 	ball := game ball.
 	
-	(ball isKindOf: IPTBall) ifFalse: [
-		ball := IPTBall new game: game; yourself].
-	(player isKindOf: IPTPlayer) ifFalse: [
-		player := IPTPlayer new game: game; yourself].
+	(ball isKindOf: IPTBall) 
+		ifFalse: [ball := IPTBall new game: game; yourself].
+	(player isKindOf: IPTPlayer) 
+		ifFalse: [player := IPTPlayer new game: game; yourself].
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #setup,
 	#'squeak_changestamp' : 'Leo Sonnenberg 6/23/2024 15:23'
 }
 IPTLevel >> tearDown [
