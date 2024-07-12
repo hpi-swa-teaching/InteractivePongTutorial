@@ -6,7 +6,7 @@ Class {
 
 {
 	#category : #mockCategory,
-	#'squeak_changestamp' : 'FH 7/12/2024 16:44'
+	#'squeak_changestamp' : 'FH 7/12/2024 16:45'
 }
 IPTMockGame >> mockMethod [
 	^ false.
