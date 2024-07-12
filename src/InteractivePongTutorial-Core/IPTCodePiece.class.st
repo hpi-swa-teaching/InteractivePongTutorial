@@ -90,11 +90,11 @@ IPTCodePiece >> code [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:08'
+	#'squeak_changestamp' : 'FH 7/12/2024 18:51'
 }
-IPTCodePiece >> code: aString [
+IPTCodePiece >> code: aCodeString [
 
-	code := aString.
+	code := aCodeString.
 ]
 
 {
@@ -164,13 +164,14 @@ IPTCodePiece >> isSameSourceAs: aCompiledMethod [
 
 {
 	#category : #loading,
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/9/2024 16:38'
+	#'squeak_changestamp' : 'FH 7/12/2024 18:52'
 }
 IPTCodePiece >> loadInitialCodeForLevel: aLevelIndex andChapter: aChapterNumber [
 	
 	| variant |
 	variant := self variantForLevel: aLevelIndex fromChapter: aChapterNumber.
-	self code: (self addHeadToCode: variant initialCode);
+	self 
+		code: (self addHeadToCode: variant initialCode);
 		readOnly: variant readOnly;
 		compileCode.
 ]

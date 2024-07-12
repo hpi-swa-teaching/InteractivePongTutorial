@@ -515,7 +515,7 @@ IPTBrowser >> levelIndex: aNumber [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 7/10/2024 11:35'
+	#'squeak_changestamp' : 'FH 7/12/2024 18:39'
 }
 IPTBrowser >> loadLevel: aLevelIndex [
 
@@ -525,7 +525,7 @@ IPTBrowser >> loadLevel: aLevelIndex [
 		reloadCodePieces;
 		testResult: nil;
 		selectCodePiece: nil;
-		updateVisibleClassSetToMethods: self activeLevel visibleMethods..
+		updateVisibleClassSetToMethods: self activeLevel visibleMethods.
 		
 	self playground ifNotNil: [self playground clear].
 		
@@ -540,13 +540,13 @@ IPTBrowser >> loadLevel: aLevelIndex [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Felix Knöfel 7/11/2024 14:01'
+	#'squeak_changestamp' : 'FH 7/12/2024 18:40'
 }
 IPTBrowser >> loadSolutionButtonAction [
 	
 	self levelIndex ifNotNil: [
-		self selectedCodePiece 
-			loadSolutionCodeForLevel: self levelIndex andChapter: self chapter chapterNumber;
+		self 
+			selectedCodePiece loadSolutionCodeForLevel: self levelIndex andChapter: self chapter chapterNumber;
 			compileCode.
 		self codeEditor setCodePiece: self selectedCodePiece.
 		self clearPlayground].
@@ -911,7 +911,7 @@ IPTBrowser >> updateSqueaky [
 
 {
 	#category : #actions,
-	#'squeak_changestamp' : 'Josua Zehner 7/10/2024 15:09'
+	#'squeak_changestamp' : 'FH 7/12/2024 18:46'
 }
 IPTBrowser >> updateVisibleClassSetToMethods: aMethodsCollection [	
 	
@@ -922,7 +922,7 @@ IPTBrowser >> updateVisibleClassSetToMethods: aMethodsCollection [
 			removeAllSuchThat: [:codePiece |
 				aMethodsCollection noneSatisfy: [ :compiledMethod | 
 					codePiece isSameSourceAs: compiledMethod]];
-			isEmpty "remove class if it has no more codePieces"].
+			isEmpty].
 	
 ]
 
