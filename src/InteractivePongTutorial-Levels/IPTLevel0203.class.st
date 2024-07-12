@@ -15,11 +15,11 @@ IPTLevel0203 class >> asString [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'FH 7/12/2024 18:10'
+	#'squeak_changestamp' : 'sv 7/12/2024 17:59'
 }
 IPTLevel0203 class >> description [
 	
-	^ 'In this level you will learn how to use keyboard input to interact with your game.'.
+	^ 'In this Level, you will make the player react to keyboard input.'.
 ]
 
 {

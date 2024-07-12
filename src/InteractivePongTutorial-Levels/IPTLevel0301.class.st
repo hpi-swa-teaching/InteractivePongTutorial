@@ -15,20 +15,25 @@ IPTLevel0301 class >> asString [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'FH 7/10/2024 19:01'
+	#'squeak_changestamp' : 'sv 7/12/2024 18:11'
 }
 IPTLevel0301 class >> description [
 	
-	^ 'This is a description'.
+	^ 'In this Level, you will learn about detecting when the ball touches a player.'.
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'FH 7/10/2024 19:01'
+	#'squeak_changestamp' : 'sv 7/12/2024 18:25'
 }
 IPTLevel0301 class >> explanations [
 	
-	^ {''.}.
+	^ {'We want the ball to check if it collides with one of players. For that, the ball needs to know where the players are and how big they are. This information is held by playerBounds.'.
+	'Then, actually check for a collision in checkCollisionWithPlayer. Luckily, you do not need to implement all the details yourself since Squeak already provides a function that does what we want.'.
+	'Now, since the ball could start colliding with a player on every new step it takes, we therefore want to check on every step of the ball if there is a collision happening. We do this by calling the function we just wrote.'.
+	'Hint: playerBounds is a collection, where every entry are the bounds of one player'.
+	'Hint: checkCollisionWithPlayer checks for collision between ball and every player. So we need to look at every entry of our playerBounds collection.'.
+	'Hint: To recall: step is called every time we want to move the ball. So we will then need to check for collisions, too.'}.
 ]
 
 {

@@ -19,11 +19,11 @@ IPTLevel0101 class >> asString [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Josua Zehner 7/11/2024 08:52'
+	#'squeak_changestamp' : 'sv 7/12/2024 18:00'
 }
 IPTLevel0101 class >> description [
 	
-	^ 'In this level, you will get an introduction to the tutorial and learn about basic Morph methods.'.
+	^ 'In this Level, you will get an introduction to the tutorial and learn about basic Morph methods.'.
 ]
 
 {
