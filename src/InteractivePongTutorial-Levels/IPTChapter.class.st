@@ -17,7 +17,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'sv 7/12/2024 19:10'
+	#'squeak_changestamp' : 'sv 7/12/2024 19:11'
 }
 IPTChapter class >> chapterSet [
 	^ {IPTChapter 
@@ -33,7 +33,7 @@ IPTChapter class >> chapterSet [
 				IPTLevel0101.
 				IPTLevel0102.
 				IPTLevel0103.
-				IPTLevel0104.}. 
+				IPTLevel0104}. 
 		IPTChapter 
 			withName: 'Player movement'
 			number: 2
@@ -47,7 +47,7 @@ IPTChapter class >> chapterSet [
 			number: 3
 			description: 'In this Chapter, we will make the Players and the Ball interact with each other and finish our game off.'
 			levels: {
-				IPTLevel0301.}}
+				IPTLevel0301}}
 ]
 
 {
@@ -65,88 +65,99 @@ IPTChapter class >> withName: aName number:  aNumber description: aString levels
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/7/2024 10:31'
+	#'squeak_changestamp' : 'FH 7/12/2024 18:56'
 }
 IPTChapter >> activeLevelNumber [
-	^ activeLevelNumber
+
+	^ activeLevelNumber.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/7/2024 10:31'
+	#'squeak_changestamp' : 'FH 7/12/2024 18:56'
 }
-IPTChapter >> activeLevelNumber: anObject [
-	activeLevelNumber := anObject
+IPTChapter >> activeLevelNumber: aNumber [
+
+	activeLevelNumber := aNumber.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/7/2024 10:52'
+	#'squeak_changestamp' : 'FH 7/12/2024 18:56'
 }
 IPTChapter >> asString [
-	^ self name
+
+	^ self name.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/7/2024 10:30'
+	#'squeak_changestamp' : 'FH 7/12/2024 18:56'
 }
 IPTChapter >> chapterNumber [
-	^ chapterNumber
+
+	^ chapterNumber.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/7/2024 10:30'
+	#'squeak_changestamp' : 'FH 7/12/2024 18:56'
 }
-IPTChapter >> chapterNumber: anObject [
-	chapterNumber := anObject
+IPTChapter >> chapterNumber: aNumber [
+
+	chapterNumber := aNumber.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/7/2024 10:31'
+	#'squeak_changestamp' : 'FH 7/12/2024 18:56'
 }
 IPTChapter >> description [
-	^ description
+
+	^ description.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/7/2024 10:31'
+	#'squeak_changestamp' : 'FH 7/12/2024 18:56'
 }
-IPTChapter >> description: anObject [
-	description := anObject
+IPTChapter >> description: aString [
+
+	description := aString.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/7/2024 10:31'
+	#'squeak_changestamp' : 'FH 7/12/2024 18:57'
 }
 IPTChapter >> levels [
-	^ levels
+
+	^ levels.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Felix Knöfel 6/19/2024 12:32'
+	#'squeak_changestamp' : 'FH 7/12/2024 18:58'
 }
-IPTChapter >> levels: anObject [
-	levels := anObject.
+IPTChapter >> levels: aCollection [
+
+	levels := aCollection.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/7/2024 10:31'
+	#'squeak_changestamp' : 'FH 7/12/2024 18:58'
 }
 IPTChapter >> name [
-	^ name
+
+	^ name.
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/7/2024 10:31'
+	#'squeak_changestamp' : 'FH 7/12/2024 18:58'
 }
-IPTChapter >> name: anObject [
-	name := anObject
+IPTChapter >> name: aString [
+
+	name := aString.
 ]
