@@ -19,11 +19,11 @@ IPTLevel0103 class >> asString [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/2/2024 10:30'
+	#'squeak_changestamp' : 'sv 7/12/2024 19:12'
 }
 IPTLevel0103 class >> description [
 	
-	^ 'In this level, we will introduce the concept of stepping to move the ball.'.
+	^ 'In this Level, we will introduce the concept of stepping to move the ball.'.
 ]
 
 {

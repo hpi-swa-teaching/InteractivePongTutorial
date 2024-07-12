@@ -19,11 +19,11 @@ IPTLevel0201 class >> asString [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:36'
+	#'squeak_changestamp' : 'sv 7/12/2024 19:12'
 }
 IPTLevel0201 class >> description [
 	
-	^ 'In this Level you will implement the Player class and connect it to the already existing game'.
+	^ 'In this Level, you will implement the Player class and connect it to the already existing game'.
 ]
 
 {
