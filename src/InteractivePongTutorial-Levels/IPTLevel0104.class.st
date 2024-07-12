@@ -19,11 +19,11 @@ IPTLevel0104 class >> asString [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/21/2024 17:44'
+	#'squeak_changestamp' : 'sv 7/12/2024 18:00'
 }
 IPTLevel0104 class >> description [
 	
-	^ 'In this level, you will learn how to check for simple Collisions by implementing the collision between the ball and the walls.'.
+	^ 'In this Level, you will learn how to check for simple Collisions by implementing the collision between the ball and the walls.'.
 ]
 
 {

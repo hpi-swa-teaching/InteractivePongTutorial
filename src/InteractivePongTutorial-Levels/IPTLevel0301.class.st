@@ -15,11 +15,11 @@ IPTLevel0301 class >> asString [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'FH 7/10/2024 19:01'
+	#'squeak_changestamp' : 'sv 7/12/2024 18:04'
 }
 IPTLevel0301 class >> description [
 	
-	^ 'This is a description'.
+	^ 'In this Level, you will learn about detecting when the ball touches a player'.
 ]
 
 {

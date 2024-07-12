@@ -19,11 +19,11 @@ IPTLevel0102 class >> asString [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 6/21/2024 17:46'
+	#'squeak_changestamp' : 'sv 7/12/2024 18:00'
 }
 IPTLevel0102 class >> description [
 	
-	^ 'In this level, you will be adding more functionality to the Game class and start implementing the new class, Ball. You will also learn how to link them.'.
+	^ 'In this Level, you will be adding more functionality to the Game class and start implementing the new class, Ball. You will also learn how to link them.'.
 ]
 
 {

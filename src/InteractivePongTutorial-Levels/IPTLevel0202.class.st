@@ -19,11 +19,11 @@ IPTLevel0202 class >> asString [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'Leo Sonnenberg 7/10/2024 14:37'
+	#'squeak_changestamp' : 'sv 7/12/2024 18:00'
 }
 IPTLevel0202 class >> description [
 	
-	^ 'In this Chapter you will implement the foundations of the movement for the Player class'.
+	^ 'In this Level, you will implement the foundations of the movement for the Player class'.
 ]
 
 {
