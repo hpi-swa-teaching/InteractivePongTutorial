@@ -4,7 +4,7 @@ playerBounds
 1
 
 °°
-"Return a colletion of the bounds of all Players. Use 'bounds' message of Morphs."
+"Return a collection of the bounds of all Players. Use 'bounds' message of Morphs."
 °°
  
 	^ {self playerLeft bounds . self playerRight bounds}.
